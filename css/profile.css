@@ -123,7 +123,7 @@
     flex-direction: row-reverse;
 }
 
-#pass1 input, #passw2 input, #oldpassword input {
+#pass1 input, #passw2 input, #oldpassword input, .addinput input {
     border: none;
     border-radius: 0;
     font-family: "Poppins", sans-serif;
