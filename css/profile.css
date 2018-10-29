@@ -90,6 +90,10 @@
     justify-content: center;
 }
 
+.tabs .spbutton {
+    background-color: #757575 !important;
+}
+
 #delete-profile {
     justify-content: left;
     margin-bottom: 0;
@@ -144,6 +148,22 @@
 #forma {
     width: 21%;
 }
+
+.entry_section {
+    border: 2px solid #B4B4B4;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.entry_section_title {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #B4B4B4;
+    padding-bottom: 3px;
+}
+
+
 
 
 
