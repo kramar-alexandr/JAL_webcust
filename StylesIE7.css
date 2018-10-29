@@ -1,0 +1,373 @@
+#topmenu {
+  padding: 0px;
+  margin-right: -50px;
+  height: 18px;
+  width: 200px;
+  list-style: none; 
+  font-size: 12px;
+  /*border:5px solid yellow;*/
+} 
+#topmenu ul li{
+  float:left;
+} 
+#topmenu ul li.first{
+  float:left;
+} 
+
+#sidemenu ul li{
+  display:block;
+  margin:0px;
+  line-height:29px;
+  width:180px;
+  text-align:left;  
+}
+
+#smallcube {
+  padding-top:50px;
+  margin-left:-10px;
+  //margin-top:-160px;
+  //margin-bottom:-20px;
+}
+
+#actbanner {
+  height:100px;
+  width:210px;
+  margin-top:10px;
+  background-color:white;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+}
+#actbanner ul{
+  text-align:left;
+  list-style-type:none;
+  margin-left:0px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+#actbanner ul li {
+  list-style-image:url("/images/bullet.png");
+  margin:0px;
+  margin-top:5px;
+  padding:0px;
+  padding-left:3px;
+}
+#actbanner ul li a{
+  font-size:normal;
+  text-decoration:underline;
+}
+
+#news h1{
+  padding-top:5px;
+  padding-right:10px;
+}
+
+#event ul li #content-head{
+  width:100%;
+}
+
+#news ul li{
+  margin:0px;
+  padding:0px;
+}
+
+#media {
+  border: none;
+  float:left;
+  list-style-type:none;
+  width:520px;
+  padding:0px;
+}
+#media #cont-header{
+  padding:10px;
+  padding-bottom:0px;
+}
+#media #content-head a{
+  margin-left:-29px;
+  width:160px;
+}
+#media ul { 
+  border: none;
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  display:block;
+  font-size:10px;
+}
+#media ul li{ 
+  display:inline-block;
+  height:175px;
+  margin-left:8px;
+  width:162px;
+  float:left;
+  padding:0px;
+}
+#media #gallistimg {
+  width:162px;
+  height:125px;
+  float:none;
+  padding:0px;
+  border:1px #028450 solid;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#regmenubox ul li{
+  display:inline-block;
+  float:left;
+  width:120px;
+  height:25px;
+  text-align:center;
+  margin-right:-22px;
+  padding-bottom:0px;
+  line-height:200%;
+}
+
+#skillslist{
+  line-height:12px;
+}
+
+#success {
+  width:530px;
+  float:left;
+  display:block;
+  list-style-type:none;
+	text-align: justify;
+	border:none;
+  padding:0px;
+}
+#success ul li #contlistimg img {
+  visibility:visible;
+  display:block;
+  width:135px;
+  height:100px;
+}
+#success #cont-header{
+  padding-top:5px;
+  padding-right:10px;
+}
+#success #content-detail {
+  margin-top:0px;
+  margin-left:40px;
+}
+#success ul li #content-head a{
+  width:300px;
+  padding-left:0px;
+  line-height:16px;
+  font-size:12px;
+}
+#success ul { 
+  list-style-type:none;
+  margin-left:10px;
+  padding-left:0px;
+}
+#success ul li {
+  min-height:100px;
+  padding-left:0px;
+}
+#success #blog-comtime{
+ margin-top:-15px;
+}
+
+#regmenubox {
+  padding:0px;
+  margin-top:-22px;
+  margin-left:-22px;
+  height:40px;
+}
+
+#mainbox{
+  display:block;
+  background-image:url("/images/contentback.png");
+  background-repeat: repeat-x;
+  border:solid #028450 2px;
+  min-height:561px;
+  height:auto !important;
+  height:561px;
+  padding:20px;
+  width:530px;
+  float:left;
+  text-align:left;
+  list-style-type:none;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+}
+
+#passw2 {
+  float:left;
+  margin-right:0px;
+  width:200px;
+}
+
+#cube {
+  display: block;
+  float:left;
+  text-align:center;
+  width: 385px;
+  padding:50px;
+  padding-top:0px;
+  margin-top:0px;
+  /*border:5px solid orange;*/
+}
+
+#sidebars{
+	text-align: left;
+  position: relative; 
+	float: left;
+	width: 182px;
+	//height:400px;
+	font-size: 16px;
+	display:block;
+  /*border:5px solid orange;*/
+}
+#sidebars ul{
+  margin:0px 0px 0px 0px;
+  padding:0px;
+  list-style-type:none;
+  display:block;
+}
+#sidebars ul li{
+	display:block;
+  width:182px;
+  height:68px;
+  margin-bottom:30px;
+  text-align:center;
+  background-image:url("/images/button1.png");
+}
+
+#sidebars ul li a{
+	display:block;
+  width:182px;
+  height:48px;
+  padding-top:20px;
+  text-decoration:none;
+  text-align:center;
+  color: #CF7200;
+  padding-left:5px;
+  padding-right:5px;
+}
+
+#sidebars ul li a:hover {
+  background-image:url("/images/button1hover.png");
+}
+
+#sidebars2{
+	text-align: left;
+  position: relative; 
+	float: left;
+	width: 182px;
+	//height:400px;
+	font-size: 16px;
+	display:block;
+  /*border:5px solid orange;*/
+}
+#sidebars2 ul{
+  margin:0px 0px 0px 0px;
+  padding:0px;
+  list-style-type:none;
+  display:block;
+}
+#sidebars2 ul li{
+	display:block;
+  width:182px;
+  height:68px;
+  margin-bottom:30px;
+  text-align:center;
+  background-image:url("/images/button1.png");
+}
+
+#sidebars2 ul li a{
+	display:block;
+  width:182px;
+  height:48px;
+  padding-top:20px;
+  text-decoration:none;
+  text-align:center;
+  color: #CF7200;
+}
+
+#sidebars2 ul li a:hover {
+  background-image:url("/images/button1hover.png");
+}
+
+#learnbydoin{
+  margin-top:0px;
+  /*border:5px dotted orange;*/
+  text-align:left;
+}
+
+#footer1{
+  margin-top:40px;
+  float:left;
+  width:100%;
+  /*border:5px dotted red;*/
+}
+
+#picture_col{
+  /*border:5px dotted purple;*/
+  text-align:center;
+  margin-top:-115px;
+}
+#hiddenbox {
+ //visibility:hidden;
+ height:0px;
+ position:absolute;
+ margin-left:-532px;
+ margin-top:-25px;
+ z-index:1000;
+}
+#hiddenbox span{
+  width:0px;
+  height:0px;
+  visibility:hidden;
+  background-image:url("/images/popup.png");
+  margin-top:-60px;
+  padding:10px;
+  /*
+  position:relative;
+  */
+  z-index:1000;
+}
+
+#blog-head-item {
+  //float: left;
+  width: 180px;
+  margin: 2px 0px 2px 10px;
+  font-size: 12px;
+  display:inline-block;
+}
+
+#mainbox h1{
+  font-size:22px;
+}
+
+#gallery_thumblist {
+  height:80%;
+}
+#gallery_thumblist a {
+  margin-right:22px !important;
+  margin-bottom:22px !important;
+  width:100px;
+  height:80px;
+  float:left;
+}
+#gallery_thumblist a img {
+  margin:0px;
+  padding:0px;
+  width:100px;
+  height:80px;
+}
+#gallery_thumb {
+  width: 100px;
+}
+
+#media #comnav{
+  margin-top:20px;
+  bottom:20px;
+  text-align:center;
+}

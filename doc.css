@@ -1,0 +1,100 @@
+body{ 
+  margin:0px;
+  font-size:12px;
+  color:black;
+  font-family:Humanist,Johnston Sans,Verdana,Tahoma;
+}
+
+#doc_box {
+  width:900px;
+  height:330px;
+  display:block;
+  background-color:#e3e9f0;
+}
+
+#doc_box .doc_col {
+  width:210px;
+  padding:5px;
+  padding-right:0px;
+  margin-right:5px;
+  overflow:hidden;
+  float:left;
+  height:330px;
+  border-left:1px dashed #a0acba;
+  text-align:left;
+}
+
+#doc_box .doc_col.last {
+  border:none;
+}
+
+#doc_box .doc_col .doc_col_header {
+  font-size:11px;
+  color:black;
+  text-align:center;
+  display:block;
+  height:35px;
+}
+
+#doc_box .doc_col {
+  color:#999999;
+  overflow:scroll;
+  overflow-x:hidden;
+}
+
+#doc_box .doc_col a {
+  display:block;
+  height:15px;
+  width:180px;
+  overflow:hidden;
+  overflow:hidden;
+  color:#555555;
+  text-decoration:none;
+}
+
+#doc_box .doc_col a.short {
+  float:left;
+  width:110px;
+}
+
+#doc_box .doc_col .approve_but {
+  overflow:hidden;
+  text-align:right;
+}
+
+#doc_box .doc_col a.approve_up{
+  float:left;
+  margin-left: 20px;
+  margin-right: 5px;
+  display:block;
+  width:26px;
+  height:20px;
+  background-image:url("/images/appr_up.png");
+  background-repeat:no-repeat;
+}
+
+#doc_box .doc_col a.approve_down{
+  display:block;
+  width:20px;
+  height:20px;
+  background-image:url("/images/appr_down.png");
+  background-repeat:no-repeat;
+}
+
+.score_select select{
+  margin-left:10px;
+  float:left;
+}
+
+.file_row{
+  clear:both;
+}
+
+#doc_box .doc_col a.approve_back{
+  display:block;
+  width:20px;
+  height:20px;
+  background-image:url("/images/appr_back.png");
+  background-repeat:no-repeat;
+  float:right;
+}

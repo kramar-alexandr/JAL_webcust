@@ -1,0 +1,187 @@
+#banner {
+    height: 46vw;
+    background-image: url(../img/background_foto.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.capture{display:none;}
+.capture_foto{
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 46%;
+}
+.capture_foto h5{
+    color: white;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    text-align: left;
+    font-size: 2.5vw;
+    line-height: 2.5vw;
+    padding-bottom: 0vw;
+}
+.capture_foto h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+    text-align: left;
+    font-size: 1.2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture_foto p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.capture_foto span {
+    color: #2cc654;
+    line-height: 2vw;
+    font-weight: bold;
+}
+.view_gal{
+    position: absolute;
+    z-index: 2;
+    left: 11vw;
+    top: 33vw;
+}
+.view_gal button{
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 1vw;
+    padding: 0.5vw 1vw;
+    margin: 1vw;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.view_gal button:hover {
+    color: #2cc654;
+    background-color: rgba(35,192,76,0.2);
+    border: 1px solid rgba(35,192,76,0.2);
+}
+.wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+#main_foto{
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    width: 70%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+#main_foto div{
+    background-blend-mode: multiply;
+    width: 24.4%;
+    height: 10vw;
+    margin: 0.2vw;
+    text-align: center;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    cursor: pointer;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center
+}
+#main_foto div:hover{
+    background-color: rgba(44, 198, 84, 0.9);
+}
+#main_foto p{
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-size: 0.8vw;
+    margin-bottom: 1vw;
+}
+#main_foto h1{
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-size: 0.8vw;
+    line-height: 1.5vw;
+    font-weight: 400;
+    width: 12vw;
+    margin: 0;
+}
+#w1{background-image: url(../img/foto/1.jpg);}
+#w2{background-image: url(../img/foto/2.jpg);}
+#w3{background-image: url(../img/foto/3.jpg);}
+#w4{background-image: url(../img/foto/4.jpg);}
+#w5{background-image: url(../img/foto/5.jpg);}
+#w6{background-image: url(../img/foto/6.jpg);}
+#w7{background-image: url(../img/foto/7.jpg);}
+#w8{background-image: url(../img/foto/8.jpg);}
+#w9{background-image: url(../img/foto/9.jpg);}
+#w10{background-image: url(../img/foto/10.jpg);}
+#w11{background-image: url(../img/foto/11.jpg);}
+#w12{background-image: url(../img/foto/12.jpg);}
+@media screen and (max-width: 900px){
+    .capture_foto {
+        position: absolute;
+        width: 77%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        top: 50vw;
+    }
+    .capture_foto h5 {
+        text-align: center;
+        font-size: 6.5vw;
+        line-height: 1.3;
+        padding-bottom: 2vw;
+    }
+    .capture_foto h2 {
+        text-align: center;
+        font-size: 5vw;
+        line-height: 1.3;
+        padding-bottom: 3vw;
+    }
+    .capture_foto p {
+        font-size: 3.2vw;
+        line-height: 1.2;
+        text-align: center !important;
+    }
+    #partners{
+        display:none !important
+    }
+    #main_foto {
+        padding-top: 1vw;
+        padding-bottom: 0vw;
+        width: 100%;
+    }
+    #main_foto div {
+        width: 100%;
+        height: 60vw;
+        margin: 0;
+        margin-bottom: 1vw;
+    }
+    #main_foto h1 {
+        font-size: 5vw;
+        line-height: 1.5;
+        font-weight: 600;
+        width: 70%;
+    }
+    #main_foto p {
+        font-size: 4vw;
+    }
+
+}

@@ -1,0 +1,1 @@
+function changepicture(picel){	picel.src='/images/graylogo2.png';	//picel.parentNode.href='/images/graylogo2.png';}

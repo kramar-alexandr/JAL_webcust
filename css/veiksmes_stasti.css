@@ -1,0 +1,158 @@
+#banner {
+    height: 46vw;
+    background-image: url(../img/background_veiksmes_stasti.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.capture{display:none;}
+.capture_stasti{
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 38%;
+}
+.capture_stasti h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 0.5vw;
+}
+.capture_stasti p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.capture_stasti span {
+    color: #2cc654;
+    line-height: 3vw;
+}
+.capture_stasti a{
+    cursor: pointer;
+}
+.capture_stasti_2{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 20vw;
+    right: 35vw;
+}
+.capture_stasti_2 h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture_stasti_2 p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+#main_veiksmes_stasti{
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    width: 70%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+#main_veiksmes_stasti div{
+    width: 24.4%;
+    height: 10vw;
+    margin: 0.2vw;
+    text-align: center;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    cursor: pointer;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center
+}
+#main_veiksmes_stasti div:hover{
+    background-blend-mode: multiply;
+    background-color: rgba(44, 198, 84, 0.9);
+}
+#main_veiksmes_stasti p{
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-size: 0.8vw;
+    margin-bottom: 1vw;
+}
+#main_veiksmes_stasti h1{
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-size: 0.9vw;
+    line-height: 1.5vw;
+    font-weight: 400;
+    width: 12vw;
+    margin: 0;
+}
+#w1{background-image: url(../img/foto/1.jpg);}
+#w2{background-image: url(../img/foto/2.jpg);}
+#w3{background-image: url(../img/foto/3.jpg);}
+#w4{background-image: url(../img/foto/4.jpg);}
+#w5{background-image: url(../img/foto/5.jpg);}
+#w6{background-image: url(../img/foto/6.jpg);}
+#w7{background-image: url(../img/foto/7.jpg);}
+#w8{background-image: url(../img/foto/8.jpg);}
+#w9{background-image: url(../img/foto/9.jpg);}
+#w10{background-image: url(../img/foto/10.jpg);}
+#w11{background-image: url(../img/foto/11.jpg);}
+#w12{background-image: url(../img/foto/12.jpg);}
+@media screen and (max-width: 900px){
+    .capture_stasti p {
+        display: none;
+    }
+    #partners{
+        display:none !important
+    }
+    #main_veiksmes_stasti {
+        padding-top: 1vw;
+        padding-bottom: 0vw;
+        width: 100%;
+    }
+    #main_veiksmes_stasti div {
+        width: 100%;
+        height: 60vw;
+        margin: 0;
+        margin-bottom: 1vw;
+    }
+    #main_veiksmes_stasti h1 {
+        font-size: 5vw;
+        line-height: 1.5;
+        font-weight: 600;
+        width: 70%;
+    }
+    #main_veiksmes_stasti p {
+        font-size: 4vw;
+    }
+}

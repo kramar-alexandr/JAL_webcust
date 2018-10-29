@@ -1,0 +1,116 @@
+#partners{display:none !important}
+#banner {
+    height: 46vw;
+    background-image: url(../img/background_partners.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.capture{display:none;}
+.capture_partners{
+    position: absolute;
+    margin-top: 17vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 38%;
+}
+.capture_partners h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture_partners p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.partners_content{
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    width: 70%;
+    margin: auto;
+}
+
+.flex-partneri{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.one-flex, .one-flex-header, .one-flex-spec{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 9.5vw;
+    width: 13.5%;
+    padding: 0.5vw;
+    margin: 0.5vw;
+}
+.one-flex:hover, .one-flex-spec:hover{
+    background-color: white;
+}
+.one-flex img, .one-flex-spec img{
+    width: 100%;
+    margin: auto;
+}
+.one-flex-header{
+    box-shadow: none;
+}
+.one-flex-header h1{
+    margin: auto;
+    text-align: center;
+    font-size: 1vw;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+}
+.one-flex-spec{
+    width: 30%
+}
+.capture_mobile{
+    display:none;
+}
+@media screen and (max-width: 900px){
+    .capture_partners p{
+        display: none;
+    }
+    .capture_mobile {
+        display: block;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
+        width: 70%;
+        margin: auto;
+    }
+    .capture_mobile p {
+        font-family: "Poppins", sans-serif;
+        color: rgb(0,0,0);
+        font-size: 3.2vw !important;
+        line-height: 1.5;
+        text-align: justify;
+        margin: 0;
+    }
+    .one-flex-header {
+        width: 100% !important;
+    }
+    .one-flex-header h1 {
+        margin: 5vw;
+        font-size: 4vw;
+    }
+    .one-flex, .one-flex-header, .one-flex-spec {
+        box-shadow: none;
+        height: auto;
+        width: 47%;
+    }
+}

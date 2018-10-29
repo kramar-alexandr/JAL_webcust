@@ -1,0 +1,240 @@
+ul, li{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    margin: 0;
+}
+#link-top{
+    opacity: 1;
+    position: fixed;
+    width: -webkit-fill-available;
+    height: auto;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0vw 4vw 0vw 4vw;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    height: 5vw;
+    top: 0;
+}
+/* Internet Explorer 11+ */
+_:-ms-fullscreen, :root #link-top { width: 93% }
+
+/* Internet Explorer 10+ */
+_:-ms-lang(x), #link-top { width: 93% }
+
+@supports (-ms-ime-align:auto) {
+    #link-top {
+        width: 93%;
+    }
+}
+
+#banner{
+    height: 46vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+}
+#logo{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#logo a{
+    padding: 0
+}
+.menu{
+    width: 3vw;
+    margin-left: 70px;
+}
+.menu img{
+    width: 100%;
+    cursor: pointer;
+}
+.logo{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../img/logo.png);
+    height: 2.5vw;
+    width: 10vw;
+    z-index: 100;
+}
+.login {
+    font-size: 0.8vw;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.8;
+    z-index: 100;
+}
+.login a{
+    font-size: 0.9vw;
+}
+.login li {
+    display: inline;
+    list-style: none;
+    margin-right: 1vw;
+    cursor: pointer;
+}
+#link-top .login a{
+    color: white
+}
+.login a:hover{
+    color: #2cc654 !important;
+}
+.login li:hover{
+    color:#2cc654 !important;
+}
+#link-top.show{
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+#link-top.show .logo{
+    background-image: url(../img/logo2.png);
+}
+#link-top.show .login a{
+    color: rgb(159, 159, 159)
+}
+
+.capture{
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    width: 40%;
+}
+.capture h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+#banner span{
+    color:#2cc654;
+}
+.capture span{
+    color:#2cc654;
+}
+
+#menu-content{
+    display:none;
+    position: fixed;
+    background-color: rgba(7,205,96,0.95);
+    padding: 5vw;
+    padding-top: 7vw;
+    top: 0;
+    z-index: 99;
+}
+#menu-content a{
+    font-size: 1.2vw;
+    line-height: 1.5;
+    font-weight: 400 !important;
+    opacity: 1;
+    padding-bottom: 0 !important
+}
+#menu-content a:hover{
+    text-decoration: underline
+}
+.yellow:hover{
+    color:yellow;
+}
+.violet:hover{
+    color:violet;
+}
+.greenn:hover{
+    color:green;
+}
+#menu-content li{
+    padding: 0;
+    line-height: 1.5;
+}
+.sub{
+    margin-left: 2vw;
+    display: none;
+}
+
+/*.collapsed span:before{*/
+    /*content: "\25BC";*/
+/*}*/
+/*.expanded span:after{*/
+    /*content: "\25B2";*/
+/*}*/
+@media screen and (min-width: 1400px){
+
+}
+@media screen and (max-width: 1400px){
+    #menu-content a {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 900px){
+    #menu-content {
+        padding: 20vw;
+        padding-top: 20vw;
+        width: 100%;
+    }
+    .login{
+        display:none
+    }
+    .menu {
+        width: 13vw;
+        margin-left: 0;
+        position: fixed;
+        right: 0;
+        margin-top: 8vw;
+        margin-right: 5vw;
+    }
+    #link-top {
+        display: block;
+        position: absolute;
+    }
+    #logo a {
+        position: absolute;
+        top: 5vw;
+    }
+    .logo {
+        background-size: contain;
+        height: 6.5vw;
+        width: 25vw;
+    }
+    #banner {
+        height: 150vw;
+        background-position: center;
+    }
+
+    .capture {
+        position: relative;
+        width: 85%;
+        margin: auto;
+        text-align: center;
+        top: 80vw;
+    }
+    .capture h2 {
+        text-align: center;
+        font-size: 6vw;
+        line-height: 1;
+        padding-bottom: 5vw;
+    }
+    .capture p {
+        font-size: 3vw;
+        line-height: 1.5;
+        text-align: center;
+    }
+}

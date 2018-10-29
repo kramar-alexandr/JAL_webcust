@@ -1,0 +1,55 @@
+#smallcube {  margin-top:-10px;  margin-left:-10px;  //margin-top:-160px;  //margin-bottom:-20px;}#cube {  display: block;  float:left;  text-align:center;  width: 400px;  padding:50px;  padding-top:0px;  //margin-top:-230px;}#content1 {  display: block;  float:left;  text-align:center;  width: 900px;  margin-left:0px;  margin-top:0px;  margin-bottom:-70px;}#news{  border:none;}#news h1{  padding-top:5px;}#news #content-detail {  height:20px;}#news ul li {  min-height:120px;}#news ul li #content-head{  width:300px;}#news #blog-comtime{ margin-top:-15px;}#success ul li a {  height:0px;}#success ul li { min-height:100px;}#success #content-detail{  //margin-top:-100px;  //float:left;  height:0px;}#success ul li #contlistimg img {  display:block;}#success #content-date{}#success ul li a #content-detail #{  height:50px;}#event ul{  margin:0px;  padding:0px;}#event ul li{  list-style:none;  padding:10px;  border-bottom: 2px solid #028450;}#event #contimgbig img {  width:0px;  height:0px;  visibility:hidden;}#normlist{
+width:90%;
+border:none;
+margin-top:-120px;
+}
+
+.bannerpic {
+  height:60px;
+  width:200px;
+  padding-top:20px;
+  margin-top:10px;
+  padding-left:10px;
+  text-align:center;
+  background-image:url("/images/bannerpic.png");
+  background-color:transparent;
+}
+
+#sidenavpic{
+  margin:15px 5px 10px 5px;
+  padding-top:5px;
+  padding-bottom:5px;
+  background-image:url("/images/bannerpic.png");
+  background-color:transparent;
+}
+
+#actbanner {
+  height:100px;
+  width:210px;
+  margin-top:10px;
+  text-align:center;
+  background-image:url("/images/actbanner.png") !important;
+  background-color:transparent !important;
+  background-position:left bottom;
+  background-repeat:no-repeat;
+}
+#actbannerhead{
+  padding:4px;
+  color:#eee;
+  font-weight:bold;
+  background-image:url("/images/eventheader.png");
+  background-color:transparent;
+}
+
+#calendarmonth{
+  width:80px;
+  height:19px;
+  text-align:center;
+  line-height:150%;
+  color:#0B8450;
+  font-weight:bold;
+  border:none;
+  background-image:url("/images/month.png");
+  background-color:transparent;
+  margin-bottom:5px;
+}

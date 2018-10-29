@@ -1,0 +1,300 @@
+.capture_best {
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 46%;
+    color: rgb(255, 255, 255);
+}
+
+#banner {
+    background-image: url(../img/background_smu.jpg);
+}
+
+#loginbox, #recovery {
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 100px;
+    width: 50%;
+    text-align: center;
+    font-size: 12px;
+}
+
+#loginbox a, .content a {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    color: blue;
+    font-weight: bold;
+}
+
+.loginbutton {
+    font-family: "Poppins", sans-serif;
+    background-color: #16B01A;
+    color: white;
+    font-size: 1vw;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    margin-left: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+
+.loginline1 input, .loginline2 input {
+    border: none;
+    border-radius: 0px;
+    font-family: "Poppins", sans-serif;
+    background-color: #F6F6F6;
+    width: 70%;
+    height: 30px;
+    text-indent: 8px;
+    margin-bottom: 10px;
+}
+
+.loginline1 input::placeholder , .loginline2 input::placeholder {
+    font-family: "Poppins", sans-serif;
+    color: #181818;
+    font-size: 14px;
+}
+
+#mainbox {
+    display: flex;
+    margin: auto;
+    width: 70%;
+    align-items: baseline;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.spbutton {
+    font-family: "Poppins", sans-serif;
+    background-color: #16B01A !important;
+    color: white;
+    font-size: 1vw !important;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    margin-left: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+
+#errormsg {
+    color: red;
+}
+
+.wrap{
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrap a {
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.radio {
+    width: auto !important;
+    height: auto !important;
+    margin-left: 10px;
+}
+
+.age {
+    margin-left: 10px;
+    text-transform: lowercase;
+    font-size: 0.9vw;
+}
+
+label {
+    font-size: 14px;
+}
+
+#recovery input::placeholder{
+    font-family: "Poppins", sans-serif;
+    color: #181818;
+    font-size: 14px;
+}
+
+#recovery input {
+    border: none;
+    border-radius: 0px;
+    font-family: "Poppins", sans-serif;
+    background-color: #F6F6F6;
+    width: 50%;
+    height: 30px;
+    text-indent: 8px;
+    margin-bottom: 10px;
+}
+
+#recovery input[type="submit"] {
+    font-family: "Poppins", sans-serif;
+    background-color: #16B01A !important;
+    color: white;
+    font-size: 1vw;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    height: auto;
+    width: 30%;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+
+#mainbox .content {
+    width: 34%;
+    margin-right: 50px;
+    font-size: 1vw;
+}
+
+.reg_label {
+    font-size: 10px;
+    width: 70%;
+    margin-left: 5px;
+}
+
+.spbutton {
+    height: auto !important;
+}
+
+#regform {
+    width: 40%;
+}
+.info-sign {
+    display: inline;
+    margin-left: -25px;
+    margin-top: 6px;
+    position: absolute;
+}
+.pupils {
+    background-image: url(../img/skolenu_registracija.jpg) !important;
+    background-position: center;
+}
+.login-bg{
+    background-image: url(../img/ienakt.jpg) !important;
+    background-position: center;
+}
+.recovery-bg {
+    background-image: url(../img/aizmirsu_paroli.jpg) !important;
+    background-position: center;
+}
+.teacher-bg{
+    background-image: url(../img/skolotaju_registracija.jpg) !important;
+    background-position: center;
+}
+.info-sign:hover::after {
+    content: attr(data-title);
+    font-size: 12px;
+    position: absolute;
+    min-width: 90px;
+    margin-top: 20px;
+    margin-left: -20px;
+    /*left: 20%;*/
+    /*top: 30%;*/
+    /*z-index: 1;*/
+    background: rgba(255, 255, 255, 0.9);
+    font-family: Arial, sans-serif;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    white-space: pre;
+}
+.informacion {
+    font-size: 1vw;
+}
+
+
+/*#regform form {*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*flex-wrap: wrap;*/
+    /*height: 300px;*/
+/*}*/
+#regform select {
+    font-family: "Poppins", sans-serif;
+    color: #181818;
+    font-size: 0.9vw;
+}
+
+.reg_label_head {
+    font-size: 1vw;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#parrents {
+    display: none;
+}
+
+#regform input, select{
+    border: none;
+    border-radius: 0px;
+    font-family: "Poppins", sans-serif;
+    background-color: #F6F6F6;
+    width: 90%;
+    height: 30px;
+    text-indent: 8px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    /*-webkit-appearance: none;*/
+    /*-moz-appearance: none;*/
+    /*-o-appearance: none;*/
+    /*appearance: none;*/
+}
+
+#regform input::placeholder {
+    font-family: "Poppins", sans-serif;
+    color: #181818;
+    font-size: 0.9vw;
+}
+
+@media screen and (max-width: 900px) {
+
+    #mainbox {
+        width: auto;
+        flex-direction: column;
+        margin: auto;
+        font-size: 5vw !important;
+        padding-left: 50px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+
+    #mainbox .content {
+        width: auto;
+        font-size: 3.2vw;
+        text-align: justify !important
+    }
+
+    .content a {
+        font-size: 14px;
+    }
+
+    #regform {
+        width: auto;
+    }
+
+    #regform input, select {
+        width: 85%;
+    }
+
+    #recovery input::placeholder{
+        font-size: 20px !important;
+    }
+
+    #recovery input[type="submit"] {
+        height: 30px;
+    }
+
+    .spbutton {
+        height: 30px !important;
+        font-size: 18px;
+    }
+
+    .informacion {
+        font-size: 3.2vw;
+        text-align: justify !important
+    }
+
+    .reg_label_head {
+        font-size: 3.2vw !important;
+    }
+}

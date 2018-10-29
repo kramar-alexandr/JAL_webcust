@@ -1,0 +1,447 @@
+#partners{display:none !important}
+#banner {
+    height: 46vw;
+    background-image: url(../img/padome.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.kontakti #banner {
+    background-image: url(../img/karte.jpg) !important;
+}
+.parskats #banner {
+    background-image: url(../img/parskats.jpg) !important;
+}
+.biedri #banner {
+    background-image: url(../img/biedri.jpg) !important;
+}
+.vesture #banner {
+    background-image: url(../img/vesture.jpg) !important;
+}
+.par_mums #banner {
+    background-image: url(../img/background_best.jpg) !important;
+}
+.capture{display:none;}
+.capture_top{
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 38%;
+}
+.capture_top h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture_top p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.flex{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+
+.separate{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+.separate .flex{
+    width: 70%;
+    margin: auto
+}
+.separate .flex div{
+    width: 50%;
+}
+.separate h1{
+    margin: 0;
+    font-size: 1.2vw;
+    line-height: 1;
+    margin-bottom: 2vw;
+}
+.separate h5{
+    margin: 0;
+    font-size: 0.9vw;
+    line-height: 1.5;
+}
+.separate p{
+    margin: 0;
+    font-size: 0.9vw;
+    line-height: 1.5;
+}
+.separate th{
+    text-align: left;
+}
+
+#main_info{
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    width: 70%;
+    margin: auto;
+}
+#main_info h1{
+    margin: 0;
+    margin-bottom: 3vw;
+    text-align: center;
+    font-size: 1.1vw;
+}
+
+.mentori{
+    justify-content: center;
+}
+.mentori div{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    width: 24%;
+    margin: 0.3vw;
+    margin-bottom: 1vw;
+}
+.mentori img{
+    width:100%;
+}
+.mentori h2{
+    font-size: 1vw;
+    text-align: center;
+    margin: 0.8vw;
+}
+.mentori p{
+    width: 85%;
+    border-top: 1px solid rgba(0,0,0,0.3);
+    font-size: 0.8vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(0,0,0);
+    line-height: 1.3;
+    text-align: justify;
+    margin: auto;
+    margin-bottom: 1vw;
+    margin-top: 0.5vw;
+    padding-top: 1vw;
+}
+.mentori h3{
+    text-transform: uppercase;
+    color: grey;
+    text-align: center;
+    width: 85%;
+    border-top: 1px solid rgba(0,0,0,0.3);
+    font-size: 0.8vw;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.3;
+    margin: auto;
+    margin-bottom: 1vw;
+    margin-top: 0.5vw;
+    padding-top: 0.5vw;
+}
+.kont{
+    display: -webkit-flex;
+    display: flex;
+    box-shadow: unset !important;
+    width: 90% !important;
+    margin: auto !important;
+    margin-bottom: unset !important;
+    justify-content: space-around;
+}
+.kont p{
+    font-size: 0.7vw;
+    border: none;
+    color: black;
+    text-align: center;
+    width: unset !important;
+    padding: 0 !important;
+    margin-top: 0 !important
+}
+
+
+
+
+
+#map{
+    width:100%;
+    height:46vw;
+    display: none;
+}
+#close{
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+.close-map{
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(0,0,0,0.2);
+    color: black;
+    font-size: 1vw;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    margin-left: 0;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.vesture .flex{
+    flex-wrap: wrap;
+}
+.vesture .flex div{
+    margin-bottom: 1vw;
+}
+.vesture .flex h1{
+    margin: 0;
+    margin-bottom: 0 !important;
+    text-align: left !important;
+    font-size: 1.1vw;
+}
+.vesture .flex p{
+    margin: 0;
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 0.9vw;
+}
+.year{
+    width: 10%
+}
+.year-text{
+    width: 90%
+}
+
+
+.par_mums #main_info p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(0,0,0);
+    line-height: 1.5vw;
+    text-align: justify;
+    margin-bottom: 3vw;
+}
+
+.par_mums #main_info h3 {
+    margin: 0;
+    margin-bottom: 3vw;
+    text-align: center;
+    font-size: 1.1vw;
+}
+.flex-dalibskolas{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.one-flex{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 9vw;
+    width: 9vw;
+    padding: 1vw;
+    margin: 3vw;
+    margin-top: 0;
+}
+.one-flex img{
+    width: 3.5vw;
+    margin: 0.5vw;
+}
+.one-flex p{
+    font-size: 0.7vw !important;
+    font-family: "Poppins" !important;
+    color: black !important;
+    line-height: 1vw !important;
+    text-align: center !important;
+    margin: 0 !important;
+    padding-bottom: 0.5vw !important;
+}
+.capture_par_mums_mobile{
+    display:none
+}
+.a{
+    width: 50%
+}
+.add.one-flex img{
+    width: 6.5vw !important;
+}
+@media screen and (max-width: 900px){
+    #map {
+        height: 150vw;
+    }
+    .close-map {
+        font-size: 3.5vw;
+        padding: 1vw 3vw;
+    }
+    .capture_top {
+        position: absolute;
+        width: 77%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        top: 70vw;
+    }
+    .capture_top h2 {
+        text-align: center;
+        font-size: 5vw;
+        line-height: 1.3;
+        padding-bottom: 3vw;
+    }
+    #main_info {
+        padding-top: 10vw;
+        padding-bottom: 10vw;
+        width: 80%;
+    }
+    .mentori {
+        width: 100%;
+        flex-direction: column;
+    }
+    .mentori div {
+        width: 100%;
+        margin-bottom: 5vw;
+    }
+    .mentori h2 {
+        font-size: 4vw;
+        margin: 2vw;
+    }
+    .mentori p{
+        font-size: 3.5vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+        padding-top: 5vw;
+    }
+    .mentori h3{
+        font-size: 3.5vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+        padding-top: 5vw;
+    }
+
+    #main_info h1 {
+        margin: auto;
+        margin-top: 10vw;
+        margin-bottom: 10vw;
+        text-align: center;
+        font-size: 5vw;
+        text-transform: inherit;
+        font-weight: 700;
+        width: 70%;
+    }
+    .separate .flex{
+        flex-direction: column
+    }
+    .separate .flex div {
+        width: 100%;
+    }
+    .separate h1 {
+        font-size: 4.5vw;
+        line-height: 1.5;
+        margin-bottom: 2vw;
+    }
+    .separate h5{
+        font-size: 3vw;
+        width: 36vw
+    }
+    .separate p {
+        font-size: 3vw;
+    }
+    .separate .flex div{
+        margin-bottom: 10vw;
+        margin-top: 10vw
+    }
+
+
+
+
+    .vesture .flex div {
+        margin-bottom: 5vw;
+        width: 100%;
+    }
+    .vesture .flex h1{
+        margin: auto;
+        margin-top: 0;
+        margin-bottom: 10vw;
+        text-align: center;
+        font-size: 7vw !important;
+        text-transform: inherit;
+        font-weight: 700;
+        width: 100%;
+        text-align: center !important;
+    }
+    .vesture .flex p {
+        font-size: 5vw;
+        text-align: justify
+    }
+
+
+    .par_mums .capture_top p {
+        display:none;
+        font-size: 3.2vw;
+        line-height: 1.2;
+        text-align: justify;
+    }
+    .par_mums .capture_par_mums_mobile{
+        display: block;
+        margin-bottom: 5vw;
+    }
+    .par_mums .capture_par_mums_mobile p{
+        font-family: "Poppins", sans-serif;
+        color: rgb(0,0,0);
+        font-size: 3.2vw;
+        line-height: 1.5;
+        text-align: justify;
+        margin: 0;
+    }
+    .par_mums #main_info p {
+        margin: 0;
+        font-size: 3vw;
+        font-family: "Poppins", sans-serif;
+        color: rgb(0,0,0);
+        line-height: 1.3;
+        text-align: justify;
+    }
+    .par_mums #main_info h3  {
+        margin: 7vw;
+        text-align: center;
+        font-size: 4vw;
+        font-weight: 900;
+    }
+    .flex-dalibskolas {
+        flex-wrap: wrap;
+    }
+    .one-flex {
+        box-shadow: none;
+        height: 40vw;
+        width: 40%;
+        padding: 1vw;
+        margin: 1vw;
+    }
+    .one-flex img {
+        width: 15vw;
+        margin: 5vw;
+    }
+    .add.one-flex img{
+        width: 25vw !important;
+    }
+    .one-flex p {
+        font-size: 3vw !important;
+        line-height: 2 !important;
+    }
+    .captures-about{
+        justify-content: center;
+    }
+    .a {
+        width: 100%;
+    }
+}

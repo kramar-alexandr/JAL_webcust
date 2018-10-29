@@ -1,0 +1,212 @@
+#banner {
+    height: 46vw;
+    background-image: url(../img/background_dalibskolas.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.capture{display:none;}
+.capture_projekti{
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 45%;
+}
+.capture_projekti h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture_projekti p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.capture_projekti span {
+    color: #2cc654;
+    line-height: 3vw;
+}
+#buttons_projekti{
+    position: absolute;
+    z-index: 2;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    top: 30vw;
+    width: 100%;
+    justify-content: flex-end;
+    right: 18vw;
+}
+#buttons_projekti button{
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 1vw;
+    padding: 0.5vw 1vw;
+    margin: 1vw;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+}
+#buttons_projekti button:hover{
+    color: #2cc654;
+    background-color: rgba(35,192,76,0.2);
+    border: 1px solid rgba(35,192,76,0.2);
+}
+#main_projekti{
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+}
+.wrap{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: auto;
+}
+.wrapped{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    padding: 1vw;
+}
+.wrapped div{
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    flex-direction: column
+}
+.project-bt button:hover{
+    color: #2cc654;
+    border: 1px solid #2cc654
+}
+
+.wrapped img{
+    width: 10vw;
+    padding: 2vw;
+}
+.wrapped h1{
+    font-size: 1.4vw;
+    font-family: "Poppins", sans-serif;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    margin: 0;
+    line-height: 1.6vw;
+    margin-bottom: 0.8vw;
+}
+.wrapped p{
+    font-size: 0.7vw;
+    font-family: "Poppins";
+    color: rgb(159, 159, 159);
+    line-height: 1vw;
+    text-align: left;
+    margin: 0;
+}
+.project_logo{
+    width: 15vw;
+}
+.project-bt{
+    margin-left: 1vw;
+}
+.project-bt button{
+    font-family: "Poppins", sans-serif;
+    color: rgba(0,0,0,0.7);
+    font-size: 1vw;
+    padding: 0.3vw 1vw;
+    border: 1px solid rgba(0,0,0,0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: transparent;
+}
+.project-bt a {
+    font-family: "Poppins", sans-serif;
+    color: rgba(0,0,0,0.7);
+    font-size: 1vw;
+    font-weight: 500;
+}
+.project-tx{
+    width: 60%;
+}
+.capture_mobile{
+    display: none;
+}
+@media screen and (max-width: 900px){
+    .capture_projekti p{
+        display: none;
+    }
+    .capture_mobile {
+        display: block;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
+        width: 70%;
+        margin: auto;
+    }
+    .capture_mobile p {
+        font-family: "Poppins", sans-serif;
+        color: rgb(0,0,0);
+        font-size: 3.2vw !important;
+        line-height: 1.5;
+        text-align: justify;
+        margin: 0;
+    }
+    .capture_vardnicina p {
+        display: none;
+    }
+    .project-bt a {
+        color: rgba(0,0,0,0.7);
+        font-size: 4vw;
+    }
+    #partners{
+        display: none !important
+    }
+    .wrapped {
+        flex-direction: column;
+    }
+    .wrapped div{
+        width: 100% !important;
+    }
+    .wrapped img {
+        width: 60%;
+        padding: 5vw;
+        margin: auto;
+    }
+    .wrapped h1 {
+        font-size: 4vw;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.5;
+        margin-bottom: 3vw;
+    }
+    .wrapped p {
+        font-size: 3vw;
+        color: black;
+        line-height: 1.5;
+        text-align: justify;
+    }
+    .project-bt button {
+        font-size: 4vw;
+        padding: 2vw;
+        width: fit-content;
+        margin: auto;
+        margin-top: 5vw;
+    }
+}

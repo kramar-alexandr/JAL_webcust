@@ -1,0 +1,248 @@
+#banner {
+    height: 46vw;
+    background-image: url(../img/background_mana_vardnicina.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.capture{display:none;}
+.capture_vardnicina{
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 35%;
+}
+.capture_vardnicina h5{
+    color: white;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    text-align: left;
+    font-size: 2.5vw;
+    line-height: 2vw;
+    padding-bottom: 1vw;
+}
+.capture_vardnicina p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+.capture_vardnicina span {
+    color: #2cc654;
+    line-height: 2vw;
+    font-weight: bold;
+}
+.foto{
+    position: absolute;
+    z-index: 2;
+    right: 25vw;
+    top: 30vw;
+}
+.foto button{
+    font-family: "Poppins", sans-serif;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 1vw;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.foto button:hover {
+    color: #2cc654;
+    background-color: rgba(35,192,76,0.2);
+    border: 1px solid rgba(35,192,76,0.2);
+}
+.wrap {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+#main_mana_vardnicina{
+    width: 70%;
+    margin: auto;
+    flex-wrap: wrap;
+    padding-bottom: 3vw;
+}
+#main_mana_vardnicina div{
+    background-blend-mode: multiply;
+    width: 30%;
+    height: 15vw;
+    margin: 1vw;
+    text-align: center;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    cursor: pointer;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+#main_mana_vardnicina div:hover{
+    background-image: -moz-linear-gradient( 141deg, rgb(19,172,123) 0%, rgb(0,203,94) 98%);
+    background-image: -webkit-linear-gradient( 141deg, rgb(19,172,123) 0%, rgb(0,203,94) 98%);
+    background-image: -ms-linear-gradient( 141deg, rgb(19,172,123) 0%, rgb(0,203,94) 98%);
+}
+#main_mana_vardnicina div:hover p{
+    display:none
+}
+#main_mana_vardnicina div:hover h1{
+    color: white
+}
+#main_mana_vardnicina p{
+    font-family: "Poppins", sans-serif;
+    color: rgb(74, 78, 75);
+    margin: 0;
+    font-size: 0.9vw;
+    font-style: italic;
+    margin-top: 1vw;
+}
+#main_mana_vardnicina span{
+    font-style: normal;
+}
+#main_mana_vardnicina h1{
+    font-family: "Poppins", sans-serif;
+    color: rgb(74, 78, 75);
+    margin: 0;
+    font-size: 1.1vw;
+    line-height: 1.5vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1vw;
+}
+#main_mana_vardnicina div{
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 0.4vw;
+}
+.capture_h2{
+    padding-top: 5vw;
+}
+.capture_h2 h2{
+    font-family: "Poppins", sans-serif;
+    color: rgb(74, 78, 75);
+    margin: 0;
+    font-size: 1.1vw;
+    line-height: 1.5vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.1vw;
+    text-align: center;
+}
+#additional_banner{
+    width: 68%;
+    margin: auto;
+    height: 16.75vw;
+    background-image: url(../img/bilde.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.additional_banner{
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: right;
+    width: 34%;
+    position: relative;
+    left: 40vw;
+    top: 1vw;
+}
+.additional_banner h1{
+    margin: 0;
+    letter-spacing: 0.1vw;
+    font-size: 1.3vw;
+}
+.additional_banner h2{
+    margin: 0;
+    font-size: 0.6vw;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-bottom: 1vw;
+}
+.additional_banner p{
+    margin: 0;
+    font-size: 0.6vw;
+    opacity: 0.8;
+}
+#footer_caption{
+    text-align: center;
+    margin: 2vw;
+}
+#footer_caption h1{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2vw;
+    color: rgb(74, 78, 75);
+}
+.fc_span_1{
+    color: #2cc654;
+}
+.fc_span_2{
+    color: rgba(247, 227, 1, 1);
+    text-transform: uppercase;
+
+}
+#quote {
+    background-image: url(../img/3.jpg) !important;
+}
+.capture_mobile{
+    display:none;
+}
+@media screen and (max-width: 900px){
+    .capture_mobile {
+        display: block;
+        padding-top: 10vw;
+        padding-bottom: 10vw;
+        width: 70%;
+        margin: auto;
+    }
+    .capture_mobile p {
+        font-family: "Poppins", sans-serif;
+        color: rgb(0,0,0);
+        font-size: 3.2vw !important;
+        line-height: 1.5;
+        text-align: justify;
+        margin: 0;
+    }
+    .capture_vardnicina p {
+        display: none;
+    }
+    .capture_vardnicina h5 {
+        font-size: 6vw;
+        line-height: 1.3;
+        padding-bottom: 1vw;
+        text-align: center;
+    }
+    #partners{
+        display: none !important
+    }
+    .capture_h2 h2 {
+        font-size: 5vw;
+        line-height: 1.5;
+        margin-bottom: 5vw;
+    }
+    #main_mana_vardnicina div {
+        width: 100%;
+        height: 45vw;
+    }
+    #main_mana_vardnicina h1 {
+        font-size: 4vw;
+        line-height: 1.5;
+    }
+    #main_mana_vardnicina p {
+        font-size: 3vw;
+    }
+
+}

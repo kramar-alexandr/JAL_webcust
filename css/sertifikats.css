@@ -1,0 +1,277 @@
+#banner {
+    height: 46vw;
+    background-image: url(../img/background_sertifikats.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+#partners{display:none !important}
+.capture{display:none;}
+.capture_sertifikats{
+    position: absolute;
+    margin-top: 17vw;
+    margin-left: 12vw;
+    z-index: 2;
+    width: 38%;
+}
+.capture_sertifikats h2{
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: left;
+    font-size: 2vw;
+    line-height: 1.1;
+    padding-bottom: 1vw;
+}
+.capture_sertifikats p{
+    margin: 0;
+    font-size: 0.9vw;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    line-height: 1.5vw;
+    text-align: left;
+    opacity: 0.8;
+}
+#top-bt{
+    display: -webkit-flex;
+    display: flex;
+}
+#top-bt p{
+    width: 6vw;
+    margin: 1vw;
+}
+#top-bt p span{
+    color: white;
+    font-size: 0.6vw;
+    margin: 0;
+    line-height: 1.5;
+}
+#main_info {
+    padding-top: 4vw;
+    padding-bottom: 2vw;
+    width: 70%;
+    margin: auto;
+}
+#main_info p{
+    margin: 0;
+    font-size: 0.9vw;
+    margin-bottom: 1vw;
+}
+#main_info h2{
+    margin: 0;
+    font-size: 1.2vw;
+    margin-bottom: 1vw;
+    font-weight: 600;
+}
+.col{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.col-1{
+    display: -webkit-flex;
+    display: flex;
+}
+.col-1 div{
+    width: 25%;
+    padding:1vw;
+}
+.part{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    height: 9vw;
+    padding: 0vw !important;
+    margin: 1vw;
+}
+.titan{
+    width: unset !important;
+    padding:unset !important;
+    background-image: url(../img/Asset2.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 10vw;
+}
+.e_diena{
+    width: unset !important;
+    padding:unset !important;
+    background-image: url(../img/Enu-diena-PNG.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 10vw;
+}
+.smu{
+    width: unset !important;
+    padding:unset !important;
+    background-image: url(../img/SMU-logo_2.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 10vw;
+}
+.col-2{
+    display: -webkit-flex;
+    display: flex;
+}
+.col-21{
+    width: 25%;
+    padding:1vw;
+}
+.col-21 img{
+    height: 3vw;
+    margin-bottom: 2vw;
+}
+.col-3{
+    display: -webkit-flex;
+    display: flex;
+}
+.col-22 img{
+    padding: 1vw;
+    padding-left: 0;
+    height: 6vw
+}
+.col-33{
+    width: 25%;
+    padding-left: 1vw
+}
+.col-34{
+    width: 75%;
+    padding: 1vw;
+}
+.col-35{
+    display: -webkit-flex;
+    display: flex;
+}
+.col-36{
+    display: -webkit-flex;
+    display: flex;
+    margin-top: 1vw;
+}
+.col-36 div{
+    width: 33.333333%;
+    padding: 1vw
+}
+.col-36 div:first-child{
+    padding-left: 0
+}
+
+.logo-1{background-image: url(../img/logos/marketings.png);}
+.logo-2{background-image: url(../img/logos/uznjemejdarbiba.png);}
+.logo-3{background-image: url(../img/logos/menidzments.png);}
+.logo-4{background-image: url(../img/logos/gramatvediba.png);}
+.logo-5{background-image: url(../img/logos/likumdosana.png);}
+.logo-6{background-image: url(../img/logos/lietiskaetikete.png);}
+
+
+.col35-1{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    height: 7vw;
+    width: 13%;
+    margin: 1vw;
+}
+.col35-1 div{
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 35%;
+    height: 7vw;
+    width: 100%;
+}
+.col-35 h3{
+    margin: 0;
+    font-weight: 400;
+    font-size: 0.8vw;
+    color: grey;
+    text-align: center;
+    position: relative;
+    bottom: 2vw;
+}
+@media screen and (max-width: 900px){
+    .col-1, .col-2, .col-3 {
+        flex-direction: column;
+    }
+    .col-1 div {
+        width: 100%;
+    }
+    #main_info p {
+        margin-bottom: 5vw;
+        font-family: "Poppins", sans-serif;
+        color: rgb(0,0,0);
+        font-size: 3.2vw;
+        line-height: 1.5;
+        text-align: justify !important;
+        margin: 0;
+    }
+    .part {
+        box-shadow: none;
+        height: 30vw;
+        padding: 0vw !important;
+        margin: 1vw;
+    }
+    .titan,
+    .e_diena,
+    .smu{
+        height: 30vw;
+    }
+    .col{
+        display:none;
+    }
+    .col-21 {
+        width: 100%;
+        text-align: center;
+    }
+    #main_info h2 {
+        margin: 1vw;
+        font-size: 4vw;
+        margin-bottom: 5vw;
+        font-weight: bold;
+        text-align: center;
+    }
+    .col-22{
+        text-align: center;
+    }
+    .col-22 img {
+        height: 30vw;
+    }
+    .col-21 img {
+        height: 15vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+    }
+    .col-33 {
+        width: 100%;
+        padding-left: 0vw;
+    }
+    .col-34 {
+        width: 100%;
+        padding: 1vw;
+    }
+    .col-36 {
+        margin-top: 5vw;
+        flex-direction: column;
+    }
+    .col-36 div {
+        width: 100%;
+        padding: 1vw;
+        padding-bottom: 5vw;
+        text-align: center !important;
+    }
+    .col-35 {
+        flex-wrap: wrap;
+    }
+
+    .col35-1 {
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        height: 30vw;
+        width: 47%;
+        margin: 1vw;
+    }
+    .col35-1 div {
+        height: 30vw;
+    }
+    .col-35 h3 {
+        font-size: 3vw;
+        bottom: 6vw;
+    }
+}

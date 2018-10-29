@@ -1,0 +1,1 @@
+function ChangeFileScore(val,code,sernr,user){        var link = '/WebChangeFileScore.hal?code=' + code + '&sernr=' + sernr + '&val='+ val + '&user=' + user;	location.href=link;}
