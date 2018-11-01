@@ -50,7 +50,6 @@
 
 .main-tab {
     display: flex;
-    margin-bottom: 113px;
 }
 
 .main-tab a {
@@ -78,11 +77,13 @@
 .profile-head h2 {
     font-weight: bold;
     margin-left: 28px;
+    font-size: 1.3vw;
 }
 
 .profile-info {
     display: flex;
     justify-content: center;
+    font-size: 1vw;
 }
 
 .tabs {
@@ -99,8 +100,8 @@
 .delete-info {
     width: 610px;
     margin: auto;
-    margin-left: 531px;
-    margin-bottom: 317px;
+    margin-bottom: 150px;
+    font-size: 1vw;
 }
 
 .delete-info-email {
@@ -114,7 +115,7 @@
 }
 
 #profile-change .profile-head {
-    padding-left: 500px;
+    padding-left: 25vw;
     justify-content: left;
 }
 
@@ -132,7 +133,16 @@
     text-indent: 8px;
     margin-bottom: 10px;
     margin-left: 10px;
-    width: 200px;
+    width: 16vw;
+    font-size: 0.8vw;
+}
+
+.addinput {
+    text-align: right;
+}
+
+.addinput span {
+    font-size: 1vw;
 }
 
 #profile-soc {
@@ -141,9 +151,106 @@
     font-family: "Poppins", sans-serif !important;
 }
 
-#forma {
-    width: 21%;
+.profile-change {
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 100px;
+    width: 50%;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
 }
+
+#table_id, #apstiprinatie, #pamatskola {
+    font-size: 1vw;
+    width: 100% !important;
+}
+
+.dataTables_wrapper  {
+    margin-bottom: 40px;
+    border-radius: 5px;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#pamatskola_wrapper {
+    display: none;
+}
+
+.dataTable {
+    border: 1px solid #eeeeee;
+    border-radius: 7px;
+}
+
+.dataTables_paginate {
+    float: none !important;
+    text-align: center !important;
+}
+
+.dataTable thead th, .dataTable thead td {
+    padding: 0 !important;
+    border: 1px solid #eeeeee !important;
+}
+
+.dataTable .no-footer {
+    border: none !important;
+}
+
+.dataTable td {
+    border: 1px solid #eeeeee;
+}
+
+.status-btn {
+    font-family: "Poppins", sans-serif;
+    color: #d0d0d0;
+    font-size: 1vw !important;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.labot-btn {
+    font-family: "Poppins", sans-serif;
+    color: #d0d0d0;
+    font-size: 1vw !important;
+    cursor: pointer;
+    text-align: center;
+}
+
+.column-btn {
+    padding: 0 !important;
+    text-align: center;
+}
+
+.control-panel {
+    display: flex;
+    margin-bottom: 63px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-panel h2 {
+    margin: 0 !important;
+    margin-bottom: 30px !important;
+}
+
+.control-btn a {
+    margin: 20px !important;
+}
+
+.control-btn-one {
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    color: #d0d0d0;
+    font-size: 1vw !important;
+    padding: 0.5vw 2vw;
+    cursor: pointer;
+    text-align: center;
+}
+
+
 
 
 
