@@ -164,7 +164,7 @@
 
 #table_id, #apstiprinatie, #pamatskola {
     font-size: 1vw;
-    width: 100% !important;
+    width: 80% !important;
 }
 
 .dataTables_wrapper  {
@@ -188,8 +188,16 @@
     text-align: center !important;
 }
 
+.dataTable th {
+    color: #757575;
+}
+
+.dataTable td {
+    text-align: center !important;
+}
+
 .dataTable thead th, .dataTable thead td {
-    padding: 0 !important;
+    padding: 15px 0.2vw !important;
     border: 1px solid #eeeeee !important;
 }
 
@@ -223,6 +231,11 @@
     text-align: center;
 }
 
+.column-btn-st {
+    display: flex;
+    justify-content: space-around;
+}
+
 .control-panel {
     display: flex;
     margin-bottom: 63px;
@@ -248,6 +261,17 @@
     padding: 0.5vw 2vw;
     cursor: pointer;
     text-align: center;
+}
+
+.previous, .next {
+    width: 134px !important;
+    background: #cccccc !important;
+    text-align: center;
+}
+
+.current {
+    background-color: #757575 !important;
+    border: none !important;
 }
 
 
