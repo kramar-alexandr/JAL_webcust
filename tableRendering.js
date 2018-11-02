@@ -23,19 +23,19 @@ if (text) {
             { data: 'Statuss',
                 render: (data) => {
                     if (data === '0') {
-                        return "<a class='status-btn'>APSTIPRINĀT</a>" +
-                            "<a class='status-btn'>NORAIDĪT</a>";
+                        return "<div onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</div>" +
+                            "<div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>";
                     } else if (data === '1') {
-                        return "<input disabled checked type=\"checkbox\"><a class='status-btn'>NORAIDĪT</a>";
+                        return "<div class='status-btn'>Y</div><div class='status-btn'>NORAIDĪT</div>";
                     } else if (data === '2') {
-                        return "<a class='status-btn'>APSTIPRINĀT</a><input disabled type=\"checkbox\">";
+                        return "<div class='status-btn'>APSTIPRINĀT</div><div class='status-btn'>X</div>";
                     }
                 },
-                className: "column-btn"
+                className: "column-btn column-btn-st"
             },
             { data: 'Labot',
                 render: () => {
-                    return "<a class='labot-btn'>Labot</a>";
+                    return "<a id='labotBtn' onclick='labot(event)' class='labot-btn'>Labot</a>";
                 },
                 className: "column-btn"
             }
@@ -89,9 +89,9 @@ if (text) {
                 render: (data, type, full) => {
                     if (!data) {
                         if (full.Statuss !== "3") {
-                            return '<input disabled type=\"checkbox\">';
+                            return '<div>X</div>';
                         } else {
-                            return '<input disabled checked type=\"checkbox\">';
+                            return '<div>Y</div>';
                         }
                     }
                 }
@@ -104,7 +104,7 @@ if (text) {
             { data: 'Piedalījās',
                 render: (data) => {
                     if (!data) {
-                        return '<input disabled type=\"checkbox\">';
+                        return '<div>X</div>';
                     }
                 }
             },
@@ -116,13 +116,13 @@ if (text) {
             { data: 'Piedalījās',
                 render: (data) => {
                     if (!data) {
-                        return "<input disabled type=\"checkbox\">";
+                        return "<div>X</div>";
                     }
                 }
             },
             { data: 'Statuss',
                 render: () => {
-                return "<a class='labot-btn'>Labot</a>";
+                return "<a class='labot-btn' onclick='labotApsti(event)'>Labot</a>";
 
                 },
                 className: "column-btn"
@@ -167,9 +167,9 @@ if (text) {
                 render: (data, type, full) => {
                     if (!data) {
                         if (full.Statuss !== "3") {
-                            return '<input disabled type=\"checkbox\">';
+                            return '<div>X</div>';
                         } else {
-                            return '<input disabled checked type=\"checkbox\">';
+                            return '<div>Y</div>';
                         }
                     }
                 }
@@ -197,4 +197,26 @@ if (text) {
         pamatskolaBtn.style.background = 'inherit';
         pamatskola_wrapper.style.display = 'none';
     });
+
+    function labot(e) {
+        event.target.parentElement.style.background = 'green';
+        e.path[2].cells[4].innerHTML = "<div class='status-btn'>Y</div><div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>"
+    }
+
+    function labotApsti(e) {
+        event.target.parentElement.style.background = 'green';
+        e.path[2].cells[4].innerHTML = "<div class='status-btn'>Y</div><div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>"
+    }
+
+    function astiprinat(e) {
+        console.log('event.target ', event.target.style.background);
+        event.target.style.background = 'green';
+        e.path[2].cells[4].innerHTML = "<div class='status-btn'>Y</div><div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>"
+    }
+
+    function noradit(e) {
+        console.log('event.target ', event.target.style.background);
+        event.target.style.background = 'green';
+        e.path[2].cells[4].innerHTML = "<div onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</div><div class='status-btn'>X</div>"
+    }
 }
