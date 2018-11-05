@@ -3,11 +3,29 @@ if (text) {
 
     $('#table_id').DataTable( {
         data: techerInfo.SMU,
-        searching: false,
+        dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
-            'copy', 'excel', 'pdf'
+            // {
+            //     text: 'KLASSE',
+            //     attr: {
+            //         id:'klasseSrt'
+            //     },
+            //     action: function ( e, dt, node, config ) {
+            //
+            //     }
+            // },
+            // {
+            //     text: 'DATUMS',
+            //     attr: {
+            //         id:'datumsSrt'
+            //     },
+            //     action: function ( e, dt, node, config ) {
+            //
+            //     }
+            // },
+            {extend: 'excel', text: 'Exel'},
+            {extend: 'pdf', text: '.PDF'}
         ],
-        info: false,
         bLengthChange: false,
         oLanguage: {
             oPaginate: {
@@ -15,20 +33,26 @@ if (text) {
                 sNext: "NĀKAMĀ",
             }
         },
+        columnDefs: [{
+            orderable: false,
+            targets: "no-sort"
+        }],
         columns: [
             { data: 'Nr' },
             { data: 'Skolens' },
-            { data: 'Klase' },
-            { data: 'Datums' },
+            { data: 'Klase',
+                ordering: true
+            },
+            { data: 'Datums',
+                ordering: true},
             { data: 'Statuss',
                 render: (data) => {
                     if (data === '0') {
-                        return "<div onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</div>" +
-                            "<div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>";
+                        return "<p onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>";
                     } else if (data === '1') {
-                        return "<div class='status-btn'>Y</div><div class='status-btn'>NORAIDĪT</div>";
+                        return "<p class='status-btn astiprinat-yes'></p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>";
                     } else if (data === '2') {
-                        return "<div class='status-btn'>APSTIPRINĀT</div><div class='status-btn'>X</div>";
+                        return "<p class='status-btn noradit'>APSTIPRINĀT</p><p class='status-btn noradit-no'></p>";
                     }
                 },
                 className: "column-btn column-btn-st"
@@ -67,7 +91,25 @@ if (text) {
         searching: false,
         info: false,
         select: false,
+        dom: '<"top"B>t<"bottom"p><"clear">',
+        buttons: [
+            // {
+            //     text: 'KLASSE',
+            //     attr: {
+            //         id:'klasseSrt'
+            //     },
+            //     action: function ( e, dt, node, config ) {
+            //         alert( 'Button activated' );
+            //     }
+            // },
+            {extend: 'excel', text: 'Exel'},
+            {extend: 'pdf', text: '.PDF'}
+        ],
         bLengthChange: false,
+        columnDefs: [{
+            orderable: false,
+            targets: "no-sort"
+        }],
         oLanguage: {
             oPaginate: {
                 sPrevious: "IEPRIEKŠĒJĀ",
@@ -87,12 +129,11 @@ if (text) {
             { data: 'Nosaukums' },
             { data: 'Likvidēts',
                 render: (data, type, full) => {
-                    if (!data) {
-                        if (full.Statuss !== "3") {
-                            return '<div>X</div>';
-                        } else {
-                            return '<div>Y</div>';
-                        }
+                    full.Statuss = "3";
+                    if (full.Statuss !== "3") {
+                        return '<p class="noradit-no"></p>';
+                    } else {
+                        return '<p class="astiprinat-yes"></p>';
                     }
                 }
             },
@@ -104,7 +145,7 @@ if (text) {
             { data: 'Piedalījās',
                 render: (data) => {
                     if (!data) {
-                        return '<div>X</div>';
+                        return '<p class="noradit-no"></p>';
                     }
                 }
             },
@@ -116,7 +157,7 @@ if (text) {
             { data: 'Piedalījās',
                 render: (data) => {
                     if (!data) {
-                        return "<div>X</div>";
+                        return "<p class=\"noradit-no\"></p>";
                     }
                 }
             },
@@ -145,7 +186,16 @@ if (text) {
         searching: false,
         info: false,
         select: false,
+        dom: '<"top"B>t<"bottom"p><"clear">',
+        buttons: [
+            {extend: 'excel', text: 'Exel'},
+            {extend: 'pdf', text: '.PDF'}
+        ],
         bLengthChange: false,
+        columnDefs: [{
+            orderable: false,
+            targets: "no-sort"
+        }],
         oLanguage: {
             oPaginate: {
                 sPrevious: "IEPRIEKŠĒJĀ",
@@ -167,9 +217,9 @@ if (text) {
                 render: (data, type, full) => {
                     if (!data) {
                         if (full.Statuss !== "3") {
-                            return '<div>X</div>';
+                            return '<p class="noradit-no"></p>';
                         } else {
-                            return '<div>Y</div>';
+                            return '<p class="astiprinat-yes"></p>';
                         }
                     }
                 }
@@ -177,12 +227,14 @@ if (text) {
         ]
     } );
 
-    vidusskolaBtn.style.background = '#16B01A';
+    // $( ".dt-buttons" ).prepend( "<p>Eksportēt sarakstu: </p>" );
+
+    vidusskolaBtn.style.background = '#24bc4b';
     vidusskolaBtn.style.color = 'white';
 
     pamatskolaBtn.addEventListener('click', function () {
         pamatskola_wrapper.style.display = 'block';
-        pamatskolaBtn.style.background = '#16B01A';
+        pamatskolaBtn.style.background = '#24bc4b';
         pamatskolaBtn.style.color = 'white';
         vidusskolaBtn.style.color = '#d0d0d0';
         vidusskolaBtn.style.background = 'inherit';
@@ -191,32 +243,67 @@ if (text) {
 
     vidusskolaBtn.addEventListener('click', function () {
         apstiprinatie_wrapper.style.display = 'block';
-        vidusskolaBtn.style.background = '#16B01A';
+        vidusskolaBtn.style.background = '#24bc4b';
         vidusskolaBtn.style.color = 'white';
         pamatskolaBtn.style.color = '#d0d0d0';
         pamatskolaBtn.style.background = 'inherit';
         pamatskola_wrapper.style.display = 'none';
     });
 
-    function labot(e) {
-        event.target.parentElement.style.background = 'green';
-        e.path[2].cells[4].innerHTML = "<div class='status-btn'>Y</div><div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>"
+    function labot(event) {
+        event.target.parentElement.style.background = '#24bc4b';
+        event.target.style.color = 'white';
+        event.path[2].cells[4].innerHTML = "<p class='status-btn astiprinat-yes'></p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>"
     }
 
-    function labotApsti(e) {
-        event.target.parentElement.style.background = 'green';
-        e.path[2].cells[4].innerHTML = "<div class='status-btn'>Y</div><div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>"
+    function labotApsti(event) {
+        event.target.parentElement.style.background = '#24bc4b';
+        event.target.style.color = 'white';
+        event.path[2].cells[8].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
+        event.path[2].cells[10].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
+
     }
 
-    function astiprinat(e) {
-        console.log('event.target ', event.target.style.background);
-        event.target.style.background = 'green';
-        e.path[2].cells[4].innerHTML = "<div class='status-btn'>Y</div><div onclick='noradit(event)' class='status-btn'>NORAIDĪT</div>"
+    function checkYes(event) {
+        event.path[1].innerHTML = "<p class='astiprinat-yes'></p>";
+        checkPievienot(event);
     }
 
-    function noradit(e) {
-        console.log('event.target ', event.target.style.background);
-        event.target.style.background = 'green';
-        e.path[2].cells[4].innerHTML = "<div onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</div><div class='status-btn'>X</div>"
+    function checkNo(event) {
+        event.path[1].innerHTML = "<p class='noradit-no'></p>";
+        checkPievienot(event);
+    }
+
+    function astiprinat(event) {
+        event.target.style.background = '#24bc4b';
+        event.path[2].cells[4].innerHTML = "<p class='status-btn astiprinat-yes'></p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>"
+    }
+
+    function noradit(event) {
+        event.target.style.background = '#24bc4b';
+        event.path[2].cells[4].innerHTML = "<p onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</p><p class='status-btn noradit-no'></p>"
+    }
+
+    function checkPievienot(event) {
+        if (event.path[2].cells[8].childNodes.length < 2 &&
+            event.path[2].cells[10].childNodes.length < 2) {
+
+            if (event.path[2].cells[6].childNodes[0].className === "astiprinat-yes" &&
+                event.path[2].cells[8].childNodes[0].className === "astiprinat-yes" &&
+                event.path[2].cells[10].childNodes[0].className === "astiprinat-yes") {
+                event.path[2].cells[12].childNodes[0].className = "activaite-btn";
+                event.path[2].cells[12].childNodes[0].parentElement.style.background = '#24bc4b';
+                setCountInConfirmBtn();
+            } else {
+                event.path[2].cells[12].childNodes[0].className = "labot-btn";
+            }
+
+        } else {
+            event.path[2].cells[12].childNodes[0].className = "labot-btn";
+        }
+    }
+
+    function setCountInConfirmBtn() {
+
     }
 }

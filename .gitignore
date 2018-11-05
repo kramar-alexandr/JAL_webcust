@@ -1,6 +1,7 @@
-.webcache
-css/.webcache
-images/.webcache
-img/.webcache
-img/gal/.webcache
-img/logo/.webcache
+.webcache/
+css/.webcache/
+images/.webcache/
+img/.webcache/
+img/gal/.webcache/
+img/logo/.webcache/
+css/.webcache/

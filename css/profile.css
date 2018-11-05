@@ -55,6 +55,11 @@
 .main-tab a {
     margin-left: 20px;
     text-transform: capitalize;
+    background-color: #757575;
+}
+
+.active-tab {
+    background-color: #757575 !important;
 }
 
 #profiletable {
@@ -89,6 +94,7 @@
 .tabs {
     display: flex;
     justify-content: center;
+    margin-bottom: 3vw;
 }
 
 #delete-profile {
@@ -105,7 +111,7 @@
 }
 
 .delete-info-email {
-    color: #44a251;
+    color: #24bc4b;
 }
 
 #profile-change {
@@ -167,12 +173,12 @@
     width: 80% !important;
 }
 
-.dataTables_wrapper  {
-    margin-bottom: 40px;
-    border-radius: 5px;
-    padding: 50px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
+/*.dataTables_wrapper  {*/
+    /*margin-bottom: 40px;*/
+    /*border-radius: 5px;*/
+    /*padding: 50px;*/
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.5);*/
+/*}*/
 
 #pamatskola_wrapper {
     display: none;
@@ -181,6 +187,7 @@
 .dataTable {
     border: 1px solid #eeeeee;
     border-radius: 7px;
+    border-bottom: none !important;
 }
 
 .dataTables_paginate {
@@ -215,7 +222,7 @@
     font-size: 1vw !important;
     cursor: pointer;
     text-align: center;
-    margin-right: 10px;
+    /*background: url("../img/no.png") no-repeat;*/
 }
 
 .labot-btn {
@@ -263,18 +270,161 @@
     text-align: center;
 }
 
-.previous, .next {
-    width: 134px !important;
+.paginate_button  {
     background: #cccccc !important;
     text-align: center;
+    font-size: 1vw;
+    color: white !important;
+    border-radius: 0 !important;
+    border: none !important;
+    margin: 0 0.29rem !important;
 }
 
 .current {
     background-color: #757575 !important;
-    border: none !important;
+    color: white !important;
+}
+.dataTables_paginate {
+    margin-top: 1rem !important;
+}
+
+.dataTable .odd {
+    background-color: white !important;
+}
+
+.sorting_1 {
+    background-color: white !important;
+}
+
+.noradit {
+    background-color: #24bc4b;
+    color: white;
+}
+
+.noradit-no {
+    background: url("../img/no.png") no-repeat;
+    background-position: center;
+}
+
+.astiprinat-yes {
+    background: url("../img/yes.png") no-repeat;
+    background-position: center;
+}
+
+td p {
+    margin: 0;
+    padding: 15px;
+    width: 50%;
+}
+
+.activaite-btn {
+    cursor: pointer;
+    color: white;
+    font-size: 1vw !important;
+}
+
+.submitTab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.submitTab p {
+    width: 30%;
+    font-size: 0.6vw;
+    text-align: center;
+    margin: auto
+}
+
+.tableBox {
+    margin-bottom: 40px;
+    border-radius: 5px;
+    padding: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.tableBox h2 {
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+    text-align: center;
+}
+
+.sertBtn {
+    background-color: #c5c5c5 !important;
+}
+
+.submitBtnAll, .sertBtn {
+    margin-right: 0 !important;
 }
 
 
+.dt-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 150px;
+    margin-bottom: 15px;
+}
+
+.dt-buttons p {
+    color: #a6a6a6;
+    font-size: 13px;
+}
+
+.buttons-excel {
+    width: 32px;
+    height: 22px;
+    font-size: 12px;
+    font-family: inherit;
+    background-color: #e44465;
+    color: white;
+    border: none;
+    margin-right: 5px;
+    padding: 0;
+    margin-left: 15px;
+}
+
+.buttons-pdf {
+    width: 32px;
+    height: 22px;
+    font-size: 12px;
+    font-family: inherit;
+    background-color: #53bc7d;
+    color: white;
+    border: none;
+    padding: 0;
+}
+
+#klasseSrt, #datumsSrt {
+    width: 70px;
+    height: 22px;
+    font-size: 12px;
+    font-family: inherit;
+    background-color: #a6a6a6;
+    background-image: url(http://cdn.datatables.net/1.10.19/images/sort_both.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    text-align: left;
+    color: white;
+    border: none;
+    margin-right: 5px;
+    margin-left: 15px;
+    align-items: start;
+}
+
+#klasseSrt:active, #datumsSrt:active {
+    background-color: #53bc7d;
+    background-image: url(http://cdn.datatables.net/1.10.19/images/sort_asc.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#klasseSrt:hover, #datumsSrt:hover {
+    cursor: pointer;
+}
 
 
 
