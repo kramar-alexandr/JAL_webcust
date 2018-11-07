@@ -1,7 +1,7 @@
 if (text) {
     let techerInfo = JSON.parse(text);
 
-    $('#table_id').DataTable( {
+    let table = $('#table_id').DataTable( {
         data: techerInfo.SMU,
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
@@ -24,7 +24,11 @@ if (text) {
             //     }
             // },
             {extend: 'excel', text: 'Exel'},
-            {extend: 'pdf', text: '.PDF'}
+            {extend: 'pdf', text: '.PDF', exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }}
         ],
         bLengthChange: false,
         oLanguage: {
@@ -48,20 +52,25 @@ if (text) {
             { data: 'Statuss',
                 render: (data) => {
                     if (data === '0') {
-                        return "<p onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>";
+                        return "<p class='status-btn apstiprinatBtn'>APSTIPRINĀT</p>" +
+                            "<p class='status-btn noraditBtn'>NORAIDĪT</p>";
+
                     } else if (data === '1') {
-                        return "<p class='status-btn astiprinat-yes'></p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>";
+                        return "<p class='status-btn astiprinat-yes'></p>" +
+                            "<p onclick='noradit(event)' class='status-btn noraditBtn'>NORAIDĪT</p>";
+
                     } else if (data === '2') {
-                        return "<p class='status-btn noradit'>APSTIPRINĀT</p><p class='status-btn noradit-no'></p>";
+                        return "<p class='status-btn apstiprinatBtn'>APSTIPRINĀT</p>" +
+                            "<p class='status-btn noradit-no'></p>";
                     }
                 },
                 className: "column-btn column-btn-st"
             },
             { data: 'Labot',
                 render: () => {
-                    return "<a id='labotBtn' onclick='labot(event)' class='labot-btn'>Labot</a>";
+                    return "<a id='labotBtn' class='labot-btn'>Labot</a>";
                 },
-                className: "column-btn"
+                className: "column-btn labotBtn"
             }
 
         ]
@@ -86,7 +95,7 @@ if (text) {
     }
 
 
-    $('#apstiprinatie').DataTable( {
+    let tableApstiprinatie = $('#apstiprinatie').DataTable( {
         data: apstiprinatie,
         searching: false,
         info: false,
@@ -129,8 +138,8 @@ if (text) {
             { data: 'Nosaukums' },
             { data: 'Likvidēts',
                 render: (data, type, full) => {
-                    full.Statuss = "3";
-                    if (full.Statuss !== "3") {
+                    data = '3';
+                    if (data !== "3") {
                         return '<p class="noradit-no"></p>';
                     } else {
                         return '<p class="astiprinat-yes"></p>';
@@ -166,14 +175,14 @@ if (text) {
                 return "<a class='labot-btn' onclick='labotApsti(event)'>Labot</a>";
 
                 },
-                className: "column-btn"
+                className: "column-btn labotApsti"
             },
             { data: 'Pievienot sertifikātu sarakstam',
                 render: () => {
                     return "<a class='labot-btn'>PIEVIENOT</a>";
 
                 },
-                className: "column-btn"
+                className: "column-btn pievienotBtn"
             }
 
         ]
@@ -250,11 +259,77 @@ if (text) {
         pamatskola_wrapper.style.display = 'none';
     });
 
-    function labot(event) {
-        event.target.parentElement.style.background = '#24bc4b';
-        event.target.style.color = 'white';
-        event.path[2].cells[4].innerHTML = "<p class='status-btn astiprinat-yes'></p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>"
-    }
+    $('.dataTable').on('click', '.labotBtn, .noraditBtn, .apstiprinatBtn', function() {
+        let rowData;
+
+        if (!this.parentNode.rowIndex) {
+            rowData = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+        } else {
+            rowData = table.row(this.parentNode.rowIndex - 1).data();
+        }
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${rowData.SerNr}&status=${rowData.Statuss}`,true);
+        xhr.send();
+
+        if (xhr.status !== 200) {
+            console.log( xhr.status + ': ' + xhr.statusText );
+        } else {
+            console.log( xhr.responseText );
+        }
+    });
+
+    $('.dataTable').on('click', '.apstiprinatBtn', function() {
+        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+
+        data.Statuss = '1';
+        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+    });
+
+    $('.dataTable').on('click', '.noraditBtn', function() {
+        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+
+        data.Statuss = '2';
+        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+    });
+
+    $('.dataTable').on('click', '.labotBtn', function() {
+        let data = table.row(this.parentNode.rowIndex - 1).data();
+
+        data.Statuss = '1';
+        table.row(this.parentNode.rowIndex - 1).data(data).draw();
+    });
+
+    $('.dataTable').on('click', '.pievienotBtn', function() {
+        let data = tableApstiprinatie.row(this.parentNode.rowIndex - 2).data();
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET',`/WEBJALCreateNewTask.hal?sernr=${data.SerNr}`,true);
+        xhr.send();
+
+        if (xhr.status !== 200) {
+            console.log( xhr.status + ': ' + xhr.statusText );
+        } else {
+            console.log( xhr.responseText );
+        }
+    });
+
+    let taskControl = new CountInConfirmBtn();
+
+    $('.submitBtnAll').on('click', function () {
+        let xhr = new XMLHttpRequest();
+
+        console.log('taskControl.getArray() ', JSON.stringify(taskControl.getArray()));
+
+        xhr.open('POST',`/WEBJALCreateNewTask.hal`,true);
+        xhr.send(JSON.stringify(taskControl.getArray()));
+
+        if (xhr.status !== 200) {
+            console.log( xhr.status + ': ' + xhr.statusText );
+        } else {
+            console.log( xhr.responseText );
+        }
+    });
 
     function labotApsti(event) {
         event.target.parentElement.style.background = '#24bc4b';
@@ -274,16 +349,6 @@ if (text) {
         checkPievienot(event);
     }
 
-    function astiprinat(event) {
-        event.target.style.background = '#24bc4b';
-        event.path[2].cells[4].innerHTML = "<p class='status-btn astiprinat-yes'></p><p onclick='noradit(event)' class='status-btn'>NORAIDĪT</p>"
-    }
-
-    function noradit(event) {
-        event.target.style.background = '#24bc4b';
-        event.path[2].cells[4].innerHTML = "<p onclick='astiprinat(event)' class='status-btn'>APSTIPRINĀT</p><p class='status-btn noradit-no'></p>"
-    }
-
     function checkPievienot(event) {
         if (event.path[2].cells[8].childNodes.length < 2 &&
             event.path[2].cells[10].childNodes.length < 2) {
@@ -293,7 +358,13 @@ if (text) {
                 event.path[2].cells[10].childNodes[0].className === "astiprinat-yes") {
                 event.path[2].cells[12].childNodes[0].className = "activaite-btn";
                 event.path[2].cells[12].childNodes[0].parentElement.style.background = '#24bc4b';
-                setCountInConfirmBtn();
+                event.path[2].cells[11].childNodes[0].parentElement.style.background = 'white';
+                event.path[2].cells[11].childNodes[0].style.color = '#d0d0d0';
+
+                $('.submitBtnAll').text(`IESNIEGT SERTIFIKĀTU SARAKSTU (${taskControl.getCount()})`);
+
+                let data = tableApstiprinatie.row(event.path[2].cells[8].parentNode.rowIndex - 2).data();
+                taskControl.setInArray(data.SerNr);
             } else {
                 event.path[2].cells[12].childNodes[0].className = "labot-btn";
             }
@@ -303,7 +374,40 @@ if (text) {
         }
     }
 
-    function setCountInConfirmBtn() {
 
+
+    function CountInConfirmBtn() {
+        this.count = 0;
+        this.array = [];
+
+         this.getCount= function() {
+            return ++this.count;
+        };
+
+        this.getArray = function() {
+            return this.array;
+        };
+
+        this.setInArray= function (item) {
+            this.array.push({serNr: +item })
+        }
     }
+
+    // $('.dataTable').on('click', '.labotApsti', function() {
+        //     let data = tableApstiprinatie.row(this.parentNode.rowIndex - 2);
+        //
+        //     console.log('data ', data);
+        // });
+        //
+        // $('.dataTable').on('click', '.checkYes', function () {
+        //     let data = tableApstiprinatie.row(this.parentNode.parentNode.rowIndex - 2).data();
+        //
+        //     console.log('data ', data);
+        // });
+        //
+        // $('.dataTable').on('click', '.checkNo', function () {
+        //     let data = tableApstiprinatie.row(this.parentNode.parentNode.rowIndex - 2).data();
+        //
+        //     console.log('data ', data);
+        // });
 }

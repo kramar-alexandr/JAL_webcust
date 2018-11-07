@@ -48,7 +48,7 @@
     height: 30px;
     text-indent: 8px;
     margin-bottom: 10px;
-    font-size: 1.3vw;
+    font-size: 0.8vw;
 }
 
 .loginline1 input::placeholder , .loginline2 input::placeholder {
@@ -79,6 +79,9 @@
 
 #errormsg {
     color: red;
+    /* width: 50%; */
+    font-size: 12px;
+    text-align: left;
 }
 
 .wrap{

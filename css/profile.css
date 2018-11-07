@@ -233,6 +233,10 @@
     text-align: center;
 }
 
+.labotBtn:active {
+    background: #24bc4b;
+}
+
 .column-btn {
     padding: 0 !important;
     text-align: center;
