@@ -253,7 +253,7 @@
 
 .control-panel {
     display: flex;
-    margin-bottom: 63px;
+    /*margin-bottom: 63px;*/
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -349,8 +349,10 @@ td p {
 .tableBox {
     margin-bottom: 40px;
     border-radius: 5px;
-    padding: 50px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    min-width: 750px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .tableBox h2 {
@@ -373,7 +375,7 @@ td p {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 150px;
+    margin-right: 4%;
     margin-bottom: 15px;
 }
 
@@ -385,7 +387,7 @@ td p {
 .buttons-excel {
     width: 32px;
     height: 22px;
-    font-size: 12px;
+    /*font-size: 12px;*/
     font-family: inherit;
     background-color: #e44465;
     color: white;
@@ -398,7 +400,7 @@ td p {
 .buttons-pdf {
     width: 32px;
     height: 22px;
-    font-size: 12px;
+    /*font-size: 12px;*/
     font-family: inherit;
     background-color: #53bc7d;
     color: white;

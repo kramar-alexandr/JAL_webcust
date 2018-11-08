@@ -138,7 +138,6 @@ if (text) {
             { data: 'Nosaukums' },
             { data: 'Likvidēts',
                 render: (data, type, full) => {
-                    data = '3';
                     if (data !== "3") {
                         return '<p class="noradit-no"></p>';
                     } else {
@@ -311,7 +310,7 @@ if (text) {
         let data = tableApstiprinatie.row(this.parentNode.rowIndex - 2).data();
         let xhr = new XMLHttpRequest();
 
-        xhr.open('GET',`/WEBJALCreateNewTask.hal?sernr=${data.SerNr}`,true);
+        xhr.open('GET',`/WEBJALCreateNewTaskOne.hal?sernr=${data.SerNr}`,true);
         xhr.send();
 
         if (xhr.status !== 200) {
@@ -326,8 +325,13 @@ if (text) {
     $('.submitBtnAll').on('click', function () {
         let xhr = new XMLHttpRequest();
 
-        xhr.open('POST',`/WEBJALCreateNewTask.hal`,true);
-        xhr.send(JSON.stringify(taskControl.getArray()));
+        xhr.open('POST',`/WEBJALCreateNewTaskMass.hal`,true);
+        let data = {};
+        data.root = taskControl.getArray();
+
+        console.log('data ', data);
+
+        xhr.send(JSON.stringify(data));
 
         if (xhr.status !== 200) {
             console.log( xhr.status + ': ' + xhr.statusText );
