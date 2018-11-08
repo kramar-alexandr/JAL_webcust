@@ -259,6 +259,27 @@ if (text) {
         pamatskola_wrapper.style.display = 'none';
     });
 
+    $('.dataTable').on('click', '.apstiprinatBtn', function() {
+        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+
+        data.Statuss = '1';
+        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+    });
+
+    $('.dataTable').on('click', '.noraditBtn', function() {
+        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+
+        data.Statuss = '2';
+        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+    });
+
+    $('.dataTable').on('click', '.labotBtn', function() {
+        let data = table.row(this.parentNode.rowIndex - 1).data();
+
+        data.Statuss = '1';
+        table.row(this.parentNode.rowIndex - 1).data(data).draw();
+    });
+
     $('.dataTable').on('click', '.labotBtn, .noraditBtn, .apstiprinatBtn', function() {
         let rowData;
 
@@ -281,27 +302,6 @@ if (text) {
         // } else {
         //     console.log( xhr );
         // }
-    });
-
-    $('.dataTable').on('click', '.apstiprinatBtn', function() {
-        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
-
-        data.Statuss = '1';
-        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
-    });
-
-    $('.dataTable').on('click', '.noraditBtn', function() {
-        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
-
-        data.Statuss = '2';
-        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
-    });
-
-    $('.dataTable').on('click', '.labotBtn', function() {
-        let data = table.row(this.parentNode.rowIndex - 1).data();
-
-        data.Statuss = '1';
-        table.row(this.parentNode.rowIndex - 1).data(data).draw();
     });
 
     $('.dataTable').on('click', '.pievienotBtn', function() {
