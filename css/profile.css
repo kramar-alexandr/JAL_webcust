@@ -147,6 +147,10 @@
     text-align: right;
 }
 
+.addinput input:disabled, span {
+    color: #d4d4d4;
+}
+
 .addinput span {
     font-size: 1vw;
 }

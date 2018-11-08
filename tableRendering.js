@@ -326,8 +326,6 @@ if (text) {
     $('.submitBtnAll').on('click', function () {
         let xhr = new XMLHttpRequest();
 
-        console.log('taskControl.getArray() ', JSON.stringify(taskControl.getArray()));
-
         xhr.open('POST',`/WEBJALCreateNewTask.hal`,true);
         xhr.send(JSON.stringify(taskControl.getArray()));
 
@@ -371,6 +369,8 @@ if (text) {
                 $('.submitBtnAll').text(`IESNIEGT SERTIFIKĀTU SARAKSTU (${taskControl.getCount()})`);
 
                 let data = tableApstiprinatie.row(event.path[2].cells[8].parentNode.rowIndex - 2).data();
+                console.log('data ', data);
+                console.log('data ', data.SerNr);
                 taskControl.setInArray(data.SerNr);
             } else {
                 event.path[2].cells[12].childNodes[0].className = "labot-btn";
@@ -396,7 +396,7 @@ if (text) {
         };
 
         this.setInArray= function (item) {
-            this.array.push({serNr: +item })
+            this.array.push({serNr: item })
         }
     }
 
