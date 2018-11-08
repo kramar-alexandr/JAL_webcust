@@ -125,11 +125,6 @@
     justify-content: left;
 }
 
-#pass1, #passw2, #oldpassword {
-    display: flex;
-    flex-direction: row-reverse;
-}
-
 #pass1 input, #passw2 input, #oldpassword input, .addinput input {
     border: none;
     border-radius: 0;
@@ -147,9 +142,9 @@
     text-align: right;
 }
 
-.addinput input:disabled, span {
-    color: #d4d4d4;
-}
+/*.addinput input:disabled, span {*/
+    /*color: #d4d4d4;*/
+/*}*/
 
 .addinput span {
     font-size: 1vw;
