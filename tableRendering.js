@@ -274,11 +274,13 @@ if (text) {
         xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${rowData.SerNr}&status=${rowData.Statuss}`,true);
         xhr.send();
 
-        if (xhr.status !== 200) {
-            console.log( xhr.status + ': ' + xhr.statusText );
-        } else {
-            console.log( xhr.responseText );
-        }
+        console.log( xhr );
+
+        // if (xhr.status !== 200) {
+        //     console.log( xhr.status + ': ' + xhr.statusText );
+        // } else {
+        //     console.log( xhr );
+        // }
     });
 
     $('.dataTable').on('click', '.apstiprinatBtn', function() {
