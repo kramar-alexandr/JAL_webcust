@@ -57,7 +57,7 @@ if (text) {
 
                     } else if (data === '1') {
                         return "<p class='status-btn astiprinat-yes'></p>" +
-                            "<p onclick='noradit(event)' class='status-btn noraditBtn'>NORAIDĪT</p>";
+                            "<p class='status-btn noraditBtn'>NORAIDĪT</p>";
 
                     } else if (data === '2') {
                         return "<p class='status-btn apstiprinatBtn'>APSTIPRINĀT</p>" +
@@ -264,6 +264,15 @@ if (text) {
 
         data.Statuss = '1';
         table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+
+        let xhr = new XMLHttpRequest();
+
+        console.log('status ', data.Statuss);
+
+        xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
+        xhr.send();
+
+        console.log( xhr );
     });
 
     $('.dataTable').on('click', '.noraditBtn', function() {
@@ -271,6 +280,15 @@ if (text) {
 
         data.Statuss = '2';
         table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+
+        let xhr = new XMLHttpRequest();
+
+        console.log('status ', data.Statuss);
+
+        xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
+        xhr.send();
+
+        console.log( xhr );
     });
 
     $('.dataTable').on('click', '.labotBtn', function() {
@@ -278,30 +296,15 @@ if (text) {
 
         data.Statuss = '1';
         table.row(this.parentNode.rowIndex - 1).data(data).draw();
-    });
 
-    $('.dataTable').on('click', '.labotBtn, .noraditBtn, .apstiprinatBtn', function() {
-        let rowData;
-
-        if (!this.parentNode.rowIndex) {
-            rowData = table.row(this.parentNode.parentNode.rowIndex - 1).data();
-        } else {
-            rowData = table.row(this.parentNode.rowIndex - 1).data();
-        }
         let xhr = new XMLHttpRequest();
 
-        console.log('status ', rowData.Statuss);
+        console.log('status ', data.Statuss);
 
-        xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${rowData.SerNr}&status=${rowData.Statuss}`,true);
+        xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
         xhr.send();
 
         console.log( xhr );
-
-        // if (xhr.status !== 200) {
-        //     console.log( xhr.status + ': ' + xhr.statusText );
-        // } else {
-        //     console.log( xhr );
-        // }
     });
 
     $('.dataTable').on('click', '.pievienotBtn', function() {
