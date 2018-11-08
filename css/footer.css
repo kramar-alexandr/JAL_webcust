@@ -84,7 +84,8 @@
     cursor: pointer;
 }
 #footer_6 img{
-    width: 1vw;
+    /*width: 1vw;*/
+    margin-left: 6px;
 }
 .footer_block a:hover{
     color:#2cc654;
