@@ -269,6 +269,8 @@ if (text) {
         }
         let xhr = new XMLHttpRequest();
 
+        console.log('status ', rowData.Statuss);
+
         xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${rowData.SerNr}&status=${rowData.Statuss}`,true);
         xhr.send();
 
