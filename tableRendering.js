@@ -5,24 +5,42 @@ if (text) {
         data: techerInfo.SMU,
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
-            // {
-            //     text: 'KLASSE',
-            //     attr: {
-            //         id:'klasseSrt'
-            //     },
-            //     action: function ( e, dt, node, config ) {
-            //
-            //     }
-            // },
-            // {
-            //     text: 'DATUMS',
-            //     attr: {
-            //         id:'datumsSrt'
-            //     },
-            //     action: function ( e, dt, node, config ) {
-            //
-            //     }
-            // },
+            {
+                text: 'KLASSE',
+                attr: {
+                    id:'klasseSrt'
+                },
+                action: function () {
+                    $('#table_id #klasse').click();
+                    $('#datumsSrt').removeClass('sorting-asc sorting-desc');
+
+                    if ($('#klasseSrt').hasClass('sorting-asc')) {
+                        $('#klasseSrt').toggleClass('sorting-asc sorting-desc');
+                    } else if ($('#klasseSrt').hasClass('sorting-desc')){
+                        $('#klasseSrt').toggleClass('sorting-asc sorting-desc');
+                    } else {
+                        $('#klasseSrt').toggleClass('sorting-asc');
+                    }
+                }
+            },
+            {
+                text: 'DATUMS',
+                attr: {
+                    id:'datumsSrt'
+                },
+                action: function () {
+                    $('#table_id #datums').click();
+                    $('#klasseSrt').removeClass('sorting-asc sorting-desc');
+
+                    if ($('#datumsSrt').hasClass('sorting-asc')) {
+                        $('#datumsSrt').toggleClass('sorting-asc sorting-desc');
+                    } else if ($('#datumsSrt').hasClass('sorting-desc')){
+                        $('#datumsSrt').toggleClass('sorting-asc sorting-desc');
+                    } else {
+                        $('#datumsSrt').toggleClass('sorting-asc');
+                    }
+                }
+            },
             {extend: 'excel', text: 'Exel'},
             {extend: 'pdf', text: '.PDF', exportOptions: {
                     modifier: {
@@ -48,7 +66,8 @@ if (text) {
                 ordering: true
             },
             { data: 'Datums',
-                ordering: true},
+                ordering: true
+            },
             { data: 'Statuss',
                 render: (data) => {
                     if (data === '0') {
@@ -102,15 +121,23 @@ if (text) {
         select: false,
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
-            // {
-            //     text: 'KLASSE',
-            //     attr: {
-            //         id:'klasseSrt'
-            //     },
-            //     action: function ( e, dt, node, config ) {
-            //         alert( 'Button activated' );
-            //     }
-            // },
+            {
+                text: 'KLASSE',
+                attr: {
+                    id:'klasseSrt'
+                },
+                action: function () {
+                    $('#apstiprinatie #klasse').click();
+
+                    if ($('#apstiprinatie_wrapper #klasseSrt').hasClass('sorting-asc')) {
+                        $('#apstiprinatie_wrapper #klasseSrt').toggleClass('sorting-asc sorting-desc');
+                    } else if ($('#apstiprinatie_wrapper #klasseSrt').hasClass('sorting-desc')){
+                        $('#apstiprinatie_wrapper #klasseSrt').toggleClass('sorting-asc sorting-desc');
+                    } else {
+                        $('#apstiprinatie_wrapper #klasseSrt').toggleClass('sorting-asc');
+                    }
+                }
+            },
             {extend: 'excel', text: 'Exel'},
             {extend: 'pdf', text: '.PDF'}
         ],
@@ -128,7 +155,7 @@ if (text) {
         columns: [
             { data: 'Nr' },
             { data: 'Skolens' },
-            { data: 'Klase' },
+            { data: 'Klase'},
             { data: 'Datums' },
             { data: 'Mācību gads',
               render: () => {

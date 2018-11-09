@@ -42,11 +42,11 @@
     text-transform: uppercase;
 }
 
-.active-link {
-    color: #2cc654 !important;
-    background-color: rgba(35,192,76,0.2) !important;
-    border: 1px solid rgba(35,192,76,0.2) !important;
-}
+/*.active-link {*/
+    /*color: #2cc654 !important;*/
+    /*background-color: rgba(35,192,76,0.2) !important;*/
+    /*border: 1px solid rgba(35,192,76,0.2) !important;*/
+/*}*/
 
 .main-tab {
     display: flex;
@@ -365,12 +365,21 @@ td p {
     margin-right: 0 !important;
 }
 
+#table_id .sorting,  #table_id .sorting_asc, #table_id .sorting_desc {
+    background : none;
+}
+
+#apstiprinatie .sorting,  #apstiprinatie .sorting_asc, #apstiprinatie .sorting_desc {
+    background : none;
+}
+
 
 .dt-buttons {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-right: 4%;
+    margin-left: 5%;
     margin-bottom: 15px;
 }
 
@@ -389,7 +398,7 @@ td p {
     border: none;
     margin-right: 5px;
     padding: 0;
-    margin-left: 15px;
+    margin-left: auto;
 }
 
 .buttons-pdf {
@@ -420,16 +429,22 @@ td p {
     align-items: start;
 }
 
-#klasseSrt:active, #datumsSrt:active {
-    background-color: #53bc7d;
-    background-image: url(http://cdn.datatables.net/1.10.19/images/sort_asc.png);
+.sorting-asc {
+    background-color: #53bc7d !important;
+    background-image: url(http://cdn.datatables.net/1.10.19/images/sort_asc.png) !important;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.sorting-desc {
+    background-color: #53bc7d !important;
+    background-image: url(http://cdn.datatables.net/1.10.19/images/sort_desc.png) !important;
     background-repeat: no-repeat;
     background-position: right;
 }
 
 #klasseSrt:hover, #datumsSrt:hover {
     cursor: pointer;
-
 }
 
 
