@@ -84,8 +84,19 @@
     cursor: pointer;
 }
 #footer_6 img{
-    /*width: 1vw;*/
+    width: 1vw;
     margin-left: 6px;
+}
+
+#youtube img {
+    width: 3vw;
+}
+
+#facebook img {
+    width: 0.5vw;
+}
+#draugiem img {
+    width: 1.5vw;
 }
 .footer_block a:hover{
     color:#2cc654;
@@ -116,7 +127,7 @@
         width: 100% !important
     }
     .footer_block img{
-        width: 30% !important
+        width: 100% !important
     }
     #footer_3{
         display:none;
@@ -136,9 +147,6 @@
         width: 80%;
         margin: auto;
         margin-top:5vw
-    }
-    .footer_links img{
-        width: 7vw !important;
     }
     #copiright p {
         font-size: 3vw;

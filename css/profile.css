@@ -447,5 +447,59 @@ td p {
     cursor: pointer;
 }
 
+.smu-border {
+    margin-bottom: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    min-width: 750px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.smu-name {
+    /*width: 25%;*/
+}
+
+.info-smu {
+    display: flex;
+    padding: 20px 40px;
+    font-size: 1vw;
+}
+
+.documents {
+    /*width: 53%;*/
+}
+
+.docs {
+    display: flex;
+    flex-direction: row;
+}
+
+.activitate {
+    display: flex;
+    float: row;
+}
+
+.smu-name h2 {
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+.docs-card {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-right: 30px;
+    align-items: center;
+    padding: 5px 10px;
+
+}
+
+.docs-card p {
+    font-size: 0.7vw;
+    margin-left: 0.7rem
+}
+
 
 
