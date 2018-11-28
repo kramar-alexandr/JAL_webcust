@@ -248,7 +248,7 @@
 
 .control-panel {
     display: flex;
-    /*margin-bottom: 63px;*/
+    margin-bottom: 63px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -375,7 +375,7 @@ td p {
 
 
 .dt-buttons {
-    display: flex;
+    display: none;
     justify-content: flex-end;
     align-items: center;
     margin-right: 4%;
@@ -457,17 +457,24 @@ td p {
 }
 
 .smu-name {
-    /*width: 25%;*/
+    width: 20%;
+}
+
+.smu-profile {
+    margin-top: -40px;
 }
 
 .info-smu {
     display: flex;
-    padding: 20px 40px;
+    padding-left: 40px;
     font-size: 1vw;
+    padding-top: 31px;
+    padding-bottom: 54px;
 }
 
 .documents {
-    /*width: 53%;*/
+    margin-left: 50px;
+    width: 50%;
 }
 
 .docs {
@@ -483,6 +490,14 @@ td p {
 .smu-name h2 {
     font-weight: bold;
     font-size: 1.3vw;
+}
+
+.smu-button {
+    width: 20%;
+    padding-top: 2.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 }
 
 .docs-card {
@@ -501,5 +516,81 @@ td p {
     margin-left: 0.7rem
 }
 
+.open-info-smu {
+    color: #010000;
+    font-family: "Poppins", sans-serif;
+}
+
+.company-detail {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 1vw;
+    padding-top: 31px;
+    padding-bottom: 54px;
+    display: none;
+}
+
+.company-header {
+    display: flex;
+}
+
+.company-info {
+    border-top: 1px solid #c5c5c5;
+    padding-top: 35px;
+}
+
+#company-table, #table-service, #table-apliecibas  {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#company-table td, th{
+    border: 1px solid #c5c5c5;
+}
+
+#table-apliecibas td, th {
+    border: 1px solid #c5c5c5;
+}
+#table-apliecibas td {
+    padding: 10px;
+}
+
+#table-apliecibas {
+    margin-bottom: 50px;
+    font-size: 1vw;
+}
+
+.show {
+    display: block;
+}
+
+#company-table tr, th {
+    padding: 20px;
+}
+
+#table-service td, th {
+    border: 1px solid #c5c5c5;
+}
+
+#table-service td {
+    padding: 10px;
+}
+
+.table-salary td {
+    padding: 10px;
+}
+
+.button-tab {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.header-apliciebas {
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+    text-align: center;
+}
 
 

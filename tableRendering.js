@@ -292,13 +292,18 @@ if (text) {
         table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
 
         let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if (xhr.status !== 200) {
+                console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+            } else {
+                console.log( 'RESPONSE: ' + xhr.responseText );
+            }
+        };
 
         console.log('status ', data.Statuss);
 
         xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
         xhr.send();
-
-        console.log( xhr );
     });
 
     $('.dataTable').on('click', '.noraditBtn', function() {
@@ -308,13 +313,18 @@ if (text) {
         table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
 
         let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if (xhr.status !== 200) {
+                console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+            } else {
+                console.log( 'RESPONSE: ' + xhr.responseText );
+            }
+        };
 
         console.log('status ', data.Statuss);
 
         xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
         xhr.send();
-
-        console.log( xhr );
     });
 
     $('.dataTable').on('click', '.labotBtn', function() {
@@ -324,47 +334,49 @@ if (text) {
         table.row(this.parentNode.rowIndex - 1).data(data).draw();
 
         let xhr = new XMLHttpRequest();
-
-        console.log('status ', data.Statuss);
+        xhr.onload = function(){
+            if (xhr.status !== 200) {
+                console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+            } else {
+                console.log( 'RESPONSE: ' + xhr.responseText );
+            }
+        };
 
         xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
         xhr.send();
-
-        console.log( xhr );
     });
 
     $('.dataTable').on('click', '.pievienotBtn', function() {
         let data = tableApstiprinatie.row(this.parentNode.rowIndex - 2).data();
         let xhr = new XMLHttpRequest();
+        xhr.onload = function(){
+            if (xhr.status !== 200) {
+                console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+            } else {
+                console.log( 'RESPONSE: ' + xhr.responseText );
+            }
+        };
 
         xhr.open('GET',`/WEBJALCreateNewTaskOne.hal?sernr=${data.SerNr}`,true);
         xhr.send();
-
-        if (xhr.status !== 200) {
-            console.log( xhr.status + ': ' + xhr.statusText );
-        } else {
-            console.log( xhr.responseText );
-        }
     });
 
     let taskControl = new CountInConfirmBtn();
 
     $('.submitBtnAll').on('click', function () {
         let xhr = new XMLHttpRequest();
-
-        xhr.open('POST',`/WEBJALCreateNewTaskMass.hal`,true);
+        xhr.onload = function(){
+            if (xhr.status !== 200) {
+                console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+            } else {
+                console.log( 'RESPONSE: ' + xhr.responseText );
+            }
+        };
         let data = {};
         data.root = taskControl.getArray();
-
-        console.log('data ', data);
-
+        
+        xhr.open('POST',`/WEBJALCreateNewTaskMass.hal`,true);
         xhr.send(JSON.stringify(data));
-
-        if (xhr.status !== 200) {
-            console.log( xhr.status + ': ' + xhr.statusText );
-        } else {
-            console.log( xhr.responseText );
-        }
     });
 
     function labotApsti(event) {
@@ -400,8 +412,6 @@ if (text) {
                 $('.submitBtnAll').text(`IESNIEGT SERTIFIKĀTU SARAKSTU (${taskControl.getCount()})`);
 
                 let data = tableApstiprinatie.row(event.path[2].cells[8].parentNode.rowIndex - 2).data();
-                console.log('data ', data);
-                console.log('data ', data.SerNr);
                 taskControl.setInArray(data.SerNr);
             } else {
                 event.path[2].cells[12].childNodes[0].className = "labot-btn";
@@ -430,22 +440,4 @@ if (text) {
             this.array.push({serNr: item })
         }
     }
-
-    // $('.dataTable').on('click', '.labotApsti', function() {
-        //     let data = tableApstiprinatie.row(this.parentNode.rowIndex - 2);
-        //
-        //     console.log('data ', data);
-        // });
-        //
-        // $('.dataTable').on('click', '.checkYes', function () {
-        //     let data = tableApstiprinatie.row(this.parentNode.parentNode.rowIndex - 2).data();
-        //
-        //     console.log('data ', data);
-        // });
-        //
-        // $('.dataTable').on('click', '.checkNo', function () {
-        //     let data = tableApstiprinatie.row(this.parentNode.parentNode.rowIndex - 2).data();
-        //
-        //     console.log('data ', data);
-        // });
 }
