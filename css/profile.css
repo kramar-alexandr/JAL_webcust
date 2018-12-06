@@ -68,7 +68,7 @@
 
 .profile-head {
     display: flex;
-    margin-bottom: 63px;
+    margin-bottom: 23px;
     justify-content: center;
     align-items: center;
 }
@@ -83,6 +83,13 @@
     font-weight: bold;
     margin-left: 28px;
     font-size: 1.3vw;
+}
+
+.profile-pupil-info h2 {
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+    text-align: center;
 }
 
 .profile-info {
@@ -461,7 +468,7 @@ td p {
 }
 
 .smu-profile {
-    margin-top: -40px;
+    margin-top: -5px;
 }
 
 .info-smu {
@@ -592,5 +599,155 @@ td p {
     font-size: 1.3vw;
     text-align: center;
 }
+.profile-pupil-bg {
+    background-image: url(../img/profile-bg-pupil.png) !important;
+    background-position: center;
+}
 
+.profile-pupil-info {
+    font-size: 1vw;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 3vw;
+}
 
+.profile-pupil-info p {
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+
+.pupil-info, .pupil-parent, .pupil-smu {
+    padding-bottom: 1vw;
+    border-bottom: 1px solid #c5c5c5;
+    padding-left: 15vw;
+    margin-top: 1vw ;
+}
+
+.pupil-parent {
+    display: none;
+}
+
+.pupil-smu {
+    border-bottom: none;
+}
+
+.confirmation {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+}
+
+.confirmation ol {
+    width: 75%;
+}
+
+.confirmation li {
+    color: black;
+    font-weight: normal;
+    list-style-type: decimal;
+    padding-bottom: 0.1vw;
+}
+
+.status {
+    display: none;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-top: 2vw;
+}
+
+.status h2 {
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+}
+
+.status-info {
+    color: grey !important;
+}
+
+.parent-full-name, .full-name, .pupil-smu-name {
+    padding-top: 1vw;
+}
+
+#compinfo textarea {
+    border: none;
+    border-radius: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #F6F6F6;
+    text-indent: 8px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+    font-size: 0.8vw;
+}
+
+#compinfo select {
+    width: 51%;
+}
+
+.changeprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px;
+    padding-right: 15vw;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+#compinfo p {
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#removeemp .emprow {
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.deleteform {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.empname, .empemail {
+    display: flex;
+    align-items: baseline;
+}
+
+.empname span, .empemail span {
+    margin-right: 5px;
+}
+
+#addemp {
+    margin-left: 17vw;
+}
+
+.addemp {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.addemp form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addbutton {
+    margin-right: 4vw;
+}
