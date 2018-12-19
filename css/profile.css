@@ -55,7 +55,7 @@
 .main-tab a {
     margin-left: 20px;
     text-transform: capitalize;
-    background-color: #757575;
+    background-color: #757575 !important;
 }
 
 .active-tab {
@@ -584,13 +584,17 @@ td p {
 }
 
 .table-salary td {
-    padding: 10px;
+    padding: 10px;WebChangeProfile
 }
 
 .button-tab {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+}
+
+.selectCompInfo {
+    width: 101%;
 }
 
 .header-apliciebas {
@@ -750,4 +754,59 @@ td p {
 
 .addbutton {
     margin-right: 4vw;
+}
+
+.application h2 {
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+    text-align: center;
+}
+
+.date {
+    font-size: 1vw;
+}
+
+.technical h2{
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+    text-align: center;
+}
+
+.technical-info {
+    text-align: center;
+    font-size: 1vw;
+}
+
+.event-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px !important;
+}
+
+.event-box h2 {
+    padding-left: 35px;
+    border-left: 1px solid grey;
+}
+
+
+
+.application-border {
+    margin-bottom: 40px;
+    border: 2px solid #f2f2f2;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    background-color: #fafafa;
+}
+
+.event-description {
+    display: none;
+}
+
+.active-btn {
+    background-color: #16B01A !important;
+    z-index: 1;
 }

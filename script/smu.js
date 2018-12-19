@@ -41,7 +41,7 @@ let smuInfo = '<div id="smuCard" class="info-smu">\n' +
     '        </div>\n' +
     '    </div>\n' +
     '    <div class="smu-button">\n' +
-    '        <button class="spbutton">ATVĒRT PIETEIKUMU</button>\n' +
+    '        <button class="spbutton show-info">ATVĒRT PIETEIKUMU</button>\n' +
     '        <button class="spbutton">REĢ.APLIECĪBA</button>\n' +
     '    </div>\n' +
     '</div>\n' +
@@ -223,6 +223,10 @@ if (SMUData) {
 
             smuNode.find('.title').text(count + '. ' + smu.title);
             smuNode.find('.title').click(function () {
+                $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
+
+            });
+            smuNode.find('.show-info').click(function () {
 
                 $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
 
@@ -299,7 +303,3 @@ if (SMUData) {
 
     }
 }
-
-
-
-

@@ -61,7 +61,7 @@ if (text) {
         }],
         columns: [
             { data: 'Nr' },
-            { data: 'Skolens' },
+            { data: 'Skolens', width: '60%',},
             { data: 'Klase',
                 ordering: true
             },
@@ -76,7 +76,7 @@ if (text) {
 
                     } else if (data === '1') {
                         return "<p class='status-btn astiprinat-yes'></p>" +
-                            "<p class='status-btn noraditBtn'>NORAIDĪT</p>";
+                            "<p class='status-btn'>NORAIDĪT</p>";
 
                     } else if (data === '2') {
                         return "<p class='status-btn apstiprinatBtn'>APSTIPRINĀT</p>" +
@@ -84,8 +84,10 @@ if (text) {
                     }
                 },
                 className: "column-btn column-btn-st"
-            },
+            }
+            ,
             { data: 'Labot',
+                visible: false,
                 render: () => {
                     return "<a id='labotBtn' class='labot-btn'>Labot</a>";
                 },
@@ -286,24 +288,27 @@ if (text) {
     });
 
     $('.dataTable').on('click', '.apstiprinatBtn', function() {
-        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
 
-        data.Statuss = '1';
-        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+        if (confirm('Apstiprinot skolēnu šī darbība nav labojama')) {
+            let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
 
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function(){
-            if (xhr.status !== 200) {
-                console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
-            } else {
-                console.log( 'RESPONSE: ' + xhr.responseText );
-            }
-        };
+            data.Statuss = '1';
+            table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
 
-        console.log('status ', data.Statuss);
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if (xhr.status !== 200) {
+                    console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+                } else {
+                    console.log( 'RESPONSE: ' + xhr.responseText );
+                }
+            };
 
-        xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
-        xhr.send();
+            xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
+            xhr.send();
+        }
+
+
     });
 
     $('.dataTable').on('click', '.noraditBtn', function() {
@@ -320,8 +325,6 @@ if (text) {
                 console.log( 'RESPONSE: ' + xhr.responseText );
             }
         };
-
-        console.log('status ', data.Statuss);
 
         xhr.open('GET',`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`,true);
         xhr.send();
