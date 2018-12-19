@@ -75,6 +75,14 @@
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.spbutton:hover {
+    border: 1px solid #7eb079;
+    background-color: #ffffff !important;
+    color: black;
 }
 
 #errormsg {

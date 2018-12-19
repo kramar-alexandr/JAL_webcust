@@ -348,6 +348,10 @@ td p {
     margin: auto
 }
 
+.main-table-container {
+    display: none;
+}
+
 .tableBox {
     margin-bottom: 40px;
     border-radius: 5px;
@@ -506,6 +510,14 @@ td p {
     flex-direction: column;
     align-items: end;
 }
+
+.show-info, .reg-succes {
+    background-color: #757575 !important;
+}
+
+/*.show-info:active {*/
+    /*background-color: #16B01A !important;*/
+/*}*/
 
 .docs-card {
     display: flex;

@@ -2,8 +2,6 @@ if (pupil) {
     init(JSON.parse(pupil));
 }
 
-
-
 function init(pupil) {
     let pupilController = new PupilVerifiedController(pupil);
     pupilController.setPupilInfo();
