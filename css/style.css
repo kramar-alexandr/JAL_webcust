@@ -196,7 +196,7 @@ input:focus{
 }
 @media screen and (max-width: 900px){
     .slide h2 {
-        margin-bottom: 200px;
+        margin-bottom: 50vw;
     }
 
     .capture-top {

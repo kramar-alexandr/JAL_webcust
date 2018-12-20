@@ -59,7 +59,7 @@ _:-ms-lang(x), #link-top { width: 93% }
     cursor: pointer;
 }
 .logo{
-    background-size: cover;
+    background-size: 98%;
     background-repeat: no-repeat;
     background-image: url(../img/logo.png);
     height: 2.5vw;

@@ -214,6 +214,7 @@ companyTemp.innerHTML = companyTempInfo.trim();
 if (SMUData) {
     let smus = JSON.parse(SMUData);
     let count = 0;
+    let dataSource = [];
     for (let smu of smus) {
         count += 1;
         let smuNode = $(template).clone();
@@ -222,14 +223,13 @@ if (SMUData) {
         if (smuNode) {
 
             smuNode.find('.title').text(count + '. ' + smu.title);
-            smuNode.find('.title').click(function () {
-                $(this).toggleClass('active-btn');
+            smuNode.find('.title', '.show-info').click(function () {
                 $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
 
             });
             smuNode.find('.show-info').click(function () {
+                // $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
                 $(this).toggleClass('active-btn');
-                $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
 
             });
             smuNode.find('.leader').text('Vadītājs: ' + smu.leader);
@@ -237,15 +237,15 @@ if (SMUData) {
 
             if (smu.submittedDocs.posted === 'true') {
                 console.log('smu.submittedDocs.posted ', smu.submittedDocs.posted);
-                smuNode.find('.posted').attr('src','../img/docs.png')
+                smuNode.find('.posted').attr('src', '../img/docs.png')
             }
             if (smu.submittedDocs.submitTeacher === 'true') {
                 console.log('smu.submittedDocs.submitTeacher ', smu.submittedDocs.submitTeacher);
-                smuNode.find('.submitTeacher, .posted').attr('src','../img/docs.png');
+                smuNode.find('.submitTeacher, .posted').attr('src', '../img/docs.png');
             }
-            if (smu.submittedDocs.submitJAL === 'true'){
+            if (smu.submittedDocs.submitJAL === 'true') {
                 console.log('smu.submittedDocs.submitJAL ', smu.submittedDocs.submitJAL);
-                smuNode.find('.submitTeacher, .posted, .submitJAL').attr('src','../img/docs.png')
+                smuNode.find('.submitTeacher, .posted, .submitJAL').attr('src', '../img/docs.png')
             }
 
             companyInfo.find('.register-number').text('Reģistrācijas Nr: ' + smu.regNr);
@@ -256,31 +256,31 @@ if (SMUData) {
             }
 
             companyInfo.find('.type-company').text('Darbības veids/nozare. ' + smu.companyType);
-            companyInfo.find('.target-type').text('Mērkauditorija '+ smu.targetAudit);
+            companyInfo.find('.target-type').text('Mērkauditorija ' + smu.targetAudit);
             companyInfo.find('#confirmBtn').click(function () {
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET',`/WEBJALSMUChangeDocsStatus.hal?status=1&sernr=${smu.regNr}`,true);
+                xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=1&sernr=${smu.regNr}`, true);
                 xhr.send();
 
-                xhr.onload = function(){
+                xhr.onload = function () {
                     if (xhr.status !== 200) {
-                        console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+                        console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
                     } else {
-                        console.log( 'RESPONSE: ' + xhr.responseText );
+                        console.log('RESPONSE: ' + xhr.responseText);
                     }
                 };
             });
 
             companyInfo.find('#rejectBtn').click(function () {
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET',`/WEBJALSMUChangeDocsStatus.hal?status=3&sernr=${smu.regNr}`,true);
+                xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=3&sernr=${smu.regNr}`, true);
                 xhr.send();
 
-                xhr.onload = function(){
+                xhr.onload = function () {
                     if (xhr.status !== 200) {
-                        console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+                        console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
                     } else {
-                        console.log( 'RESPONSE: ' + xhr.responseText );
+                        console.log('RESPONSE: ' + xhr.responseText);
                     }
                 };
             });
@@ -298,9 +298,23 @@ if (SMUData) {
             companyInfo.find('.company-smu').text(`Vadītājs: ${smu.leader},  ${smu.members}`);
 
             smuNode.append(companyInfo);
-            smuNode.appendTo( '.smu-profile' );
+            dataSource.push(smuNode);
+            // smuNode.appendTo( '.smu-profile' );
 
         }
 
     }
+
+    $('.smu-profile').pagination({
+        dataSource: dataSource,
+        prevText: 'IEPRIEKŠĒJĀ',
+        nextText: 'NĀKAMĀ',
+        callback: function (data, pagination) {
+            console.log('data ', data);
+            console.log('pagination ', pagination);
+            // template method of yourself
+            // var html = template(data);
+            $('#smu-wrapper').html(data);
+        }
+    });
 }

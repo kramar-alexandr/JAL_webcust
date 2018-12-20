@@ -12,7 +12,7 @@ function PupilVerifiedController(pupil) {
 
     this.setPupilInfo = function () {
         this.setMainInfo(this.pupil);
-        if (this.pupil.hightSchool == 'false') {
+        if (!this.pupil.hightSchool) {
             this.checkVerified(this.pupil);
         } else {
             this.checkVerifiedHighSchool(this.pupil);
@@ -27,13 +27,13 @@ function PupilVerifiedController(pupil) {
         $('.email').text(`E-pasts: ${this.pupil.email}`);
         $('.teacher').text(`Izvēlētais skolotājs, SMU konsultants: ${this.pupil.teacher}`);
 
-        if (pupil.parent) {
+        if (this.pupil.parent.email) {
             $('.pupil-parent').show();
             $('.parent-full-name').text(`Vārds, Uzvārds: ${this.pupil.parent.fullName}`);
             $('.parent-email').text(`E-pasts: ${this.pupil.parent.email}`);
         }
 
-        if (pupil.smu != 'false') {
+        if (pupil.smu) {
             $('.pupil-smu-name').text(`Skolēnu mācību uzņēmums: ${this.pupil.smu}`);
         } else {
             $('.pupil-smu-name').text('Skolēnu mācību uzņēmums: Nav reģistrēts');
@@ -46,11 +46,9 @@ function PupilVerifiedController(pupil) {
             $('.confirmation').css('display', 'flex');
             this.setEventConfirmButton();
         } else if (!this.pupil.verified.parents && !this.pupil.verified.teacher) {
-            console.log('1 ', );
             $('.tabs').hide();
             $('.status').show();
         } else if (!this.pupil.verified.parents) {
-            console.log('2 ', );
             $('.tabs').hide();
             $('.status-info').text('Skolotājs profilu ir apstiprinājis');
             $('.status').show();

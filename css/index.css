@@ -13,7 +13,7 @@ p{}
 #main_banner{
     position: absolute;
     top: 0;
-    height: 46vw;
+    /*height: 46vw;*/
     width: 100%;
 }
 
@@ -136,7 +136,7 @@ p{}
     cursor: pointer;
 }
 #news{
-    /*padding-top: 6vw;*/
+    padding-top: 6vw;
     padding-bottom: 6vw;
 }
 .wrap {
@@ -145,6 +145,34 @@ p{}
     margin-right: 15%;
     position: relative;
 }
+
+.news-content {
+    display: none !important;
+}
+
+#pagenave {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paginationjs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.paginationjs-prev, .paginationjs-next  {
+    border-radius: 50%;
+    width: calc(0.5vw + 0.5vw) !important;
+    margin: 0 calc(10px + 0.5vw) !important;
+    background-color: #39cf60;
+    opacity: 0.5;
+}
+
+.J-paginationjs-next, .J-paginationjs-previous {
+    background-color: rgb(234, 234, 234) !important;
+}
+
 
 .wrap a {
     font-size: unset;
@@ -155,6 +183,7 @@ p{}
     cursor: pointer;
     font-family: "Poppins", sans-serif;
 }
+
 #pagenav {
     margin: auto;
     width: 20%;
@@ -165,6 +194,10 @@ p{}
 
 #pagenav .active {
     background-color: #39cf60;
+}
+
+.active a {
+    background-color: #757575 !important;
 }
 
 .wrap li {
@@ -436,6 +469,7 @@ p{}
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+    border: 1px solid #ececec;
 }
 .one{}
 .two{
@@ -539,6 +573,10 @@ p{}
     display:none;
 }
 @media screen and (max-width: 900px){
+    .paginationjs-prev, .paginationjs-next {
+        width: calc(1.4vw + 0.5vw) !important;
+        height: 1vw;
+    }
     #main_banner {
         height: 150vw;
     }

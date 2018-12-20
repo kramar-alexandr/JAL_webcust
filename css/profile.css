@@ -42,6 +42,61 @@
     text-transform: uppercase;
 }
 
+.paginationjs-pages li a {
+    display: flex;
+    margin-left: 20px;
+    text-transform: capitalize;
+    color: black;
+}
+
+.paginationjs-pages ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.paginationjs-prev a, .paginationjs-next a {
+    font-family: "Poppins", sans-serif;
+    background-color: #ccc !important;
+    color: black;
+    font-size: 1vw !important;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    margin-left: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    height: auto !important;
+}
+
+.paginationjs-prev a:hover, .paginationjs-next a:hover {
+    border: 1px solid #7eb079;
+    background-color: #ffffff !important;
+    color: black;
+}
+
+.paginationjs-page a {
+    font-family: "Poppins", sans-serif;
+    background-color: #ccc !important;
+    color: black;
+    font-size: 1vw !important;
+    padding: 0.5vw 2vw;
+    margin: 1vw;
+    margin-left: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    height: auto !important;
+}
+
+.paginationjs-page a:hover {
+    border: 1px solid #7eb079;
+    background-color: #ffffff !important;
+    color: black;
+}
+
 /*.active-link {*/
     /*color: #2cc654 !important;*/
     /*background-color: rgba(35,192,76,0.2) !important;*/
@@ -596,7 +651,7 @@ td p {
 }
 
 .table-salary td {
-    padding: 10px;WebChangeProfile
+    padding: 10px;
 }
 
 .button-tab {
@@ -821,4 +876,12 @@ td p {
 .active-btn {
     background-color: #16B01A !important;
     z-index: 1;
+}
+
+.grey {
+    background-color: #c5c5c5 !important;
+}
+
+#confirmMainInfo {
+    margin-right: 6vw;
 }

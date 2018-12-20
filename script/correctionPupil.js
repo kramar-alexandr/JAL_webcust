@@ -4,7 +4,7 @@ function init(pupil) {
     console.log('pupil.smu ', pupil.smu);
     let correctionSMU = new CorrectionSMU(pupil.smu);
     correctionSMU.setEvent();
-    correctionSMU.showSmuInfo();
+    correctionSMU.showSmuInfo(pupil.director);
 }
 
 function CorrectionSMU (smu) {
@@ -36,11 +36,16 @@ function CorrectionSMU (smu) {
 
     };
     
-    this.showSmuInfo = function () {
+    this.showSmuInfo = function (director) {
         if (this.smu != 'false') {
             $('#removeemp').show();
             $('.correction-smu-info').show();
         } else {
+            $('#removeemp').hide();
+            $('.correction-smu-info').hide();
+        }
+
+        if (!director) {
             $('#removeemp').hide();
             $('.correction-smu-info').hide();
         }
