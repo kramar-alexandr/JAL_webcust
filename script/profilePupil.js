@@ -17,8 +17,6 @@ function PupilVerifiedController(pupil) {
         } else {
             this.checkVerifiedHighSchool(this.pupil);
         }
-
-        console.log('pupil ', this.pupil);
     };
 
     this.setMainInfo = function () {
@@ -27,7 +25,7 @@ function PupilVerifiedController(pupil) {
         $('.email').text(`E-pasts: ${this.pupil.email}`);
         $('.teacher').text(`Izvēlētais skolotājs, SMU konsultants: ${this.pupil.teacher}`);
 
-        if (this.pupil.parent.email) {
+        if (this.pupil.parent) {
             $('.pupil-parent').show();
             $('.parent-full-name').text(`Vārds, Uzvārds: ${this.pupil.parent.fullName}`);
             $('.parent-email').text(`E-pasts: ${this.pupil.parent.email}`);

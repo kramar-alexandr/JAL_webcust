@@ -221,7 +221,6 @@ if (SMUData) {
         let companyInfo = $(companyTemp).clone();
 
         if (smuNode) {
-
             smuNode.find('.title').text(count + '. ' + smu.title);
             smuNode.find('.title', '.show-info').click(function () {
                 $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
@@ -236,15 +235,12 @@ if (SMUData) {
             smuNode.find('.members').text('Dalībnieki. ' + smu.members);
 
             if (smu.submittedDocs.posted === 'true') {
-                console.log('smu.submittedDocs.posted ', smu.submittedDocs.posted);
                 smuNode.find('.posted').attr('src', '../img/docs.png')
             }
             if (smu.submittedDocs.submitTeacher === 'true') {
-                console.log('smu.submittedDocs.submitTeacher ', smu.submittedDocs.submitTeacher);
                 smuNode.find('.submitTeacher, .posted').attr('src', '../img/docs.png');
             }
             if (smu.submittedDocs.submitJAL === 'true') {
-                console.log('smu.submittedDocs.submitJAL ', smu.submittedDocs.submitJAL);
                 smuNode.find('.submitTeacher, .posted, .submitJAL').attr('src', '../img/docs.png')
             }
 
@@ -299,8 +295,6 @@ if (SMUData) {
 
             smuNode.append(companyInfo);
             dataSource.push(smuNode);
-            // smuNode.appendTo( '.smu-profile' );
-
         }
 
     }
@@ -310,10 +304,6 @@ if (SMUData) {
         prevText: 'IEPRIEKŠĒJĀ',
         nextText: 'NĀKAMĀ',
         callback: function (data, pagination) {
-            console.log('data ', data);
-            console.log('pagination ', pagination);
-            // template method of yourself
-            // var html = template(data);
             $('#smu-wrapper').html(data);
         }
     });

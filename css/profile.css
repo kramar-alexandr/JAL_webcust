@@ -72,7 +72,7 @@
 
 .paginationjs-prev a:hover, .paginationjs-next a:hover {
     border: 1px solid #7eb079;
-    background-color: #ffffff !important;
+    background-color: #2cc654 !important;
     color: black;
 }
 
@@ -118,7 +118,7 @@
 }
 
 #profiletable {
-    margin-bottom: 93px;
+    margin-bottom: 35px;
 }
 
 .profile-head {
@@ -156,7 +156,7 @@
 .tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
 }
 
 #delete-profile {
@@ -374,6 +374,25 @@
 .astiprinat-yes {
     background: url("../img/yes.png") no-repeat;
     background-position: center;
+}
+
+.no {
+    background: url("../img/no-form.png") no-repeat;
+    background-position: center;
+}
+
+.yes {
+    background: url("../img/yes-form.png") no-repeat;
+    background-position: center;
+
+}
+
+.yes:hover {
+    background-color: #24bc4b !important;
+}
+
+.no:hover {
+    background-color: #c50015 !important;
 }
 
 td p {
@@ -882,6 +901,188 @@ td p {
     background-color: #c5c5c5 !important;
 }
 
+.light-grey {
+    background-color: white !important;
+    color: black;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+}
+
+.dark-grey {
+    background-color: #cdcdcd !important;
+    padding: 1vw;
+    border: none;
+}
+
+.green {
+    background-color: #24bc4b !important;
+}
+
+.red {
+    background-color: #c50015 !important;
+}
+
+.nohover {
+    pointer-events:none;
+}
+
 #confirmMainInfo {
     margin-right: 6vw;
 }
+
+.main-additional {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.additional-box {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.smu-box p{
+    margin: 0.5vw;
+}
+
+.smu-box, .employee-box, .materil-box, .stand-box, .confirm-box {
+    width: 100%;
+}
+
+.stand-box input{
+    border: none;
+    border-radius: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #F6F6F6;
+    height: 2vw;
+    text-indent: 8px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 30vw;
+    font-size: 0.8vw;
+}
+
+.border {
+    /*background-color: #fafafa !important;*/
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+}
+
+
+.smu-box, .employee-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.materil-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stand-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stand-box p {
+    width: 50%;
+    text-align: center;
+}
+
+.stand-box span {
+    font-size: 1vw;
+}
+
+.stand-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.stand-btn button, .materil-btn button{
+    font-style: italic;
+    text-transform: lowercase !important;
+}
+
+.confirm-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.emp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+    margin-bottom: 1vw;
+    font-size: 1vw;
+}
+
+.empName {
+    padding-right: 1vw;
+    padding-left: 1vw;
+    font-size: 1vw;
+    font-weight: normal;
+}
+.btn-group button:first-child {
+    margin-bottom: 0.1vw;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addit-main-box p {
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+
+.addit-main-box h2 {
+    font-weight: bold;
+    font-size: 1.3vw;
+}
+
+.dalibnieki {
+    display: flex;
+    flex-direction: row;
+    margin-right: 0.5vw;
+}
+
+.additionla-p {
+    text-align: center;
+    font-weight: normal !important;
+    width: 83%;
+    font-size: 1vw;
+}
+
+.smu-box p {
+    font-weight: normal;
+    font-size: 1vw;
+}
+
+.confrm {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 50%;
+}
+
+.tech-info-main {
+    margin-top: 1vw;
+}
+
+
+

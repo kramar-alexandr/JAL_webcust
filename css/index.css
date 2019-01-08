@@ -271,6 +271,7 @@ p{}
     margin: auto;
     height: fit-content;
 }
+
 .text_inside_block h1, .text_inside_block_ h1{
     margin: 0;
     font-size: 1.5vw;
