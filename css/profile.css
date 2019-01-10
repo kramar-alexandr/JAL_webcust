@@ -821,7 +821,7 @@ td p {
     margin-right: 5px;
 }
 
-#addemp {
+.addEmp {
     margin-left: 17vw;
 }
 
@@ -830,6 +830,73 @@ td p {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+}
+
+/*.info-apllication {*/
+    /*position: relative;*/
+    /*top: 2vw;*/
+    /*right: 0.6vw;*/
+/*}*/
+
+.info-apllication {
+    position: relative;
+    top: 1.6vw;
+    right: 0.6vw;
+    width: 1vw;
+    background-color: #2cc654;
+    height: 1vw;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: 0.75vw;
+}
+
+.info-apllication:hover::after {
+    content: attr(data-title);
+    font-size: 1vw;
+    position: absolute;
+    min-width: 15vw;
+    margin-top: 20px;
+    margin-left: -20px;
+    /*left: 20%;*/
+    /*top: 30%;*/
+    /*z-index: 1;*/
+    background: rgb(255, 255, 255);
+    font-family: "Poppins", sans-serif;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    white-space: normal;
+    color: #9a9a9a;
+}
+
+.info-apllication img {
+    width: 4%;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.small-addit {
+    width: 17% !important;
+    margin-left: 1vw;
+    padding: 1.5vw;
+    text-align: left !important;
+}
+
+.info-addit {
+    width: 25%;
+    font-size: 0.75vw !important;
+    color: #919191;
+    text-align: left;
+}
+
+#confirmParentInfo {
+    margin-right: 2vw;
 }
 
 .addemp form {

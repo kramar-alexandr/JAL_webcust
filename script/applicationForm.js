@@ -1,15 +1,17 @@
 let eventInfo = {
+    sernr: 234,
     dataStart: new Date(2018, 11, 10),
     dataEnd: new Date(2018, 11, 12),
     nameEvent: 'Name Evant Neme',
-    description: 'Neme description description  Evn Description Neme description description  Evn Description Neme description description  Evn Description '
+    description: ''
 };
 
 let submitEvent = {
+    sernr: 234,
     dataStart: new Date(2018, 11, 10),
     dataEnd: new Date(2018, 11, 12),
     nameEvent: 'Name Evant Neme',
-    description: 'Neme description description  Evn Description'
+    description: ''
 };
 
 let events = [];
@@ -43,7 +45,6 @@ function EventDisplay(events, submittedEvents) {
         '        </div>\n' +
         '    </div>\n' +
         '</div>';
-
     this.createEvents = function() {
         for (let event of this.events) {
             let eventBox = this.getTemplate(this.template);
@@ -68,7 +69,6 @@ function EventDisplay(events, submittedEvents) {
     };
 
     this.getTemplate = function(temp) {
-        console.log('getTemplate', $(this.createTemplate(temp)).clone());
         return $(this.createTemplate(temp)).clone();
     };
 

@@ -36,6 +36,7 @@ function Questionnaire(applicationData, emps) {
         '\n' +
         '    <div class="smu-box smu-border">\n' +
         '    <h2>Pieteikums SMU pasākumam</h2>' +
+        '<div class="info-box">\n' +
         '    <div class="tech-info-main">\n' +
         '        <p class="school">Izglītības iestāde: Strautiņa vidusskola</p>\n' +
         '        <p class="smu-nosakum">SMU nosaukums: SMU nosaukums</p>\n' +
@@ -44,14 +45,26 @@ function Questionnaire(applicationData, emps) {
         '        <p class="social-link">SMU sociālie tīkli: www.facebook.com./JALatvia</p>\n' +
         '        <p class="techer">SMU skolotājs/konsultants: Uģis Zirnis</p>\n' +
         '    </div>\n' +
+        '    <p class="info-addit">* Informācija ģenerējas no SMU iesūtītā Biznesa idejas pieteikuma, ' +
+        '   šo iespējams mainīt SMU profilā.</p>\n' +
+        '</div>\n' +
         '    </div>\n' +
-        '\n' +
         '    <div class="employee-box smu-border">\n' +
         '        <h2>Pieteikums SMU pasākumam</h2>\n' +
         '        <p>SMU dalībnieki:</p>\n' +
+        '    <div class="info-box">\n' +
         '    <div class="dalibnieki">\n' +
         '    </div>\n' +
-        '        <p class="border">Vai ar šo bildi esi gatavs piedalīties Sociālo tīklu konkursā?</p>\n' +
+        '    <p class="info-addit small-addit">* Tikai SMU pasākumam pieteiktie dalībnieki varēs pārstāvēt Tavu SMU pasākuma dienā.</p>\n'+
+        '    </div>\n' +
+        '       <div>\n' +
+        '           <div data-title="JA Latvia izvērtēs iesūtītos foto, izvērtējot SMU dalībai pasākumā. Tikai no pasākuma ' +
+        'dalībniekiem tiks izvērtēti tie, kas piedalīsies soc. tīklu konkursā. Soc. tīklu finālistu bildes tiks publicētas JA ' +
+        'Latvia facebook kontā." class="info-apllication">i' +
+        // '               <img src="img/information.png">' +
+        '       </div>\n' +
+        '           <p class="border">Vai ar šo bildi esi gatavs piedalīties Sociālo tīklu konkursā?</p>\n' +
+        '        </div>\n' +
         '        <div class="social-question">\n' +
         '            <button class="spbutton light-grey buttonYes" type="button">Jā</button>\n' +
         '            <button type="button" class="spbutton light-grey buttonNo">Nē</button>\n' +
@@ -61,19 +74,29 @@ function Questionnaire(applicationData, emps) {
         '    <div class="materil-box smu-border">\n' +
         '        <h2>SMU motivācija dalībai pasākumā</h2>\n' +
         '        <p >Plānotie mārketinga materiāli:</p>\n' +
+        '    <div class="info-box">\n' +
         '      <div class="materil-btn">\n' +
         '        <button class="spbutton light-grey btnOne" type="button">a. Bukleti</button>\n' +
         '        <button class="spbutton light-grey btnTwo" type="button">b. Vizītkartes</button>\n' +
         '        <button class="spbutton light-grey btnThree" type="button">c. Aktivitātes stenda tuvumā</button>\n' +
         '        <button class="spbutton light-grey btnFour" type="button">d. Baneris</button>\n' +
         '    </div>\n' +
+        '    <p class="info-addit small-addit">* Jautājums ar izvēles variantiem – jāizvēlas 1 vai vairāki no atbilžu variantiem</p>\n'+
+        '    </div>\n' +
         '    </div>\n' +
         '    <div class="stand-box smu-border">\n' +
         '        <p>Lūdzu norādiet, kas būs nepieciešams Jūsu SMU stenda vietā:</p>\n' +
+        '    <div class="info-box">\n' +
         '    <div class="stand-btn">\n' +
         '        <button class="spbutton light-grey standBtnOne" type="button">a. Izmantosim JA Latvija piedāvāto stenda galdu;</button>\n' +
         '        <button class="spbutton light-grey standBtnTwo" type="button">b. Izmantosim JA Latvija piedāvāto 1 krēslu;</button>\n' +
+    '               <div data-title="Ja vedīsiet savu stendu, tad ir obligāti jāaugšupielādē stenda foto ar izmēriem, ' +
+        '           jo JA Latvia stenda elementi' +
+        '           ir jāsaskaņo ar Domina Shopping administrāciju." class="info-apllication">i' +
+        '       </div>\n' +
         '        <button class="spbutton light-grey standBtnThree" type="button">c. Vedīsim savu stendu 1x1m lielumā.</button>\n' +
+        '    </div>\n' +
+        '    <p class="info-addit small-addit">* Jautājums ar izvēles variantiem – jāizvēlas 1 vai vairāki no atbilžu variantiem</p>\n'+
         '    </div>\n' +
         '        <p>Stendos nav pieejama elektrība, lūdzu meklēt alternatīvas. Ja elektrība \n' +
         '        ir nepieciešama produktam, lūdzu norādīt iemeslu:</p>\n' +
@@ -310,6 +333,18 @@ function Questionnaire(applicationData, emps) {
             if ($('.confirmBtm').hasClass('finalBtn')) {
                 applicationData.electReason = $('.standInput').val();
                 localStorage.setItem('applicationData', JSON.stringify(applicationData));
+
+                $.ajax({
+                    type: "POST",
+                    url: "/webservices/PodcastService.asmx/CreateMarkers",
+                    data: JSON.stringify(applicationData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(data){alert(data);},
+                    failure: function(errMsg) {
+                        alert(errMsg);
+                    }
+                });
             }
             showPartTwo();
             if (!applicationData.partTwo) applicationData.partTwo = true;
