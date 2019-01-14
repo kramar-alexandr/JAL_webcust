@@ -16,6 +16,8 @@ let emps = [
         status: false
     }
 ];
+
+console.log('eventCode', localStorage.getItem('eventCode'));
 let applicationData = JSON.parse(localStorage.getItem('applicationData'));
 let applicationForm = applicationData ? new Questionnaire(applicationData, emps) : new Questionnaire(false, emps);
 applicationForm.showAdditionalBox();
@@ -345,6 +347,8 @@ function Questionnaire(applicationData, emps) {
                         alert(errMsg);
                     }
                 });
+
+                return;
             }
             showPartTwo();
             if (!applicationData.partTwo) applicationData.partTwo = true;

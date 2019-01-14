@@ -1,28 +1,21 @@
-let eventInfo = {
-    sernr: 234,
-    dataStart: new Date(2018, 11, 10),
-    dataEnd: new Date(2018, 11, 12),
-    nameEvent: 'Name Evant Neme',
-    description: ''
-};
-
-let submitEvent = {
-    sernr: 234,
-    dataStart: new Date(2018, 11, 10),
-    dataEnd: new Date(2018, 11, 12),
-    nameEvent: 'Name Evant Neme',
-    description: ''
-};
-
 let events = [];
 let submittedEvents = [];
-for(let i = 0; i < 2 ;i++) {
-    events.push(eventInfo);
-}
+let student = JSON.parse(pupil);
 
-for(let i = 0; i < 2 ;i++) {
-    submittedEvents.push(submitEvent);
-}
+$.ajax({
+    url: '/WebGetEvents.hal',
+    async: false,
+    success: function(res) {
+        events = JSON.parse(res);
+    }
+});
+$.ajax({
+    url: '/WebGetEventsPieteikum.hal',
+    async: false,
+    success: function(res) {
+        submittedEvents =  JSON.parse(res);
+    }
+});
 
 let applicationForm = new EventDisplay(events, submittedEvents);
 applicationForm.createEvents();
@@ -41,6 +34,7 @@ function EventDisplay(events, submittedEvents) {
         '        </div>\n' +
         '        <div class="block-btn">\n' +
         // '            <button class="btn-info spbutton">Papildus info</button>\n' +
+        '            <input type="hidden" id="code" name="code" value="">\n' +
         '            <button class="btn-submit spbutton grey">Pieteikties</button>\n' +
         '        </div>\n' +
         '    </div>\n' +
@@ -51,15 +45,16 @@ function EventDisplay(events, submittedEvents) {
             this.setInfo(eventBox, event, '.application');
         }
 
-        this.setEvents();
+        this.setEvents(this.smuCode);
 
-        if (this.submittedEvents) {
+        if (this.submittedEvents.length) {
             $('.technical-info').hide();
             for (let event of this.submittedEvents) {
                 let eventBox = this.getTemplate(this.template);
                 eventBox.find('.btn-submit').text('Aizpildīt');
                 eventBox.find('.btn-submit').click(function () {
-                    window.location.href = '/application-form-first';
+                    console.log('event ', event);
+                    window.location.href = `/application-form-first`;
                 });
                 this.setInfo(eventBox, event, '.technical');
             }
@@ -76,6 +71,8 @@ function EventDisplay(events, submittedEvents) {
         template.find('.date').text(getMonthDay(event.dataStart) + ' - ' + getMonthDay(event.dataEnd));
         template.find('.name-event').text(event.nameEvent);
         template.find('.event-description').text(event.description);
+        template.find('#code').val(event.serNr);
+        localStorage.setItem(event.serNr, '');
         template.appendTo( container );
     };
 
@@ -91,25 +88,27 @@ function EventDisplay(events, submittedEvents) {
             // $('.addEmp').hide();
         });
         $('.btn-submit').click(function () {
-            console.log('submit', );
-            // postData(url, data);
-        })
+            createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
+        });
     };
-    
-    function hideEventInfo() {
-        $('.application').hide();
-        $('.technical').hide();
-    }
 
-    function postData(url, data) {
+    function createQuestionnaire(eventCode, smuCode) {
         $.ajax({
-            type: "POST",
-            url: url,
-            data: data,
+            type: "GET",
+            data: {
+                event: eventCode,
+                code: smuCode
+            },
+            url: '/WebCreateEventPieteikum.hal',
             success: function() {
                 alert("Pieņemtas izmaiņas!");
             }
         });
+    }
+    
+    function hideEventInfo() {
+        $('.application').hide();
+        $('.technical').hide();
     }
 
     function getMonthDay(date) {
@@ -117,8 +116,8 @@ function EventDisplay(events, submittedEvents) {
             "jul.", "aug.", "sep.", "oct.", "nov.", "dec." ];
         let month = new Date(date).getMonth();
         let day = new Date(date).getDate();
-        let formatDate = `${day}.${months[month]}`;
 
-        return formatDate;
+        return `${day}.${months[month]}`;
+
     }
 }

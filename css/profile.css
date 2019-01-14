@@ -856,6 +856,7 @@ td p {
     font-size: 1vw;
     position: absolute;
     min-width: 15vw;
+    cursor: pointer;
     margin-top: 20px;
     margin-left: -20px;
     /*left: 20%;*/
@@ -1151,5 +1152,17 @@ td p {
     margin-top: 1vw;
 }
 
+.document p{
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: 1px;
+    font-size: 1vw;
+}
+
+.programms h2 {
+    font-weight: bold;
+    margin-left: 28px;
+    font-size: 1.3vw;
+}
 
 

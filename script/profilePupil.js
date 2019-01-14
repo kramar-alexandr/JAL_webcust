@@ -47,12 +47,18 @@ function PupilVerifiedController(pupil) {
             $('.tabs').hide();
             $('.status').show();
         } else if (!this.pupil.verified.parents) {
+            $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa.');
             $('.tabs').hide();
             $('.status-info').text('Skolotājs profilu ir apstiprinājis');
             $('.status').show();
         } else if (!this.pupil.verified.teacher) {
             $('.tabs').hide();
+            $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
             $('.status-info').text('Vecāks / aizbildnis profilu ir apstiprinājis');
+            $('.status').show();
+        } if (!pupil.smu) {
+            $('.status-header').text('Apsveicam!');
+            $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
             $('.status').show();
         } else {
             $('.status-header').text('');
@@ -70,7 +76,7 @@ function PupilVerifiedController(pupil) {
             $('.tabs').hide();
             $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
-        } else if (pupil.smu == 'false') {
+        } else if (!pupil.smu) {
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
             $('.status').show();
