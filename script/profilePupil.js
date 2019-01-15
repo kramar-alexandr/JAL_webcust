@@ -56,7 +56,7 @@ function PupilVerifiedController(pupil) {
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
             $('.status-info').text('Vecāks / aizbildnis profilu ir apstiprinājis');
             $('.status').show();
-        } if (!pupil.smu) {
+        } else if (!pupil.smu) {
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
             $('.status').show();
