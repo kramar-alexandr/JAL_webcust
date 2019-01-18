@@ -1,17 +1,19 @@
-let documents = getData(`WebGetDocuments.hal?code=${JSON.parse(pupil).smuCode}`) || [
-    {serNr: 123, regDate: '12/12/12', docName: 'Cits Bazārs ziemā', status: 0},
-    {regDate: '12/12/12', docName: 'International Student Company Festival', status: 3},
-    {serNr: 123, regDate: '12/12/12', docName: 'Cits Bazārs Bazārs', status: 1}
-];
+// let documents = [
+//     {serNr: 123, regDate: '12/12/12', docName: 'Cits Bazārs ziemā', status: 0},
+//     {regDate: '12/12/12', docName: 'International Student Company Festival', status: 3},
+//     {serNr: 123, regDate: '12/12/12', docName: 'Cits Bazārs Bazārs', status: 1}
+// ];
 
+// let emps = [
+//     {name: 'employee one', status: false},
+//     {name: 'employee two', status: false},
+//     {name: 'employee tree', status: false},
+//     {name: 'employee four', status: false}
+// ];
 
-// getData(`WebGetDocuments.hal?code=${JSON.parse(pupil).smuCode}`);
-let emps = [
-    {name: 'employee one', status: false},
-    {name: 'employee two', status: false},
-    {name: 'employee tree', status: false},
-    {name: 'employee four', status: false}
-];
+let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
+console.log('emps ', emps);
+let documents = getData(`/WebGetDocuments.hal?code=${JSON.parse(pupil).smuCode}`);
 
 function getData(url) {
     let xhr = new XMLHttpRequest();
@@ -86,7 +88,8 @@ function DocumentsDisplay(documents) {
         '    </tr>\n' +
         '    </tbody>\n' +
         '</table>\n' +
-        '<button class="addRow spbutton grey">pievienot produktu</button>\n';
+        '<button class="addRow spbutton grey">pievienot produktu</button>\n' +
+        '<button class="btn-confirm spbutton grey">iesniegt</button>\n';
     this.createDocuments = function () {
         for (let document of this.documents) {
             let documentBox = this.getTemplate(this.template);
@@ -128,7 +131,12 @@ function DocumentsDisplay(documents) {
 
         let empContainer = this.getTemplate('');
 
+        $("<p></p>").text("Pievienot dalībniekus:").appendTo(empContainer);
         empContainer.addClass('emp-container');
+
+        if (!emps.length) {
+            $("<p></p>").text("Nav darbinieku").appendTo(empContainer);
+        }
 
         for (let emp of emps) {
             let employeeBox = this.getTemplate(this.employeeTemplate);
@@ -158,11 +166,11 @@ function DocumentsDisplay(documents) {
     this.setInfo = function (template, document, container) {
         template.find('.date').text(getMonthDay(document.regDate));
         template.find('.name-document').text(document.docName);
-        if (document.status) {
+        if (document.status !== 0) {
             template.find('.btn-submit').text('ATSKAITE IESNIEGTA');
         }
 
-        if (document.status == 3) {
+        if (document.status == 2) {
             let downloadBtn = '<button class="btn-download spbutton grey bg-doc">Apliecinājumi par dalību pasākumā</button>\n'
             template.find('.block-btn').append(this.getTemplate(downloadBtn));
         }
@@ -185,6 +193,19 @@ function DocumentsDisplay(documents) {
             $('.reports-header').show();
             $('.reports').show();
         });
+
+        $('.btn-cancel').click(function () {
+            $('.documents-container').show();
+            $('.documents-header').show();
+            $('.programms').show();
+            $('.reports-header').hide();
+            $('.reports').hide();
+        });
+
+        $('.btn-confirm').click(function () {
+            console.log('seve ', );
+        });
+
     };
 
     function getMonthDay(date) {

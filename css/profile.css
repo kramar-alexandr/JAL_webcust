@@ -562,10 +562,15 @@ td p {
     width: 50%;
 }
 
-.documents-header, .reports-header {
+.documents-header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.reports-header {
+    width: 64%;
+    margin: auto;
 }
 
 .document-box {
@@ -596,6 +601,10 @@ td p {
     font-size: 1.3vw;
     text-align: center;
 
+}
+
+.addRow {
+    margin-left: 6vw;
 }
 
 .flex-row {
@@ -1248,11 +1257,21 @@ td p {
 
 .emp-container {
     display: flex;
+    margin-top: 2vw;
+}
+
+.emp-container p {
+    margin-right: 0.5vw;
 }
 
 .reportTable h3{
     text-align: center;
     font-size: 1.3vw;
+}
+
+.btn-confirm {
+    display: block;
+    margin: auto;
 }
 
 #reportTable {
@@ -1262,6 +1281,13 @@ td p {
 
 #reportTable td{
     height: 3vw;
+}
+
+.reports-header h3 {
+    display: inline;
+    /* width: 50%; */
+    margin-left: 10vw;
+    font-size: 1.4vw;
 }
 
 

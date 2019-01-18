@@ -1,36 +1,36 @@
-let events = getData('/WebGetEvents.hal');
-let submittedEvents = getData('/WebGetEventsPieteikum.hal');
+let events = [];
+let submittedEvents = [];
 let student = JSON.parse(pupil);
 
 
-function getData(url) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false);
-    xhr.send();
+// function getData(url) {
+//     let xhr = new XMLHttpRequest();
+//     xhr.open('GET', url, false);
+//     xhr.send();
+//
+//     if (xhr.status != 200) {
+//         console.log( xhr.status + ': ' + xhr.statusText );
+//     } else {
+//         return JSON.parse(xhr.responseText);
+//     }
+// }
 
-    if (xhr.status != 200) {
-        console.log( xhr.status + ': ' + xhr.statusText );
-    } else {
-        return JSON.parse(xhr.responseText);
+
+
+$.ajax({
+    url: '/WebGetEvents.hal',
+    async: false,
+    success: function(res) {
+        events = JSON.parse(res);
     }
-}
-
-
-
-// $.ajax({
-//     url: '/WebGetEvents.hal',
-//     async: false,
-//     success: function(res) {
-//         events = JSON.parse(res);
-//     }
-// });
-// $.ajax({
-//     url: '/WebGetEventsPieteikum.hal',
-//     async: false,
-//     success: function(res) {
-//         submittedEvents =  JSON.parse(res);
-//     }
-// });
+});
+$.ajax({
+    url: '/WebGetEventsPieteikum.hal',
+    async: false,
+    success: function(res) {
+        submittedEvents =  JSON.parse(res);
+    }
+});
 //
 let applicationForm = new EventDisplay(events, submittedEvents);
 applicationForm.createEvents();
@@ -105,7 +105,6 @@ function EventDisplay(events, submittedEvents) {
     this.setEvents = function () {
         $('.btn-info').click(function(){
             $(this).parent().parent().find('.event-description').toggleClass('show');
-            // $('.addEmp').hide();
         });
         $('.btn-submit').click(function () {
             createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
@@ -124,11 +123,6 @@ function EventDisplay(events, submittedEvents) {
                 alert("Pieņemtas izmaiņas!");
             }
         });
-    }
-    
-    function hideEventInfo() {
-        $('.application').hide();
-        $('.technical').hide();
     }
 
     function getMonthDay(date) {

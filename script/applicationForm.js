@@ -1,21 +1,17 @@
-let emps = [
-    {
-        name: 'employee one',
-        status: false
-    },
-    {
-        name: 'employee two',
-        status: false
-    },
-    {
-        name: 'employee tree',
-        status: false
-    },
-    {
-        name: 'employee four',
-        status: false
+let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
+
+function getData(url) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send();
+
+    if (xhr.status != 200) {
+        console.log( xhr.status + ': ' + xhr.statusText );
+    } else {
+        return JSON.parse(xhr.responseText);
     }
-];
+}
+
 let applicationData = JSON.parse(localStorage.getItem('applicationData'));
 let applicationForm = applicationData ? new Questionnaire(applicationData, emps) : new Questionnaire(false, emps);
 applicationForm.showAdditionalBox();
@@ -196,6 +192,12 @@ function Questionnaire(applicationData, emps) {
     }
 
     function appendEmployee(emps, temp) {
+        if (!emps.length) {
+            let employeeBox = getTemplate(temp);
+            employeeBox.find('.btn-group').remove();
+            employeeBox.find('.empName').text('Nav darbinieku');
+            employeeBox.appendTo('.dalibnieki');
+        }
         for (let emp of emps) {
             let employeeBox = getTemplate(temp);
 
@@ -338,10 +340,14 @@ function Questionnaire(applicationData, emps) {
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
-                        if(confirm("Application from created")) document.location = '/events';
+                        if(confirm("Izveidota pieteikuma veidlapa")) {
+                            localStorage.removeItem(getEventCodeUrl());
+                            document.location = '/events';
+                        }
+
                     },
-                    failure: function (errMsg) {
-                        alert(errMsg);
+                    failure: function (err) {
+                        console.log(err);
                     }
                 });
 

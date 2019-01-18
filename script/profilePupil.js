@@ -46,6 +46,7 @@ function PupilVerifiedController(pupil) {
         } else if (!this.pupil.verified.parents && !this.pupil.verified.teacher) {
             $('.tabs').hide();
             $('.status').show();
+            $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa un skolotāja.');
         } else if (!this.pupil.verified.parents) {
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa.');
             $('.tabs').hide();
@@ -84,13 +85,22 @@ function PupilVerifiedController(pupil) {
     };
 
     this.setEventConfirmButton = function() {
+        let self = this;
+
         $('.confirnBtn').click(function () {
+
             let xhr = new XMLHttpRequest();
             xhr.onload = function(){
                 if (xhr.status !== 200) {
                     console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
                 } else {
                     console.log( 'RESPONSE: ' + xhr.responseText );
+                    if (!self.pupil.hightSchool) {
+                        self.checkVerified(self.pupil);
+                    } else {
+                        self.checkVerifiedHighSchool(self.pupil);
+                    }
+                    self.pupil.verified.personal = true;
                     $('.confirmation').hide();
                     $('.status').show();
                 }
