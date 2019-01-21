@@ -12,7 +12,6 @@
 // ];
 
 let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
-console.log('emps ', emps);
 let documents = getData(`/WebGetDocuments.hal?code=${JSON.parse(pupil).smuCode}`);
 
 function getData(url) {
@@ -21,7 +20,7 @@ function getData(url) {
     xhr.send();
 
     if (xhr.status != 200) {
-        console.log( xhr.status + ': ' + xhr.statusText );
+        console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
     } else {
         return JSON.parse(xhr.responseText);
     }
@@ -113,8 +112,8 @@ function DocumentsDisplay(documents) {
         });
 
         $('#reportTable').on( 'click', 'tbody td', function () {
-            console.log('this ', this);
-            table.cell(this).edit('bubble');
+            // console.log('this ', this);
+            // table.cell(this).edit('bubble');
         } );
 
         $('.addRow').click(function() {
@@ -203,7 +202,6 @@ function DocumentsDisplay(documents) {
         });
 
         $('.btn-confirm').click(function () {
-            console.log('seve ', );
         });
 
     };

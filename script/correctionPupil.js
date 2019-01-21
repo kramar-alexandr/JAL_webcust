@@ -1,7 +1,6 @@
 init(JSON.parse(pupil));
 
 function init(pupil) {
-    console.log('pupil.smu ', pupil.smu);
     let correctionSMU = new CorrectionSMU(pupil.smu);
     correctionSMU.setEvent();
     correctionSMU.showSmuInfo(pupil.director);

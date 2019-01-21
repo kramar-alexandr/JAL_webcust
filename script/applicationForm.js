@@ -6,7 +6,7 @@ function getData(url) {
     xhr.send();
 
     if (xhr.status != 200) {
-        console.log( xhr.status + ': ' + xhr.statusText );
+        console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
     } else {
         return JSON.parse(xhr.responseText);
     }
