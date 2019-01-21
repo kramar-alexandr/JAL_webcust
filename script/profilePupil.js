@@ -58,6 +58,7 @@ function PupilVerifiedController(pupil) {
             $('.status-info').text('Vecāks / aizbildnis profilu ir apstiprinājis');
             $('.status').show();
         } else if (!pupil.smu) {
+            $('.tabs').show();
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
             $('.status').show();
@@ -78,6 +79,7 @@ function PupilVerifiedController(pupil) {
             $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
         } else if (!pupil.smu) {
+            $('.tabs').show();
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
             $('.status').show();
@@ -95,12 +97,13 @@ function PupilVerifiedController(pupil) {
                     console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
                 } else {
                     console.log( 'RESPONSE: ' + xhr.responseText );
+                    self.pupil.verified.personal = true;
+
                     if (!self.pupil.hightSchool) {
                         self.checkVerified(self.pupil);
                     } else {
                         self.checkVerifiedHighSchool(self.pupil);
                     }
-                    self.pupil.verified.personal = true;
                     $('.confirmation').hide();
                     $('.status').show();
                 }
