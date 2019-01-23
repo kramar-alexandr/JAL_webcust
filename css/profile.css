@@ -658,7 +658,7 @@ td p {
     margin-right: 30px;
     align-items: center;
     padding: 5px 10px;
-
+    cursor: pointer;
 }
 
 .docs-card p {
@@ -712,6 +712,14 @@ td p {
 
 .show {
     display: block;
+}
+
+.show-import {
+    display: block !important;
+}
+
+.show-flex {
+    display: flex !important;
 }
 
 #company-table tr, th {
@@ -1290,4 +1298,132 @@ td p {
     font-size: 1.4vw;
 }
 
+.calendar, .conference-box, .regions, .regions-teacher-table,
+.program-study-box, .conference-one-box {
+    text-align: center;
+    width: 85%;
+    margin: auto;
+}
+
+
+.conference {
+    display: flex;
+    justify-content: center;
+}
+
+.conf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.regions-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.conf .spbutton {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.programm-study {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.conf-one {
+    display: none;
+    justify-content: center;
+}
+
+.hide-btn {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conference-four-box {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.icons-set {
+    display: none;
+    justify-content: center;
+}
+
+.header-one, .header-two, .header-three, .header-four, .header-five, .confName {
+    cursor: pointer;
+}
+
+.conf-two {
+    display: none;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.conference-tree-box, .conference-four-box {
+    display: none;
+}
+
+.conference-box {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.conference-box h3 {
+    display: inline;
+    text-align: center;
+    font-size: 1.3vw;
+}
+
+.conference-box p {
+    font-weight: 800;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.open {
+    background-image: url(../img/open.png) !important;
+    background-repeat: no-repeat;
+    background-position: 98%;
+    padding-right: 3vw;
+}
+
+.close {
+    background-image: url(../img/close.png);
+    background-repeat: no-repeat;
+    background-position: 98%;
+    padding-right: 3vw;
+}
+
+.programm-login-data {
+    text-align: left;
+}
+
+.regions-teacher-table {
+    display: none;
+}
+
+.conf-two-elem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.conf-two-elem .spbutton {
+    margin: auto !important;
+}
+
+.bord-img {
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 2vw;
+}
 
