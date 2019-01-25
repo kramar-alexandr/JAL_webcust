@@ -41,6 +41,7 @@ function PupilVerifiedController(pupil) {
     this.checkVerified = function() {
         if (!this.pupil.verified.personal) {
             $('.tabs').hide();
+            $('.confirmation').find('.confirmation-info-pupil').text(`Turpinot reģistrāciju, es, ${this.pupil.fullName}, ${this.pupil.school} skolēns, apliecinu:`);
             $('.confirmation').css('display', 'flex');
             this.setEventConfirmButton();
         } else if (!this.pupil.verified.parents && !this.pupil.verified.teacher) {

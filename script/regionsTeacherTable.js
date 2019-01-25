@@ -1,16 +1,3 @@
-let teacher = {
-    nameTeacher: 'Teacher Name',
-    schoolName: 'School number 4',
-    PSK: true,
-    VSK: true,
-    PROF: false,
-    email: 'teacherEmail@gmail.com'
-};
-let mass = [];
-for (let i = 0; i < 5; i ++) {
-    mass.push(teacher);
-}
-
 let tableTMP = '<table id="regionsTable" class="display">\n' +
     '    <thead>\n' +
     '    <tr>\n' +
@@ -45,7 +32,7 @@ let tableTMP = '<table id="regionsTable" class="display">\n' +
 $('.regions-teacher-table').append(tableTMP);
 
 let table = $('#regionsTable').DataTable({
-    data: mass,
+    data: [],
     searching: false,
     info: false,
     select: false,

@@ -2,21 +2,6 @@ let events = [];
 let submittedEvents = [];
 let student = JSON.parse(pupil);
 
-
-// function getData(url) {
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('GET', url, false);
-//     xhr.send();
-//
-//     if (xhr.status != 200) {
-//         console.log( xhr.status + ': ' + xhr.statusText );
-//     } else {
-//         return JSON.parse(xhr.responseText);
-//     }
-// }
-
-
-
 $.ajax({
     url: '/WebGetEvents.hal',
     async: false,
@@ -31,7 +16,7 @@ $.ajax({
         submittedEvents =  JSON.parse(res);
     }
 });
-//
+
 let applicationForm = new EventDisplay(events, submittedEvents);
 applicationForm.createEvents();
 
@@ -65,6 +50,10 @@ function EventDisplay(events, submittedEvents) {
         if (this.submittedEvents.length) {
             $('.technical-info').hide();
             for (let event of this.submittedEvents) {
+                for (let ev of this.events) {
+                    if (ev.serNr === event.event) event.nameEvent = ev.nameEvent;
+                }
+
                 let eventBox = this.getTemplate(this.template);
 
                 if (+event.filled) {

@@ -6,8 +6,7 @@ xhr.onload = function () {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
     } else {
         let confs = JSON.parse(xhr.responseText);
-        console.log(' ', confs);
-        for (let conf of confs ) {
+        for (let conf of confs) {
 
             if (conf.nameConf === '1-9 Klassu materiali') {
                 let div = document.createElement('div');
@@ -19,10 +18,11 @@ xhr.onload = function () {
                 header.textContent = conf.nameConf;
                 $(header).appendTo(div);
 
-                for ( let doc of conf.docs ) {
+                for (let doc of conf.docs) {
                     let button = document.createElement('a');
                     button.setAttribute('class', 'spbutton');
                     button.textContent = doc.nameDoc;
+                    $(button).click(downloadFile);
                     $(button).appendTo(hide);
                 }
                 $(hide).appendTo(div);
@@ -34,34 +34,13 @@ xhr.onload = function () {
             }
 
             if (conf.nameConf === 'vebinari un citi materiali') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
+                createConference(conf, 'conference-four-box');
 
-                for ( let doc of conf.docs ) {
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).appendTo(div);
+                if (conf.nameConf === 'darbibai nepieciesamie dokumenti') {
+                    createConference(conf, 'conf-one');
                 }
-
-                $(div).appendTo('.conference-four-box');
-            }
-
-            if (conf.nameConf === 'darbibai nepieciesamie dokumenti') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
-
-                for ( let doc of conf.docs ) {
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).appendTo(div);
-                }
-
-                $(div).appendTo('.conf-one');
             }
         }
-
     }
 };
 
@@ -86,3 +65,32 @@ $('.header-five').click(function () {
     $('.header-five').toggleClass('open close')
 });
 
+function downloadFile(code) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", `WebGetFile.hal?code=${code}`);
+    xhr.responseType = "arraybuffer";
+
+    xhr.onload = function () {
+        if (this.status === 200) {
+            let blob = new Blob([xhr.response], {type: "application/pdf"});
+            let objectUrl = URL.createObjectURL(blob);
+            window.open(objectUrl);
+        }
+    };
+    xhr.send();
+};
+
+function createConference(conf, container) {
+    let div = document.createElement('div');
+    div.setAttribute('class', 'conf');
+
+    for ( let doc of conf.docs ) {
+        let button = document.createElement('a');
+        button.setAttribute('class', 'spbutton');
+        button.textContent = doc.nameDoc;
+        $(button).click(downloadFile);
+        $(button).appendTo(div);
+    }
+
+    $(div).appendTo(`.${container}`);
+};

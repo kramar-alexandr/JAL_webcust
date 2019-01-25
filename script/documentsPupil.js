@@ -11,8 +11,12 @@
 //     {name: 'employee four', status: false}
 // ];
 
-let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
-let documents = getData(`/WebGetDocuments.hal?code=${JSON.parse(pupil).smuCode}`);
+let pupilInfo = JSON.parse(pupil);
+
+$('.document-smu-info').text(`Reģistrācijas apliecība: Reģ. nr.: ${pupilInfo.smuCode}|   Reģ. datums: ${pupilInfo.regDate}   |   Darbības termiņš: ${pupilInfo.expDate}`);
+
+let emps = getData(`/WebGetEmployers.hal?code=${pupilInfo.smuCode}`);
+let documents = getData(`/WebGetDocuments.hal?code=${pupilInfo.smuCode}`);
 
 function getData(url) {
     let xhr = new XMLHttpRequest();

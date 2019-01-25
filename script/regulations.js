@@ -1,37 +1,3 @@
-// let confs = [{
-//     nameConf: 'Citi',
-//     docs: [
-//         {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//     ]},
-//     {
-//         nameConf: 'finansu pratiba',
-//         docs: [
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//         ]
-//     },
-//     {
-//         nameConf: 'Karjera',
-//         docs: [
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//         ]
-//     },
-//     {
-//         nameConf: 'Iznemejbardiba',
-//         docs: [
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''},
-//             {nameDoc: 'TIEŠSAISTES BIZNESA SIMULĀCIJAS SPĒLES TITAN NOLIKUMS', serNr:''}
-//         ]
-//     }];
-
 let xhr = new XMLHttpRequest();
 xhr.open('GET', `/WebGetNolicune.hal`, true);
 xhr.send();
@@ -42,79 +8,46 @@ xhr.onload = function () {
     } else {
         let confs = JSON.parse(xhr.responseText);
         for (let conf of confs ) {
-
-            if (conf.nameConf === 'finansu pratiba') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
-                let header = document.createElement('h3');
-                header.textContent = conf.nameConf;
-                $(header).appendTo(div);
-
-                for ( let doc of conf.docs ) {
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).appendTo(div);
-                }
-
-                $(div).appendTo('.right');
-            }
-
-            if (conf.nameConf === 'Karjera') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
-                let header = document.createElement('h3');
-                header.textContent = conf.nameConf;
-                $(header).appendTo(div);
-
-                for ( let doc of conf.docs ) {
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).appendTo(div);
-                }
-
-                $(div).appendTo('.right');
-
-
-            }
-
-            if (conf.nameConf === 'Citi') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
-                let header = document.createElement('h3');
-                header.textContent = conf.nameConf;
-                $(header).appendTo(div);
-
-                for ( let doc of conf.docs ) {
-                    console.log('doc ', doc);
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).appendTo(div);
-                }
-
-                $(div).appendTo('.right');
-            }
-
             if (conf.nameConf === 'Iznemejbardiba') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
-                let header = document.createElement('h3');
-                header.textContent = conf.nameConf;
-                $(header).appendTo(div);
-
-                for ( let doc of conf.docs ) {
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).appendTo(div);
-                }
-
-                $(div).appendTo('.left');
+                createConference(conf, 'left');
+            } else {
+                createConference(conf, 'right');
             }
         }
-
     }
 };
 
+function downloadFile(code) {
+    console.log('downaload ', );
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", `WebDownloadDocs.hal?code=${code}`);
+    xhr.responseType = "arraybuffer";
+
+    xhr.onload = function () {
+        if (this.status === 200) {
+            let blob = new Blob([xhr.response], {type: "application/pdf"});
+            let objectUrl = URL.createObjectURL(blob);
+            window.open(objectUrl);
+        }
+    };
+    xhr.send();
+}
+
+function createConference(conf, container) {
+    let div = document.createElement('div');
+    div.setAttribute('class', 'conf');
+    let header = document.createElement('h3');
+    header.textContent = conf.nameConf;
+    $(header).appendTo(div);
+
+    for ( let doc of conf.docs ) {
+        let button = document.createElement('a');
+        button.setAttribute('class', 'spbutton');
+        button.textContent = doc.nameDoc;
+        if (doc.serNr) $(button).click(downloadFile);
+        if (doc.link) $(button).attr("href", doc.link);
+        $(button).appendTo(div);
+    }
+
+    $(div).appendTo(`.${container}`);
+}
