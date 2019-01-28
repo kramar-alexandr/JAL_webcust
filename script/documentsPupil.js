@@ -103,13 +103,15 @@ function DocumentsDisplay(documents) {
 
         this.setReportBox(reportBox, '.document');
         this.setEvents();
-        this.setTable();
+        this.createTable();
     };
 
-    this.setTable = function () {
+    this.createTable = function () {
         let table = $('#reportTable').DataTable({
             searching: false,
             info: false,
+                dom: '<"top"B>t<"bottom"p><"clear">',
+            buttons: [ 'print' ],
             select: false,
             paging: false,
             ordering: false

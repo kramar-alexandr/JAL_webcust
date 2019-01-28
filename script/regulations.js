@@ -17,22 +17,6 @@ xhr.onload = function () {
     }
 };
 
-function downloadFile(code) {
-    console.log('downaload ', );
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", `WebDownloadDocs.hal?code=${code}`);
-    xhr.responseType = "arraybuffer";
-
-    xhr.onload = function () {
-        if (this.status === 200) {
-            let blob = new Blob([xhr.response], {type: "application/pdf"});
-            let objectUrl = URL.createObjectURL(blob);
-            window.open(objectUrl);
-        }
-    };
-    xhr.send();
-}
-
 function createConference(conf, container) {
     let div = document.createElement('div');
     div.setAttribute('class', 'conf');
@@ -40,12 +24,22 @@ function createConference(conf, container) {
     header.textContent = conf.nameConf;
     $(header).appendTo(div);
 
+
     for ( let doc of conf.docs ) {
         let button = document.createElement('a');
         button.setAttribute('class', 'spbutton');
         button.textContent = doc.nameDoc;
-        if (doc.serNr) $(button).click(downloadFile);
-        if (doc.link) $(button).attr("href", doc.link);
+        if (doc.serNr) {
+            $(button).click(function(){
+                $(button).attr("href", `/WebDownloadDocs.hal?code=${doc.serNr}`);
+                $(button).attr("download");
+                // downloadFile(doc.serNr);
+            })
+        }
+        if (doc.link) {
+            $(button).attr("href", doc.link);
+            $(button).attr("target", "_blank");
+        }
         $(button).appendTo(div);
     }
 
