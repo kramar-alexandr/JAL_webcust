@@ -110,12 +110,34 @@ function DocumentsDisplay(documents) {
         let table = $('#reportTable').DataTable({
             searching: false,
             info: false,
-                dom: '<"top"B>t<"bottom"p><"clear">',
-            buttons: [ 'print' ],
             select: false,
             paging: false,
             ordering: false
         });
+
+        table.MakeCellsEditable({
+            "onUpdate": myCallbackFunction,
+            'inputCss': 'edit-input'
+        });
+
+        function myCallbackFunction(updatedCell, updatedRow, oldValue) {
+            if (updatedCell.index().column === 1) {
+                let res = +updatedRow.data()[3] + +updatedCell.data();
+                console.log('res ', res);
+
+            }
+            if (updatedCell.index().column === 2) {
+                let res = +updatedRow.data()[3] + +updatedCell.data();
+                console.log('res ', res);
+            }
+
+            if (updatedCell.index().column === 3) {
+                let res = +updatedRow.data()[1] + +updatedCell.data();
+                let resTwo = +updatedRow.data()[2] + +updatedCell.data();
+                console.log('res ', res);
+                console.log('resTwo ', resTwo);
+            }
+        }
 
         $('#reportTable').on( 'click', 'tbody td', function () {
             // console.log('this ', this);

@@ -1433,3 +1433,12 @@ td p {
 .notChecked {
      border: 1px solid red !important;
 }
+
+.edit-input {
+    border: none;
+    border-radius: 0;
+    font-family: "Poppins", sans-serif;
+    height: 30px;
+    width: 90%;
+    text-align: center;
+}
