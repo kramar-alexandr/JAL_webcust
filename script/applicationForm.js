@@ -1,16 +1,22 @@
-let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
+// let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
+//
+// console.log('emps ', emps);
+//
+// function getData(url) {
+//     let xhr = new XMLHttpRequest();
+//     xhr.open('GET', url, false);
+//     xhr.send();
+//
+//     if (xhr.status != 200) {
+//         console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+//     } else {
+//         return JSON.parse(xhr.responseText);
+//     }
+// }
 
-function getData(url) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false);
-    xhr.send();
+let emps = [{"code": "37103962", "name": "KristiДЃns PotaЕЎovs"}, {"code":"37102995","name":"Sindija KubliЕ†a"}];
 
-    if (xhr.status != 200) {
-        console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
-    } else {
-        return JSON.parse(xhr.responseText);
-    }
-}
+console.log('emps ', emps);
 
 let applicationData = JSON.parse(localStorage.getItem('applicationData'));
 let applicationForm = applicationData ? new Questionnaire(applicationData, emps) : new Questionnaire(false, emps);
@@ -319,7 +325,7 @@ function Questionnaire(applicationData, emps) {
         $('.btnTwo').click(function () {
             $('.btnTwo').toggleClass('green ');
             applicationData.marketingMaterials.businessCards = !!$('.btnTwo').hasClass('green');
-        })
+        });
         $('.btnThree').click(function () {
             $('.btnThree').toggleClass('green ');
             applicationData.marketingMaterials.activitiesStand = !!$('.btnThree').hasClass('green');
@@ -357,7 +363,7 @@ function Questionnaire(applicationData, emps) {
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (data) {
-                            if(confirm("Izveidota pieteikuma veidlapa")) {
+                            if (confirm("Izveidota pieteikuma veidlapa")) {
                                 localStorage.removeItem(getEventCodeUrl());
                                 document.location = '/events';
                             }
@@ -377,7 +383,7 @@ function Questionnaire(applicationData, emps) {
                 localStorage.setItem(getEventCodeUrl(), JSON.stringify(applicationData));
                 showPartTwo();
             }
-            
+
         });
     }
 
@@ -410,14 +416,14 @@ function Questionnaire(applicationData, emps) {
             $('.qustThree').removeClass('notChecked');
         }
 
-        if (!applicationData.businessPitch.yes && !applicationData.businessPitch.no ) {
+        if (!applicationData.businessPitch.yes && !applicationData.businessPitch.no) {
             $('.qustFour').addClass('notChecked');
             result = false;
         } else {
             $('.qustFour').removeClass('notChecked');
         }
 
-        if (!applicationData.terms.yes && !applicationData.terms.no ) {
+        if (!applicationData.terms.yes && !applicationData.terms.no) {
             $('.confrm').addClass('notChecked');
             result = false;
         } else {

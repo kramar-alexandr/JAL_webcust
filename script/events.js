@@ -40,15 +40,17 @@ function EventDisplay(events, submittedEvents) {
         '    </div>\n' +
         '</div>';
     this.createEvents = function() {
-        for (let event of this.events) {
-            let eventBox = this.getTemplate(this.template);
-            this.setInfo(eventBox, event, '.application');
+        if (this.events.length) {
+            for (let event of this.events) {
+                $('.events-info').hide();
+                let eventBox = this.getTemplate(this.template);
+                this.setInfo(eventBox, event, '.application');
+            }
         }
 
         this.setEvents(this.smuCode);
 
         if (this.submittedEvents.length) {
-            $('.technical-info').hide();
             for (let event of this.submittedEvents) {
                 for (let ev of this.events) {
                     if (ev.serNr === event.event) event.nameEvent = ev.nameEvent;
@@ -57,16 +59,16 @@ function EventDisplay(events, submittedEvents) {
                 let eventBox = this.getTemplate(this.template);
 
                 if (+event.filled) {
-                    eventBox.find('.btn-submit').text('Piepildīta');
-                    eventBox.find('.btn-submit').disabled = true;
+                    continue;
                 } else {
+                    $('.technical-info').hide();
                     eventBox.find('.btn-submit').text('Aizpildīt');
                     eventBox.find('.btn-submit').click(function () {
                         window.location.href = `/application-form?code=${event.serNr}`;
                     });
-                }
 
-                this.setInfo(eventBox, event, '.technical');
+                    this.setInfo(eventBox, event, '.technical');
+                }
             }
         } else {
             $('.technical-info').show();

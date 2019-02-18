@@ -88,14 +88,6 @@ if (pupil) {
                         return "<p class=\"noradit-no\"></p>";
                     }
                 }
-            },
-            {
-                data: 'Statuss',
-                render: () => {
-                    return "<a class='labot-btn' onclick='labotApsti(event)'>Labot</a>";
-
-                },
-                className: "column-btn labotApsti"
             }
 
         ]

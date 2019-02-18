@@ -1,96 +1,109 @@
 let xhr = new XMLHttpRequest();
-xhr.open('GET', `/WebGetMaterials.hal`, true);
+xhr.open('GET', `/WebGetAllConf.hal`, true);
 xhr.send();
 xhr.onload = function () {
     if (xhr.status !== 200) {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
     } else {
-        let confs = JSON.parse(xhr.responseText);
-        for (let conf of confs) {
+        let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
 
-            if (conf.nameConf === '1-9 Klassu materiali') {
-                let div = document.createElement('div');
-                div.setAttribute('class', 'conf');
-                let hide = document.createElement('div');
-                hide.setAttribute('class', 'hide-btn');
-                let header = document.createElement('h3');
-                header.setAttribute('class', 'confName open');
-                header.textContent = conf.nameConf;
-                $(header).appendTo(div);
-
-                for (let doc of conf.docs) {
-                    let button = document.createElement('a');
-                    button.setAttribute('class', 'spbutton');
-                    button.textContent = doc.nameDoc;
-                    $(button).click(downloadFile);
-                    $(button).appendTo(hide);
-                }
-                $(hide).appendTo(div);
-                $(div).appendTo('.conference-tree-box');
-                $('.confName').click(function () {
-                    $(this).toggleClass('open close');
-                    $(this).parent().find('.hide-btn').toggleClass('show-flex');
-                });
-            }
-
-            if (conf.nameConf === 'vebinari un citi materiali') {
-                createConference(conf, 'conference-four-box');
-
-                if (conf.nameConf === 'darbibai nepieciesamie dokumenti') {
-                    createConference(conf, 'conf-one');
-                }
+        for (let doc of confs.docs ) {
+            console.log('doc ', doc.nameConf);
+            if(doc.nameConf === '1-9 klašu materiāli') {
+                createConf(doc);
             }
         }
     }
 };
 
-$('.header-one').click(function () {
-    $('.icons-set').toggleClass('show-flex');
-    $('.header-one').toggleClass('open close')
-});
-$('.header-two').click(function () {
-    $('.conf-one').toggleClass('show-flex');
-    $('.header-two').toggleClass('open close')
-});
-$('.header-three').click(function () {
-    $('.conf-two').toggleClass('show-flex');
-    $('.header-three').toggleClass('open close')
-});
-$('.header-four').click(function () {
-    $('.conference-tree-box').toggleClass('show-import');
-    $('.header-four').toggleClass('open close')
-});
-$('.header-five').click(function () {
-    $('.conference-four-box').toggleClass('show-flex');
-    $('.header-five').toggleClass('open close')
-});
+function createConf(conf) {
+    for (let doc of conf.docs) {
+        if (doc.nameConf) {
+            let mainContainer = createConfContainer(doc);
 
-function downloadFile(code) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", `WebGetFile.hal?code=${code}`);
-    xhr.responseType = "arraybuffer";
+            if (doc.docs[0]) {
+                for ( let docum of doc.docs ) {
+                    if (docum.nameConf) {
+                        let subDiv = createConfContainer(docum, mainContainer);
 
-    xhr.onload = function () {
-        if (this.status === 200) {
-            let blob = new Blob([xhr.response], {type: "application/pdf"});
-            let objectUrl = URL.createObjectURL(blob);
-            window.open(objectUrl);
+                        if(docum.docs) {
+                            createBtnContainer(docum, subDiv);
+                        }
+                    } else if (docum.nameDoc){
+                        // iterate btn
+                        createBtnContainer(docum, mainContainer);
+                    }
+                }
+            }
+
+            $(mainContainer).appendTo('.profile');
+        } else {
+            let mainContainer = createConfContainer(doc);
+            if (doc.nameDoc) {
+                createBtnContainer(doc, mainContainer);
+            }
+
+            $(mainContainer).appendTo('.profile');
         }
-    };
-    xhr.send();
-};
+    }
+}
 
-function createConference(conf, container) {
-    let div = document.createElement('div');
-    div.setAttribute('class', 'conf');
+function createBtnContainer(docum, div) {
+    let container = document.createElement('div');
+    container.setAttribute('class', 'conf-btn-box');
 
-    for ( let doc of conf.docs ) {
-        let button = document.createElement('a');
-        button.setAttribute('class', 'spbutton');
-        button.textContent = doc.nameDoc;
-        $(button).click(downloadFile);
+    if (docum.docs) {
+        for (let btn of docum.docs) {
+            let button = createBtn(btn);
+
+            $(button).appendTo(container);
+        }
+
+        $(container).appendTo(div);
+    } else {
+        let button = createBtn(docum);
         $(button).appendTo(div);
     }
+}
 
-    $(div).appendTo(`.${container}`);
-};
+function createBtn(btn) {
+    let button = document.createElement('a');
+
+    button.setAttribute('class', 'spbutton conf-btn');
+    button.textContent = btn.nameDoc;
+
+    if (btn.serNr) {
+        $(button).click(function(){
+            $(button).attr("href", `/WebDownloadDocs.hal?code=${btn.serNr}`);
+            $(button).attr("download");
+        })
+    }
+    if (btn.link) {
+        $(button).attr("href", btn.link);
+        $(button).attr("target", "_blank");
+    }
+
+    return button;
+}
+
+function createConfContainer(doc, subDiv) {
+    let div = document.createElement('div');
+    let header = document.createElement('h3');
+
+    div.setAttribute('class', 'conf conf-border');
+    header.setAttribute('class', 'open');
+    header.textContent = doc.nameConf;
+    $(header).appendTo(div);
+
+    $(header).click(function () {
+        $(this).toggleClass('open close');
+        $(this).parent().find('.conf-btn').toggleClass('show-flex');
+    });
+
+    if (subDiv) {
+        div.setAttribute('class', 'sub-conf');
+        $(div).appendTo(subDiv);
+    }
+
+    return div;
+}

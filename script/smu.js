@@ -41,7 +41,7 @@ let smuInfo = '<div id="smuCard" class="info-smu">\n' +
     '        </div>\n' +
     '    </div>\n' +
     '    <div class="smu-button">\n' +
-    '        <button class="spbutton show-info">ATVĒRT PIETEIKUMU</button>\n' +
+    '        <button class="spbutton show-info-btn">ATVĒRT PIETEIKUMU</button>\n' +
     '        <button class="spbutton reg-succes">REĢ.APLIECĪBA</button>\n' +
     '    </div>\n' +
     '</div>\n' +
@@ -50,7 +50,7 @@ let smuInfo = '<div id="smuCard" class="info-smu">\n' +
 
 let companyTempInfo = '<div class="company-detail">\n' +
     '    <div class="company-info">\n' +
-    '        <p class="register-number">Reģistrācijas Nr: 4008789877</p>\n' +
+    '        <p class="register-number">Reģistrācijas Nr:</p>\n' +
     '        <p class="education">Izglītības pakāpe: vidusskola</p>\n' +
     '        <p class="type-company">Darbības veids/nozare. Darbības veids/nozare</p>\n' +
     '        <p class="target-type">Mērkauditorija</p>\n' +
@@ -227,9 +227,11 @@ if (SMUData) {
 
             });
             smuNode.find('.show-info').click(function () {
-                // $(this).parent().parent().parent().parent().find('.company-detail').toggleClass('show');
                 $(this).toggleClass('active-btn');
 
+            });
+            smuNode.find('.show-info-btn').click(function () {
+                $(this).parent().parent().parent().find('.company-detail').toggleClass('show')
             });
             smuNode.find('.leader').text('Vadītājs: ' + smu.leader);
             smuNode.find('.members').text('Dalībnieki. ' + smu.members);

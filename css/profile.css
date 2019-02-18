@@ -369,11 +369,13 @@
 .noradit-no {
     background: url("../img/no.png") no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .astiprinat-yes {
     background: url("../img/yes.png") no-repeat;
     background-position: center;
+    cursor: pointer;
 }
 
 .no {
@@ -541,6 +543,14 @@ td p {
     padding-bottom: 20px;
 }
 
+.conf-border {
+    margin-bottom: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    min-width: 750px;
+    padding: 0 20px;
+}
+
 .smu-name {
     width: 20%;
 }
@@ -571,6 +581,7 @@ td p {
 .reports-header {
     width: 64%;
     margin: auto;
+    display: none;
 }
 
 .document-box {
@@ -1004,7 +1015,7 @@ td p {
     text-align: center;
 }
 
-.technical-info {
+.technical-info, .events-info {
     text-align: center;
     font-size: 1vw;
 }
@@ -1273,8 +1284,14 @@ td p {
 }
 
 .reportTable h3{
+     text-align: center;
+     font-size: 1.3vw;
+ }
+
+.conf h3{
     text-align: center;
     font-size: 1.3vw;
+    cursor: pointer;
 }
 
 .btn-confirm {
@@ -1314,7 +1331,8 @@ td p {
 .conf {
     display: flex;
     flex-direction: column;
-    /*align-items: center;*/
+    align-items: center;
+    width: 100%;
 }
 
 .regions-btns {
@@ -1366,8 +1384,28 @@ td p {
     align-items: baseline;
 }
 
+.sub-conf {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-bottom: 1vw;
+    padding: 0 1vw;
+    width: 50%;
+    text-align: center;
+    display: none;
+}
+
+.conf-btn {
+    display: none;
+    width: 50%;
+}
+
 .conference-tree-box, .conference-four-box {
     display: none;
+}
+
+.conf-btn-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .conference-box {

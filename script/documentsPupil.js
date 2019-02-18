@@ -1,19 +1,6 @@
-// let documents = [
-//     {serNr: 123, regDate: '12/12/12', docName: 'Cits Bazārs ziemā', status: 0},
-//     {regDate: '12/12/12', docName: 'International Student Company Festival', status: 3},
-//     {serNr: 123, regDate: '12/12/12', docName: 'Cits Bazārs Bazārs', status: 1}
-// ];
-
-// let emps = [
-//     {name: 'employee one', status: false},
-//     {name: 'employee two', status: false},
-//     {name: 'employee tree', status: false},
-//     {name: 'employee four', status: false}
-// ];
-
 let pupilInfo = JSON.parse(pupil);
 
-$('.document-smu-info').text(`Reģistrācijas apliecība: Reģ. nr.: ${pupilInfo.smuCode}|   Reģ. datums: ${pupilInfo.regDate}   |   Darbības termiņš: ${pupilInfo.expDate}`);
+$('.document-smu-info').text(`Reģistrācijas apliecība: Reģ. nr.: ${pupilInfo.smuCode}|   Reģ. datums: ${pupilInfo.regDate}   |   Darbības termiņš: ${pupilInfo.expDate || ''}`);
 
 let emps = getData(`/WebGetEmployers.hal?code=${pupilInfo.smuCode}`);
 let documents = getData(`/WebGetDocuments.hal?code=${pupilInfo.smuCode}`);
@@ -44,7 +31,7 @@ function DocumentsDisplay(documents) {
         '        </div>\n' +
         '        </div>\n' +
         // '        <div>\n' +
-        // '            <p class="document-description"></p>\n' +
+        // '            <p class="document-description"></p>\n' +standBtnTwo
         // '        </div>\n' +
         '        <div class="block-btn flex-row">\n' +
         // '            <button class="btn-info spbutton">Papildus info</button>\n' +
@@ -124,11 +111,12 @@ function DocumentsDisplay(documents) {
             if (updatedCell.index().column === 1) {
                 let res = +updatedRow.data()[3] + +updatedCell.data();
                 console.log('res ', res);
-
+                updatedRow.data(res)[5].draw();
             }
             if (updatedCell.index().column === 2) {
                 let res = +updatedRow.data()[3] + +updatedCell.data();
                 console.log('res ', res);
+                updatedRow.data(res)[4].draw();
             }
 
             if (updatedCell.index().column === 3) {
@@ -136,6 +124,7 @@ function DocumentsDisplay(documents) {
                 let resTwo = +updatedRow.data()[2] + +updatedCell.data();
                 console.log('res ', res);
                 console.log('resTwo ', resTwo);
+                updatedRow.data(res)[5].draw();
             }
         }
 

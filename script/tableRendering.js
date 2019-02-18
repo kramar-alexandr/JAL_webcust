@@ -3,8 +3,21 @@ if (text) {
     let techerInfo = JSON.parse(text);
 
     // initializate Skolēnu pieteikumi table table
+    let tableData = techerInfo.SMU.filter((i) => {
+        if (i.Statuss !== '1') {
+            return i;
+        }
+    });
+
+    for (let i = 0; i < tableData.length; i++) {
+        let count = 1;
+        console.log('tableData[i].Nr` ', tableData[i]);
+        tableData[i].Number = +count + i;
+    }
+
+    console.log('tableData ', tableData);
     let table = $('#table_id').DataTable({
-        data: techerInfo.SMU,
+        data: tableData,
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
             {
@@ -64,7 +77,7 @@ if (text) {
             targets: "no-sort"
         }],
         columns: [
-            {data: 'Nr'},
+            {data: 'Number'},
             {data: 'Skolens', width: '60%',},
             {
                 data: 'Klase',
@@ -108,19 +121,29 @@ if (text) {
     let apstiprinatie = [];
 
     for (let i of techerInfo.SMU) {
-        if (i.Statuss === '1') {
+        let klase = i.Klase.replace(/\D+/g, '');
+        if (klase > 9 && i.Statuss === '1') {
             apstiprinatie.push(i);
         }
+    }
+
+    for (let i = 0; i < apstiprinatie.length; i++) {
+        let count = 1;
+        apstiprinatie[i].Number = count + i;
     }
 
     let pamatskola = [];
 
     for (let i of techerInfo.SMU) {
-
         let klase = i.Klase.replace(/\D+/g, '');
         if (klase <= 9) {
             pamatskola.push(i);
         }
+    }
+
+    for (let i = 0; i < pamatskola.length; i++) {
+        let count = 1;
+        pamatskola[i].Number = count + i;
     }
 
     // initializate apstiprinatie table
@@ -163,7 +186,7 @@ if (text) {
             }
         },
         columns: [
-            {data: 'Nr'},
+            {data: 'Number'},
             {data: 'Skolens'},
             {data: 'Klase'},
             {data: 'Datums'},
@@ -178,7 +201,7 @@ if (text) {
                 data: 'Likvidēts',
                 render: (data, type, full) => {
                     if (data !== "3") {
-                        return '<p class="noradit-no"></p>';
+                        return '';
                     } else {
                         return '<p class="astiprinat-yes"></p>';
                     }
@@ -194,7 +217,7 @@ if (text) {
                 data: 'Piedalījās',
                 render: (data) => {
                     if (!data) {
-                        return '<p class="noradit-no"></p>';
+                        return '';
                     }
                 }
             },
@@ -208,7 +231,7 @@ if (text) {
                 data: 'Piedalījās',
                 render: (data) => {
                     if (!data) {
-                        return "<p class=\"noradit-no\"></p>";
+                        return '';
                     }
                 }
             },
@@ -255,7 +278,7 @@ if (text) {
             }
         },
         columns: [
-            {data: 'Nr'},
+            {data: 'Number'},
             {data: 'Skolens'},
             {data: 'Klase'},
             // { data: 'Datums' },
@@ -373,30 +396,92 @@ if (text) {
     }
 
     function labotApsti(event) {
-        event.target.parentElement.style.background = '#24bc4b';
-        event.target.style.color = 'white';
-        event.path[2].cells[8].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
-        event.path[2].cells[10].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
+        $(event.target).prop("onclick", null);
 
+        let data = tableApstiprinatie.row(event.path[2].rowIndex - 2).data();
+
+        if($(event.path[2].cells[10]).hasClass('checked') && $(event.path[2].cells[8]).hasClass('checked')) {
+            $(event.target).off('click');
+
+            return;
+        }
+
+        $(event.target).click(function (){
+            let macibuStatus = null;
+            let titanStatus = null;
+
+            if ($(event.path[2].cells[10]).hasClass('checked')) {
+                macibuStatus = $(event.path[2].cells[10]).children().hasClass('astiprinat-yes') ? 1 : 0;
+                // getData(`/${url}?sernr=${data.SerNr}&status=${macibuStatus}`);
+
+            } else {
+                event.path[2].cells[10].innerHTML = "";
+            }
+
+            if ($(event.path[2].cells[8]).hasClass('checked')) {
+                titanStatus = $(event.path[2].cells[8]).children().hasClass('astiprinat-yes') ? 1 : 0;
+                // getData(`/${url}?sernr=${data.SerNr}&status=${macibuStatus}`);
+            } else {
+                event.path[2].cells[8].innerHTML = "";
+            }
+
+            console.log('macibuStatus ', macibuStatus);
+            console.log('titanStatus ', titanStatus);
+
+            $(event.target).text('Labot');
+            event.target.parentElement.style.background = 'white';
+            event.target.style.color = '#d0d0d0';
+
+            if($(event.path[2].cells[10]).hasClass('checked') && $(event.path[2].cells[8]).hasClass('checked')) {
+                $(event.target).text('Izdarīts');
+            }
+
+            $(event.target).click(function () {
+                labotApsti(event);
+            });
+
+
+        });
+
+        if (!$(event.path[2].cells[10]).hasClass('checked')) {
+            $(event.target).text('Saglabāt');
+            event.target.parentElement.style.background = '#24bc4b';
+            event.target.style.color = 'white';
+            event.path[2].cells[10].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
+        }
+
+        if (!$(event.path[2].cells[8]).hasClass('checked')) {
+            $(event.target).text('Saglabāt');
+            event.target.parentElement.style.background = '#24bc4b';
+            event.target.style.color = 'white';
+            event.path[2].cells[8].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
+
+        }
     }
 
     function checkYes(event) {
-        event.path[1].innerHTML = "<p class='astiprinat-yes'></p>";
-        checkPievienot(event);
+        if (confirm('Apstiprinot skolēnu šī darbība nav labojama')) {
+            event.path[1].innerHTML = "<p class='astiprinat-yes'></p>";
+            $(event.path[1]).addClass('checked');
+            checkPievienot(event);
+        }
     }
 
     function checkNo(event) {
-        event.path[1].innerHTML = "<p class='noradit-no'></p>";
-        checkPievienot(event);
+        if (confirm('Apstiprinot skolēnu šī darbība nav labojama')) {
+            event.path[1].innerHTML = "<p class='noradit-no'></p>";
+            $(event.path[1]).addClass('checked');
+            checkPievienot(event);
+        }
     }
 
     function checkPievienot(event) {
         if (event.path[2].cells[8].childNodes.length < 2 &&
             event.path[2].cells[10].childNodes.length < 2) {
 
-            if (event.path[2].cells[6].childNodes[0].className === "astiprinat-yes" &&
-                event.path[2].cells[8].childNodes[0].className === "astiprinat-yes" &&
-                event.path[2].cells[10].childNodes[0].className === "astiprinat-yes") {
+            if ($(event.path[2].cells[6]).children().hasClass('checked') &&
+                $(event.path[2].cells[8]).children().hasClass('checked') &&
+                $(event.path[2].cells[10]).children().hasClass('checked')) {
                 event.path[2].cells[12].childNodes[0].className = "activaite-btn";
                 event.path[2].cells[12].childNodes[0].parentElement.style.background = '#24bc4b';
                 event.path[2].cells[11].childNodes[0].parentElement.style.background = 'white';
