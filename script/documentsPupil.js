@@ -16,8 +16,10 @@ function getData(url) {
         return JSON.parse(xhr.responseText);
     }
 }
-let documentController = new DocumentsDisplay(documents);
-documentController.createDocuments();
+if (documents) {
+    let documentController = new DocumentsDisplay(documents);
+    documentController.createDocuments();
+}
 
 function DocumentsDisplay(documents) {
     this.documents = documents;
@@ -94,12 +96,30 @@ function DocumentsDisplay(documents) {
     };
 
     this.createTable = function () {
+        let data = null;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/WebGetFinSMU.hal', false);
+        xhr.send();
+
+        if (xhr.status != 200) {
+            console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+        } else {
+            data = JSON.parse(xhr.responseText);
+            if (data == "Not exist Finance table" ||
+                data == "You havnt company" ||
+                data == "You might be registered") {
+
+                data = [];
+            }
+        }
+
         let table = $('#reportTable').DataTable({
             searching: false,
             info: false,
             select: false,
             paging: false,
-            ordering: false
+            ordering: false,
+            data: data || [,,,,,]
         });
 
         table.MakeCellsEditable({
@@ -107,24 +127,34 @@ function DocumentsDisplay(documents) {
             'inputCss': 'edit-input'
         });
 
-        function myCallbackFunction(updatedCell, updatedRow, oldValue) {
-            if (updatedCell.index().column === 1) {
-                let res = +updatedRow.data()[3] + +updatedCell.data();
-                console.log('res ', res);
-                updatedRow.data(res)[5].draw();
+        function myCallbackFunction(cell, row) {
+            let data = row.data();
+
+            if (cell.index().column === 1) {
+                let cellFirst = +row.data()[1];
+                let cellSecond = +row.data()[3] || 1;
+                data[5] = cellFirst * cellSecond;
+
+                if (data[5]) row.data(data).draw();
+
+
             }
-            if (updatedCell.index().column === 2) {
-                let res = +updatedRow.data()[3] + +updatedCell.data();
-                console.log('res ', res);
-                updatedRow.data(res)[4].draw();
+            if (cell.index().column === 2) {
+                let cellFirst = +row.data()[2];
+                let cellSecond = +row.data()[3] || 1;
+                data[4] = cellFirst * cellSecond;
+
+                if (data[4]) row.data(data).draw();
             }
 
-            if (updatedCell.index().column === 3) {
-                let res = +updatedRow.data()[1] + +updatedCell.data();
-                let resTwo = +updatedRow.data()[2] + +updatedCell.data();
-                console.log('res ', res);
-                console.log('resTwo ', resTwo);
-                updatedRow.data(res)[5].draw();
+            if (cell.index().column === 3) {
+                let cellFirst = +row.data()[1];
+                let cellSecond = +row.data()[2];
+                let cellThird = +row.data()[3] || 1;
+                data[5] = cellFirst * cellThird;
+                data[4] = cellSecond * cellThird;
+
+                if (data[5] || data[4]) row.data(data).draw();
             }
         }
 
@@ -134,8 +164,28 @@ function DocumentsDisplay(documents) {
         } );
 
         $('.addRow').click(function() {
-            table.row.add([ '', '', '', '', '', '' ]).draw(false);
-        })
+            table.row.add([ '', '', '', '', '', '' ]).draw();
+        });
+
+        $('.btn-confirm').click(function () {
+            if (confirm('Save this document?')) {
+                let rows = table.data().toArray();
+                $.ajax({
+                    type: "POST",
+                    url: `WebFillFinSMU.hal`,
+                    data: JSON.stringify(rows),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data) alert('Document saved');
+                    },
+                    failure: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+        });
     };
 
     this.getTemplate = function (temp) {
@@ -216,9 +266,6 @@ function DocumentsDisplay(documents) {
             $('.programms').show();
             $('.reports-header').hide();
             $('.reports').hide();
-        });
-
-        $('.btn-confirm').click(function () {
         });
 
     };

@@ -588,7 +588,7 @@ td p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
+    width: 50%;
     margin: auto;
     margin-bottom: 10px !important;
     padding: 0 10px;
@@ -622,13 +622,13 @@ td p {
     display: flex;
 }
 
-.bg-doc {
-    background-image: url(../img/bg-doc.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: left;
-    padding-left: 2.5vw;
-}
+/*.bg-doc {*/
+    /*background-image: url(../img/bg-doc.png);*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: left;*/
+    /*padding-left: 2.5vw;*/
+    /*background-size: 11%;*/
+/*}*/
 
 .docs {
     display: flex;
@@ -1391,6 +1391,7 @@ td p {
     width: 50%;
     text-align: center;
     display: none;
+    flex-direction: column;
 }
 
 .conf-btn {

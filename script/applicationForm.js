@@ -1,20 +1,20 @@
-// let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
-//
-// console.log('emps ', emps);
-//
-// function getData(url) {
-//     let xhr = new XMLHttpRequest();
-//     xhr.open('GET', url, false);
-//     xhr.send();
-//
-//     if (xhr.status != 200) {
-//         console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
-//     } else {
-//         return JSON.parse(xhr.responseText);
-//     }
-// }
+let emps = getData(`/WebGetEmployers.hal?code=${JSON.parse(pupil).smuCode}`);
 
-let emps = [{"code": "37103962", "name": "KristiДЃns PotaЕЎovs"}, {"code":"37102995","name":"Sindija KubliЕ†a"}];
+console.log('emps ', emps);
+
+function getData(url) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send();
+
+    if (xhr.status != 200) {
+        console.log( '[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
+    } else {
+        return JSON.parse(xhr.responseText);
+    }
+}
+
+// let emps = [{"code": "37103962", "name": "KristiДЃns PotaЕЎovs"}, {"code":"37102995","name":"Sindija KubliЕ†a"}];
 
 console.log('emps ', emps);
 

@@ -6,9 +6,9 @@ xhr.onload = function () {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
     } else {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
-
+        console.log('confs ', confs);
         for (let doc of confs.docs ) {
-            console.log('doc ', doc.nameConf);
+
             if(doc.nameConf === '1-9 klašu materiāli') {
                 createConf(doc);
             }
@@ -25,7 +25,7 @@ function createConf(conf) {
                 for ( let docum of doc.docs ) {
                     if (docum.nameConf) {
                         let subDiv = createConfContainer(docum, mainContainer);
-
+                        WebCreateEventsAnswer
                         if(docum.docs) {
                             createBtnContainer(docum, subDiv);
                         }
@@ -97,6 +97,12 @@ function createConfContainer(doc, subDiv) {
 
     $(header).click(function () {
         $(this).toggleClass('open close');
+        $(this).parent().find('.sub-conf').toggleClass('show-flex');
+
+    });
+
+    $('.sub-conf').find('h3').click(function () {
+        console.log('$(this).parent().find(\'.conf-btn\') ', $(this).parent().find('.conf-btn'));
         $(this).parent().find('.conf-btn').toggleClass('show-flex');
     });
 
