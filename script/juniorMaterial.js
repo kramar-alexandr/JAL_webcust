@@ -25,7 +25,6 @@ function createConf(conf) {
                 for ( let docum of doc.docs ) {
                     if (docum.nameConf) {
                         let subDiv = createConfContainer(docum, mainContainer);
-                        WebCreateEventsAnswer
                         if(docum.docs) {
                             createBtnContainer(docum, subDiv);
                         }
@@ -97,12 +96,12 @@ function createConfContainer(doc, subDiv) {
 
     $(header).click(function () {
         $(this).toggleClass('open close');
+        $(this).parent().find('.conf-btn').toggleClass('show-flex');
         $(this).parent().find('.sub-conf').toggleClass('show-flex');
 
     });
 
     $('.sub-conf').find('h3').click(function () {
-        console.log('$(this).parent().find(\'.conf-btn\') ', $(this).parent().find('.conf-btn'));
         $(this).parent().find('.conf-btn').toggleClass('show-flex');
     });
 
