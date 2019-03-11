@@ -1,17 +1,18 @@
 init(JSON.parse(pupil));
 
 function init(pupil) {
-    let correctionSMU = new CorrectionSMU(pupil.smu);
+    let correctionSMU = new CorrectionSMU(pupil.smu,pupil);
     correctionSMU.setEvent();
     correctionSMU.showSmuInfo(pupil.director);
 }
 
-function CorrectionSMU (smu) {
+function CorrectionSMU (smu,pupil) {
     this.smu = smu;
+    this.pupil = pupil;
 
     this.setEvent = function () {
-        $('.addEmp').click(function(){
-            $('.addemp').show();
+        $('.addEmp').click(function(){//nice naming of classes :)
+            $('.addemp').css('display', 'flex');
             $('.addEmp').hide();
         });
 
@@ -26,6 +27,9 @@ function CorrectionSMU (smu) {
 
         $('#confirmSmuInfo').click(function(){
             postData("/WebChangeProfile.hal", $('#formaTwo').serialize());
+        });
+        $('#sendconfirmSmu').click(function(){
+            postData("/WebSendForTeacherApproval.hal", "");
         });
 
 
@@ -47,6 +51,10 @@ function CorrectionSMU (smu) {
         if (!director) {
             $('#removeemp').hide();
             $('.correction-smu-info').hide();
+        } else {
+          if (this.hasSMU=="0") {
+            $('#removeemp').hide();          
+          }
         }
 
     };
@@ -58,6 +66,9 @@ function CorrectionSMU (smu) {
             data: data,
             success: function() {
                 alert("Pieņemtas izmaiņas!");
+                if (pupil.hasSMU=="0"){
+                  location.reload();
+                }
             }
         });
     }

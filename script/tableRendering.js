@@ -68,8 +68,8 @@ if (text) {
         bLengthChange: false,
         oLanguage: {
             oPaginate: {
-                sPrevious: "IEPRIEKŠĒJĀ",
-                sNext: "NĀKAMĀ",
+                sPrevious: jal_str["prev"],
+                sNext: jal_str["next"],
             }
         },
         columnDefs: [{
@@ -91,15 +91,15 @@ if (text) {
                 data: 'Statuss',
                 render: (data) => {
                     if (data === '0') {
-                        return "<p class='status-btn apstiprinatBtn'>APSTIPRINĀT</p>" +
-                            "<p class='status-btn noraditBtn'>NORAIDĪT</p>";
+                        return "<p class='status-btn apstiprinatBtn'>" + jal_str["Approve"] + "</p>" +
+                            "<p class='status-btn noraditBtn'>" + jal_str["Decline"] + "</p>";
 
                     } else if (data === '1') {
                         return "<p class='status-btn astiprinat-yes'></p>" +
-                            "<p class='status-btn'>NORAIDĪT</p>";
+                            "<p class='status-btn'>" + jal_str["Decline"] + "</p>";
 
                     } else if (data === '2') {
-                        return "<p class='status-btn apstiprinatBtn'>APSTIPRINĀT</p>" +
+                        return "<p class='status-btn apstiprinatBtn'>" + jal_str["Approve"] + "</p>" +
                             "<p class='status-btn noradit-no'></p>";
                     }
                 },
@@ -110,7 +110,7 @@ if (text) {
                 data: 'Labot',
                 visible: false,
                 render: () => {
-                    return "<a id='labotBtn' class='labot-btn'>Labot</a>";
+                    return "<a id='labotBtn' class='labot-btn'>" + jal_str["Edit"] + "</a>";
                 },
                 className: "column-btn labotBtn"
             }
@@ -181,8 +181,8 @@ if (text) {
         }],
         oLanguage: {
             oPaginate: {
-                sPrevious: "IEPRIEKŠĒJĀ",
-                sNext: "NĀKAMĀ",
+                sPrevious: jal_str["prev"],
+                sNext: jal_str["next"],
             }
         },
         columns: [
@@ -238,7 +238,7 @@ if (text) {
             {
                 data: 'Statuss',
                 render: () => {
-                    return "<a class='labot-btn' onclick='labotApsti(event)'>Labot</a>";
+                    return "<a class='labot-btn' onclick='labotApsti(event)'>" + jal_str["Edit"] + "</a>";
 
                 },
                 className: "column-btn labotApsti"
@@ -246,7 +246,7 @@ if (text) {
             {
                 data: 'Pievienot sertifikātu sarakstam',
                 render: () => {
-                    return "<a class='labot-btn'>PIEVIENOT</a>";
+                    return "<a class='labot-btn'>" + jal_str["Add"] + "</a>";
 
                 },
                 className: "column-btn pievienotBtn"
@@ -273,8 +273,8 @@ if (text) {
         }],
         oLanguage: {
             oPaginate: {
-                sPrevious: "IEPRIEKŠĒJĀ",
-                sNext: "NĀKAMĀ",
+                sPrevious: jal_str["prev"],
+                sNext: jal_str["next"],
             }
         },
         columns: [
@@ -331,7 +331,7 @@ if (text) {
 
     // set events on button in table
     $('.dataTable').on('click', '.apstiprinatBtn', function () {
-        if (confirm('Apstiprinot skolēnu šī darbība nav labojama')) {
+        if (confirm(jal_str["Msg_ApproveStudent"])) {
             let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
 
             data.Statuss = '1';
@@ -428,12 +428,12 @@ if (text) {
             console.log('macibuStatus ', macibuStatus);
             console.log('titanStatus ', titanStatus);
 
-            $(event.target).text('Labot');
+            $(event.target).text(jal_str["Edit"]);
             event.target.parentElement.style.background = 'white';
             event.target.style.color = '#d0d0d0';
 
             if($(event.path[2].cells[10]).hasClass('checked') && $(event.path[2].cells[8]).hasClass('checked')) {
-                $(event.target).text('Izdarīts');
+                $(event.target).text(jal_str["Done"]);
             }
 
             $(event.target).click(function () {
@@ -444,14 +444,14 @@ if (text) {
         });
 
         if (!$(event.path[2].cells[10]).hasClass('checked')) {
-            $(event.target).text('Saglabāt');
+            $(event.target).text(jal_str["Save"]);
             event.target.parentElement.style.background = '#24bc4b';
             event.target.style.color = 'white';
             event.path[2].cells[10].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
         }
 
         if (!$(event.path[2].cells[8]).hasClass('checked')) {
-            $(event.target).text('Saglabāt');
+            $(event.target).text(jal_str["Save"]);
             event.target.parentElement.style.background = '#24bc4b';
             event.target.style.color = 'white';
             event.path[2].cells[8].innerHTML = "<p onclick='checkYes(event)' class='astiprinat-yes'></p><p onclick='checkNo(event)' class='noradit-no'></p>";
@@ -460,7 +460,7 @@ if (text) {
     }
 
     function checkYes(event) {
-        if (confirm('Apstiprinot skolēnu šī darbība nav labojama')) {
+        if (confirm(jal_str["Msg_ApproveStudent"])) {
             event.path[1].innerHTML = "<p class='astiprinat-yes'></p>";
             $(event.path[1]).addClass('checked');
             checkPievienot(event);
@@ -468,7 +468,7 @@ if (text) {
     }
 
     function checkNo(event) {
-        if (confirm('Apstiprinot skolēnu šī darbība nav labojama')) {
+        if (confirm(jal_str["Msg_ApproveStudent"])) {
             event.path[1].innerHTML = "<p class='noradit-no'></p>";
             $(event.path[1]).addClass('checked');
             checkPievienot(event);

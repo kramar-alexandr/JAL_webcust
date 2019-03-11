@@ -24,7 +24,7 @@
 .capture{display:none;}
 .capture_top{
     position: absolute;
-    margin-top: 20vw;
+    margin-top: 14vw;
     margin-left: 12vw;
     z-index: 2;
     width: 38%;

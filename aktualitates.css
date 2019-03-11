@@ -233,6 +233,35 @@
 .capture_news_mobile{
     display: none;
 }
+.news-content {
+  display: none !important;
+}
+
+#pagenave{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paginationjs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:0 auto;
+}
+
+.paginationjs-prev, .paginationjs-next  {
+    border-radius: 50%;
+    width: calc(0.5vw + 0.5vw) !important;
+    margin: 0 calc(10px + 0.5vw) !important;
+    background-color: #39cf60;
+    opacity: 0.5;
+}
+
+.J-paginationjs-next, .J-paginationjs-previous {
+    background-color: rgb(234, 234, 234) !important;
+}
+
+
 @media screen and (max-width: 900px){
     #pagenav {
         margin: auto;
