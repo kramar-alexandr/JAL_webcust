@@ -733,7 +733,7 @@ td p {
     display: flex !important;
 }
 
-#company-table tr, th {
+#company-table tr,#company-table th {
     padding: 20px;
 }
 
@@ -1480,4 +1480,20 @@ td p {
     height: 30px;
     width: 90%;
     text-align: center;
+}
+.sec_section{
+  display:none;
+}
+.new_smu_section,.employer_section,.teacher_request_section{
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 2vw;
+}
+.new_smu_content{
+  width:50vw;
+  margin:0 auto;
+  text-align:left;
+  font-size:1vw;
+  margin-bottom:1vw;
 }

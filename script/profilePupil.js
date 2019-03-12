@@ -49,24 +49,42 @@ function PupilVerifiedController(pupil) {
             $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa un skolotāja.');
         } else if (!this.pupil.verified.parents) {
-            $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa.');
             $('.tabs').hide();
-            $('.status-info').text('Skolotājs profilu ir apstiprinājis');
             $('.status').show();
+            $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa.');
+            $('.status-info').text('Skolotājs profilu ir apstiprinājis');
         } else if (!this.pupil.verified.teacher) {
             $('.tabs').hide();
+            $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
             $('.status-info').text('Vecāks / aizbildnis profilu ir apstiprinājis');
-            $('.status').show();
         } else if (!pupil.smu) {
             $('.tabs').show();
+            $('.status').show();
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
-            $('.status').show();
+            
+            $('.sec_section').show();
+            if (pupil.employerrequests.length>0) {
+              $('.new_smu_section,.teacher_request_section').hide();
+              $(".smu_request_name").html(pupil.employerrequests[0].smuname);
+              $(".approve_smurequest").click(function(){
+                $.get("/WebSetEmpApplication.hal?stat=1",function(){$('.sec_section').hide()});              
+              });
+              $(".decline_smurequest").click(function(){
+                $.get("/WebSetEmpApplication.hal?stat=2",function(){$('.sec_section').hide()});
+              });
+            } else {
+              $('.employer_section,.teacher_request_section').hide();
+            }
         } else {
             $('.status-header').text('');
             $('.status-info').text('');
             $('.status').hide();
+            
+            if (pupil.sentforapproval=="1"){
+              
+            }
         }
     };
 

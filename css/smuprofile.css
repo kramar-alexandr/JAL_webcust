@@ -1,0 +1,130 @@
+.field_col{
+  background:#f1f1f1;
+  width:70%;
+  float:left;
+  overflow:hidden;
+  margin-right:25px;
+  padding: 10px 18px;
+  box-sizing:border-box;
+  
+}
+
+.field_col input,.field_col textarea{
+  background:none;
+  border:none;
+  font-size:1.1vw;
+  width:100%;
+}
+.field_col textarea:focus,.field_col  input:focus{
+  outline: none;
+}
+.field_col input{
+  height:25px;
+}
+.field_col textarea{
+  height:100px;
+}
+.field_label{
+  font-size:0.7vw;
+}
+.field_descr{
+  font-size:0.8vw;
+  margin-bottom:10px;
+}
+
+.field_row{
+  clear:both;
+  margin-bottom:13px;
+  padding-left:30%;
+}
+.clear{
+  clear:both;
+}
+.smu_top{
+  margin: auto;
+  margin-top: 20px;
+  height:5vw;
+}
+.back_button_wrap{
+  width:30%;
+  float:left;
+}
+
+.profile_header{
+  text-align:center;
+  width:70%;
+  font-weight:600;
+}
+.newEmp_form{
+  display:none;
+}
+.profile{
+  padding-top:30px;
+  padding-bottom:30px;
+}
+.profile table{
+border-collapse: collapse;
+}
+.profile table td,.profile table th{
+border:1px solid #ddd;
+padding:10px 30px;
+height:2vw;
+}
+#emplist-table{
+  margin-bottom:15px;
+}
+
+.emp_content{
+  margin-left:30%;
+  width:49%;
+  float:left;
+  margin-right: 25px;
+}
+.newEmp_form select{
+  width:16vw;
+}
+.emp_rem{
+  cursor:pointer;
+}
+
+.back_button_wrap a{
+  float:right;
+  margin:0px;
+  margin-right:2vw;
+}
+.spbutton{
+  padding:0.5vw 1vw;
+  background:#cccccc !important;
+}
+.table-plan{
+  display:none;
+}
+
+.table_edit{
+  border:none;
+  font-size:1vw;
+  text-align:center;
+}
+
+.hidden{
+  visibility:hidden;
+}
+.smu_submit_wrap{
+}
+.smu_submit{
+  margin-bottom:20px;
+}
+.smu_submit_wrap a{
+  margin:0 auto;
+  width:12vw;
+  display:block;
+  background:#16B01A !important;
+  text-align:center;
+}
+#findata_table{
+  width:80% !important;
+}
+
+.profile table td input{
+  width:100%;
+}
