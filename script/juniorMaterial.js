@@ -8,8 +8,7 @@ xhr.onload = function () {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
         console.log('confs ', confs);
         for (let doc of confs.docs ) {
-
-            if(doc.nameConf === '1-9 klašu materiāli') {
+            if(doc.nameConf == '1.-9. klašu materiāli') {
                 createConf(doc);
             }
         }

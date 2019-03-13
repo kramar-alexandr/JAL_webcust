@@ -70,7 +70,7 @@ function createBtnContainer(docum, div) {
 function createBtn(btn) {
     let button = document.createElement('a');
 
-    button.setAttribute('class', 'spbutton conf-btn');TeacherRegForm
+    button.setAttribute('class', 'spbutton conf-btn');
     button.textContent = btn.nameDoc;
 
     if (btn.serNr) {
