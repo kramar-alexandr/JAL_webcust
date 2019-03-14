@@ -8,7 +8,7 @@ xhr.onload = function () {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
         console.log('doc ', confs);
         for (let doc of confs.docs ) {
-            if(doc.nameConf === 'NOLIKUMI') {
+            if(doc.nameConf === 'Nolikumi') {
                 createConf(doc);
             }
         }
@@ -35,14 +35,14 @@ function createConf(conf) {
                 }
             }
 
-            $(mainContainer).appendTo('.conf-box');
+            $(mainContainer).appendTo('.profile');
         } else {
             let mainContainer = createConfContainer(doc);
             if (doc.nameDoc) {
                 createBtnContainer(doc, mainContainer);
             }
 
-            $(mainContainer).appendTo('.conf-box');
+            $(mainContainer).appendTo('.profile');
         }
     }
 }
@@ -61,7 +61,7 @@ function createBtnContainer(docum, div) {
         $(container).appendTo(div);
     } else {
         let button = createBtn(docum);
-        $(button).appendTo(div);
+        $(button).appendTo($(div).find(".conf-list-wrap"));
     }
 }
 
@@ -93,6 +93,10 @@ function createConfContainer(doc, subDiv) {
     header.setAttribute('class', 'open');
     header.textContent = doc.nameConf;
     $(header).appendTo(div);
+
+    let sdiv = document.createElement('div');
+    sdiv.setAttribute('class','conf-list-wrap');
+    $(sdiv).appendTo(div);
 
     $(header).click(function () {
         $(this).toggleClass('open close');
