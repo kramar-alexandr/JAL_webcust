@@ -19,10 +19,9 @@ function createConf(conf) {
     for (let doc of conf.docs) {
         if (doc.nameConf) {
             let mainContainer = createConfContainer(doc);
-
             if (doc.docs[0]) {
                 for ( let docum of doc.docs ) {
-                    if (docum.nameConf) {
+                   if (docum.nameConf) {
                         let subDiv = createConfContainer(docum, mainContainer);
                         if(docum.docs) {
                             createBtnContainer(docum, subDiv);
@@ -60,7 +59,7 @@ function createBtnContainer(docum, div) {
         $(container).appendTo(div);
     } else {
         let button = createBtn(docum);
-        $(button).appendTo(div);
+        $(button).appendTo($(div).find(".conf-list-wrap"));
     }
 }
 
@@ -92,6 +91,10 @@ function createConfContainer(doc, subDiv) {
     header.setAttribute('class', 'open');
     header.textContent = doc.nameConf;
     $(header).appendTo(div);
+
+    let sdiv = document.createElement('div');
+    sdiv.setAttribute('class','conf-list-wrap');
+    $(sdiv).appendTo(div);
 
     $(header).click(function () {
         $(this).toggleClass('open close');

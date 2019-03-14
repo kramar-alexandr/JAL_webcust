@@ -8,7 +8,6 @@ xhr.onload = function () {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
         console.log('confs ', confs);
         for (let doc of confs.docs ) {
-
             if(doc.nameConf === '10.-12.klašu materiāli') {
                 createConf(doc);
             }
@@ -63,7 +62,7 @@ function createBtnContainer(docum, div) {
         $(container).appendTo(div);
     } else {
         let button = createBtn(docum);
-        $(button).appendTo(div);
+        $(button).appendTo($(div).find(".conf-list-wrap"));
     }
 }
 
@@ -95,6 +94,10 @@ function createConfContainer(doc, subDiv) {
     header.setAttribute('class', 'open');
     header.textContent = doc.nameConf;
     $(header).appendTo(div);
+    
+    let sdiv = document.createElement('div');
+    sdiv.setAttribute('class','conf-list-wrap');
+    $(sdiv).appendTo(div);
 
     $(header).click(function () {
         $(this).toggleClass('open close');

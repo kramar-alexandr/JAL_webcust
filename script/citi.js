@@ -61,7 +61,7 @@ function createBtnContainer(docum, div) {
         $(container).appendTo(div);
     } else {
         let button = createBtn(docum);
-        $(button).appendTo(div);
+        $(button).appendTo($(div).find(".conf-list-wrap"));
     }
 }
 
@@ -93,6 +93,10 @@ function createConfContainer(doc, subDiv) {
     header.setAttribute('class', 'open');
     header.textContent = doc.nameConf;
     $(header).appendTo(div);
+
+    let sdiv = document.createElement('div');
+    sdiv.setAttribute('class','conf-list-wrap');
+    $(sdiv).appendTo(div);
 
     $(header).click(function () {
         $(this).toggleClass('open close');

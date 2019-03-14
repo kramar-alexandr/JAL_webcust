@@ -1497,3 +1497,14 @@ td p {
   font-size:1vw;
   margin-bottom:1vw;
 }
+
+.conf-list-wrap{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -2vw;
+}
+
+.conf-btn{
+width: 43% !important;
+}
