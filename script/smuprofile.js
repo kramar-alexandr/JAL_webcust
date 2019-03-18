@@ -180,7 +180,10 @@ function SMUProfileApp(js) {
             select: false,
             paging: false,
             ordering: false,
-            data: data
+            data: data,
+            language: {
+              zeroRecords: jal_str["zeroRecords"]
+            }
         });
         this.SumupTable(this.table);
         this.AddTableEvents();

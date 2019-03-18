@@ -38,8 +38,11 @@ let table = $('#regionsTable').DataTable({
     select: false,
     paging: false,
     ordering: false,
-    columns: [{data: 'nameTeacher'}, {data: 'schoolName'}, {data: 'PSK'}, {data: 'VSK'}, {data: 'PROF'}, {data: 'email'}]
-});
+    columns: [{data: 'nameTeacher'}, {data: 'schoolName'}, {data: 'PSK'}, {data: 'VSK'}, {data: 'PROF'}, {data: 'email'}],
+    language: {
+      zeroRecords: "Nav datu"
+    }}
+);
 
 $('#rīga').click(function () {
     table.clear();

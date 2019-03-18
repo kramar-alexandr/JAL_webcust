@@ -3,11 +3,18 @@ if (text) {
     let techerInfo = JSON.parse(text);
 
     // initializate Skolēnu pieteikumi table table
-    let tableData = techerInfo.SMU.filter((i) => {
+    let smus = techerInfo.SMU.filter((i) => {
         if (i.Statuss !== '1') {
             return i;
         }
     });
+    
+    let students = techerInfo.Students.filter((i) => {
+        if (i.Statuss !== '1') {
+            return i;
+        }
+    });
+    let tableData = smus.concat(students);
 
     for (let i = 0; i < tableData.length; i++) {
         let count = 1;
@@ -70,7 +77,8 @@ if (text) {
             oPaginate: {
                 sPrevious: jal_str["prev"],
                 sNext: jal_str["next"],
-            }
+            },
+            sEmptyTable: jal_str["zeroRecords"]
         },
         columnDefs: [{
             orderable: false,

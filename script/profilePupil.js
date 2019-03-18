@@ -24,6 +24,12 @@ function PupilVerifiedController(pupil) {
         $('.school').text(`Skola: ${this.pupil.school}`);
         $('.email').text(`E-pasts: ${this.pupil.email}`);
         $('.teacher').text(`Izvēlētais skolotājs, SMU konsultants: ${this.pupil.teacher}`);
+        $('#student_name_approve').html(this.pupil.fullName);
+        let tstr = this.pupil.school;
+        if (tstr.substr(-5)=="skola"){
+          tstr+="s";
+        }
+        $('#student_school_approve').html(tstr);
 
         if (this.pupil.parent) {
             $('.pupil-parent').show();
