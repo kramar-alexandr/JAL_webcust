@@ -230,7 +230,7 @@ function SMUProfileApp(js) {
    
   this.submitSMUData = function(el,approvef){
     //if (this.ValidateForm()){
-      $(el).unbind("click").css("background-color","#c5c5c5");
+      $(el).unbind("click").html(jal_str["Wait"]);
       let drp = $('.smu_period').data('daterangepicker');
       let sd = drp.startDate.format('YYYY-MM-DD');
       let ed = drp.endDate.format('YYYY-MM-DD');
