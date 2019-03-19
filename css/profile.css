@@ -246,7 +246,7 @@
 }
 
 .dataTable {
-    border: 1px solid #eeeeee;
+    border: 1px solid #c5c5c5;
     border-radius: 7px;
     border-bottom: none !important;
 }
@@ -266,7 +266,7 @@
 
 .dataTable thead th, .dataTable thead td {
     padding: 15px 0.2vw !important;
-    border: 1px solid #eeeeee !important;
+    border: 1px solid #c5c5c5 !important;
 }
 
 .dataTable .no-footer {
@@ -274,7 +274,7 @@
 }
 
 .dataTable td {
-    border: 1px solid #eeeeee;
+    border: 1px solid #c5c5c5;
 }
 
 .status-btn {
@@ -1507,4 +1507,16 @@ td p {
 
 .conf-btn{
 width: 43% !important;
+}
+.hidden{
+  visibility:hidden;
+}
+
+#company-table td:first-child{
+  visibility:hidden;
+}
+
+#company-table{
+  width:100% !important;
+  margin-left:-52px;
 }

@@ -208,8 +208,7 @@ let template = document.createElement('div');
 template.innerHTML = smuInfo.trim();
 template.className = 'smu-border';
 
-let companyTemp = document.createElement('div');
-companyTemp.innerHTML = companyTempInfo.trim();
+let companyTemp = $("#smu_info_template").html();//companyTempInfo;
 
 if (SMUData) {
     let smus = JSON.parse(SMUData);
@@ -233,8 +232,8 @@ if (SMUData) {
             smuNode.find('.show-info-btn').click(function () {
                 $(this).parent().parent().parent().find('.company-detail').toggleClass('show')
             });
-            smuNode.find('.leader').text('Vadītājs: ' + smu.leader);
-            smuNode.find('.members').text('Dalībnieki. ' + smu.members);
+            companyInfo.find('.leader').append(smu.leader);
+            companyInfo.find('.members').append(smu.members);
 
             if (smu.submittedDocs.posted === 'true') {
                 smuNode.find('.posted').attr('src', '../img/docs.png')
@@ -246,15 +245,15 @@ if (SMUData) {
                 smuNode.find('.submitTeacher, .posted, .submitJAL').attr('src', '../img/docs.png')
             }
 
-            companyInfo.find('.register-number').text('Reģistrācijas Nr: ' + smu.regNr);
+            companyInfo.find('.register-number').append(smu.regNr);
             if (+smu.klass > 9) {
-                companyInfo.find('.education').text('Izglītības pakāpe: vidusskola');
+                companyInfo.find('.education').append('vidusskola');
             } else {
-                companyInfo.find('.education').text('Izglītības pakāpe: pamatskola');
+                companyInfo.find('.education').append('pamatskola');
             }
 
-            companyInfo.find('.type-company').text('Darbības veids/nozare. ' + smu.companyType);
-            companyInfo.find('.target-type').text('Mērkauditorija ' + smu.targetAudit);
+            companyInfo.find('.type-company').append(smu.companyType);
+            companyInfo.find('.target-type').append(smu.targetAudit);
             companyInfo.find('#confirmBtn').click(function () {
                 let xhr = new XMLHttpRequest();
                 xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=1&sernr=${smu.regNr}`, true);
@@ -294,9 +293,48 @@ if (SMUData) {
             }
 
             companyInfo.find('.company-smu').text(`Vadītājs: ${smu.leader},  ${smu.members}`);
+            let data = [];
+            for (var i=0;i<smu.FinData.materials.length && i<smu.emplist.length;i++) {
+              var e = smu.emplist[i];
+              var d = smu.FinData.materials[i];
+              var arr = [];
+              if (e && e.type=="0") {
+                arr[0] = e.Code;
+                arr[1] = e.Name;
+                arr[2] = e.Salary;
+              } else {
+                arr[0] = "";
+                arr[1] = "";
+                arr[2] = "";
+              }
+              if (d) {
+                arr[3] = d.ProdName;
+                arr[4] = d.UCost;
+              } else {
+                arr[3] = "";
+                arr[4] = "";
+              }
+              arr[5] = "";
+              arr[6] = "";
+              data.push(arr);
+            }
+ 
 
             smuNode.append(companyInfo);
             dataSource.push(smuNode);
+            let table = $(smuNode).find("#company-table").DataTable({
+                searching: false,
+                info: false,
+                select: false,
+                paging: false,
+                ordering: false,
+                data: data,
+                language: {
+                  zeroRecords: jal_str["zeroRecords"]
+                }
+            });
+            SumupTable(table,$(smuNode).find("#company-table"));
+
         }
 
     }
@@ -309,4 +347,20 @@ if (SMUData) {
             $('#smu-wrapper').html(data);
         }
     });
+}
+function SumupTable(table,el){
+     let rows = table.data().toArray();
+     var emps = 0;
+     var mat = 0;
+     for (var i=0;i<rows.length;i++){
+       if (!isNaN(parseFloat(rows[i][2]))) {
+         emps+= parseFloat(rows[i][2]);
+       }
+       if (!isNaN(parseFloat(rows[i][4]))) {
+         mat+= parseFloat(rows[i][4]);
+       }
+     }
+     $(el).find("tfoot td:nth-child(3)").html(emps);
+     $(el).find("tfoot td:nth-child(5)").html(mat);
+     $(el).find("tfoot td:nth-child(6)").html(emps+mat);
 }

@@ -108,6 +108,19 @@ function PupilVerifiedController(pupil) {
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
             $('.status').show();
+            $('.sec_section').show();
+            if (pupil.employerrequests.length>0) {
+              $('.new_smu_section,.teacher_request_section').hide();
+              $(".smu_request_name").html(pupil.employerrequests[0].smuname);
+              $(".approve_smurequest").click(function(){
+                $.get("/WebSetEmpApplication.hal?stat=1",function(){$('.sec_section').hide()});              
+              });
+              $(".decline_smurequest").click(function(){
+                $.get("/WebSetEmpApplication.hal?stat=2",function(){$('.sec_section').hide()});
+              });
+            } else {
+              $('.employer_section,.teacher_request_section').hide();
+            }
         }
     };
 

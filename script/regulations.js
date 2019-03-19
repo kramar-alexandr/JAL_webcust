@@ -6,7 +6,7 @@ xhr.onload = function () {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
     } else {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
-        console.log('doc ', confs);
+
         for (let doc of confs.docs ) {
             if(doc.nameConf === 'Nolikumi') {
                 createConf(doc);
@@ -100,6 +100,11 @@ function createConfContainer(doc, subDiv) {
 
     $(header).click(function () {
         $(this).toggleClass('open close');
+        $(this).parent().find('.conf-btn').toggleClass('show-flex');
+        $(this).parent().find('.sub-conf').toggleClass('show-flex');
+    });
+
+    $('.sub-conf').find('h3').click(function () {
         $(this).parent().find('.conf-btn').toggleClass('show-flex');
     });
 

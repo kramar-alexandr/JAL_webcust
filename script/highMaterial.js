@@ -6,7 +6,7 @@ xhr.onload = function () {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
     } else {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
-        console.log('confs ', confs);
+
         for (let doc of confs.docs ) {
             if(doc.nameConf === '10.-12.klašu materiāli') {
                 createConf(doc);
@@ -18,7 +18,6 @@ xhr.onload = function () {
 function createConf(conf) {
     for (let doc of conf.docs) {
         if (doc.nameConf) {
-            console.log('2 ', );
             let mainContainer = createConfContainer(doc);
 
             if (doc.docs[0]) {
@@ -37,7 +36,6 @@ function createConf(conf) {
 
             $(mainContainer).appendTo('.profile');
         } else {
-            console.log('1 ', );
             let mainContainer = createConfContainer(doc);
             if (doc.nameDoc) {
                 createBtnContainer(doc, mainContainer);

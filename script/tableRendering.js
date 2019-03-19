@@ -153,7 +153,6 @@ if (text) {
         let count = 1;
         pamatskola[i].Number = count + i;
     }
-
     // initializate apstiprinatie table
     let tableApstiprinatie = $('#apstiprinatie').DataTable({
         data: apstiprinatie,
@@ -191,7 +190,12 @@ if (text) {
             oPaginate: {
                 sPrevious: jal_str["prev"],
                 sNext: jal_str["next"],
-            }
+            },
+            sEmptyTable: jal_str["zeroRecords"]
+        },
+        language: {
+          zeroRecords: jal_str["zeroRecords"],
+          emptyTable: jal_str["zeroRecords"]
         },
         columns: [
             {data: 'Number'},
@@ -283,7 +287,12 @@ if (text) {
             oPaginate: {
                 sPrevious: jal_str["prev"],
                 sNext: jal_str["next"],
-            }
+            },
+            sEmptyTable: jal_str["zeroRecords"]
+        },
+        language: {
+          zeroRecords: jal_str["zeroRecords"],
+          emptyTable: jal_str["zeroRecords"]
         },
         columns: [
             {data: 'Number'},

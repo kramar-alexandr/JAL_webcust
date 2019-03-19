@@ -194,10 +194,10 @@ function SMUProfileApp(js) {
    this.showSubmitButtons = function(){
      var self = this;
      $(".save_only").click(function(){
-       self.submitSMUData(false);
+       self.submitSMUData(this,false);
      });
      $(".save_submit").click(function(){
-       self.submitSMUData(true);
+       self.submitSMUData(this,true);
      });
    
    }
@@ -228,8 +228,9 @@ function SMUProfileApp(js) {
     return data;
   }
    
-  this.submitSMUData = function(approvef){
+  this.submitSMUData = function(el,approvef){
     //if (this.ValidateForm()){
+      $(el).unbind("click").css("background-color","#c5c5c5");
       let drp = $('.smu_period').data('daterangepicker');
       let sd = drp.startDate.format('YYYY-MM-DD');
       let ed = drp.endDate.format('YYYY-MM-DD');
