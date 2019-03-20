@@ -63,6 +63,9 @@
 .one-flex:hover, .one-flex-spec:hover{
     background-color: white;
 }
+.one-flex:hover{
+  box-shadow:0 0 11px rgba(7,205,96,1);
+}
 .one-flex img, .one-flex-spec img{
     width: 100%;
     margin: auto;

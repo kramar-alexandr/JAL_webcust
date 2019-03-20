@@ -1,6 +1,9 @@
 let events = [];
 let submittedEvents = [];
-let student = JSON.parse(pupil);
+let student = {};
+if ("pupil" in window){
+  student = JSON.parse(pupil);
+}
 if (calf===undefined) {
   var calf = 0;
 }
@@ -44,26 +47,52 @@ function EventDisplay(events, submittedEvents) {
         '    </div>\n' +
         '</div>';
     this.createEvents = function() {
+        $(".application").append("<div id='pagenave'></div>");
+        $(".application").append("<div id='orig_items' style='display:none'></div>");
         if (this.events.length) {
             for (let event of this.events) {
                 $('.events-info').hide();
                 let eventBox = this.getTemplate(this.template);
                 event.el = eventBox;
-                this.setInfo(eventBox, event, '.application');
+                this.setInfo(eventBox, event, '#orig_items');
             }
+
+          $('.application.smu-border').pagination({
+              dataSource: function(done){
+                  var result = [];
+                  for (let li of $('.smu-border .avents-box')) {
+                      result.push(li);
+                  }
+                  done(result);
+              },
+              prevText: '',
+              nextText: '',
+          showPageNumbers: false,
+          pageSize: 5,
+              callback: function (data, pagination) {
+                  // template method of yourself
+                  // var html = template(data);
+                  $('#pagenave').html(data);
+              }
+          });
+
         }
 
         this.setEvents(this.smuCode);
 
         if (this.submittedEvents.length) {
             for (let event of this.submittedEvents) {
+                let foundf = false;
                 for (let ev of this.events) {
                     if (ev.serNr === event.event) {
+                      foundf = true;
                       event.nameEvent = ev.nameEvent;
                       $(ev.el).find(".btn-submit").unbind("click").text("Esmu pieteicies")
                     }
                 }
-
+                if (!foundf){
+                  continue;
+                }
                 let eventBox = this.getTemplate(this.template);
                 $(eventBox).find(".btn-info").remove();
 
@@ -95,7 +124,7 @@ function EventDisplay(events, submittedEvents) {
     };
 
     this.getTemplate = function(temp) {
-        return $(this.createTemplate(temp)).clone();
+        return $(temp).clone();
     };
 
     this.setInfo = function (template, event, container) {
@@ -104,7 +133,7 @@ function EventDisplay(events, submittedEvents) {
         template.find('.event-description').html(event.description);
         template.find('#code').val(event.serNr);
         template.appendTo( container );
-        if (event.allowApply=="0"){
+        if (event.allowApply=="0" || !student.smuCode){
           template.find('.btn-submit').hide();
         }
         if (event.description==""){
