@@ -1026,6 +1026,7 @@ td p {
     align-items: center;
     width: 70%;
     margin: auto;
+    flex-wrap:wrap;
     margin-bottom: 20px !important;
 }
 
@@ -1045,6 +1046,8 @@ td p {
 
 .event-description {
     display: none;
+    flex-basis: 100%;
+    padding:1vw 2vw;
 }
 
 .active-btn {

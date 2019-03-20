@@ -1,9 +1,12 @@
 let events = [];
 let submittedEvents = [];
 let student = JSON.parse(pupil);
+if (calf===undefined) {
+  var calf = 0;
+}
 
 $.ajax({
-    url: '/WebGetEvents.hal',
+    url: '/WebGetEvents.hal?calf=' + calf,
     async: false,
     success: function(res) {
         events = JSON.parse(res);
@@ -30,13 +33,14 @@ function EventDisplay(events, submittedEvents) {
         '        </div>\n' +
         '        <div>\n' +
         '            <h2 class="name-event"></h2>\n' +
-        '            <p class="event-description"></p>\n' +
         '        </div>\n' +
         '        <div class="block-btn">\n' +
         // '            <button class="btn-info spbutton">Papildus info</button>\n' +
         '            <input type="hidden" id="code" name="code" value="">\n' +
         '            <button class="btn-submit spbutton grey">Pieteikties</button>\n' +
+        '            <button class="btn-info spbutton grey">Info</button>\n' +
         '        </div>\n' +
+        '        <div class="event-description"></div>\n' +
         '    </div>\n' +
         '</div>';
     this.createEvents = function() {
@@ -44,6 +48,7 @@ function EventDisplay(events, submittedEvents) {
             for (let event of this.events) {
                 $('.events-info').hide();
                 let eventBox = this.getTemplate(this.template);
+                event.el = eventBox;
                 this.setInfo(eventBox, event, '.application');
             }
         }
@@ -53,21 +58,35 @@ function EventDisplay(events, submittedEvents) {
         if (this.submittedEvents.length) {
             for (let event of this.submittedEvents) {
                 for (let ev of this.events) {
-                    if (ev.serNr === event.event) event.nameEvent = ev.nameEvent;
+                    if (ev.serNr === event.event) {
+                      event.nameEvent = ev.nameEvent;
+                      $(ev.el).find(".btn-submit").unbind("click").text("Esmu pieteicies")
+                    }
                 }
 
                 let eventBox = this.getTemplate(this.template);
+                $(eventBox).find(".btn-info").remove();
 
                 if (+event.filled) {
-                    continue;
+                  continue;
                 } else {
-                    $('.technical-info').hide();
-                    eventBox.find('.btn-submit').text('Aizpildīt');
-                    eventBox.find('.btn-submit').click(function () {
-                        window.location.href = `/application-form?code=${event.serNr}`;
-                    });
-
-                    this.setInfo(eventBox, event, '.technical');
+                  $('.technical-info').hide();
+                  switch (event.satus){
+                    case "4":
+                      eventBox.find('.btn-submit').text('Aizpildīt');
+                      eventBox.find('.btn-submit').click(function () {
+                          window.location.href = `/application-form?code=${event.serNr}`;
+                      });
+                      break;
+                    case "0":
+                      eventBox.find('.btn-submit').text('Gaida skolotāja apstiprinājumu');
+                      break;
+                    case "1":
+                      eventBox.find('.btn-submit').text('Gaida apstiprinājumu');
+                      break;
+                   
+                  }
+                  this.setInfo(eventBox, event, '.technical');
                 }
             }
         } else {
@@ -82,9 +101,15 @@ function EventDisplay(events, submittedEvents) {
     this.setInfo = function (template, event, container) {
         template.find('.date').text(getMonthDay(event.dataStart) + ' - ' + getMonthDay(event.dataEnd));
         template.find('.name-event').text(event.nameEvent);
-        template.find('.event-description').text(event.description);
+        template.find('.event-description').html(event.description);
         template.find('#code').val(event.serNr);
         template.appendTo( container );
+        if (event.allowApply=="0"){
+          template.find('.btn-submit').hide();
+        }
+        if (event.description==""){
+          template.find('.btn-info').hide();
+        }
     };
 
     this.createTemplate = function(temp) {
@@ -95,7 +120,7 @@ function EventDisplay(events, submittedEvents) {
 
     this.setEvents = function () {
         $('.btn-info').click(function(){
-            $(this).parent().parent().find('.event-description').toggleClass('show');
+            $(this).parent().parent().find('.event-description').show();
         });
         $('.btn-submit').click(function () {
             createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
@@ -111,7 +136,11 @@ function EventDisplay(events, submittedEvents) {
             },
             url: '/WebCreateEventPieteikum.hal',
             success: function() {
-                alert("Pieņemtas izmaiņas!");
+              //if (calf) {
+                //window.location.href = `/application-form?code=${eventCode}`;
+              //} else {
+                alert("Pieņemtas izmaiņas!");              
+              //}
             }
         });
     }
@@ -119,8 +148,8 @@ function EventDisplay(events, submittedEvents) {
     function getMonthDay(date) {
         let months = [ "jan.", "feb.", "mar.", "apr.", "may.", "jun.",
             "jul.", "aug.", "sep.", "oct.", "nov.", "dec." ];
-        let month = new Date(date).getMonth();
-        let day = new Date(date).getDate();
+        let month = parseInt(date.substr(0,2),10)-1;
+        let day = date.substr(3,2);
 
         return `${day}.${months[month]}`;
 

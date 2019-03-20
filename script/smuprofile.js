@@ -36,7 +36,9 @@ function SMUProfileApp(js) {
    
     $('.smu_period').daterangepicker({
       locale: {
-        format: 'YYYY-MM-DD'
+        format: 'YYYY-MM-DD',
+        applyLabel: jal_str["Apply"],
+        cancelLabel: jal_str["Cancel"]
       }
     });  
   }

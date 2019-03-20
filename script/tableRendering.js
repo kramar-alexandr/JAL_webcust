@@ -5,16 +5,30 @@ if (text) {
     // initializate Skolēnu pieteikumi table table
     let smus = techerInfo.SMU.filter((i) => {
         if (i.Statuss !== '1') {
+            i.rectype = 0;
+            i.rectypename = jal_str["SMU"];
+            i.Skolens2 = i.Skolens + " (" + i.Nosaukums + ")";
             return i;
         }
     });
     
     let students = techerInfo.Students.filter((i) => {
         if (i.Statuss !== '1') {
+            i.rectype = 1;
+            i.rectypename = jal_str["Student"];
+            i.Skolens2 = i.Skolens;
             return i;
         }
     });
-    let tableData = smus.concat(students);
+    let events = techerInfo.Events.filter((i) => {
+        if (i.Statuss !== '1') {
+            i.rectype = 2;
+            i.rectypename = jal_str["Event"];
+            i.Skolens2 = i.Skolens + " (" + i.EventName + ")";
+            return i;
+        }
+    });
+    let tableData = smus.concat(students,events);
 
     for (let i = 0; i < tableData.length; i++) {
         let count = 1;
@@ -22,7 +36,6 @@ if (text) {
         tableData[i].Number = +count + i;
     }
 
-    console.log('tableData ', tableData);
     let table = $('#table_id').DataTable({
         data: tableData,
         dom: '<"top"B>t<"bottom"p><"clear">',
@@ -86,7 +99,8 @@ if (text) {
         }],
         columns: [
             {data: 'Number'},
-            {data: 'Skolens', width: '60%',},
+            {data: 'rectypename'},
+            {data: 'Skolens2', width: '60%',},
             {
                 data: 'Klase',
                 ordering: true
@@ -350,11 +364,16 @@ if (text) {
     $('.dataTable').on('click', '.apstiprinatBtn', function () {
         if (confirm(jal_str["Msg_ApproveStudent"])) {
             let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
-
             data.Statuss = '1';
             table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+            if (data.rectype==2) {
+              data.Statuss = '4';
+              getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
+            
+            } else {
+              getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);        
+            }
 
-            getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
         }
     });
 
@@ -364,7 +383,12 @@ if (text) {
         data.Statuss = '2';
         table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
 
-        getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
+        if (data.rectype==2) {
+          getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
+        
+        } else {
+          getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);        
+        }
     });
 
     $('.dataTable').on('click', '.labotBtn', function () {
