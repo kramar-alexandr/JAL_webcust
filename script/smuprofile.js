@@ -157,8 +157,9 @@ function SMUProfileApp(js) {
         if (!self.activecol) {
           self.activecol = true;
           $(th).html("<input class='table_edit' value='" + $(th).html() + "'>");
-          $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
-
+          if ($(this).parent().children().index($(this))!=2){
+            $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
+          }
           $(th).find("input").focus().blur(function(){
             $(th).html();
             var cell = table.cell( th );
