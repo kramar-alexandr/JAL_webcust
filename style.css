@@ -27,6 +27,13 @@ input:focus{
     display: flex;
     display: -webkit-flex;
 }
+.flex.mentori{
+  flex-wrap:wrap;
+  margin-right:-5px;
+}
+.flex.mentori>div{
+  margin-right:5px;
+}
 .main_info {
     padding-top: 4vw;
     padding-bottom: 2vw;

@@ -1512,7 +1512,7 @@ td p {
 width: 43% !important;
 }
 .hidden{
-  visibility:hidden;
+  /*visibility:hidden;*/
 }
 
 #company-table td:first-child{

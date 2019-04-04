@@ -75,13 +75,22 @@ height:2vw;
 }
 
 .emp_content{
-  margin-left:30%;
-  width:49%;
+  margin-left:5%;
+  width:74%;
   float:left;
   margin-right: 25px;
 }
+.emp_content table{
+  width:100%;
+}
+#emplist-table select{
+  margin:0px;
+}
 .newEmp_form select{
   width:16vw;
+}
+.nemp_code{
+  margin-right:20px;
 }
 .emp_rem{
   cursor:pointer;
@@ -97,7 +106,7 @@ height:2vw;
   background:#cccccc !important;
 }
 .table-plan{
-  display:none;
+  /*display:none;*/
 }
 
 .table_edit{
@@ -107,7 +116,7 @@ height:2vw;
 }
 
 .hidden{
-  visibility:hidden;
+  /*visibility:hidden;*/
 }
 .smu_submit_wrap{
 }
@@ -122,9 +131,60 @@ height:2vw;
   text-align:center;
 }
 #findata_table{
-  width:80% !important;
+  width:auto !important;
 }
 
 .profile table td input{
   width:100%;
+}
+.table_header{
+  width:100%;
+  text-align:center;
+  font-weight: 600;
+  margin-bottom:20px;
+}
+.field_wrap{
+  float:left;
+  margin-left:5%;
+  margin-right:20px;
+}
+.dataTables_wrapper{
+  overflow:hidden;
+  clear:none !important;
+}
+.table_wrap{
+  clear:both;
+  margin-bottom:20px;
+}
+#add_item_button{
+  width:12vw;
+  /*margin:0 auto;*/
+  text-align:center;
+  margin-left:5%;
+  background:#16B01A !important;
+}
+.table_field input{
+  width:24vw;
+  font-size:1.3vw;
+  height:2vw;
+}
+
+.table_field.itemprice input,.table_field.costprice input{
+  width:9vw;
+}
+#finplan_table_wrapper{
+  margin:0vw 1vw;
+}
+
+#finplan_table tfoot td:first-child{
+  border-left:none;
+  border-bottom:none;
+  text-align:right !important;
+  background:white;
+}
+#finplan_table tfoot tr,tfoot,#finplan_table{
+  border-left:none;
+}
+tfoot tr td{
+  background:#f3f3f3;
 }
