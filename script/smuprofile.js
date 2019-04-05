@@ -23,6 +23,8 @@ function SMUProfileApp(js) {
   this.smu = js;
   this.activecol = false;
   this.table = null;
+  this.items = [];
+  this.plantable = null;
 
   this.SetProfile = function () {
     this.setMainInfo();
@@ -203,13 +205,20 @@ function SMUProfileApp(js) {
    }
    
    this.AddItemTable = function(data,itemname,itemprice){
+        var self = this;
         var wrap = $('#temp_table_wrap').clone();
         
         $(wrap).attr("id","").addClass("table_wrap").css("display","block");
         var ntable = $(wrap).find("table");
         $("#cost_table_wrap").append(wrap);
-        $(wrap).find(".itemname input").val(itemname);
-        $(wrap).find(".itemprice input").val(itemprice);
+        $(wrap).find(".itemname input").val(itemname).change(function(){
+          var oldval = $(this).get(0).defaultValue;
+          self.items.push($(this).val());
+          self.AddEmptyItems();
+        });
+        
+        $(wrap).find(".itemprice input").val(itemprice).inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
+
         let table = $(ntable).DataTable({
             searching: false,
             info: false,
@@ -245,6 +254,7 @@ function SMUProfileApp(js) {
       for (var i=0;i<this.smu.FinData.materials.length;i++) {
         var data = [];
         var d = this.smu.FinData.materials[i];
+
         var emparr = [];
         var itemarr = [];
         for (var j=0;j<d.costs.length;j++) {
@@ -264,6 +274,7 @@ function SMUProfileApp(js) {
         }
         let itemname = d.ItemName;
         let itemprice = d.Price;
+        self.items.push(itemname);
         for (var s=0;s<emparr.length||s<itemarr.length;s++){
           let a1 = emparr[s];
           if (a1===undefined){
@@ -348,18 +359,34 @@ function SMUProfileApp(js) {
         }
       });
    }
-
-   this.setFinPlan = function(){
+   
+   this.AddEmptyItemPlan = function(rows,item){
+     $("#eventlist option").each(function(){
+       var t = this;
+       var arr = [$(t).text(),item,"","","","","","",$(t).val()];
+       rows.push(arr);
+     });    
+   }
+   
+   this.AddEmptyItems = function(){
+     var self = this;
+     var rows = this.plantable.data().toArray();
+     var items = {};
+     for (var i=0;i<rows.length;i++){
+       items[rows[i][1]] = true;
+     }
+     for (var i=0;i<this.items.length;i++){
+       if (!items[this.items[i]]) {
+         self.AddEmptyItemPlan(rows,this.items[i]);
+       }
+     }
+     console.log(rows);
+     this.plantable.destroy();
+     this.CreatePlanTable(rows);
+   }
+   
+   this.CreatePlanTable = function(data){
       var ntable = $("#finplan_table");
-      var data = [];
-      for (var i=0;i<this.smu.FinData.eventturnover.length;i++) {
-        var it = this.smu.FinData.eventturnover[i];
-        for (var j=0;j<it.turnover.length;j++){
-          l = it.turnover[j];
-          var arr = [l.EventName,it.ItemName,l.UCost,l.UPrice,l.SoldUnits,l.Income,l.Costs,l.Profit,l.EventID];
-          data.push(arr);
-        }
-      } 
       data = data.sort(Comparator);
 
       let table = $(ntable).DataTable({
@@ -374,9 +401,27 @@ function SMUProfileApp(js) {
             zeroRecords: jal_str["zeroRecords"]
           }
       });
+      this.plantable = table;
       this.SumupPlanTable(table,ntable);
       this.AddPlanTableEvents(table,ntable);
         
+   
+   }
+
+   this.setFinPlan = function(){
+      var data = [];
+      for (var i=0;i<this.smu.FinData.eventturnover.length;i++) {
+        var it = this.smu.FinData.eventturnover[i];
+        for (var j=0;j<it.turnover.length;j++){
+          l = it.turnover[j];
+          var arr = [l.EventName,it.ItemName,l.UCost,l.UPrice,l.SoldUnits,l.Income,l.Costs,l.Profit,l.EventID];
+          data.push(arr);
+        }
+      } 
+      this.CreatePlanTable(data);
+      this.AddEmptyItems();
+
+
    }
    this.showSubmitButtons = function(){
      var self = this;

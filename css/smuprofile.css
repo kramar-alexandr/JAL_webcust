@@ -62,11 +62,13 @@
   padding-top:30px;
   padding-bottom:30px;
 }
+/*
 .profile table{
 border-collapse: collapse;
 }
+*/
 .profile table td,.profile table th{
-border:1px solid #ddd;
+border:1px solid #ddd !important;
 padding:10px 30px;
 height:2vw;
 }
@@ -132,6 +134,7 @@ height:2vw;
 }
 #findata_table{
   width:auto !important;
+  margin-right:1vw;
 }
 
 .profile table td input{
@@ -167,24 +170,56 @@ height:2vw;
   width:24vw;
   font-size:1.3vw;
   height:2vw;
+  
 }
 
 .table_field.itemprice input,.table_field.costprice input{
   width:9vw;
+  text-align:right;
 }
 #finplan_table_wrapper{
   margin:0vw 1vw;
 }
 
-#finplan_table tfoot td:first-child{
-  border-left:none;
-  border-bottom:none;
-  text-align:right !important;
-  background:white;
-}
+
 #finplan_table tfoot tr,tfoot,#finplan_table{
   border-left:none;
 }
 tfoot tr td{
   background:#f3f3f3;
+}
+
+table.dataTable td,table.dataTable th{
+  border:0px !important;
+  border-right:1px solid #ddd !important;
+  border-bottom:1px solid #ddd !important;
+}
+table.dataTable td:first-child,table.dataTable th:first-child{
+  border-left:1px solid #ddd !important;
+}
+table.dataTable  thead tr:first-child th{
+  border-top:1px solid #ddd !important;
+}
+.dataTable tfoot td:first-child{
+  border-bottom-left-radius:15px;
+}
+.dataTable thead tr:first-child th:first-child{
+  border-top-left-radius:15px;
+}
+.dataTable tfoot td:last-child{
+  border-bottom-right-radius:15px;
+}
+.dataTable thead tr:first-child th:last-child{
+  border-top-right-radius:15px;
+}
+#finplan_table tfoot td:first-child{
+  border-left:none !important;
+  border-bottom:none !important;
+  text-align:right !important;
+  background:white;
+  border-right:none !important;
+}
+#finplan_table tfoot td:nth-child(2){
+  border-bottom-left-radius:15px;
+  border-left:1px solid #ddd !important;
 }
