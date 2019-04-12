@@ -169,6 +169,18 @@
 .capture_programma_mobile{
     display: none;
 }
+.close {
+    background-image: url(../img/close.png);
+    background-repeat: no-repeat;
+    background-position: 98%;
+    padding-right: 3vw;
+}
+.open {
+    background-image: url(../img/open.png) !important;
+    background-repeat: no-repeat;
+    background-position: 98%;
+    padding-right: 3vw;
+}
 @media screen and (max-width: 900px){
     .capture_programma {
         position: absolute;

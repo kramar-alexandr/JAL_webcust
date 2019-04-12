@@ -36,6 +36,7 @@ function SMUProfileApp(js) {
       $(".table-emps").hide();
       $(".table-salary").hide();
       $(".save_submit").hide();
+      $(".table-plan").hide();
     }
     this.showSubmitButtons();
   };
@@ -120,6 +121,7 @@ function SMUProfileApp(js) {
        
        $(".newEmp_button_submit a").click(function(){
          $.get("WebSaveCompEmp2.hal?nemp=" + $(".newEmp_form .nemp_code").val() + "&nemp_pos=" + $(".newEmp_form  .nemp_pos").val(),function(){
+           $(".newEmp_form .nemp_code option:selected").remove();
            self.refreshData();
            alert(jal_str["InvitationSent"]);
          });
@@ -241,11 +243,14 @@ function SMUProfileApp(js) {
         this.AddTableEvents(table,ntable,wrap);   
    }
    
-   this.AddEmptyItem = function(){
+   this.AddEmptyItem = function(button){
      var data = [];
      data.push(["","","","","","",""]);
    
      this.AddItemTable(data,"","");
+     if ($("#cost_table_wrap .table_wrap").length>=3) {
+       $(button).remove();
+     }
    }
    
    this.setFinData = function(){
@@ -289,9 +294,13 @@ function SMUProfileApp(js) {
         data.push(["","","","",""]);
         self.AddItemTable(data,itemname,itemprice);
       }
-      $("#add_item_button").click(function(){
-        self.AddEmptyItem();
-      });
+      if ($("#cost_table_wrap .table_wrap").length>=3) {
+        $("#add_item_button").remove();
+      } else {
+        $("#add_item_button").click(function(){
+          self.AddEmptyItem(this);
+        });
+      }
    }
    
    
@@ -469,7 +478,6 @@ function SMUProfileApp(js) {
     item.emps = [];
     item.costs = [];
     let rows = table.data().toArray();
-    console.log(rows);
     for (var i=0;i<rows.length;i++) {
       if (rows[i][0]!=""){
         item.emps.push({"custcode":rows[i][0],"salary":rows[i][2]});
@@ -502,10 +510,26 @@ function SMUProfileApp(js) {
     resarr.push(obj);
     return resarr;
   } 
+  
+  this.ValidateForm = function(){
+    var res = true;
+    $('.table_wrap').each(function(){
+      let p = this;
+      var price = parseFloat($(p).find(".itemprice input").val());
+      var cost = parseFloat($(p).find(".costprice input").val());
+      if (price<cost) {
+        alert(jal_str["PriceLowerThanCost"].replace("{item}",$(p).find(".itemname input").val()));
+        $(p).find(".itemprice input").focus();
+        res = false;
+        return false;
+      }
+    });
+    return res;
+  }
    
   this.submitSMUData = function(el,approvef){
       var self = this;
-    //if (this.ValidateForm()){
+    if (this.ValidateForm()){
       $(el).unbind("click").html(jal_str["Wait"]);
       let drp = $('.smu_period').data('daterangepicker');
       let sd = drp.startDate.format('YYYY-MM-DD');
@@ -548,7 +572,7 @@ function SMUProfileApp(js) {
             console.log(err);
         }
       });
-    //}
+    }
   }
 
   this.SetProfile();

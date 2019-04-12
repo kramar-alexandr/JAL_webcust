@@ -32,6 +32,17 @@
   margin-bottom:10px;
 }
 
+#cost_table_wrap{
+  position:relative;
+}
+
+#cost_table_wrap .field_descr{
+  position:absolute;
+  right:0px;
+  top:0px;
+  padding-right:5%;
+}
+
 .field_row{
   clear:both;
   margin-bottom:13px;
@@ -74,6 +85,7 @@ height:2vw;
 }
 #emplist-table{
   margin-bottom:15px;
+  border-collapse:collapse;
 }
 
 .emp_content{
