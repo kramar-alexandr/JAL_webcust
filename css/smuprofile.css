@@ -159,7 +159,6 @@ height:2vw;
   margin-bottom:20px;
 }
 .field_wrap{
-  float:left;
   margin-left:5%;
   margin-right:20px;
 }
@@ -234,4 +233,11 @@ table.dataTable  thead tr:first-child th{
 #finplan_table tfoot td:nth-child(2){
   border-bottom-left-radius:15px;
   border-left:1px solid #ddd !important;
+}
+.smu_items{
+  width:100%;
+  background:none;
+  padding:0px;
+  margin:0px;
+  text-indent:0px;
 }

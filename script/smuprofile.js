@@ -48,8 +48,9 @@ function SMUProfileApp(js) {
     $('.smu_period').val(this.smu.ActDateStart + "-" + this.smu.ActDateEnd);
     $('.smu_education').val(this.smu.Education);
     $('.smu_targetaud').val(this.smu.TargetAud);
-   
     $('.smu_period').daterangepicker({
+      startDate:this.smu.ActDateStart,
+      endDate:this.smu.ActDateEnd,
       locale: {
         format: 'YYYY-MM-DD',
         applyLabel: jal_str["Apply"],
@@ -434,11 +435,11 @@ function SMUProfileApp(js) {
    }
    this.showSubmitButtons = function(){
      var self = this;
-     $(".save_only").click(function(){
-       self.submitSMUData(this,false);
+     $(".save_only").click(function(event){
+       self.submitSMUData(this,false,event);
      });
-     $(".save_submit").click(function(){
-       self.submitSMUData(this,true);
+     $(".save_submit").click(function(event){
+       self.submitSMUData(this,true,event);
      });
    
    }
@@ -526,11 +527,32 @@ function SMUProfileApp(js) {
     });
     return res;
   }
+  
+  this.TreatSubmitResponse = function(data){
+    if (data.errtype!==undefined){
+      switch (data.errtype){
+        case "2":
+          alert(jal_str["SMUName"]);
+          $('.smu_name').focus();
+          break;
+        case "1":
+          alert(jal_str["SMUDate"]);
+          $('.smu_period').focus();
+          break;
+        default: 
+          location.reload();
+      }
+    } else {
+      location.reload();
+    }
+  }
    
-  this.submitSMUData = function(el,approvef){
+  this.submitSMUData = function(el,approvef,event){
       var self = this;
+      event.stopPropagation();
     if (this.ValidateForm()){
-      $(el).unbind("click").html(jal_str["Wait"]);
+      //$(el).unbind("click").html(jal_str["Wait"]);
+      $(el).css("visibility","hidden");
       let drp = $('.smu_period').data('daterangepicker');
       let sd = drp.startDate.format('YYYY-MM-DD');
       let ed = drp.endDate.format('YYYY-MM-DD');
@@ -563,10 +585,9 @@ function SMUProfileApp(js) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (data) {
-            location.reload();
-        },
-        complete:function (data) {
-            location.reload();
+          self.TreatSubmitResponse(data);
+          $(el).css("visibility","visible");
+
         },
         failure: function (err) {
             console.log(err);

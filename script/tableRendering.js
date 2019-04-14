@@ -142,21 +142,20 @@ if (text) {
 
     let apstiprinatie = [];
 
-    for (let i of techerInfo.SMU) {
+    for (let i of techerInfo.ApprovedStudents) {
         let klase = i.Klase.replace(/\D+/g, '');
         if (klase > 9 && i.Statuss === '1') {
             apstiprinatie.push(i);
         }
-    }
+     }
 
     for (let i = 0; i < apstiprinatie.length; i++) {
         let count = 1;
         apstiprinatie[i].Number = count + i;
     }
-
     let pamatskola = [];
 
-    for (let i of techerInfo.SMU) {
+    for (let i of techerInfo.ApprovedStudents) {
         let klase = i.Klase.replace(/\D+/g, '');
         if (klase <= 9) {
             pamatskola.push(i);
@@ -167,12 +166,13 @@ if (text) {
         let count = 1;
         pamatskola[i].Number = count + i;
     }
-    // initializate apstiprinatie table
+     // initializate apstiprinatie table
     let tableApstiprinatie = $('#apstiprinatie').DataTable({
         data: apstiprinatie,
         searching: false,
         info: false,
         select: false,
+/*
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
             {
@@ -195,6 +195,7 @@ if (text) {
             {extend: 'excel', text: 'Exel'},
             {extend: 'pdf', text: '.PDF'}
         ],
+*/
         bLengthChange: false,
         columnDefs: [{
             orderable: false,
@@ -216,51 +217,40 @@ if (text) {
             {data: 'Skolens'},
             {data: 'Klase'},
             {data: 'Datums'},
-            {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
-                }
-            },
+            {data: 'MacibuGads'},
             {data: 'Nosaukums'},
             {
-                data: 'Likvidēts',
+                data: 'Likvidets',
                 render: (data, type, full) => {
                     if (data !== "3") {
-                        return '';
+                        return '<p class="noradit-no"></p>';
                     } else {
                         return '<p class="astiprinat-yes"></p>';
                     }
                 }
             },
             {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
+                data: 'Titan',
+                render: (data, type, full) => {
+                  if (data !== "1") {
+                      return '<p class="noradit-no"></p>';
+                  } else {
+                      return '<p class="astiprinat-yes"></p>';
+                  }
                 }
             },
             {
-                data: 'Piedalījās',
+                data: 'Enudiena',
                 render: (data) => {
-                    if (!data) {
-                        return '';
-                    }
+                  if (data !== "1") {
+                      return '<p class="noradit-no"></p>';
+                  } else {
+                      return '<p class="astiprinat-yes"></p>';
+                  }
                 }
             },
-            {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
-                }
-            },
-            {
-                data: 'Piedalījās',
-                render: (data) => {
-                    if (!data) {
-                        return '';
-                    }
-                }
-            },
+
+/*
             {
                 data: 'Statuss',
                 render: () => {
@@ -269,6 +259,7 @@ if (text) {
                 },
                 className: "column-btn labotApsti"
             },
+*/
             {
                 data: 'Pievienot sertifikātu sarakstam',
                 render: () => {
@@ -278,9 +269,9 @@ if (text) {
                 className: "column-btn pievienotBtn"
             }
 
+
         ]
     });
-
     // initializate pamatskola table
     $('#pamatskola').DataTable({
         data: pamatskola,
@@ -312,34 +303,26 @@ if (text) {
             {data: 'Number'},
             {data: 'Skolens'},
             {data: 'Klase'},
-            // { data: 'Datums' },
-            {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
-                }
-            },
+            {data: 'Datums' },
+            {data: 'MacibuGads'},
             {data: 'Nosaukums'},
             {
-                data: 'Likvidēts',
+                data: 'Likvidets',
                 render: (data, type, full) => {
-                    if (!data) {
-                        if (full.Statuss !== "3") {
-                            return '<p class="noradit-no"></p>';
-                        } else {
-                            return '<p class="astiprinat-yes"></p>';
-                        }
+                    if (full.Likvidets !== "3") {
+                        return '<p class="noradit-no"></p>';
+                    } else {
+                        return '<p class="astiprinat-yes"></p>';
                     }
                 }
             }
+
         ]
     });
-
     // $( ".dt-buttons" ).prepend( "<p>Eksportēt sarakstu: </p>" );
 
     vidusskolaBtn.style.background = '#24bc4b';
     vidusskolaBtn.style.color = 'white';
-
 
     // set event to chanche tab in 'Apstiprinātie' table
     pamatskolaBtn.addEventListener('click', function () {
