@@ -33,7 +33,7 @@
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
+    font-size: 14px;
     padding: 0.5vw 2vw;
     margin: 1vw;
     margin-left: 0;
@@ -1517,6 +1517,7 @@ width: 43% !important;
   /*visibility:hidden;*/
 }
 
+/*
 #company-table td:first-child{
   visibility:hidden;
 }
@@ -1525,6 +1526,7 @@ width: 43% !important;
   width:100% !important;
   margin-left:-52px;
 }
+*/
 .application.smu-border .paginationjs-prev a,.application.smu-border .paginationjs-next a{
   border-radius: 50%;
   width: calc(0.5vw + 0.5vw) !important;
@@ -1556,4 +1558,10 @@ width: 43% !important;
   line-height:1.2vw;
   text-align:center;
   font-size:0.9vw;
+}
+.company-detail #cost_table_wrap .table_header{
+  display:none;
+}
+#smu_doc_template{
+  display:none;
 }

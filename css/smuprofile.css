@@ -158,18 +158,12 @@ height:2vw;
   font-weight: 600;
   margin-bottom:20px;
 }
-.field_wrap{
-  margin-left:5%;
-  margin-right:20px;
-}
+
 .dataTables_wrapper{
   overflow:hidden;
   clear:none !important;
 }
-.table_wrap{
-  clear:both;
-  margin-bottom:20px;
-}
+
 #add_item_button{
   width:12vw;
   /*margin:0 auto;*/
@@ -177,17 +171,7 @@ height:2vw;
   margin-left:5%;
   background:#16B01A !important;
 }
-.table_field input{
-  width:24vw;
-  font-size:1.3vw;
-  height:2vw;
-  
-}
 
-.table_field.itemprice input,.table_field.costprice input{
-  width:9vw;
-  text-align:right;
-}
 #finplan_table_wrapper{
   margin:0vw 1vw;
 }
@@ -200,40 +184,6 @@ tfoot tr td{
   background:#f3f3f3;
 }
 
-table.dataTable td,table.dataTable th{
-  border:0px !important;
-  border-right:1px solid #ddd !important;
-  border-bottom:1px solid #ddd !important;
-}
-table.dataTable td:first-child,table.dataTable th:first-child{
-  border-left:1px solid #ddd !important;
-}
-table.dataTable  thead tr:first-child th{
-  border-top:1px solid #ddd !important;
-}
-.dataTable tfoot td:first-child{
-  border-bottom-left-radius:15px;
-}
-.dataTable thead tr:first-child th:first-child{
-  border-top-left-radius:15px;
-}
-.dataTable tfoot td:last-child{
-  border-bottom-right-radius:15px;
-}
-.dataTable thead tr:first-child th:last-child{
-  border-top-right-radius:15px;
-}
-#finplan_table tfoot td:first-child{
-  border-left:none !important;
-  border-bottom:none !important;
-  text-align:right !important;
-  background:white;
-  border-right:none !important;
-}
-#finplan_table tfoot td:nth-child(2){
-  border-bottom-left-radius:15px;
-  border-left:1px solid #ddd !important;
-}
 .smu_items{
   width:100%;
   background:none;

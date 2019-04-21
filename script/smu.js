@@ -205,10 +205,39 @@ let companyTempInfo = '<div class="company-detail">\n' +
     '</div>';
 
 let template = document.createElement('div');
-template.innerHTML = smuInfo.trim();
-template.className = 'smu-border';
+template.innerHTML = $("#smu_doc_template").html();
+$(template).attr("class","smu-border");
 
 let companyTemp = $("#smu_info_template").html();//companyTempInfo;
+
+function SetEventStatus(node,val,cls){
+  
+  var tval = "/img/space.png";
+  hstr = jal_str["event_empty"];
+
+  switch (val) {
+    case "2":
+      tval = "/img/no.png";
+      hstr = jal_str["event_rejected"];
+      break;
+    case "0":
+      tval = "/img/mail.png";
+      hstr = jal_str["event_sent"];
+      break;
+    case "1":
+      tval = "/img/yes.png";
+      hstr = jal_str["event_approved"];
+      break;
+    case "4":
+      tval = "/img/yes.png";
+      hstr = jal_str["event_approved"];
+      break;
+  }
+  
+  $(node).find("." + cls + " img").attr("src",tval);
+  $(node).find("." + cls).attr("title",hstr);
+
+}
 
 if (SMUData) {
     let smus = JSON.parse(SMUData);
@@ -218,6 +247,11 @@ if (SMUData) {
         count += 1;
         let smuNode = $(template).clone();
         let companyInfo = $(companyTemp).clone();
+        let emplist = [];
+        for (let i=0;i<smu.emplist.length;i++){
+          emplist.push(smu.emplist[i].Name);
+        }
+        let emplist_str = emplist.join(",");
 
         if (smuNode) {
             smuNode.find('.title').text(count + '. ' + smu.title);
@@ -230,20 +264,40 @@ if (SMUData) {
 
             });
             smuNode.find('.show-info-btn').click(function () {
-                $(this).parent().parent().parent().find('.company-detail').toggleClass('show')
+                if ($(this).html()==jal_str["CloseApplication"]){
+                  $(this).html(jal_str["OpenApplication"]);                
+                } else {
+                  $(this).html(jal_str["CloseApplication"]);
+                }
+                $(this).parent().parent().parent().find('.company-detail').toggleClass('show');
             });
-            companyInfo.find('.leader').append(smu.leader);
-            companyInfo.find('.members').append(smu.members);
+            companyInfo.find('.leader').append(smu.leader);  
+            companyInfo.find('.members').append(emplist_str);
+            smuNode.find('.leader').append(smu.leader);  
+            smuNode.find('.members').append(emplist_str);
+            
+            companyInfo.find(".button-tab").hide();
 
-            if (smu.submittedDocs.posted === 'true') {
-                smuNode.find('.posted').attr('src', '../img/docs.png')
+            smuNode.find('.submitTeacher,.submitJAL,.posted').parent().attr('title',jal_str["reg_pending"]);
+            if (smu.approvalstatus === '1') {
+                smuNode.find('.posted').attr('src', '/img/docs.png').parent().attr('title',jal_str["reg_approved"]);
+                companyInfo.find(".button-tab").show();
             }
-            if (smu.submittedDocs.submitTeacher === 'true') {
-                smuNode.find('.submitTeacher, .posted').attr('src', '../img/docs.png');
+            if (smu.approvalstatus === '2') {
+                smuNode.find('.submitTeacher,.posted').attr('src', '/img/docs.png').parent().attr('title',jal_str["reg_approved"]);
             }
-            if (smu.submittedDocs.submitJAL === 'true') {
-                smuNode.find('.submitTeacher, .posted, .submitJAL').attr('src', '../img/docs.png')
+            if (smu.approvalstatus === '3') {
+                smuNode.find('.submitTeacher,.submitJAL,.posted').attr('src', '/img/docs.png').parent().attr('title',jal_str["reg_approved"]);
             }
+            if (smu.approvalstatus === '4') {
+                smuNode.find('.submitTeacher,.posted').attr('src', '/img/docs.png').parent().attr('title',jal_str["reg_approved"]);
+                smuNode.find('.submitJAL').attr('src', '/img/docs-red.png').parent().attr('title',jal_str["reg_rejected"]);;
+            }
+            
+            SetEventStatus(smuNode,smu.cbziema,"cbziema");
+            SetEventStatus(smuNode,smu.cbreg,"cbreg");
+            SetEventStatus(smuNode,smu.cbpav,"cbpav");
+            SetEventStatus(smuNode,smu.judiena,"judiena");
 
             companyInfo.find('.register-number').append(smu.regNr);
             if (+smu.klass > 9) {
@@ -256,7 +310,7 @@ if (SMUData) {
             companyInfo.find('.target-type').append(smu.targetAudit);
             companyInfo.find('#confirmBtn').click(function () {
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=1&sernr=${smu.regNr}`, true);
+                xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=2&sernr=${smu.regNr}`, true);
                 xhr.send();
 
                 xhr.onload = function () {
@@ -270,7 +324,7 @@ if (SMUData) {
 
             companyInfo.find('#rejectBtn').click(function () {
                 let xhr = new XMLHttpRequest();
-                xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=3&sernr=${smu.regNr}`, true);
+                xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=0&sernr=${smu.regNr}`, true);
                 xhr.send();
 
                 xhr.onload = function () {
@@ -280,6 +334,10 @@ if (SMUData) {
                         console.log('RESPONSE: ' + xhr.responseText);
                     }
                 };
+            });
+            companyInfo.find("#printBtn").click(function(){
+              companyInfo.printThis();
+            
             });
 
             if (smu.members) {
@@ -293,6 +351,7 @@ if (SMUData) {
             }
 
             companyInfo.find('.company-smu').text(`Vadītājs: ${smu.leader},  ${smu.members}`);
+            /*
             let data = [];
             for (var i=0;i<smu.FinData.materials.length && i<smu.emplist.length;i++) {
               var e = smu.emplist[i];
@@ -319,9 +378,7 @@ if (SMUData) {
               data.push(arr);
             }
  
-
-            smuNode.append(companyInfo);
-            dataSource.push(smuNode);
+            
             let table = $(smuNode).find("#company-table").DataTable({
                 searching: false,
                 info: false,
@@ -334,6 +391,12 @@ if (SMUData) {
                 }
             });
             SumupTable(table,$(smuNode).find("#company-table"));
+            */
+            
+            smuNode.append(companyInfo);
+            dataSource.push(smuNode);
+            var t = new FinDataTable($(smuNode),smu,true);
+            var t = new FinPlanDataTable($(smuNode),smu,true);
 
         }
 

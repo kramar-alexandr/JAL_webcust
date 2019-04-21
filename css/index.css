@@ -573,6 +573,9 @@ p{}
 #left1, #right1{
     display:none;
 }
+.slide a{
+  font-size:unset;
+}
 @media screen and (max-width: 900px){
     .paginationjs-prev, .paginationjs-next {
         width: calc(1.4vw + 0.5vw) !important;
