@@ -270,6 +270,13 @@ if (SMUData) {
                   $(this).html(jal_str["CloseApplication"]);
                 }
                 $(this).parent().parent().parent().find('.company-detail').toggleClass('show');
+                /*worst workaround
+                  following was needed to make the row grouping work. Seems that it doesn't work when the element is hidden
+                */
+                var rows = smuNode.data("plantable").plantable.data().toArray();
+                smuNode.data("plantable").plantable.destroy();
+                smuNode.data("plantable").CreatePlanTable(rows);
+
             });
             companyInfo.find('.leader').append(smu.leader);  
             companyInfo.find('.members').append(emplist_str);
@@ -395,8 +402,8 @@ if (SMUData) {
             
             smuNode.append(companyInfo);
             dataSource.push(smuNode);
-            var t = new FinDataTable($(smuNode),smu,true);
-            var t = new FinPlanDataTable($(smuNode),smu,true);
+            smuNode.data("fintable",new FinDataTable($(smuNode),smu,true));
+            smuNode.data("plantable",new FinPlanDataTable($(smuNode),smu,true));
 
         }
 

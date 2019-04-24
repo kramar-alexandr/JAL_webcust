@@ -276,7 +276,7 @@ function FinPlanDataTable(wrap,smu,readonlyf){
    this.AddEmptyItemPlan = function(rows,item){
      $("#eventlist option").each(function(){
        var t = this;
-       var arr = [$(t).text(),item,"","","","","","",$(t).val()];
+       var arr = [$(t).val(),$(t).text(),item,"","","","","","",$(t).val()];
        rows.push(arr);
      });    
    }
@@ -286,7 +286,7 @@ function FinPlanDataTable(wrap,smu,readonlyf){
      var rows = this.plantable.data().toArray();
      var items = {};
      for (var i=0;i<rows.length;i++){
-       items[rows[i][1]] = true;
+       items[rows[i][2]] = true;
      }
      for (var i=0;i<this.items.length;i++){
        if (!items[this.items[i]]) {
@@ -300,7 +300,6 @@ function FinPlanDataTable(wrap,smu,readonlyf){
    this.CreatePlanTable = function(data){
       var ntable = $(this.wrap).find("#finplan_table");
       data = data.sort(Comparator);
-
       let table = $(ntable).DataTable({
           searching: false,
           info: false,
@@ -308,7 +307,13 @@ function FinPlanDataTable(wrap,smu,readonlyf){
           paging: false,
           ordering: false,
           data: data,
-          rowsGroup: [0],
+          rowsGroup: [0,1],
+          "columnDefs": [
+          {
+              "targets": [ 0 ],
+              "visible": false,
+              "searchable": false
+          }],
           language: {
             zeroRecords: jal_str["zeroRecords"]
           }
@@ -327,7 +332,7 @@ function FinPlanDataTable(wrap,smu,readonlyf){
         var it = this.smu.FinData.eventturnover[i];
         for (var j=0;j<it.turnover.length;j++){
           l = it.turnover[j];
-          var arr = [l.EventName,it.ItemName,l.UCost,l.UPrice,l.SoldUnits,l.Income,l.Costs,l.Profit,l.EventID];
+          var arr = [l.EventID,l.EventName,it.ItemName,l.UCost,l.UPrice,l.SoldUnits,l.Income,l.Costs,l.Profit,l.EventID];
           data.push(arr);
         }
       } 

@@ -33,7 +33,7 @@ table.dataTable  thead tr:first-child th{
   border-bottom-left-radius:15px;
   border-left:1px solid #ddd !important;
 }
-.field_wrap{
+.table_field_wrap{
   margin-left:5%;
   margin-right:20px;
   width:30%;
