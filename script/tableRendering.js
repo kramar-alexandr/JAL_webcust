@@ -123,6 +123,9 @@ if (text) {
                     } else if (data === '2') {
                         return "<p class='status-btn apstiprinatBtn'>" + jal_str["Approve"] + "</p>" +
                             "<p class='status-btn noradit-no'></p>";
+                    } else if (data === '4') {
+                        return "<p class='status-btn astiprinat-yes'></p>" +
+                            "<p class='status-btn'>" + jal_str["Decline"] + "</p>";
                     }
                 },
                 className: "column-btn column-btn-st"
@@ -348,11 +351,12 @@ if (text) {
         if (confirm(jal_str["Msg_ApproveStudent"])) {
             let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
             data.Statuss = '1';
-            table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
             if (data.rectype==2) {
               data.Statuss = '4';
+            }            
+            table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+            if (data.rectype==2) {
               getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
-            
             } else {
               getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);        
             }
@@ -361,16 +365,17 @@ if (text) {
     });
 
     $('.dataTable').on('click', '.noraditBtn', function () {
-        let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+        if (confirm(jal_str["Msg_DeclineStudent"])) {
+          let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
+          data.Statuss = '2';
+          table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
 
-        data.Statuss = '2';
-        table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
-
-        if (data.rectype==2) {
-          getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
+          if (data.rectype==2) {
+            getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
         
-        } else {
-          getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);        
+          } else {
+            getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);        
+          }
         }
     });
 

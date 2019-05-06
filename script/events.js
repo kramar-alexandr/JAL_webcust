@@ -112,8 +112,7 @@ function EventDisplay(events, submittedEvents) {
                       break;
                     case "1":
                       eventBox.find('.btn-submit').text('Gaida apstiprinājumu');
-                      break;
-                   
+                      break;                      
                   }
                   this.setInfo(eventBox, event, '.technical');
                 }
