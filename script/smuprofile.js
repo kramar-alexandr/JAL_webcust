@@ -13,13 +13,14 @@ function SMUProfileApp(js) {
   this.table = null;
   this.items = [];
   this.plantable = null;
+  this.tables = {fintable:{},plantable:{}}
 
   this.SetProfile = function () {
     this.setMainInfo();
     if (this.smu.SMFCode!==undefined){
       this.setEmployees();
-      FinDataTable($("#temp_table_wrap").parent().parent(),this.smu,false);
-      FinPlanDataTable($(".table-plan"),this.smu,false);
+      this.tables.fintable = new FinDataTable($("#temp_table_wrap").parent().parent(),this.smu,false,this);
+      this.tables.plantable = new FinPlanDataTable($(".table-plan"),this.smu,false,this);
     } else {
       $(".table-emps").hide();
       $(".table-salary").hide();
@@ -186,20 +187,17 @@ function SMUProfileApp(js) {
   this.GetPlanArray = function(plantable){
     let table = plantable.data().toArray().sort(Comparator2);
     var resarr = [];
-    var lastitem = "";
-    var obj = {};
+    var itemlist = {};
     for (var i=0;i<table.length;i++){
-      if (lastitem!=table[i][1]){
-        if (lastitem!=""){
-          resarr.push(obj);
-        }
-        obj = {ItemName:table[i][1],costs:[]};
-        lastitem = table[i][1];
+      if (itemlist.hasOwnProperty(table[i][2])==false){
+        itemlist[table[i][2]] = {ItemName:table[i][2],costs:[]};
       }
-      obj.costs.push({EventID:table[i][8],UCost:table[i][2],UPrice:table[i][3],SoldUnits:table[i][4]});
+      itemlist[table[i][2]].costs.push({EventID:table[i][9],UCost:table[i][3],UPrice:table[i][4],SoldUnits:table[i][5]});
     }
   
-    resarr.push(obj);
+    for (var item in itemlist) {
+      resarr.push(itemlist[item]);
+    }
     return resarr;
   } 
   
@@ -269,6 +267,7 @@ function SMUProfileApp(js) {
         data.FinData.eventturnover = arr; 
 
       }
+
       $.ajax({
         type: "POST",
         url: `WebSaveSMUDataFromEditing.hal`,

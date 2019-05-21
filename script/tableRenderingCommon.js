@@ -11,12 +11,14 @@ function Comparator2(a, b) {
  }
 
 
-function FinDataTable(wrap,smu,readonlyf) {
+function FinDataTable(wrap,smu,readonlyf,obj) {
   this.smu = smu;
   this.readonlyf = readonlyf;
   this.items = [];
   this.wrap = wrap;
   this.vemplist = {}
+  this.obj = obj;
+  
   for (var i=0;i<this.smu.emplist.length;i++){
     this.vemplist[this.smu.emplist[i].Code] = this.smu.emplist[i];
   }
@@ -67,7 +69,7 @@ function FinDataTable(wrap,smu,readonlyf) {
         if (!self.activecol) {
           self.activecol = true;
           let th = this;
-          let ep = $(self.emplist).clone();
+          let ep = $(self.obj.emplist).clone();
           var currow = table.cell(th).index().row;
           $(ep).val(table.cell({row: currow, column:0}).data());
           /*
@@ -94,23 +96,23 @@ function FinDataTable(wrap,smu,readonlyf) {
    
    this.AddItemTable = function(data,itemname,itemprice){
         var self = this;
-        var wrap = $('#temp_table_wrap').clone();
+        var twrap = $('#temp_table_wrap').clone();
         
-        $(wrap).attr("id","").addClass("table_wrap").css("display","block");
-        var ntable = $(wrap).find("table");
-        $(this.wrap).find("#cost_table_wrap").append(wrap);
-        $(wrap).find(".itemname input").val(itemname).change(function(){
+        $(twrap).attr("id","").addClass("table_wrap").css("display","block");
+        var ntable = $(twrap).find("table");
+        $(this.wrap).find("#cost_table_wrap").append(twrap);
+        $(twrap).find(".itemname input").val(itemname).change(function(){
           var oldval = $(this).get(0).defaultValue;
           self.items.push($(this).val());
-          self.AddEmptyItems();
+          self.obj.tables.plantable.AddEmptyItems();
         });
         
-        $(wrap).find(".itemprice input").val(itemprice);
+        $(twrap).find(".itemprice input").val(itemprice);
         if (this.readonlyf==false) {
-          $(wrap).find(".itemprice input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
+          $(twrap).find(".itemprice input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
         } else {
-           $(wrap).find(".itemname input").attr("readonly","");
-           $(wrap).find(".itemprice input").attr("readonly","");
+           $(twrap).find(".itemname input").attr("readonly","");
+           $(twrap).find(".itemprice input").attr("readonly","");
         }
         let table = $(ntable).DataTable({
             searching: false,
@@ -130,16 +132,15 @@ function FinDataTable(wrap,smu,readonlyf) {
             }]
         });
         $(ntable).data("tabledata",table);
-        this.SumupTable(table,ntable,wrap);
+        this.SumupTable(table,ntable,twrap);
         if (this.readonlyf==false){
-          this.AddTableEvents(table,ntable,wrap);   
+          this.AddTableEvents(table,ntable,twrap);   
         }
    }
    
    this.AddEmptyItem = function(button){
      var data = [];
      data.push(["","","","","","",""]);
-   
      this.AddItemTable(data,"","");
      if ($(this.wrap).find("#cost_table_wrap .table_wrap").length>=3) {
        $(button).remove();
@@ -203,11 +204,12 @@ function FinDataTable(wrap,smu,readonlyf) {
 }
 
 
-function FinPlanDataTable(wrap,smu,readonlyf){
+function FinPlanDataTable(wrap,smu,readonlyf,obj){
   this.smu = smu;
   this.readonlyf = readonlyf;
   this.wrap = wrap;
-  
+  this.obj = obj;
+
    this.SumupPlanTable = function(table,ntable){
      let rows = table.data().toArray();
      var emps = 0;
@@ -218,32 +220,32 @@ function FinPlanDataTable(wrap,smu,readonlyf){
        var price = 0;
        var sold = 0;
        var showf = true;
-       if (!isNaN(parseFloat(rows[i][2]))) {
-         cost = parseFloat(rows[i][2]);
-       } else {
-         showf = false;
-       }
        if (!isNaN(parseFloat(rows[i][3]))) {
-         price = parseFloat(rows[i][3]);
+         cost = parseFloat(rows[i][3]);
        } else {
          showf = false;
        }
        if (!isNaN(parseFloat(rows[i][4]))) {
-         sold = parseFloat(rows[i][4]);
+         price = parseFloat(rows[i][4]);
+       } else {
+         showf = false;
+       }
+       if (!isNaN(parseFloat(rows[i][5]))) {
+         sold = parseFloat(rows[i][5]);
        } else {
          showf = false;
        }
        if (showf){
-         rows[i][5] = (cost*sold).toFixed(2);
-         rows[i][6] = (price*sold).toFixed(2);
-         rows[i][7] = ((price*sold)-(cost*sold)).toFixed(2);
+         rows[i][6] = (cost*sold).toFixed(2);
+         rows[i][7] = (price*sold).toFixed(2);
+         rows[i][8] = ((price*sold)-(cost*sold)).toFixed(2);
          totcost = totcost + (cost*sold);
          totprice = totprice + (price*sold);
          totprof = totprof + (price*sold)-(cost*sold);
        } else {
-         rows[i][5] = "";
          rows[i][6] = "";
          rows[i][7] = "";
+         rows[i][8] = "";
        }
        table.row(i).data(rows[i]).draw();
      }
@@ -284,13 +286,14 @@ function FinPlanDataTable(wrap,smu,readonlyf){
    this.AddEmptyItems = function(){
      var self = this;
      var rows = this.plantable.data().toArray();
-     var items = {};
+     items = {};
      for (var i=0;i<rows.length;i++){
        items[rows[i][2]] = true;
      }
-     for (var i=0;i<this.items.length;i++){
-       if (!items[this.items[i]]) {
-         self.AddEmptyItemPlan(rows,this.items[i]);
+     var allitems = this.obj.tables.fintable.items;
+     for (var i=0;i<allitems.length;i++){
+       if (!items[allitems[i]]) {
+         self.AddEmptyItemPlan(rows,allitems[i]);
        }
      }
      this.plantable.destroy();
