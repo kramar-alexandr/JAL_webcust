@@ -19,16 +19,47 @@ function SMUProfileApp(js) {
     this.setMainInfo();
     if (this.smu.SMFCode!==undefined){
       this.setEmployees();
-      this.tables.fintable = new FinDataTable($("#temp_table_wrap").parent().parent(),this.smu,false,this);
-      this.tables.plantable = new FinPlanDataTable($(".table-plan"),this.smu,false,this);
+      if (this.smu.ApprovalStatus==0){
+        this.tables.fintable = new FinDataTable($("#temp_table_wrap").parent().parent(),this.smu,false,this);
+        this.tables.plantable = new FinPlanDataTable($(".table-plan"),this.smu,false,this);
+      } else {
+        this.tables.fintable = new FinDataTable($("#temp_table_wrap").parent().parent(),this.smu,true,this);
+        this.tables.plantable = new FinPlanDataTable($(".table-plan"),this.smu,true,this);
+      }
     } else {
-      $(".table-emps").hide();
       $(".table-salary").hide();
       $(".save_submit").hide();
       $(".table-plan").hide();
     }
-    this.showSubmitButtons();
+    if (this.smu.ApprovalStatus==='0') {
+      this.showSubmitButtons();
+    } else {
+      this.RestrictProfileApp();
+    }
   };
+  
+  this.RestrictProfileApp = function(){
+  
+    var info = $("<div class='smu_profile_info'></div>");
+    
+    $(info).html(jal_str["ApprovalMsg" + this.smu.ApprovalStatus]);
+    $(info).insertBefore($('.smu_name').parent().parent().parent());
+  
+    $('.smu_name').attr("disabled","");
+    $('.smu_descr').attr("disabled","");
+    $('.smu_items').attr("disabled","");
+    $('.smu_period').attr("disabled","");
+    $('.smu_education').attr("disabled","");
+    $('.smu_targetaud').attr("disabled","");
+    $('#add_item_button').css("display","none");
+    if (this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
+      $(".table-emps").insertAfter(".table-plan");
+    } else {
+      $(".newEmp_button a").remove();
+    }
+    $(".save_only").remove();
+    $(".save_submit").remove();
+  }
 
   this.setMainInfo = function () {
     $('.smu_name').val(this.smu.SMFName);

@@ -28,7 +28,23 @@ if (text) {
             return i;
         }
     });
-    let tableData = smus.concat(students,events);
+    let rej_students = techerInfo.RejectedStudents.filter((i) => {
+        if (i.Statuss === '2') {
+            i.rectype = 1;
+            i.rectypename = jal_str["Student"];
+            i.Skolens2 = i.Skolens;
+            return i;
+        }
+    });
+    let rej_events = techerInfo.RejectedEvents.filter((i) => {
+        if (i.Statuss === '2') {
+            i.rectype = 2;
+            i.rectypename = jal_str["Event"];
+            i.Skolens2 = i.Skolens + " (" + i.EventName + ")";
+            return i;
+        }
+    });
+    let tableData = smus.concat(students,events,rej_students,rej_events);
 
     for (let i = 0; i < tableData.length; i++) {
         let count = 1;

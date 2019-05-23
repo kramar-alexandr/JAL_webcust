@@ -1,208 +1,10 @@
-let smuInfo = '<div id="smuCard" class="info-smu">\n' +
-    '    <div class="smu-name">\n' +
-    '        <a class="open-info-smu"><h2 class=\'title\'>1.Junior Achievment Latvia</h2></a>\n' +
-    '            <p class="leader"></p>' +
-    '            <pclass="members"></p>' +
-    '    </div>\n' +
-    '    <div class="documents">\n' +
-    '        <p>SMU reģistrācijas statuss</p>\n' +
-    '        <div class="docs">\n' +
-    '            <div class="docs-card">\n' +
-    '                <img class="posted" src="../img/doc-grey.png" alt="">\n' +
-    '                <p>Iesūtīts dokuments</p>\n' +
-    '            </div>\n' +
-    '            <div class="docs-card">\n' +
-    '                <img class="submitTeacher" src="../img/doc-grey.png" alt="">\n' +
-    '                <p>Skolotājs apstiprinājis</p>\n' +
-    '            </div>\n' +
-    '            <div class="docs-card">\n' +
-    '                <img class="submitJAL" src="../img/doc-grey.png" alt="">\n' +
-    '                <p>JA Latvija apstiprinājis</p>\n' +
-    '            </div>\n' +
-    '        </div>\n' +
-    '        <p>Aktivitāte:</p>\n' +
-    '        <div class="activitate">\n' +
-    '            <div class="docs-card">\n' +
-    '                <img src="../img/yes.png" alt="">\n' +
-    '                <p>Cits Bazārs ziema</p>\n' +
-    '            </div>\n' +
-    '            <div class="docs-card">\n' +
-    '                <img src="../img/mail.png" alt="">\n' +
-    '                <p>Cits Bazārs reģionos </p>\n' +
-    '            </div>\n' +
-    '            <div class="docs-card">\n' +
-    '                <img src="../img/space.png" alt="">\n' +
-    '                <p>Cits Bazārs pavasarī</p>\n' +
-    '            </div>\n' +
-    '            <div class="docs-card">\n' +
-    '                <img src="../img/no.png" alt="">\n' +
-    '                <p>Jauno uzņēmēju dienas</p>\n' +
-    '            </div>\n' +
-    '        </div>\n' +
-    '    </div>\n' +
-    '    <div class="smu-button">\n' +
-    '        <button class="spbutton show-info-btn">ATVĒRT PIETEIKUMU</button>\n' +
-    '        <button class="spbutton reg-succes">REĢ.APLIECĪBA</button>\n' +
-    '    </div>\n' +
-    '</div>\n' +
-    '</div>';
-
-
-let companyTempInfo = '<div class="company-detail">\n' +
-    '    <div class="company-info">\n' +
-    '        <p class="register-number">Reģistrācijas Nr:</p>\n' +
-    '        <p class="education">Izglītības pakāpe: vidusskola</p>\n' +
-    '        <p class="type-company">Darbības veids/nozare. Darbības veids/nozare</p>\n' +
-    '        <p class="target-type">Mērkauditorija</p>\n' +
-    '    </div>\n' +
-    '    <div class="service-price">\n' +
-    '        <div class="company-header">\n' +
-    '            <h2>Preces/pakalpojuma cenas veidošanās: </h2>\n' +
-    '            <p>*Vienai saražotai vienī</p>\n' +
-    '        </div>\n' +
-    '        <div class="table-salary">\n' +
-    '            <table id="company-table">\n' +
-    '                <tr>\n' +
-    '                    <th colspan="2">Darba alga UZ VIENU SARAŽOTO VIENĪBU</th>\n' +
-    '                    <th colspan="2">Materiāli un izejvielas</th>\n' +
-    '                    <th>Pašizmaksa 1+2</th>\n' +
-    '                    <th>Cena Cena 3+UZCENOJUMI</th>\n' +
-    '                </tr>\n' +
-    '                <tr>\n' +
-    '                    <th>Darbinieks</th>\n' +
-    '                    <th>Alga (eur)</th>\n' +
-    '                    <th>Materiali</th>\n' +
-    '                    <th>EUR</th>\n' +
-    '                    <th></th>\n' +
-    '                    <th></th>\n' +
-    '                </tr>\n' +
-    '                <tr>\n' +
-    '                    <td class="memberOne">Ralfs Rogoļovs</td>\n' +
-    '                    <td class="algaOne"></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                </tr>\n' +
-    '                <tr>\n' +
-    '                    <td class="memberTwo">Berglunds snabbköp</td>\n' +
-    '                    <td class="algaOne"></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                </tr>\n' +
-    '                <tr>\n' +
-    '                    <td class="memberThree">Berglunds snabbköp</td>\n' +
-    '                    <td class="algaOne"></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                </tr>\n' +
-    '                <tr>\n' +
-    '                    <td class="memberFour">Berglunds snabbköp</td>\n' +
-    '                    <td class="algaOne"></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                </tr>\n' +
-    '                <tr>\n' +
-    '                    <td class="memberFive">Berglunds snabbköp</td>\n' +
-    '                    <td class="algaOne"></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                    <td></td>\n' +
-    '                </tr>\n' +
-    '                <tfoot>\n' +
-    '                <tr>\n' +
-    '                    <td>KOPĀ:</td>\n' +
-    '                    <td></td>\n' +
-    '                    <td>KOPĀ:</td>\n' +
-    '                    <td></td>\n' +
-    '                </tr>\n' +
-    '                </tfoot>\n' +
-    '            </table>\n' +
-    '        </div>\n' +
-    '    </div>\n' +
-    '    <h2>SMU Dalībniek:</h2><p class="company-smu"></p>\n' +
-    '    <div class="proceeds-info">\n' +
-    '        <div class="company-header">\n' +
-    '            <h2>Plānotie ieņēmumi no SMU darbības:</h2>\n' +
-    '        </div>\n' +
-    '        <table id="table-service">\n' +
-    '            <tr>\n' +
-    '                <th></th>\n' +
-    '                <th>Pašizmaksa EUR par vienību</th>\n' +
-    '                <th>Produkta cena EUR par vienību</th>\n' +
-    '                <th>Plānotās  pārdotās  vienības skaits</th>\n' +
-    '                <th>Ražosanas  izmaksas (1x3) EUR</th>\n' +
-    '                <th>Ienākumi  no plānotā (2x3) EUR</th>\n' +
-    '                <th>Peļņa (5-4) EUR</th>\n' +
-    '            </tr>\n' +
-    '            <tr>\n' +
-    '                <td class="">Reģionālais pasākums “Cits bazārs”</td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '            </tr>\n' +
-    '            <tr>\n' +
-    '                <td class="">Valsts līmeņa pasākums “Cits bazārs” ziema</td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '            </tr>\n' +
-    '            <tr>\n' +
-    '                <td class="memberTree">Valsts līmeņa pasākums “Cits bazārs” pavasaris</td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '            </tr>\n' +
-    '            <tr>\n' +
-    '                <td class="">Latvijas jauno uzņēmēju dienas</td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '            </tr>\n' +
-    '            <tr>\n' +
-    '                <td class="">Cita pasākumi, tirgošanās vietas</td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '            </tr>\n' +
-    '            <tfoot>\n' +
-    '            <tr>\n' +
-    '                <td>KOPĀ:</td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '                <td></td>\n' +
-    '            </tr>\n' +
-    '            </tfoot>\n' +
-    '        </table>\n' +
-    '    </div>\n' +
-    '    <div class="button-tab">\n' +
-    '        <button id="confirmBtn" class="spbutton">APSTIPRINĀT</button>\n' +
-    '        <button id="rejectBtn" class="spbutton">NORAIDĪT</button>\n' +
-    '        <button class="spbutton">DRUKĀT PIETEIKUMU</button>\n' +
-    '    </div>\n' +
-    '</div>';
+function ComparatorSMUData(a, b) {
+   if (a["approvalstatus"] ==='0') return 1;
+   if (b["approvalstatus"] ==='0') return -1;
+   if (a["approvalstatus"] < b["approvalstatus"]) return -1;
+   if (a["approvalstatus"] > b["approvalstatus"]) return 1;
+   return 0;
+ }
 
 let template = document.createElement('div');
 template.innerHTML = $("#smu_doc_template").html();
@@ -241,6 +43,8 @@ function SetEventStatus(node,val,cls){
 
 if (SMUData) {
     let smus = JSON.parse(SMUData);
+    smus = smus.sort(ComparatorSMUData);
+
     let count = 0;
     let dataSource = [];
     for (let smu of smus) {
@@ -307,11 +111,8 @@ if (SMUData) {
             SetEventStatus(smuNode,smu.judiena,"judiena");
 
             companyInfo.find('.register-number').append(smu.regNr);
-            if (+smu.klass > 9) {
-                companyInfo.find('.education').append('vidusskola');
-            } else {
-                companyInfo.find('.education').append('pamatskola');
-            }
+            companyInfo.find('.prod-descr').append(smu.prodDescr);
+            companyInfo.find('.education').append(smu.education);
 
             companyInfo.find('.type-company').append(smu.companyType);
             companyInfo.find('.target-type').append(smu.targetAudit);
