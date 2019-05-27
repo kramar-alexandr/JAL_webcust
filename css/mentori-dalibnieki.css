@@ -9,7 +9,7 @@
 .capture{display:none;}
 .capture_top{
     position: absolute;
-    margin-top: 17vw;
+    margin-top: 230px;
     margin-left: 12vw;
     z-index: 2;
     width: 38%;
@@ -24,7 +24,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -33,7 +33,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -53,7 +53,7 @@
 
 #main_info{
     padding-top: 4vw;
-    padding-bottom: 2vw;
+    padding-bottom: 27px;
     width: 70%;
     margin: auto;
 }
@@ -62,9 +62,9 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: justify;
-    margin-bottom: 2vw;
+    margin-bottom: 27px;
 }
 #main_info h1{
     margin: 0;
@@ -80,7 +80,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    margin-bottom: 2vw
+    margin-bottom: 27px
 }
 .im-1{
     background-image: url(../img/36578504893_b87cb3bf27_o.jpg)
@@ -229,7 +229,7 @@
     font-size: 11px !important;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.1vw !important;
+    line-height: 15px !important;
     text-align: justify;
     margin-bottom: 0 !important;
 }
@@ -269,7 +269,7 @@
     }
     .capture_top h2 {
         text-align: center;
-        font-size: 5vw;
+        font-size: 70px;
         line-height: 1.3;
         padding-bottom: 40px;
     }
@@ -284,11 +284,11 @@
     }
     .mentori div {
         width: 100%;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     .mentori h2 {
         font-size: 4vw;
-        margin: 2vw;
+        margin: 27px;
     }
     .about-mentors {
         flex-direction: column;
@@ -303,12 +303,12 @@
     .col-1 p {
         font-size: 3.5vw !important;
         line-height: 1.5 !important;
-        margin-bottom: 5vw !important;
+        margin-bottom: 70px !important;
     }
     .col-2 h3 {
         color: black;
         font-size: 4vw;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     .col-3 {
         width: 100%;
@@ -329,7 +329,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
-        margin-bottom: 2vw;
+        margin-bottom: 27px;
         background-position: 50%;
     }
     .im-1{
@@ -347,7 +347,7 @@
         margin-top: 138px;
         margin-bottom: 138px;
         text-align: center;
-        font-size: 5vw;
+        font-size: 70px;
         text-transform: inherit;
         font-weight: 700;
         width: 70%;

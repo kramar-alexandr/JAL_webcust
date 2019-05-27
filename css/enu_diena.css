@@ -19,7 +19,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 0.5vw;
 }
@@ -39,7 +39,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.3vw;
+    line-height: 18px;
     text-align: left;
     opacity: 0.8;
 }
@@ -49,7 +49,7 @@
 }
 #main_info{
     padding-top: 40px;
-    padding-bottom: 6vw;
+    padding-bottom: 83px;
     width: 50%;
     margin: auto;
 }
@@ -81,7 +81,7 @@
     font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     font-weight: bold;
 }
@@ -90,7 +90,7 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     margin-bottom: 13px;
     font-weight: 400;
@@ -100,14 +100,14 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
 }
 h6{
     margin: 0;
     margin-bottom: 40px;
     text-align: center;
-    font-size: 1.1vw;
+    font-size: 15px;
 }
 #content_2{
     display: -webkit-box;
@@ -134,11 +134,11 @@ h6{
     text-align: center;
 }
 .header_content_2{
-    height: 2vw;
+    height: 27px;
 }
 .background{
     width: 100%;
-    height: 5vw;
+    height: 70px;
     background-repeat: no-repeat;
     position: relative;
     background-position-x: 50%;
@@ -171,7 +171,7 @@ h6{
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
-    line-height: 1.5vw;
+    line-height: 17px;
     font-weight: 500;
 }
 #content_3 h1{
@@ -179,14 +179,14 @@ h6{
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
-    line-height: 1.5vw;
+    line-height: 17px;
     font-weight: bold;
 }
 #content_3 span{
     color: white;
 }
 #content_3 tr{
-    height: 2vw;
+    height: 27px;
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
 }
 .first_header{
@@ -213,7 +213,7 @@ h6{
     }
     .capture_enu_diena h2 {
         text-align: center;
-        font-size: 5vw;
+        font-size: 70px;
         line-height: 1.3;
         padding-bottom: 40px;
     }
@@ -267,7 +267,7 @@ h6{
     }
     .first_header {
         width: 40%;
-        padding-left: 5vw;
+        padding-left: 70px;
     }
     #content_3 h1 {
         font-size: 3.5vw;

@@ -19,7 +19,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 0.5vw;
 }
@@ -28,7 +28,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -52,7 +52,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -61,7 +61,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -73,8 +73,8 @@
     display: flex;
 }
 #main_veiksmes_stasti{
-    padding-top: 2vw;
-    padding-bottom: 2vw;
+    padding-top: 27px;
+    padding-bottom: 27px;
     width: 70%;
     margin: auto;
     flex-wrap: wrap;
@@ -111,7 +111,7 @@
     color: rgb(255, 255, 255);
     margin: 0;
     font-size: 12px;
-    line-height: 1.5vw;
+    line-height: 17px;
     font-weight: 400;
     width: 12vw;
     margin: 0;
@@ -147,7 +147,7 @@
         margin-bottom: 13px;
     }
     #main_veiksmes_stasti h1 {
-        font-size: 5vw;
+        font-size: 70px;
         line-height: 1.5;
         font-weight: 600;
         width: 70%;

@@ -19,7 +19,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -28,7 +28,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: justify;
     opacity: 0.8;
 }
@@ -77,10 +77,10 @@
 }
 #main_info h5{
     margin: 0;
-    font-size: 1.5vw;
+    font-size: 17px;
     font-family: "Poppins", sans-serif;
     color: rgb(0, 0, 0);
-    margin-bottom: 1.5vw;
+    margin-bottom: 17px;
 }
 #main_info p{
     text-align: justify;
@@ -194,7 +194,7 @@
     }
     .capture_programma h2 {
         text-align: center;
-        font-size: 5vw;
+        font-size: 70px;
         line-height: 1.3;
         padding-bottom: 40px;
     }
@@ -231,7 +231,7 @@
     }
     .one-flex img {
         width: 15vw;
-        margin: 5vw;
+        margin: 70px;
     }
     .one-flex p {
         font-size: 40px;

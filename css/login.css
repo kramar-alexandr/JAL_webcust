@@ -32,7 +32,7 @@
     background-color: #16B01A;
     color: white;
     font-size: 13px;
-    padding: 0.5vw 2vw;
+    padding: 0.5vw 27px;
     margin: 13px;
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
@@ -70,7 +70,7 @@
     background-color: #16B01A !important;
     color: white;
     font-size: 13px !important;
-    padding: 0.5vw 2vw;
+    padding: 0.5vw 27px;
     margin: 13px;
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
@@ -144,7 +144,7 @@ label {
     background-color: #16B01A !important;
     color: white;
     font-size: 13px;
-    padding: 0.5vw 2vw;
+    padding: 0.5vw 27px;
     margin: 13px;
     height: auto;
     width: 30%;
@@ -264,7 +264,7 @@ label {
         width: auto;
         flex-direction: column;
         margin: auto;
-        font-size: 5vw !important;
+        font-size: 70px !important;
         padding-left: 50px;
         margin-bottom: 50px;
         margin-top: 50px;

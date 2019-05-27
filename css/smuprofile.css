@@ -12,7 +12,7 @@
 .field_col input,.field_col textarea{
   background:none;
   border:none;
-  font-size:1.1vw;
+  font-size:15px;
   width:100%;
 }
 .field_col textarea:focus,.field_col  input:focus{
@@ -25,10 +25,10 @@
   height:100px;
 }
 .field_label{
-  font-size:0.7vw;
+  font-size:10px;
 }
 .field_descr{
-  font-size:0.8vw;
+  font-size:11px;
   margin-bottom:10px;
 }
 
@@ -81,7 +81,7 @@ border-collapse: collapse;
 .profile table td,.profile table th{
 border:1px solid #ddd !important;
 padding:10px 30px;
-height:2vw;
+height:27px;
 }
 #emplist-table{
   margin-bottom:15px;
@@ -113,7 +113,7 @@ height:2vw;
 .back_button_wrap a{
   float:right;
   margin:0px;
-  margin-right:2vw;
+  margin-right:27px;
 }
 .spbutton{
   padding:0.5vw 13px;

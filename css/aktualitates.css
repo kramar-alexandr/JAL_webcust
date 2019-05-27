@@ -7,12 +7,12 @@
 }
 .capture{display:none;}
 #news{
-    padding-top: 5vw;
-    padding-bottom: 6vw;
+    padding-top: 70px;
+    padding-bottom: 83px;
 }
 .capture_aktualitates{
     position: absolute;
-    margin-top: 17vw;
+    margin-top: 230px;
     margin-left: 12vw;
     z-index: 2;
     width: 38%;
@@ -23,16 +23,16 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_aktualitates p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -42,7 +42,7 @@
 }
 .capture_aktualitates a{
     cursor: pointer;
-    font-size: 0.9vw;
+    font-size: 11px;
 }
 .capture_aktualitates_2{
     display: none;
@@ -57,16 +57,16 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_aktualitates_2 p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -85,7 +85,7 @@
 #pagenav {
     margin: auto;
     width: 20%;
-    font-size: 2vw;
+    font-size: 27px;
     color: rgb(159, 159, 159);
     background-color: white;
 }
@@ -110,22 +110,22 @@
     margin-right: 4vw;
 }
 .cont_head {
-    font-size: 1.4vw;
+    font-size: 19px;
     font-family: "Poppins", sans-serif;
     color: rgb(88, 88, 88);
     font-weight: bold;
     text-align: left;
     margin: 0;
     line-height: 1.6vw;
-    margin-top: 2vw;
-    height: 6vw;
+    margin-top: 27px;
+    height: 83px;
     cursor: pointer
 }
 .wrap .cont_head:hover {
     color: #07cd60
 }
 .wrap #content-date a{
-    font-size: 1.4vw;
+    font-size: 19px;
     font-family: "Poppins", sans-serif;
     color: rgba(88, 88, 88, 0.5);
     font-weight: bolder;
@@ -136,7 +136,7 @@
     margin-left: -5vw;
 }
 .cont_text {
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins";
     color: rgb(159, 159, 159);
     line-height: 1.2vw;
@@ -144,22 +144,22 @@
     margin: 0;
 }
 .wrap div h1 {
-    font-size: 1.4vw;
+    font-size: 19px;
     font-family: "Poppins", sans-serif;
     color: rgb(88, 88, 88);
     font-weight: bold;
     text-align: left;
     margin: 0;
     line-height: 1.6vw;
-    margin-top: 2vw;
-    height: 5vw;
+    margin-top: 27px;
+    height: 70px;
 }
 .wrap div h1:hover{
     color: #2cc654;
     cursor: pointer;
 }
 .wrap div h2 {
-    font-size: 1.4vw;
+    font-size: 19px;
     font-family: "Poppins", sans-serif;
     color: rgba(88, 88, 88, 0.5);
     font-weight: bolder;
@@ -170,7 +170,7 @@
     margin-left: -5vw;
 }
 .wrap div p {
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins";
     color: rgb(159, 159, 159);
     line-height: 1.2vw;
@@ -179,7 +179,7 @@
 }
 #news h5{
     margin: 0;
-    font-size: 2vw;
+    font-size: 27px;
     font-family: "Poppins", sans-serif;
     color: rgb(159, 159, 159);
     font-weight: bold;
@@ -266,7 +266,7 @@
     #pagenav {
         margin: auto;
         width: 20%;
-        font-size: 2vw;
+        font-size: 27px;
         color: rgb(159, 159, 159);
         background-color: white;
     }
@@ -288,7 +288,7 @@
     }
     .capture_aktualitates h2{
         text-align: center;
-        font-size: 5vw;
+        font-size: 70px;
         line-height: 1.3;
         padding-bottom: 3vw;
     }
@@ -316,13 +316,13 @@
         color: rgb(0,0,0);
         line-height: 1.3;
         text-align: justify;
-        margin-bottom: 2vw;
+        margin-bottom: 27px;
     }
     #news h5 {
         margin-left: 0;
         text-align: center;
-        margin-bottom: 5vw;
-        font-size: 5vw
+        margin-bottom: 70px;
+        font-size: 70px
     }
     .wrap li {
         width: 100%;
@@ -334,7 +334,7 @@
         line-height: 1.5;
         margin-top: 0;
         height: unset;
-        margin-bottom: 2vw;
+        margin-bottom: 27px;
     }
     .wrap #content-date a {
         font-size: 3vw;
@@ -344,14 +344,14 @@
     .wrap .cont_text {
         font-size: 2.5vw;
         line-height: 1.5;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     .wrap div h1 {
         font-size: 3.5vw;
         line-height: 1.5;
         margin-top: 0;
         height: unset;
-        margin-bottom: 2vw;
+        margin-bottom: 27px;
     }
     .wrap div h2 {
         font-size: 3vw;
@@ -360,7 +360,7 @@
     .wrap div p {
         font-size: 2.5vw;
         line-height: 1.5;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     #partners{
         display:none !important
@@ -388,7 +388,7 @@
         text-transform: uppercase;
         background-color: transparent;
         border: none;
-        padding: 1.5vw;
+        padding: 17px;
         margin: 3vw;
         border: 1px solid rgba(0,0,0,0.4);
     }

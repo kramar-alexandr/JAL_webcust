@@ -19,7 +19,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -28,7 +28,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -65,8 +65,8 @@
     border: 1px solid rgba(35,192,76,0.2);
 }
 #main_projekti{
-    margin-top: 5vw;
-    margin-bottom: 5vw;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 .wrap{
     display: -webkit-box;
@@ -100,10 +100,10 @@
 
 .wrapped img{
     width: 138px;
-    padding: 2vw;
+    padding: 27px;
 }
 .wrapped h1{
-    font-size: 1.4vw;
+    font-size: 19px;
     font-family: "Poppins", sans-serif;
     color: black;
     font-weight: bold;
@@ -120,9 +120,11 @@
     text-align: left;
     margin: 0;
 }
+/*
 .project_logo{
     width: 15vw;
 }
+*/
 .project-bt{
     margin-left: 13px;
 }
@@ -186,7 +188,7 @@
     }
     .wrapped img {
         width: 60%;
-        padding: 5vw;
+        padding: 70px;
         margin: auto;
     }
     .wrapped h1 {
@@ -204,9 +206,9 @@
     }
     .project-bt button {
         font-size: 4vw;
-        padding: 2vw;
+        padding: 27px;
         width: fit-content;
         margin: auto;
-        margin-top: 5vw;
+        margin-top: 70px;
     }
 }

@@ -50,7 +50,7 @@
 }
 #dalibskolas_content-2{
     padding-top: 13px;
-    padding-bottom: 6vw;
+    padding-bottom: 83px;
 }
 #map{
     width: 70%;
@@ -62,7 +62,7 @@
 }
 .skolas h1{
     margin: 13px;
-    font-size: 1.1vw;
+    font-size: 15px;
     color: rgb(0,0,0);
     line-height: 4;
     text-align: center;
@@ -74,7 +74,7 @@
     display: flex;
     width: 60%;
     margin: auto;
-    font-size: 0.6vw;
+    font-size: 8px;
 }
 .skolas .flextable p{
     margin: 0vw;
@@ -94,7 +94,7 @@
 
 .capture_dalibskolas{
     position: absolute;
-    margin-top: 17vw;
+    margin-top: 230px;
     margin-left: 12vw;
     z-index: 2;
     width: 38%;
@@ -105,7 +105,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -114,7 +114,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
@@ -128,13 +128,13 @@
 }
 #top-bt p span{
     color: white;
-    font-size: 0.6vw;
+    font-size: 8px;
     margin: 0;
     line-height: 1.5;
 }
 .dalibskolas_content-1{
-    padding-top: 2vw;
-    padding-bottom: 2vw;
+    padding-top: 27px;
+    padding-bottom: 27px;
     width: 70%;
     margin: auto;
 }
@@ -142,7 +142,7 @@
     margin: 0;
     margin-bottom: 40px;
     text-align: center;
-    font-size: 1.1vw;
+    font-size: 15px;
 }
 .wrap{
     display: -webkit-box;
@@ -193,7 +193,7 @@
     padding-bottom: 0.5vw;
 }
 .wrapped span, .wrapped1 span{
-    font-size: 0.6vw;
+    font-size: 8px;
 }
 .project_logo{
     width: 15vw;
@@ -218,7 +218,7 @@
 }
 .wrapped_text{
     width: 70%;
-    padding: 1.5vw;
+    padding: 17px;
 }
 .logos-{
     width: 30%;
@@ -250,7 +250,7 @@
 .logos-1{
     width: 30%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    height: 6vw;
+    height: 83px;
     margin-left:1vw;
 }
 .logo5{background-image: url(../img/logos/10.png);}
@@ -357,12 +357,12 @@
     background-position-y: 50%;
     height: 100%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    width: 6vw;
-    height: 6vw
+    width: 83px;
+    height: 83px
 }
 .wrapped_text-1{
-    padding-top: 1.5vw;
-    padding-bottom: 1.5vw;
+    padding-top: 17px;
+    padding-bottom: 17px;
 }
 
 .logo13{
@@ -446,7 +446,7 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
-    line-height: 1.5vw;
+    line-height: 17px;
     font-weight: 500;
 }
 .content_3 h1{
@@ -454,14 +454,14 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
-    line-height: 1.5vw;
+    line-height: 17px;
     font-weight: bold;
 }
 .content_3 span{
     color: white;
 }
 .content_3 tr{
-    height: 2vw;
+    height: 27px;
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
 }
 .first_header{
@@ -517,16 +517,16 @@
 }
 .wr-t p:first-child{
     width: 90%;
-    margin-right: 2vw;
+    margin-right: 27px;
 }
 .wr-t p{
     margin: 0;
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
-    margin-bottom: 2vw;
+    margin-bottom: 27px;
 }
 .capture_dalibskolas_mobile{
     display: none;
@@ -564,7 +564,7 @@
     }
     .capture_dalibskolas h2 {
         text-align: center;
-        font-size: 5vw;
+        font-size: 70px;
         line-height: 1.3;
         padding-bottom: 40px;
     }
@@ -597,7 +597,7 @@
         line-height: 2;
     }
     .skolotaji #quote p{
-        margin-top: 5vw;
+        margin-top: 70px;
     }
     #quote {
         background-image: url(../img/mob_1.jpg) !important;
@@ -615,14 +615,14 @@
     }
     .wrapped_text {
         width: 100%;
-        padding: 1.5vw;
+        padding: 17px;
     }
     .wrapped h1, .wrapped1 h1 {
         font-size: 3.5vw;
         font-weight: 700;
         text-align: center;
         line-height: 1.6;
-        margin-bottom: 2vw;
+        margin-bottom: 27px;
     }
     .wrapped p, .wrapped1 p {
         font-size: 40px;
@@ -654,7 +654,7 @@
     }
     .one-flex img {
         width: 15vw;
-        margin: 5vw;
+        margin: 70px;
     }
     .one-flex p {
         font-size: 40px;
@@ -683,7 +683,7 @@
         height: auto;
         align-items: center;
         flex-direction: column;
-        margin: 2vw;
+        margin: 27px;
     }
     .logos- {
         width: 45%;
@@ -716,7 +716,7 @@
     .skolotaji .text-akt p{
         font-size: 40px;
         line-height: 2;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     #dalibskolas-skolas #quote{
         height: 160vw;
@@ -747,6 +747,6 @@
         line-height: 1.5;
         text-align: justify;
         margin: 0;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
 }

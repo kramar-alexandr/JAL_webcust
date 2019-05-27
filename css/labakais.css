@@ -29,7 +29,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -38,13 +38,13 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
 #main_info_best{
     padding-top: 4vw;
-    padding-bottom: 2vw;
+    padding-bottom: 27px;
     width: 70%;
     margin: auto;
 }
@@ -53,9 +53,9 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: justify;
-    margin-bottom: 2vw;
+    margin-bottom: 27px;
 }
 
 
@@ -200,7 +200,7 @@
     .two-columns h3 {
         margin: 0;
         font-size: 3.5vw;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
         text-align: center;
         font-weight: 700 !important
     }

@@ -29,7 +29,7 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 2vw;
+    font-size: 27px;
     line-height: 1.1;
     padding-bottom: 13px;
 }
@@ -38,13 +38,13 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     opacity: 0.8;
 }
 .capture_titan span {
     color: #2cc654;
-    line-height: 2vw;
+    line-height: 27px;
     font-weight: bold;
 }
 .piesakies{
@@ -65,13 +65,13 @@
 }
 #main_info{
     padding-top: 4vw;
-    padding-bottom: 2vw;
+    padding-bottom: 27px;
     width: 60%;
     margin: auto;
 }
 #main_info_piesakies{
     padding-top: 4vw;
-    padding-bottom: 2vw;
+    padding-bottom: 27px;
     width: 70%;
     margin: auto;
 }
@@ -80,14 +80,14 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: justify;
 }
 #content_1 span {
     color: #2cc654;
 }
 #content_1 div{
-    margin-bottom: 2vw;
+    margin-bottom: 27px;
 }
 #content_2{
     display: -webkit-box;
@@ -114,7 +114,7 @@
     font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     font-weight: bold;
 }
@@ -123,7 +123,7 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
     margin-bottom: 13px;
     font-weight: 400;
@@ -133,7 +133,7 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 1.5vw;
+    line-height: 17px;
     text-align: left;
 }
 #element{
@@ -210,7 +210,7 @@
 }
 .wrapped_text{
     width: 70%;
-    padding: 1.5vw;
+    padding: 17px;
 }
 .w-top .wrapped_text{
     width: 100%;
@@ -273,13 +273,13 @@
 }
 .two-columns h3{
     margin: 0;
-    font-size: 1.3vw;
+    font-size: 18px;
     margin-bottom: 13px
 }
 .two-columns h3 a{
     color: #2cc654;
     margin: 0;
-    font-size: 1.3vw;
+    font-size: 18px;
     margin-bottom: 13px
 }
 .two-columns table{
@@ -364,7 +364,7 @@
     }
     .two-columns p {
         font-size: 3.5vw !important;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     .two-columns p a {
         font-size: 3.5vw;
@@ -373,15 +373,15 @@
         margin: 0;
         line-height: 3;
         font-size: 3.5vw;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     .two-columns h3 a {
         font-size: 3.5vw;
-        margin-bottom: 5vw;
+        margin-bottom: 70px;
     }
     .two-columns table {
-        padding: 2vw;
-        margin-bottom: 5vw;
+        padding: 27px;
+        margin-bottom: 70px;
     }
     .two-columns h2 {
         font-size: 34px;
