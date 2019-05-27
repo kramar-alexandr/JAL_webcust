@@ -51,7 +51,7 @@ _:-ms-lang(x), #link-top { width: 93% }
     padding: 0
 }
 .menu{
-    width: 3vw;
+    width: 40px;
     margin-left: 70px;
 }
 .menu img{
@@ -62,23 +62,23 @@ _:-ms-lang(x), #link-top { width: 93% }
     background-size: 98%;
     background-repeat: no-repeat;
     background-image: url(../img/logo.png);
-    height: 2.5vw;
-    width: 10vw;
+    height: 34px;
+    width: 138px;
     z-index: 100;
 }
 .login {
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: 'Poppins', sans-serif;
     opacity: 0.8;
     z-index: 100;
 }
 .login a{
-    font-size: 0.9vw;
+    font-size: 12px;
 }
 .login li {
     display: inline;
     list-style: none;
-    margin-right: 1vw;
+    margin-right: 13px;
     cursor: pointer;
 }
 #link-top .login a{
@@ -115,11 +115,11 @@ _:-ms-lang(x), #link-top { width: 93% }
     text-align: left;
     font-size: 2vw;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -233,7 +233,7 @@ _:-ms-lang(x), #link-top { width: 93% }
         padding-bottom: 5vw;
     }
     .capture p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 1.5;
         text-align: center;
     }

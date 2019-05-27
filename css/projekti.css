@@ -21,11 +21,11 @@
     text-align: left;
     font-size: 2vw;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_projekti p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -34,7 +34,7 @@
 }
 .capture_projekti span {
     color: #2cc654;
-    line-height: 3vw;
+    line-height: 40px;
 }
 #buttons_projekti{
     position: absolute;
@@ -53,9 +53,9 @@
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
-    padding: 0.5vw 1vw;
-    margin: 1vw;
+    font-size: 13px;
+    padding: 0.5vw 13px;
+    margin: 13px;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
 }
@@ -85,7 +85,7 @@
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    padding: 1vw;
+    padding: 13px;
 }
 .wrapped div{
     display: -webkit-flex;
@@ -99,7 +99,7 @@
 }
 
 .wrapped img{
-    width: 10vw;
+    width: 138px;
     padding: 2vw;
 }
 .wrapped h1{
@@ -110,13 +110,13 @@
     text-align: left;
     margin: 0;
     line-height: 1.6vw;
-    margin-bottom: 0.8vw;
+    margin-bottom: 11px;
 }
 .wrapped p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: rgb(159, 159, 159);
-    line-height: 1vw;
+    line-height: 13px;
     text-align: left;
     margin: 0;
 }
@@ -124,13 +124,13 @@
     width: 15vw;
 }
 .project-bt{
-    margin-left: 1vw;
+    margin-left: 13px;
 }
 .project-bt button{
     font-family: "Poppins", sans-serif;
     color: rgba(0,0,0,0.7);
-    font-size: 1vw;
-    padding: 0.3vw 1vw;
+    font-size: 13px;
+    padding: 0.3vw 13px;
     border: 1px solid rgba(0,0,0,0.2);
     cursor: pointer;
     text-transform: uppercase;
@@ -140,7 +140,7 @@
 .project-bt a {
     font-family: "Poppins", sans-serif;
     color: rgba(0,0,0,0.7);
-    font-size: 1vw;
+    font-size: 13px;
     font-weight: 500;
 }
 .project-tx{
@@ -155,8 +155,8 @@
     }
     .capture_mobile {
         display: block;
-        padding-top: 10vw;
-        padding-bottom: 10vw;
+        padding-top: 138px;
+        padding-bottom: 138px;
         width: 70%;
         margin: auto;
     }
@@ -194,10 +194,10 @@
         font-weight: bold;
         text-align: center;
         line-height: 1.5;
-        margin-bottom: 3vw;
+        margin-bottom: 40px;
     }
     .wrapped p {
-        font-size: 3vw;
+        font-size: 40px;
         color: black;
         line-height: 1.5;
         text-align: justify;

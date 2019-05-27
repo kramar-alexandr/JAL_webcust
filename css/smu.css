@@ -7,7 +7,7 @@ body{
 }
 #top-bt p {
     width: 8vw;
-    margin: 1vw;
+    margin: 13px;
     text-align: right;
 }
 #top-bt p span {
@@ -38,12 +38,12 @@ body{
     font-weight: bold;
     text-align: left;
     font-size: 2vw;
-    line-height: 3vw;
+    line-height: 40px;
     padding-bottom: 0.5vw;
 }
 .capture_smu p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -66,9 +66,9 @@ body{
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
-    padding: 0.5vw 1vw;
-    margin: 1vw;
+    font-size: 13px;
+    padding: 0.5vw 13px;
+    margin: 13px;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
 }
@@ -78,19 +78,19 @@ body{
     border: 1px solid rgba(35,192,76,0.2);
 }
 #smu_content{
-    padding-top: 3vw;
-    padding-bottom: 3vw;
+    padding-top: 40px;
+    padding-bottom: 40px;
     width: 60%;
     margin: auto;
 }
 .smu-c p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
     text-align: justify;
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
 }
 .wrap{
     display: -webkit-flex;
@@ -117,7 +117,7 @@ body{
     background-color: white;
 }
 .wrapped h1{
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: black;
     font-weight: bold;
@@ -127,7 +127,7 @@ body{
     margin-bottom: 0.2vw;
 }
 .wrapped h2 {
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins", sans-serif;
     color: black;
     font-weight: bold;
@@ -137,10 +137,10 @@ body{
     text-align: center;
 }
 .wrapped p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: justify;
     margin: 0;
     padding-bottom: 0.5vw;
@@ -213,7 +213,7 @@ body{
     margin-top: 2vw;
 }
 #content_3 p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins", sans-serif;
     color: black;
     line-height: 1.3vw;
@@ -234,14 +234,14 @@ body{
 }
 #content_4 img{
     width: 2vw;
-    padding: 1vw;
+    padding: 13px;
     padding-top: 0;
 }
 #content_4 p{
     font-size: 0.6vw;
     font-family: "Poppins", sans-serif;
     color: #04c34e;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: left;
     margin: 0;
     padding-bottom: 0.5vw;
@@ -249,13 +249,13 @@ body{
 }
 h6{
     margin: 2vw;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
     text-align: center;
     font-weight: bold;
-    margin-top: 3vw;
+    margin-top: 40px;
 }
 #list{
     display: -webkit-flex;
@@ -269,7 +269,7 @@ h6{
     margin-right: 2vw;
 }
 #list li{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins", sans-serif;
     color: black;
     line-height: 1.5vw;
@@ -280,34 +280,34 @@ h6{
     white-space: nowrap;
 }
 #list img{
-    width: 0.8vw;
+    width: 11px;
     padding-right: 0.5vw;
 }
 .smu-c table{
     border: 1px solid rgba(0,0,0,0.3);
-    padding: 1vw;
+    padding: 13px;
     border-radius: 10px;
 }
 .smu-c table p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     text-align: left;
 }
 .smu-c table h1{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     text-align: left;
 }
 .smu-c table th{
-    padding: 0 0.5vw 1vw 0.5vw;
+    padding: 0 0.5vw 13px 0.5vw;
 }
 .smu-c table th h1{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgba(0,0,0, 0.7);
     text-align: left;
@@ -339,13 +339,13 @@ h6{
     align-items: center;
 }
 .wrap-reversed p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: justify;
     margin: 0;
-    padding: 0 1vw 0 1vw;
+    padding: 0 13px 0 13px;
 }
 .pdarb.wrap-reversed p{
     text-align: center;
@@ -381,8 +381,8 @@ h6{
 
 .smu-c h3{
     margin: 0;
-    margin-bottom: 3vw;
-    margin-top: 3vw;
+    margin-bottom: 40px;
+    margin-top: 40px;
     text-align: center;
     font-size: 1.1vw;
 }

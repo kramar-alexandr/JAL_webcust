@@ -116,7 +116,7 @@ height:2vw;
   margin-right:2vw;
 }
 .spbutton{
-  padding:0.5vw 1vw;
+  padding:0.5vw 13px;
   background:#cccccc !important;
 }
 .table-plan{
@@ -173,7 +173,7 @@ height:2vw;
 }
 
 #finplan_table_wrapper{
-  margin:0vw 1vw;
+  margin:0vw 13px;
 }
 
 

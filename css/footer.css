@@ -8,15 +8,15 @@
     justify-content: center;
 }
 #partners h1{
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(159, 159, 159);
     text-transform: uppercase;
-    padding: 3vw;
+    padding: 40px;
 }
 #partners div img{
     width: 8vw;
-    padding: 3vw;
+    padding: 40px;
     padding-bottom: 20px;
 }
 #border_footer {
@@ -45,10 +45,10 @@
     justify-content: center;
 }
 .footer_block{
-    padding: 4vw 1vw 3vw 1vw;
+    padding: 4vw 13px 40px 13px;
 }
 .footer_block h1{
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Roboto", sans-serif;
     color: rgb(255, 254, 254);
     font-weight: bold;
@@ -56,7 +56,7 @@
     padding-bottom: 1.3vw;
 }
 .footer_block p{
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Roboto", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.2vw;
@@ -65,12 +65,12 @@
 }
 .foter_block ul,li, a{
     list-style-type: none;
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Roboto", sans-serif;
     color: rgb(255, 255, 255);
-    line-height: 1vw;
+    line-height: 13px;
     margin: 0;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 #footer-link{
     display: -webkit-flex;
@@ -83,12 +83,12 @@
     cursor: pointer;
 }
 #footer_6 img{
-    width: 1vw;
+    width: 13px;
     margin-left: 6px;
 }
 
 #youtube img {
-    width: 3vw;
+    width: 40px;
 }
 
 #facebook img {
@@ -101,7 +101,7 @@
     color:#2cc654;
 }
 #copiright p{
-    font-size: 0.65vw;
+    font-size: 9px;
     font-family: "Roboto", sans-serif;
     color: rgb(255, 255, 255);
     opacity: 0.6;
@@ -123,8 +123,8 @@
         flex-direction: column;
         margin: auto;
         text-align: center;
-        padding-top: 10vw;
-        padding-bottom: 10vw;
+        padding-top: 138px;
+        padding-bottom: 138px;
     }
     .footer_block{
         width: 100% !important
@@ -142,7 +142,7 @@
     .footer_block h1 {
         font-size: 4vw;
         margin: 0;
-        padding-bottom: 3vw;
+        padding-bottom: 40px;
         padding-top: 5vw;
     }
     .footer_block p {
@@ -156,14 +156,14 @@
         margin-top:5vw
     }
     #copiright p {
-        font-size: 3vw;
-        padding-bottom: 10vw;
+        font-size: 40px;
+        padding-bottom: 138px;
         width: 80%;
         margin: auto;
     }
     #partners div img{
         width: 12vw;
-        padding: 3vw;
+        padding: 40px;
         padding-top: 10px !important;
         padding-bottom: 10px;
     }

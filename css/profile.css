@@ -35,7 +35,7 @@
     color: white;
     font-size: 14px;
     padding: 0.5vw 2vw;
-    margin: 1vw;
+    margin: 13px;
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
@@ -59,9 +59,9 @@
     font-family: "Poppins", sans-serif;
     background-color: #ccc !important;
     color: black;
-    font-size: 1vw !important;
+    font-size: 13px !important;
     padding: 0.5vw 2vw;
-    margin: 1vw;
+    margin: 13px;
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
@@ -80,9 +80,9 @@
     font-family: "Poppins", sans-serif;
     background-color: #ccc !important;
     color: black;
-    font-size: 1vw !important;
+    font-size: 13px !important;
     padding: 0.5vw 2vw;
-    margin: 1vw;
+    margin: 13px;
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
@@ -150,7 +150,7 @@
 .profile-info {
     display: flex;
     justify-content: center;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .tabs {
@@ -169,7 +169,7 @@
     width: 610px;
     margin: auto;
     margin-bottom: 150px;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .delete-info-email {
@@ -197,7 +197,7 @@
     margin-bottom: 10px;
     margin-left: 10px;
     width: 16vw;
-    font-size: 0.8vw;
+    font-size: 11px;
 }
 
 .addinput {
@@ -209,7 +209,7 @@
 /*}*/
 
 .addinput span {
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 #profile-soc {
@@ -230,7 +230,7 @@
 }
 
 #table_id, #apstiprinatie, #pamatskola {
-    font-size: 1vw;
+    font-size: 13px;
     width: 80% !important;
 }
 
@@ -282,7 +282,7 @@
 .status-btn {
     font-family: "Poppins", sans-serif;
     color: #d0d0d0;
-    font-size: 1vw !important;
+    font-size: 13px !important;
     cursor: pointer;
     text-align: center;
     /*background: url("../img/no.png") no-repeat;*/
@@ -291,7 +291,7 @@
 .labot-btn {
     font-family: "Poppins", sans-serif;
     color: #d0d0d0;
-    font-size: 1vw !important;
+    font-size: 13px !important;
     cursor: pointer;
     text-align: center;
 }
@@ -331,7 +331,7 @@
     width: 100%;
     font-family: "Poppins", sans-serif;
     color: #d0d0d0;
-    font-size: 1vw !important;
+    font-size: 13px !important;
     padding: 0.5vw 2vw;
     cursor: pointer;
     text-align: center;
@@ -340,7 +340,7 @@
 .paginate_button  {
     background: #cccccc !important;
     text-align: center;
-    font-size: 1vw;
+    font-size: 13px;
     color: white !important;
     border-radius: 0 !important;
     border: none !important;
@@ -408,7 +408,7 @@ td p {
 .activaite-btn {
     cursor: pointer;
     color: white;
-    font-size: 1vw !important;
+    font-size: 13px !important;
 }
 
 .submitTab {
@@ -564,7 +564,7 @@ td p {
 .info-smu {
     display: flex;
     padding-left: 40px;
-    font-size: 1vw;
+    font-size: 13px;
     padding-top: 31px;
     padding-bottom: 54px;
 }
@@ -598,7 +598,7 @@ td p {
 }
 
 .documents-container {
-    margin-top: 1vw;
+    margin-top: 13px;
 }
 
 .doc-info {
@@ -628,7 +628,7 @@ td p {
     /*background-image: url(../img/bg-doc.png);*/
     /*background-repeat: no-repeat;*/
     /*background-position: left;*/
-    /*padding-left: 2.5vw;*/
+    /*padding-left: 34px;*/
     /*background-size: 11%;*/
 /*}*/
 
@@ -649,7 +649,7 @@ td p {
 
 .smu-button {
     width: 20%;
-    padding-top: 2.5vw;
+    padding-top: 34px;
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -675,7 +675,7 @@ td p {
 }
 
 .docs-card p {
-    font-size: 0.7vw;
+    font-size: 9px;
     margin-left: 0.7rem
 }
 
@@ -687,7 +687,7 @@ td p {
 .company-detail {
     padding-left: 40px;
     padding-right: 40px;
-    font-size: 1vw;
+    font-size: 13px;
     padding-top: 31px;
     padding-bottom: 54px;
     display: none;
@@ -720,7 +720,7 @@ td p {
 
 #table-apliecibas {
     margin-bottom: 50px;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .show {
@@ -773,10 +773,10 @@ td p {
 }
 
 .profile-pupil-info {
-    font-size: 1vw;
+    font-size: 13px;
     width: 60%;
     margin: auto;
-    margin-bottom: 3vw;
+    margin-bottom: 40px;
 }
 
 .profile-pupil-info p {
@@ -786,10 +786,10 @@ td p {
 }
 
 .pupil-info, .pupil-parent, .pupil-smu {
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
     border-bottom: 1px solid #c5c5c5;
     padding-left: 15vw;
-    margin-top: 1vw ;
+    margin-top: 13px ;
 }
 
 .pupil-parent {
@@ -836,7 +836,7 @@ td p {
 }
 
 .parent-full-name, .full-name, .pupil-smu-name {
-    padding-top: 1vw;
+    padding-top: 13px;
 }
 
 #compinfo textarea {
@@ -848,7 +848,7 @@ td p {
     margin-bottom: 10px;
     margin-left: 10px;
     width: 100%;
-    font-size: 0.8vw;
+    font-size: 11px;
 }
 
 #compinfo select {
@@ -921,9 +921,9 @@ td p {
     position: relative;
     top: 1.6vw;
     right: 0.6vw;
-    width: 1vw;
+    width: 13px;
     background-color: #2cc654;
-    height: 1vw;
+    height: 13px;
     border-radius: 50%;
     text-align: center;
     color: white;
@@ -932,7 +932,7 @@ td p {
 
 .info-apllication:hover::after {
     content: attr(data-title);
-    font-size: 1vw;
+    font-size: 13px;
     position: absolute;
     min-width: 15vw;
     cursor: pointer;
@@ -963,7 +963,7 @@ td p {
 
 .small-addit {
     width: 17% !important;
-    margin-left: 1vw;
+    margin-left: 13px;
     padding: 1.5vw;
     text-align: left !important;
 }
@@ -997,7 +997,7 @@ td p {
 }
 
 .date {
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .name-document {
@@ -1019,7 +1019,7 @@ td p {
 
 .technical-info, .events-info {
     text-align: center;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .event-box {
@@ -1069,7 +1069,7 @@ td p {
 
 .dark-grey {
     background-color: #cdcdcd !important;
-    padding: 1vw;
+    padding: 13px;
     border: none;
 }
 
@@ -1120,7 +1120,7 @@ td p {
     margin-bottom: 10px;
     margin-left: 10px;
     width: 30vw;
-    font-size: 0.8vw;
+    font-size: 11px;
 }
 
 .border {
@@ -1153,7 +1153,7 @@ td p {
 }
 
 .stand-box span {
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .stand-btn {
@@ -1184,14 +1184,14 @@ td p {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
-    margin-bottom: 1vw;
-    font-size: 1vw;
+    margin-bottom: 13px;
+    font-size: 13px;
 }
 
 .empName {
-    padding-right: 1vw;
-    padding-left: 1vw;
-    font-size: 1vw;
+    padding-right: 13px;
+    padding-left: 13px;
+    font-size: 13px;
     font-weight: normal;
 }
 .btn-group button:first-child {
@@ -1206,7 +1206,7 @@ td p {
 
 .addit-main-box p {
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 
@@ -1225,22 +1225,22 @@ td p {
     text-align: center;
     font-weight: normal !important;
     width: 83%;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .empe {
     display: flex;
     justify-content: space-between;
     /*box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);*/
-    margin-bottom: 1vw;
-    font-size: 1vw;
+    margin-bottom: 13px;
+    font-size: 13px;
     flex-direction: column;
-    padding: 1vw;
+    padding: 13px;
 }
 
 .smu-box p {
     font-weight: normal;
-    font-size: 1vw;
+    font-size: 13px;
 }
 
 .confrm {
@@ -1251,12 +1251,12 @@ td p {
 }
 
 .tech-info-main {
-    margin-top: 1vw;
+    margin-top: 13px;
 }
 
 .document p{
     font-weight: 800;
-    font-size: 1vw;
+    font-size: 13px;
     text-align: center;
 }
 
@@ -1268,7 +1268,7 @@ td p {
 }
 
 #programms {
-    font-size: 1vw;
+    font-size: 13px;
     width: 80% !important;
 }
 
@@ -1305,18 +1305,18 @@ td p {
 }
 
 #reportTable {
-    font-size: 1vw;
+    font-size: 13px;
     width: 80% !important;
 }
 
 #reportTable td{
-    height: 3vw;
+    height: 40px;
 }
 
 .reports-header h3 {
     display: inline;
     /* width: 50%; */
-    margin-left: 10vw;
+    margin-left: 138px;
     font-size: 1.4vw;
 }
 
@@ -1391,8 +1391,8 @@ td p {
 
 .sub-conf {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    margin-bottom: 1vw;
-    padding: 0 1vw;
+    margin-bottom: 13px;
+    padding: 0 13px;
     width: 50%;
     text-align: center;
     display: none;
@@ -1428,7 +1428,7 @@ td p {
 
 .conference-box p {
     font-weight: 800;
-    font-size: 1vw;
+    font-size: 13px;
     text-align: center;
 }
 
@@ -1436,14 +1436,14 @@ td p {
     background-image: url(../img/open.png) !important;
     background-repeat: no-repeat;
     background-position: 98%;
-    padding-right: 3vw;
+    padding-right: 40px;
 }
 
 .close {
     background-image: url(../img/close.png);
     background-repeat: no-repeat;
     background-position: 98%;
-    padding-right: 3vw;
+    padding-right: 40px;
 }
 
 .programm-login-data {
@@ -1471,7 +1471,7 @@ td p {
     padding: 2vw;
 }
  #regionsTable {
-     font-size: 1vw;
+     font-size: 13px;
  }
 
 .notChecked {

@@ -29,14 +29,14 @@
     color: rgb(255, 255, 255);
     font-weight: bold;
     text-align: left;
-    font-size: 0.8vw;
+    font-size: 11px;
     padding-bottom: 0.5vw;
     text-transform: uppercase;
     opacity: 0.8;
 }
 .capture_enu_diena p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.3vw;
@@ -48,7 +48,7 @@
     font-weight: bold;
 }
 #main_info{
-    padding-top: 3vw;
+    padding-top: 40px;
     padding-bottom: 6vw;
     width: 50%;
     margin: auto;
@@ -63,7 +63,7 @@
 }
 #element{
     position: absolute;
-    width: 2.5vw !important;
+    width: 34px !important;
     right: 0;
 }
 #content_1 div:first-child{
@@ -71,14 +71,14 @@
 }
 #content_1 div:last-child{
     width: 70%;
-    padding-left: 3vw;
+    padding-left: 40px;
 }
 #content_1 img{
     width: 100%;
 }
 #content_1 h1{
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -87,17 +87,17 @@
 }
 #content_1 h2{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
     text-align: left;
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
     font-weight: 400;
 }
 #content_1 p{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -105,7 +105,7 @@
 }
 h6{
     margin: 0;
-    margin-bottom: 3vw;
+    margin-bottom: 40px;
     text-align: center;
     font-size: 1.1vw;
 }
@@ -127,10 +127,10 @@ h6{
 }
 .c_2 p{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 0.9vw;
+    line-height: 12px;
     text-align: center;
 }
 .header_content_2{
@@ -168,7 +168,7 @@ h6{
 }
 #content_3 p{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
     line-height: 1.5vw;
@@ -176,7 +176,7 @@ h6{
 }
 #content_3 h1{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
     line-height: 1.5vw;
@@ -192,7 +192,7 @@ h6{
 .first_header{
     text-align: left;
     width: 35%;
-    padding-left: 1vw;
+    padding-left: 13px;
 }
 #quote{
     background-image: url(../img/2.jpg) !important;
@@ -215,14 +215,14 @@ h6{
         text-align: center;
         font-size: 5vw;
         line-height: 1.3;
-        padding-bottom: 3vw;
+        padding-bottom: 40px;
     }
     .capture_enu_diena p {
         display: none
     }
     .capture_enu_diena_mobile{
         display: block;
-        margin-bottom: 10vw;
+        margin-bottom: 138px;
     }
     .capture_enu_diena_mobile p{
         font-family: "Poppins", sans-serif;
@@ -233,12 +233,12 @@ h6{
         margin: 0;
     }
     #main_info {
-        padding-top: 10vw;
-        padding-bottom: 10vw;
+        padding-top: 138px;
+        padding-bottom: 138px;
         width: 70%;
     }
     h6 {
-        margin-bottom: 10vw;
+        margin-bottom: 138px;
         font-size: 4.5vw;
     }
     .c_2 {
@@ -250,7 +250,7 @@ h6{
         height: 20vw;
     }
     .c_2 p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 1;
     }
     #quote {
@@ -274,7 +274,7 @@ h6{
         line-height: 1;
     }
     #content_3 p {
-        font-size: 3vw;
+        font-size: 40px;
     }
 
 

@@ -42,7 +42,7 @@ input:focus{
 }
 .main_info p {
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -69,15 +69,15 @@ input:focus{
 }
 .quote p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255,255,255);
     line-height: 1.5vw;
     text-align: justify;
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
 }
 .quote span{
-    font-size: 0.8vw;
+    font-size: 11px;
 }
 .quote h2{
     margin: 0;
@@ -128,9 +128,9 @@ input:focus{
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
+    font-size: 13px;
     padding: 0.5vw 2vw;
-    margin: 1vw;
+    margin: 13px;
     margin-left: 0;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
@@ -181,7 +181,7 @@ input:focus{
 #sliderControlls {
     position: absolute;
     z-index: 10;
-    bottom: calc(30px + 3vw);
+    bottom: calc(30px + 40px);
     left: 0;
     height: 30px;
     width: 100%;
@@ -220,7 +220,7 @@ input:focus{
         text-align: center !important;
         font-size: 5vw !important;
         line-height: 1.3 !important;
-        padding-bottom: 3vw !important;
+        padding-bottom: 40px !important;
     }
     .capture-top p {
         font-size: 3.2vw !important;
@@ -231,12 +231,12 @@ input:focus{
 
     #main-button-on-top {
         font-size: 3.5vw;
-        padding: 1vw 3vw;
-        margin-top: 10vw;
+        padding: 13px 40px;
+        margin-top: 138px;
     }
     .main_info p {
         margin: 0;
-        font-size: 3vw;
+        font-size: 40px;
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
         line-height: 1.3;
@@ -264,7 +264,7 @@ input:focus{
         text-align: center;
     }
     .quote p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 1.5;
         margin-bottom: 5vw;
     }
@@ -282,10 +282,10 @@ input:focus{
         left: -10vw;
     }
     .green-border-2{
-        border-top: 3vw solid #2cc654;
+        border-top: 40px solid #2cc654;
     }
     .green-border-3{
-        border-bottom: 3vw solid #2cc654;
+        border-bottom: 40px solid #2cc654;
 
     }
     .quote-p{
@@ -299,10 +299,10 @@ input:focus{
     }
     #top-bt p {
         width: 70% !important;
-        margin: 1vw;
+        margin: 13px;
         text-align: center;
     }
     #top-bt p span {
-        font-size: 3vw !important;
+        font-size: 40px !important;
     }
 }

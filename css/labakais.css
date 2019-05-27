@@ -20,8 +20,8 @@
     font-weight: bold;
     text-align: left;
     font-size: 3.5vw;
-    line-height: 3vw;
-    padding-bottom: 1vw;
+    line-height: 40px;
+    padding-bottom: 13px;
 }
 .capture_best h2{
     margin: 0;
@@ -31,11 +31,11 @@
     text-align: left;
     font-size: 2vw;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_best p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -50,7 +50,7 @@
 }
 #main_info_best p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -66,22 +66,22 @@
 }
 .two-columns p{
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5;
     text-align: left;
-    margin-bottom: 1vw
+    margin-bottom: 13px
 }
 .two-columns p a{
     color: #2cc654;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     line-height: 1.5;
 }
 .two-columns li{
     color: rgb(0,0,0);
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     line-height: 1.5;
     padding-bottom: 0;
@@ -90,27 +90,27 @@
     list-style-position: inside
 }
 .two-columns div{
-    padding: 1vw
+    padding: 13px
 }
 .two-columns div{
     width: 50%;
 }
 .two-columns h3{
     margin: 0;
-    font-size: 1vw;
-    margin-bottom: 1vw
+    font-size: 13px;
+    margin-bottom: 13px
 }
 .two-columns h3 a{
     color: #2cc654;
     margin: 0;
-    font-size: 1vw;
-    margin-bottom: 1vw
+    font-size: 13px;
+    margin-bottom: 13px
 }
 .two-columns table{
     width: 100%;
-    padding: 0.8vw;
+    padding: 11px;
     border: 1px solid rgba(0,0,0,0.1);
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
     border-radius: 0.5vw;
 }
 .two-columns tr{
@@ -122,7 +122,7 @@
 }
 .two-columns h5{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5;
@@ -131,7 +131,7 @@
 .two-columns p{
     margin-bottom: 0 !important;
     margin: 0 !important;
-    font-size: 0.8vw !important;
+    font-size: 11px !important;
     font-family: "Poppins", sans-serif !important;
     color: rgb(0,0,0) !important;
     line-height: 1.5 !important;
@@ -140,7 +140,7 @@
 }
 .two-columns h2{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgba(0,0,0, 0.4);
     line-height: 1.5;
@@ -163,7 +163,7 @@
     .capture_labakais_mobile{
         display: block;
         margin: auto;
-        padding-top: 10vw;
+        padding-top: 138px;
         width: 70%;
     }
     .capture_labakais_mobile p{
@@ -188,12 +188,12 @@
         flex-direction: column
     }
     .two-columns div {
-        margin-top: 10vw;
+        margin-top: 138px;
         width: 100% !important;
     }
     #main_info_best {
-        padding-top: 10vw;
-        padding-bottom: 10vw;
+        padding-top: 138px;
+        padding-bottom: 138px;
         width: 100%;
         margin: auto;
     }
@@ -217,14 +217,14 @@
         text-transform: lowercase;
     }
     .two-columns h2 {
-        font-size: 3vw;
+        font-size: 40px;
         height: 15vw;
     }
     .two-columns h5 {
-        font-size: 3vw;
+        font-size: 40px;
     }
     .two-columns p {
-        font-size: 3vw !important;
+        font-size: 40px !important;
     }
 
 }

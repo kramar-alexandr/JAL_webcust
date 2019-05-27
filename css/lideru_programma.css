@@ -21,11 +21,11 @@
     text-align: left;
     font-size: 2vw;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_programma p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -34,7 +34,7 @@
 }
 .capture_programma span {
     color: #2cc654;
-    line-height: 3vw;
+    line-height: 40px;
 }
 #buttons_programma{
     position: absolute;
@@ -53,9 +53,9 @@
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
-    padding: 0.5vw 1vw;
-    margin: 1vw;
+    font-size: 13px;
+    padding: 0.5vw 13px;
+    margin: 13px;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
 }
@@ -65,15 +65,15 @@
     border: 1px solid rgba(35,192,76,0.2);
 }
 #main_programma{
-    margin-top: 3vw;
-    margin-bottom: 3vw;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 #main_info{
     text-align: center;
     width: 45%;
     margin: auto;
-    margin-top: 3vw;
-    margin-bottom: 3vw;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 #main_info h5{
     margin: 0;
@@ -85,7 +85,7 @@
 #main_info p{
     text-align: justify;
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0, 0, 0);
     line-height: 1.5;
@@ -101,7 +101,7 @@
     width: 70%;
     margin: auto;
     justify-content: space-around;
-    margin-top: 3vw;
+    margin-top: 40px;
 }
 .wrap div{
     width: 25%;
@@ -119,7 +119,7 @@
     letter-spacing: 0.1vw;
 }
 .wrap p{
-    font-size: 0.8vw;
+    font-size: 11px;
     text-align: center;
     color: black;
 }
@@ -138,29 +138,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 10vw;
-    width: 10vw;
-    padding: 1vw;
-    margin: 1vw;
+    height: 138px;
+    width: 138px;
+    padding: 13px;
+    margin: 13px;
 }
 .one-flex img{
     width: 3.5vw;
     margin: 0.5vw;
 }
 .one-flex p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: center;
     margin: 0;
     padding-bottom: 0.5vw;
 }
 .one-flex h1{
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: center;
     margin: 0;
     padding-bottom: 0.5vw;
@@ -173,13 +173,13 @@
     background-image: url(../img/close.png);
     background-repeat: no-repeat;
     background-position: 98%;
-    padding-right: 3vw;
+    padding-right: 40px;
 }
 .open {
     background-image: url(../img/open.png) !important;
     background-repeat: no-repeat;
     background-position: 98%;
-    padding-right: 3vw;
+    padding-right: 40px;
 }
 @media screen and (max-width: 900px){
     .capture_programma {
@@ -196,7 +196,7 @@
         text-align: center;
         font-size: 5vw;
         line-height: 1.3;
-        padding-bottom: 3vw;
+        padding-bottom: 40px;
     }
     .capture_programma p {
         display:none;
@@ -205,7 +205,7 @@
         display: block;
         width: 70%;
         margin: auto;
-        margin-bottom: 10vw;
+        margin-bottom: 138px;
     }
     .capture_programma_mobile p{
         font-family: "Poppins", sans-serif;
@@ -216,8 +216,8 @@
         margin: 0;
     }
     #main_programma {
-        margin-top: 10vw;
-        margin-bottom: 10vw;
+        margin-top: 138px;
+        margin-bottom: 138px;
     }
     .flex-prog {
         width: 80%;
@@ -234,7 +234,7 @@
         margin: 5vw;
     }
     .one-flex p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 1;
         padding-bottom: 0.5vw;
         width: 40vw;
@@ -247,12 +247,12 @@
     }
     #main_info h5 {
         font-size: 4vw;
-        margin-bottom: 2.5vw;
+        margin-bottom: 34px;
     }
     #main_info {
         width: 70%;
-        margin-top: 10vw;
-        margin-bottom: 10vw;
+        margin-top: 138px;
+        margin-bottom: 138px;
     }
     #main_info p {
         font-size: 3.5vw;

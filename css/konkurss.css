@@ -21,11 +21,11 @@
     text-align: left;
     font-size: 2vw;
     line-height: 2vw;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_konkurss p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -47,9 +47,9 @@
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
+    font-size: 13px;
     padding: 0.5vw 2vw;
-    margin: 1vw;
+    margin: 13px;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
     text-transform: uppercase;
@@ -69,7 +69,7 @@
 #main_konkurss{
     width: 70%;
     margin: auto;
-    padding-top: 3vw;
+    padding-top: 40px;
 }
 #content_1{
     margin-top:2vw;
@@ -95,7 +95,7 @@
 }
 #content_1 p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0, 0, 0);
     line-height: 1.1vw;
@@ -106,11 +106,11 @@
     font-size: 1.5vw;
     font-family: "Poppins", sans-serif;
     color: rgb(243, 177, 0);
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
 }
 #content_1 h2{
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -119,17 +119,17 @@
 }
 #content_1 h3{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
     text-align: left;
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
     font-weight: 400;
 }
 .c1{
     width: 50%;
-    padding: 3vw;
+    padding: 40px;
 }
 #content_2 {
     text-align: justify;
@@ -138,14 +138,14 @@
 }
 #content_2 p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(0, 0, 0);
     line-height: 1.5vw;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 #content_3{
-    margin-top: 1vw;
+    margin-top: 13px;
     margin-bottom: 5vw;
 }
 #content_3 table{
@@ -157,7 +157,7 @@
 }
 #content_3 p{
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: grey;
     line-height: 1.5vw;
@@ -165,13 +165,13 @@
 }
 #content_3 h1{
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
     font-weight: bold;
     text-transform: uppercase;
-    margin-right: 3vw;
+    margin-right: 40px;
 }
 #content_3 span{
     color: black;
@@ -187,7 +187,7 @@
 .first_header{
     text-align: left;
     width: 40%;
-    padding-left: 3vw;
+    padding-left: 40px;
 }
 #content_4{
     display: -webkit-box;
@@ -201,7 +201,7 @@
 }
 #element{
     position: absolute;
-    width: 2.5vw !important;
+    width: 34px !important;
     right: 0;
 }
 #content_4 div:first-child{
@@ -209,14 +209,14 @@
 }
 #content_4 div:last-child{
     width: 70%;
-    padding-left: 3vw;
+    padding-left: 40px;
 }
 #content_4 img{
     width: 100%;
 }
 #content_4 h1{
     margin: 0;
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -225,17 +225,17 @@
 }
 #content_4 h2{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
     text-align: left;
-    margin-bottom: 1vw;
+    margin-bottom: 13px;
     font-weight: 400;
 }
 #content_4 p{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -259,7 +259,7 @@
         text-align: center;
         font-size: 5vw;
         line-height: 1.3;
-        padding-bottom: 3vw;
+        padding-bottom: 40px;
     }
     .capture_konkurss p {
         font-size: 3.2vw;
@@ -290,14 +290,14 @@
     }
     #content_1 .c1:first-child {
         width: 80%;
-        padding: 3vw;
+        padding: 40px;
         height: auto;
         border: none !important;
         margin-bottom: 25vw;
     }
     #content_1 .c1{
         width: 80%;
-        padding: 3vw;
+        padding: 40px;
         height: auto;
     }
     .img_c1 {
@@ -324,7 +324,7 @@
         font-size: 4vw;
         font-family: "Poppins", sans-serif;
         color: rgb(243, 177, 0);
-        margin-bottom: 1vw;
+        margin-bottom: 13px;
         position: absolute;
         right: 11vw;
         top: -18vw;
@@ -340,12 +340,12 @@
     }
     #content_1 h3 {
         margin: 0;
-        font-size: 3vw;
+        font-size: 40px;
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
         line-height: 1.2;
         text-align: center;
-        margin-bottom: 1vw;
+        margin-bottom: 13px;
         font-weight: 400;
     }
     #content_1 p {
@@ -370,17 +370,17 @@
         text-align: justify;
     }
     #content_3 {
-        margin-top: 10vw;
+        margin-top: 138px;
         margin-bottom: 0;
     }
     #content_3 h1 {
-        font-size: 3vw;
+        font-size: 40px;
         margin-right: 4vw;
     }
     #content_3 p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 1.5;
-        margin-top: 1vw;
-        margin-bottom: 1vw;
+        margin-top: 13px;
+        margin-bottom: 13px;
     }
 }

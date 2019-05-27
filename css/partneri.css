@@ -22,11 +22,11 @@
     text-align: left;
     font-size: 2vw;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_partners p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -34,8 +34,8 @@
     opacity: 0.8;
 }
 .partners_content{
-    padding-top: 3vw;
-    padding-bottom: 3vw;
+    padding-top: 40px;
+    padding-bottom: 40px;
     width: 70%;
     margin: auto;
 }
@@ -76,7 +76,7 @@
 .one-flex-header h1{
     margin: auto;
     text-align: center;
-    font-size: 1vw;
+    font-size: 13px;
     color: rgb(0, 0, 0);
     text-transform: uppercase;
 }
@@ -92,8 +92,8 @@
     }
     .capture_mobile {
         display: block;
-        padding-top: 10vw;
-        padding-bottom: 10vw;
+        padding-top: 138px;
+        padding-bottom: 138px;
         width: 70%;
         margin: auto;
     }

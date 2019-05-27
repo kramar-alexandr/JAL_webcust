@@ -37,9 +37,9 @@
     font-family: "Poppins", sans-serif;
     background-color: rgba(255,255,255,0.2);
     color: white;
-    font-size: 1vw;
-    padding: 0.5vw 1vw;
-    margin: 1vw;
+    font-size: 13px;
+    padding: 0.5vw 13px;
+    margin: 13px;
     border: 1px solid rgba(255,255,255,0.2);
     cursor: pointer;
 }
@@ -49,7 +49,7 @@
     border: 1px solid rgba(35,192,76,0.2);
 }
 #dalibskolas_content-2{
-    padding-top: 1vw;
+    padding-top: 13px;
     padding-bottom: 6vw;
 }
 #map{
@@ -61,7 +61,7 @@
     font-family: "Poppins", sans-serif;
 }
 .skolas h1{
-    margin: 1vw;
+    margin: 13px;
     font-size: 1.1vw;
     color: rgb(0,0,0);
     line-height: 4;
@@ -79,7 +79,7 @@
 .skolas .flextable p{
     margin: 0vw;
     color: rgb(0,0,0);
-    line-height: 0.8vw;
+    line-height: 11px;
     font-weight: 400;
 }
 #buttons a{
@@ -107,11 +107,11 @@
     text-align: left;
     font-size: 2vw;
     line-height: 1.1;
-    padding-bottom: 1vw;
+    padding-bottom: 13px;
 }
 .capture_dalibskolas p{
     margin: 0;
-    font-size: 0.9vw;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
     line-height: 1.5vw;
@@ -124,7 +124,7 @@
 }
 #top-bt p{
     width: 11vw;
-    margin: 1vw;
+    margin: 13px;
 }
 #top-bt p span{
     color: white;
@@ -140,7 +140,7 @@
 }
 .dalibskolas_content-1 h3{
     margin: 0;
-    margin-bottom: 3vw;
+    margin-bottom: 40px;
     text-align: center;
     font-size: 1.1vw;
 }
@@ -161,7 +161,7 @@
     display: -webkit-flex;
     display: flex;
     width: 50%;
-    height: 10vw;
+    height: 138px;
     align-items: center;
 }
 .wrapped div, .wrapped1 div{
@@ -174,7 +174,7 @@
     background-color: white;
 }
 .wrapped h1, .wrapped1 h1{
-    font-size: 1vw;
+    font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: black;
     font-weight: bold;
@@ -184,10 +184,10 @@
     margin-bottom: 0.2vw;
 }
 .wrapped p, .wrapped1 p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: justify;
     margin: 0;
     padding-bottom: 0.5vw;
@@ -273,18 +273,18 @@
     align-items: center;
     height: 13vw;
     width: 13vw;
-    padding: 1vw;
-    margin: 1vw;
+    padding: 13px;
+    margin: 13px;
 }
 .one-flex img{
     width: 3.5vw;
     margin: 0.5vw;
 }
 .one-flex p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: center;
     margin: 0;
     padding-bottom: 0.5vw;
@@ -294,27 +294,27 @@
     display: flex;
 }
 .text-akt p{
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: left;
     margin: 0;
     padding-bottom: 0.5vw;
     width: 50%;
-    margin-right: 1vw;
+    margin-right: 13px;
 }
 .skolotaji .text-akt{
     text-align: center;
 }
 .skolotaji .text-akt p{
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     margin: 0;
     padding-bottom: 0.5vw;
-    margin-right: 1vw;
+    margin-right: 13px;
     width: 100%;
     text-align: center;
 }
@@ -340,13 +340,13 @@
     align-items: center;
 }
 .wrap-reversed p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: justify;
     margin: 0;
-    padding: 1vw;
+    padding: 13px;
 }
 .log{
     background-repeat: no-repeat;
@@ -401,13 +401,13 @@
     height: 20vw;
 }
 .second-block p{
-    font-size: 0.7vw;
+    font-size: 9px;
     font-family: "Poppins";
     color: black;
-    line-height: 1vw;
+    line-height: 13px;
     text-align: justify;
     margin: 0;
-    padding: 1vw;
+    padding: 13px;
 }
 .second-block img{
     width: 100%;
@@ -443,7 +443,7 @@
 }
 .content_3 p{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
     line-height: 1.5vw;
@@ -451,7 +451,7 @@
 }
 .content_3 h1{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: white;
     line-height: 1.5vw;
@@ -467,18 +467,18 @@
 .first_header{
     text-align: left;
     width: 35%;
-    padding-left: 1vw;
+    padding-left: 13px;
 }
 .second_header p span{
     font-size: 0.5vw;
 }
 .second_header p{
     text-align: left;
-    padding-left: 1vw;
+    padding-left: 13px;
 }
 .content_3 img{
     width: 8vw;
-    margin-right: 1vw;
+    margin-right: 13px;
 }
 
 .wr-buttons{
@@ -495,12 +495,12 @@
 }
 .wr-buttons p{
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    padding: 1vw;
+    padding: 13px;
     font-weight: bold
 }
 .wr-buttons p a{
     color: black !important;
-    font-size: 0.8vw !important;
+    font-size: 11px !important;
     font-family: "Poppins", sans-serif !important;
     color: rgb(255, 255, 255);
     line-height: 1 !important;
@@ -521,7 +521,7 @@
 }
 .wr-t p{
     margin: 0;
-    font-size: 0.8vw;
+    font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 1.5vw;
@@ -539,8 +539,8 @@
     .capture_dalibskolas_mobile{
         display: block;
         margin: auto;
-        margin-bottom: 10vw;
-        margin-top: 10vw;
+        margin-bottom: 138px;
+        margin-top: 138px;
         width: 70%;
     }
     .capture_dalibskolas_mobile p{
@@ -566,7 +566,7 @@
         text-align: center;
         font-size: 5vw;
         line-height: 1.3;
-        padding-bottom: 3vw;
+        padding-bottom: 40px;
     }
     .capture_dalibskolas p {
         font-size: 3.2vw;
@@ -588,10 +588,10 @@
         display: flex;
         width: 65%;
         margin: auto;
-        font-size: 3vw;
+        font-size: 40px;
         flex-direction: column;
-        padding-top: 10vw;
-        padding-bottom: 10vw;
+        padding-top: 138px;
+        padding-bottom: 138px;
     }
     .skolas .flextable p {
         line-height: 2;
@@ -625,7 +625,7 @@
         margin-bottom: 2vw;
     }
     .wrapped p, .wrapped1 p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 1.3;
         text-align: justify;
     }
@@ -649,15 +649,15 @@
         box-shadow: none;
         height: 50vw;
         width: 100%;
-        padding: 1vw;
-        margin: 1vw;
+        padding: 13px;
+        margin: 13px;
     }
     .one-flex img {
         width: 15vw;
         margin: 5vw;
     }
     .one-flex p {
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 2;
     }
     .text-akt {
@@ -676,7 +676,7 @@
         margin: 0;
         padding-bottom: 7vw;
         width: 100%;
-        margin-right: 1vw;
+        margin-right: 13px;
     }
     .wrapped {
         width: 100%;
@@ -714,7 +714,7 @@
         height: 25vw;
     }
     .skolotaji .text-akt p{
-        font-size: 3vw;
+        font-size: 40px;
         line-height: 2;
         margin-bottom: 5vw;
     }
