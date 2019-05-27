@@ -252,9 +252,9 @@ if (text) {
                 data: 'Titan',
                 render: (data, type, full) => {
                   if (data !== "1") {
-                      return '<p class="noradit-no"></p>';
+                      return '<p class="noradit-no" onclick="UpdateChecks(event)"></p>';
                   } else {
-                      return '<p class="astiprinat-yes"></p>';
+                      return '<p class="astiprinat-yes" onclick="UpdateChecks(event)"></p>';
                   }
                 }
             },
@@ -262,9 +262,9 @@ if (text) {
                 data: 'Enudiena',
                 render: (data) => {
                   if (data !== "1") {
-                      return '<p class="noradit-no"></p>';
+                      return '<p class="noradit-no" onclick="UpdateChecks(event)"></p>';
                   } else {
-                      return '<p class="astiprinat-yes"></p>';
+                      return '<p class="astiprinat-yes" onclick="UpdateChecks(event)"></p>';
                   }
                 }
             },
@@ -439,6 +439,33 @@ if (text) {
         }
 
     }
+    
+    function UpdateChecks(event){
+      let index = event.path[2].rowIndex - 2;
+      let data = tableApstiprinatie.row(index).data();
+      let cell = event.target.parentNode.cellIndex;
+      let f = "Enudiena";
+      let type = 1;
+      if (cell==7) {//titan
+        type = 2;
+        f = "Titan";
+      }
+      let stat = parseInt(data[f]);
+      if (stat==0){
+        stat = 1;
+        event.path[1].innerHTML = "<p class='astiprinat-yes'></p>";
+        $(event.path[1]).addClass('checked');
+      } else {
+        stat = 0;
+        event.path[1].innerHTML = "<p class='noradit-no'></p>";
+        $(event.path[1]).addClass('checked');
+      }
+      
+      let link = "/WebChangeTitanStatus.hal?smu=" + data.SMU + "&stat=" + stat + "&type=" + type;
+      $.get(link,function(){
+      
+      });
+    }
 
     function labotApsti(event) {
         $(event.target).prop("onclick", null);
@@ -454,6 +481,7 @@ if (text) {
         $(event.target).click(function (){
             let macibuStatus = null;
             let titanStatus = null;
+            let enudienaStatus = null;
 
             if ($(event.path[2].cells[10]).hasClass('checked')) {
                 macibuStatus = $(event.path[2].cells[10]).children().hasClass('astiprinat-yes') ? 1 : 0;
@@ -469,9 +497,16 @@ if (text) {
             } else {
                 event.path[2].cells[8].innerHTML = "";
             }
+            if ($(event.path[2].cells[8]).hasClass('checked')) {
+                titanStatus = $(event.path[2].cells[8]).children().hasClass('astiprinat-yes') ? 1 : 0;
+                // getData(`/${url}?sernr=${data.SerNr}&status=${macibuStatus}`);
+            } else {
+                event.path[2].cells[8].innerHTML = "";
+            }
 
             console.log('macibuStatus ', macibuStatus);
             console.log('titanStatus ', titanStatus);
+            console.log('enudienaStatus ', enudienaStatus);
 
             $(event.target).text(jal_str["Edit"]);
             event.target.parentElement.style.background = 'white';

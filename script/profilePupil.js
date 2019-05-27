@@ -20,6 +20,9 @@ function PupilVerifiedController(pupil) {
     };
 
     this.setMainInfo = function () {
+        if (this.pupil.verified.teacher==2){
+          $(".smu_profile_info").css("display","block");
+        }
         $('.full-name').text(`Vārds, Uzvārds: ${this.pupil.fullName}`);
         $('.school').text(`Skola: ${this.pupil.school}`);
         $('.email').text(`E-pasts: ${this.pupil.email}`);
