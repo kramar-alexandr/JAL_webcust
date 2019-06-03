@@ -111,6 +111,7 @@
     margin-left: 20px;
     text-transform: capitalize;
     background-color: #757575 !important;
+    white-space:nowrap;
 }
 
 .active-tab {
@@ -1553,11 +1554,11 @@ width: 43% !important;
   background-color:#da4d3e;
   color:white;
   border-radius:50%;
-  width:calc(0.6vw + 8px) !important;
-  height:calc(0.6vw + 8px) !important;
-  line-height:1.2vw;
+  width:calc(8px + 8px) !important;
+  height:calc(8px + 8px) !important;
+  line-height:14px;
   text-align:center;
-  font-size:0.9vw;
+  font-size:10px;
 }
 .company-detail #cost_table_wrap .table_header{
   display:none;

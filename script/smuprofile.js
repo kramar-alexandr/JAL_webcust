@@ -31,7 +31,7 @@ function SMUProfileApp(js) {
       $(".save_submit").hide();
       $(".table-plan").hide();
     }
-    if (this.smu.ApprovalStatus==='0') {
+    if (this.smu.ApprovalStatus==='0' || this.smu.ApprovalStatus===undefined) {
       this.showSubmitButtons();
     } else {
       this.RestrictProfileApp();
@@ -40,11 +40,12 @@ function SMUProfileApp(js) {
   
   this.RestrictProfileApp = function(){
   
-    var info = $("<div class='smu_profile_info'></div>");
+    if (parseInt(this.smu.ApprovalStatus)>0) {
+      var info = $("<div class='smu_profile_info'></div>");
     
-    $(info).html(jal_str["ApprovalMsg" + this.smu.ApprovalStatus]);
-    $(info).insertBefore($('.smu_name').parent().parent().parent());
-  
+      $(info).html(jal_str["ApprovalMsg" + this.smu.ApprovalStatus]);
+      $(info).insertBefore($('.smu_name').parent().parent().parent());
+    }  
     $('.smu_name').attr("disabled","");
     $('.smu_descr').attr("disabled","");
     $('.smu_items').attr("disabled","");
@@ -52,7 +53,7 @@ function SMUProfileApp(js) {
     $('.smu_education').attr("disabled","");
     $('.smu_targetaud').attr("disabled","");
     $('#add_item_button').css("display","none");
-    if (this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
+    if (this.smu.ApprovalStatus==='1' || this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
       $(".table-emps").insertAfter(".table-plan");
     } else {
       $(".newEmp_button a").remove();
@@ -65,12 +66,18 @@ function SMUProfileApp(js) {
     $('.smu_name').val(this.smu.SMFName);
     $('.smu_descr').text(this.smu.Text);
     $('.smu_items').val(this.smu.ProdSpec);
-    $('.smu_period').val(this.smu.ActDateStart + "-" + this.smu.ActDateEnd);
+    var sd;
+    var ed;
+    if (this.smu.ActDateStart!=""){
+      sd = this.smu.ActDateStart;
+      ed = this.smu.ActDateEnd;
+      $('.smu_period').val(sd + "-" + ed);
+    }
     $('.smu_education').val(this.smu.Education);
     $('.smu_targetaud').val(this.smu.TargetAud);
     $('.smu_period').daterangepicker({
-      startDate:this.smu.ActDateStart,
-      endDate:this.smu.ActDateEnd,
+      startDate:sd,
+      endDate:ed,
       locale: {
         format: 'YYYY-MM-DD',
         applyLabel: jal_str["Apply"],
