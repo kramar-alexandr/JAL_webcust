@@ -186,7 +186,7 @@ if (text) {
         pamatskola[i].Number = count + i;
     }
      // initializate apstiprinatie table
-    let tableApstiprinatie = $('#apstiprinatie').DataTable({
+    var tableApstiprinatie = $('#apstiprinatie').DataTable({
         data: apstiprinatie,
         searching: false,
         info: false,
@@ -441,7 +441,7 @@ if (text) {
     }
     
     function UpdateChecks(event){
-      let index = event.path[2].rowIndex - 2;
+      let index = event.target.parentNode.parentNode.rowIndex - 2;
       let data = tableApstiprinatie.row(index).data();
       let cell = event.target.parentNode.cellIndex;
       let f = "Enudiena";
@@ -453,12 +453,12 @@ if (text) {
       let stat = parseInt(data[f]);
       if (stat==0){
         stat = 1;
-        event.path[1].innerHTML = "<p class='astiprinat-yes'></p>";
-        $(event.path[1]).addClass('checked');
+        event.target.parentNode.innerHTML = "<p class='astiprinat-yes'></p>";
+        $(event.target.parentNode).addClass('checked');
       } else {
         stat = 0;
-        event.path[1].innerHTML = "<p class='noradit-no'></p>";
-        $(event.path[1]).addClass('checked');
+        event.target.parentNode.innerHTML = "<p class='noradit-no'></p>";
+        $(event.target.parentNode).addClass('checked');
       }
       
       let link = "/WebChangeTitanStatus.hal?smu=" + data.SMU + "&stat=" + stat + "&type=" + type;
