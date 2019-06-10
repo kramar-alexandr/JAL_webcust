@@ -118,7 +118,7 @@ if (SMUData) {
             companyInfo.find('.target-type').append(smu.targetAudit);
             companyInfo.find('#confirmBtn').click(function () {
               if (confirm(jal_str["Msg_ApproveSMU"])) {
-
+/*
                 let xhr = new XMLHttpRequest();
                 xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=2&sernr=${smu.regNr}`, true);
                 xhr.send();
@@ -131,11 +131,16 @@ if (SMUData) {
                     }
                 };
                 location.reload();
+*/
+                $.get(`/WEBJALSMUChangeDocsStatus.hal?status=2&sernr=${smu.regNr}`,function(){
+                  location.reload();
+                });
               }
             });
 
             companyInfo.find('#rejectBtn').click(function () {
               if (confirm(jal_str["Msg_DeclineSMU"])) {
+              /*
                 let xhr = new XMLHttpRequest();
                 xhr.open('GET', `/WEBJALSMUChangeDocsStatus.hal?status=0&sernr=${smu.regNr}`, true);
                 xhr.send();
@@ -147,7 +152,12 @@ if (SMUData) {
                         console.log('RESPONSE: ' + xhr.responseText);
                     }
                 };
+                
                 location.reload();
+                */
+                $.get(`/WEBJALSMUChangeDocsStatus.hal?status=0&sernr=${smu.regNr}`,function(){
+                  location.reload();
+                });
               }
             });
             companyInfo.find("#printBtn").click(function(){
