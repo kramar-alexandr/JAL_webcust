@@ -9,4 +9,8 @@ $.get("/WebgetTeacherInfo.hal",function(data){
   if (totsmu>0) {
     $(".main-tab li:nth-child(2)").append("<div class='teacher_badge'>" + totsmu + "</div>");
   }
+  let application_cnt = parseInt(teacherInfo.application_cnt);
+  if (application_cnt>0) {
+    $(".main-tab li:nth-child(3)").append("<div class='teacher_badge'>" + application_cnt + "</div>");
+  }
 });

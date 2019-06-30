@@ -23,12 +23,65 @@ $.ajax({
     }
 });
 
+$(document).ready(function(){
+
+  $("#event_reg").on("submit",function(){
+    var res = false;
+    var form = $(this).clone(false).get(0);
+    var form2 = $(this).get(0);
+    $(form2).find('select').each(function(i) {
+      $(form).find('select').eq(i).val($(this).val())
+    })
+    $(form.upload_form).remove();
+    $.ajax({
+      url:"/WebJALEventValidate.hal",
+      data: $(form).serialize(),
+      async: false,
+      success: function(data){
+        if ($(data).attr("err")!="0"){
+          res = false;
+          alert($(data).attr("err_msg"));
+          form2[$(data).attr("errfield")].focus();
+        } else {
+          $.ajax({
+            url: "/WebJALEventReg.hal",
+            method: "POST",
+            data: $(form).serialize(),
+            async: false,
+            success: function(data){
+              if ($(data).attr("err")=="0") {
+                var id = $(data).attr("id");
+                var func = function(){
+                  window.location.href = "/kalendars";           
+                }
+                var upl = $("input[name='upload_form']");
+                if ($(upl).length>0) {
+                  var uplf = new FileUpload($(upl).parent(),$(upl).get(0),"jal",id,func);
+                } else {
+                  window.location.href = "/kalendars"; 
+                }
+              }
+            }
+          });
+        };
+      }
+    
+    });
+    
+
+    
+    return false;
+  });
+  
+})
+
 let applicationForm = new EventDisplay(events, submittedEvents);
 applicationForm.createEvents();
 
 function EventDisplay(events, submittedEvents) {
     this.events = events;
-    this.submittedEvents = submittedEvents;
+    this.submittedEvents = submittedEvents["submittedevents"];
+    this.teacher = submittedEvents["teacher"];
     this.template = '<div class="avents-box">\n' +
         '    <div class="event-box application-border">\n' +
         '        <div>\n' +
@@ -42,6 +95,7 @@ function EventDisplay(events, submittedEvents) {
         '            <input type="hidden" id="code" name="code" value="">\n' +
         '            <button class="btn-submit spbutton grey">Pieteikties</button>\n' +
         '            <button class="btn-info spbutton grey">Info</button>\n' +
+        '            <button class="btn-applications spbutton grey">Ielūgumi</button>\n' +
         '        </div>\n' +
         '        <div class="event-description"></div>\n' +
         '    </div>\n' +
@@ -79,8 +133,32 @@ function EventDisplay(events, submittedEvents) {
         }
 
         this.setEvents(this.smuCode);
-
+        if (this.teacher!=""){
+          $(document.body).find(".btn-info").remove();
+          $(document.body).find(".btn-applications").hide();
+        }
         if (this.submittedEvents.length) {
+          if (this.teacher!=""){
+            var vEv = {};
+            for (let event of this.submittedEvents) {
+              if (!vEv[event.event]){
+                 vEv[event.event] = [];
+              }
+              vEv[event.event].push(event.name);
+            }
+            for (let event of this.events) {
+              var smu_list = "";
+              if (vEv[event.serNr]){
+                smu_list = vEv[event.serNr].join(",");
+                $(event.el).find(".btn-applications").show().append("<div class='event_badge'>" + vEv[event.serNr].length + "</div>");
+              } else {
+                $(event.el).find(".btn-applications").remove();
+              }
+              $(event.el).find('.event-description').html(smu_list);            
+            }
+          } else {
+            $(document.body).find(".btn-applications").remove();
+            
             for (let event of this.submittedEvents) {
                 let foundf = false;
                 for (let ev of this.events) {
@@ -95,7 +173,7 @@ function EventDisplay(events, submittedEvents) {
                 }
                 let eventBox = this.getTemplate(this.template);
                 $(eventBox).find(".btn-info").remove();
-
+                
                 if (+event.filled) {
                   continue;
                 } else {
@@ -117,6 +195,7 @@ function EventDisplay(events, submittedEvents) {
                   this.setInfo(eventBox, event, '.technical');
                 }
             }
+          }
         } else {
             $('.technical-info').show();
         }
@@ -150,8 +229,13 @@ function EventDisplay(events, submittedEvents) {
         $('.btn-info').click(function(){
             $(this).parent().parent().find('.event-description').show();
         });
+        $('.btn-applications').click(function(){
+            $(this).parent().parent().find('.event-description').show();
+        });
+        
         $('.btn-submit').click(function () {
-            createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
+            //createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
+            window.location.href = "/kalendars/pasakumi/" + $(this).parent().find('#code').val() + "/pieteikties";
         });
     };
 

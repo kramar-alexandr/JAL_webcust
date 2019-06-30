@@ -453,15 +453,17 @@ if (text) {
       let stat = parseInt(data[f]);
       if (stat==0){
         stat = 1;
-        event.target.parentNode.innerHTML = "<p class='astiprinat-yes'></p>";
-        $(event.target.parentNode).addClass('checked');
+        //event.target.parentNode.innerHTML = "<p class='astiprinat-yes' onclick='UpdateChecks(event)'></p>";
+        //$(event.target.parentNode).addClass('checked');
       } else {
         stat = 0;
-        event.target.parentNode.innerHTML = "<p class='noradit-no'></p>";
-        $(event.target.parentNode).addClass('checked');
+        //event.target.parentNode.innerHTML = "<p class='noradit-no' onclick='UpdateChecks(event)'></p>";
+        //$(event.target.parentNode).addClass('checked');
       }
+      data[f] = stat.toString();
+      tableApstiprinatie.row(index).data(data).draw();
       
-      let link = "/WebChangeTitanStatus.hal?smu=" + data.SMU + "&stat=" + stat + "&type=" + type;
+      let link = "/WebChangeTitanStatus.hal?cu=" + data.Kods + "&stat=" + stat + "&type=" + type;
       $.get(link,function(){
       
       });

@@ -1549,8 +1549,8 @@ width: 43% !important;
 }
 .teacher_badge{
   position:absolute;
-  top:-1.3vw;
-  right:1vw;
+  top:-18px;
+  right:6px;
   background-color:#da4d3e;
   color:white;
   border-radius:50%;
