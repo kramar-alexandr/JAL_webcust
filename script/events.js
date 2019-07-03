@@ -134,7 +134,6 @@ function EventDisplay(events, submittedEvents) {
 
         this.setEvents(this.smuCode);
         if (this.teacher!=""){
-          $(document.body).find(".btn-info").remove();
           $(document.body).find(".btn-applications").hide();
         }
         if (this.submittedEvents.length) {
@@ -197,6 +196,9 @@ function EventDisplay(events, submittedEvents) {
             }
           }
         } else {
+           if (this.teacher==""){
+             $(document.body).find(".btn-applications").remove();
+           }
             $('.technical-info').show();
         }
     };
@@ -227,7 +229,7 @@ function EventDisplay(events, submittedEvents) {
 
     this.setEvents = function () {
         $('.btn-info').click(function(){
-            $(this).parent().parent().find('.event-description').show();
+            $(this).parent().parent().find('.event-description').toggle();
         });
         $('.btn-applications').click(function(){
             $(this).parent().parent().find('.event-description').show();

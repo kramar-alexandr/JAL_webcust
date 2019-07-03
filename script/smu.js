@@ -155,7 +155,7 @@ if (SMUData) {
                 
                 location.reload();
                 */
-                $.get(`/WEBJALSMUChangeDocsStatus.hal?status=0&sernr=${smu.regNr}`,function(){
+                $.get(`/WEBJALSMUChangeDocsStatus.hal?status=6&sernr=${smu.regNr}`,function(){
                   location.reload();
                 });
               }
@@ -224,17 +224,20 @@ if (SMUData) {
             smuNode.data("plantable",new FinPlanDataTable($(smuNode),smu,true));
 
         }
-
     }
+    if (count==0) {
+      $('#smu-wrapper').append("<div class='msg'>" + jal_str['NoSMU'] + "</div>");
+    } else {
 
-    $('.smu-profile').pagination({
-        dataSource: dataSource,
-        prevText: 'IEPRIEKŠĒJĀ',
-        nextText: 'NĀKAMĀ',
-        callback: function (data, pagination) {
-            $('#smu-wrapper').html(data);
-        }
-    });
+      $('.smu-profile').pagination({
+          dataSource: dataSource,
+          prevText: 'IEPRIEKŠĒJĀ',
+          nextText: 'NĀKAMĀ',
+          callback: function (data, pagination) {
+              $('#smu-wrapper').html(data);
+          }
+      });
+    }
 }
 function SumupTable(table,el){
      let rows = table.data().toArray();

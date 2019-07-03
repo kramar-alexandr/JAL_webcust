@@ -837,7 +837,7 @@ td p {
 }
 
 .parent-full-name, .full-name, .pupil-smu-name {
-    padding-top: 13px;
+    /*padding-top: 13px;*/
 }
 
 #compinfo textarea {
@@ -1566,3 +1566,14 @@ width: 43% !important;
 #smu_doc_template{
   display:none;
 }
+.msg{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+#profiletable td#first{
+  font-weight:700;
+}
+td.first{ 
+   font-weight:700;
+{

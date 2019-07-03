@@ -27,6 +27,7 @@ function SMUProfileApp(js) {
         this.tables.plantable = new FinPlanDataTable($(".table-plan"),this.smu,true,this);
       }
     } else {
+      $(".table-emps").hide();
       $(".table-salary").hide();
       $(".save_submit").hide();
       $(".table-plan").hide();
@@ -45,7 +46,13 @@ function SMUProfileApp(js) {
     
       $(info).html(jal_str["ApprovalMsg" + this.smu.ApprovalStatus]);
       $(info).insertBefore($('.smu_name').parent().parent().parent());
-    }  
+    } else {
+      if (parseInt(this.smu.OldApprovalStatus)>3) {
+        var info = $("<div class='smu_profile_info'></div>");
+        $(info).html(jal_str["ApprovalMsg" + this.smu.OldApprovalStatus]);
+        $(info).insertBefore($('.smu_name').parent().parent().parent());
+      }
+    }
     $('.smu_name').attr("disabled","");
     $('.smu_descr').attr("disabled","");
     $('.smu_items').attr("disabled","");
@@ -130,12 +137,16 @@ function SMUProfileApp(js) {
        self.SetPositionDropDown(emp,$(tline).find("td:nth-child(3)"),emp.JobDesc);
        if (emp.type=="0") {
          $(tline).find("td:nth-child(4)").addClass("emp_rem").click(function(){
-           $.get("/WebDeleteEmp.hal?emp=" + emp.Code + "&smu=" + self.smu.SMFCode,
-             function(){
-               if (confirm(jal_str["ConfirmDelete"])) {
+           if (confirm(jal_str["ConfirmDelete"])) {
+            $.get("/WebDeleteEmp.hal?emp=" + emp.Code + "&smu=" + self.smu.SMFCode,
+              function(data){
+                if ($(data).attr("err")!="0") {
+                  alert($(data).attr("errmsg"));
+                } else {
                  $(tline).remove();
-               }
-             });
+                }
+              });
+            }
          });
         } else {
           $(tline).find("td:nth-child(4)").html(jal_str["Invited"]);
@@ -148,11 +159,15 @@ function SMUProfileApp(js) {
        $(".newEmp_form").show()
        
        $(".newEmp_button_submit a").click(function(){
-         $.get("WebSaveCompEmp2.hal?nemp=" + $(".newEmp_form .nemp_code").val() + "&nemp_pos=" + $(".newEmp_form  .nemp_pos").val(),function(){
-           $(".newEmp_form .nemp_code option:selected").remove();
-           self.refreshData();
-           alert(jal_str["InvitationSent"]);
-         });
+         if ($(".newEmp_form .nemp_code").val()=="" || $(".newEmp_form  .nemp_pos").val()=="") {
+           alert(jal_str["FillAllFields"]);
+         } else {
+           $.get("WebSaveCompEmp2.hal?nemp=" + $(".newEmp_form .nemp_code").val() + "&nemp_pos=" + $(".newEmp_form  .nemp_pos").val(),function(){
+             $(".newEmp_form .nemp_code option:selected").remove();
+             self.refreshData();
+             alert(jal_str["InvitationSent"]);
+           });
+          }
        });
      });
    }
@@ -164,6 +179,11 @@ function SMUProfileApp(js) {
    }   
    
    this.showSubmitButtons = function(){
+     if (parseInt(this.smu.OldApprovalStatus)>3) {
+       var info = $("<div class='smu_profile_info'></div>");
+       $(info).html(jal_str["ApprovalMsg" + this.smu.OldApprovalStatus]);
+       $(info).insertBefore($('.smu_name').parent().parent().parent());
+     }
      var self = this;
      $(".save_only").click(function(event){
        self.submitSMUData(this,false,event);
@@ -261,6 +281,9 @@ function SMUProfileApp(js) {
         case "2":
           alert(jal_str["SMUName"]);
           $('.smu_name').focus();
+          break;
+        case "3":
+          alert(jal_str["EmpCnt"]);
           break;
         case "1":
           alert(jal_str["SMUDate"]);

@@ -23,31 +23,32 @@ function PupilVerifiedController(pupil) {
         if (this.pupil.verified.teacher==2){
           $(".smu_profile_info").css("display","block");
         }
-        $('.full-name').text(`Vārds, Uzvārds: ${this.pupil.fullName}`);
-        $('.school').text(`Skola: ${this.pupil.school}`);
-        $('.email').text(`E-pasts: ${this.pupil.email}`);
-        $('.teacher').text(`Izvēlētais skolotājs, SMU konsultants: ${this.pupil.teacher}`);
-        $('#student_name_approve').html(this.pupil.fullName);
+        $('.full-name-val').text(`${this.pupil.fullName}`);
+        $('.school-val').text(`${this.pupil.school}`);
+        $('.email-val').text(`${this.pupil.email}`);
+        $('.teacher-val').text(`${this.pupil.teacher}`);
+        $('#student_name_approve-val').html(this.pupil.fullName);
         let tstr = this.pupil.school;
         if (tstr.substr(-5)=="skola"){
           tstr+="s";
         }
-        $('#student_school_approve').html(tstr);
+        $('#student_school_approve-val').html(tstr);
 
         if (this.pupil.parent) {
             $('.pupil-parent').show();
-            $('.parent-full-name').text(`Vārds, Uzvārds: ${this.pupil.parent.fullName}`);
-            $('.parent-email').text(`E-pasts: ${this.pupil.parent.email}`);
+            $('.parent-full-name-val').text(`Vārds, Uzvārds: ${this.pupil.parent.fullName}`);
+            $('.parent-email-val').text(`E-pasts: ${this.pupil.parent.email}`);
         }
 
         if (pupil.smu) {
-            $('.pupil-smu-name').text(`Skolēnu mācību uzņēmums: ${this.pupil.smu}`);
+            $('.pupil-smu-name-val').text(` ${this.pupil.smu}`);
         } else {
-            $('.pupil-smu-name').text('Skolēnu mācību uzņēmums: Nav reģistrēts');
+            $('.pupil-smu-name-val').text('Nav reģistrēts');
         }
     };
 
     this.checkVerified = function() {
+        $(".main-tab li:nth-child(4)").css("display","none");
         if (!this.pupil.verified.personal) {
             $('.tabs').hide();
             $('.confirmation').find('.confirmation-info-pupil').text(`Turpinot reģistrāciju, es, ${this.pupil.fullName}, ${this.pupil.school} skolēns, apliecinu:`);
@@ -72,6 +73,7 @@ function PupilVerifiedController(pupil) {
             $('.status').show();
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
+            $(".main-tab li:nth-child(4)").css("display","block");
             
             $('.sec_section').show();
             if (pupil.employerrequests.length>0) {
@@ -98,6 +100,7 @@ function PupilVerifiedController(pupil) {
     };
 
     this.checkVerifiedHighSchool = function() {
+        $(".main-tab li:nth-child(4)").css("display","none");
         if (!this.pupil.verified.personal) {
             $('.tabs').hide();
             $('.confirmation').css('display', 'flex');
@@ -124,6 +127,8 @@ function PupilVerifiedController(pupil) {
             } else {
               $('.employer_section,.teacher_request_section').hide();
             }
+        } else {
+            $(".main-tab li:nth-child(4)").css("display","block");
         }
     };
 
