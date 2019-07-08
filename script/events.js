@@ -23,6 +23,17 @@ $.ajax({
     }
 });
 
+function GetDateStr(td)
+{
+  res = td;
+  
+  if (td!=""){
+    res = td.substr(-2) + "." + td.substr(6,2);
+  }
+
+  return res;
+}
+
 $(document).ready(function(){
 
   $("#event_reg").on("submit",function(){
@@ -32,7 +43,7 @@ $(document).ready(function(){
     $(form2).find('select').each(function(i) {
       $(form).find('select').eq(i).val($(this).val())
     })
-    $(form.upload_form).remove();
+    $(form).find("input[type='file']").remove();
     $.ajax({
       url:"/WebJALEventValidate.hal",
       data: $(form).serialize(),
@@ -54,9 +65,16 @@ $(document).ready(function(){
                 var func = function(){
                   window.location.href = "/kalendars";           
                 }
-                var upl = $("input[name='upload_form']");
+                var upl = $(form2).find("input[type='file']");
                 if ($(upl).length>0) {
-                  var uplf = new FileUpload($(upl).parent(),$(upl).get(0),"jal",id,func);
+                  let files = [];
+                  $(upl).each(function(){
+                    let f = $(this).get(0);
+                    if (f.files.length>0) {
+                      files.push(f.files[0]);
+                    }
+                  });
+                  var uplf = new FileUpload(files,"jal",id,func);
                 } else {
                   window.location.href = "/kalendars"; 
                 }
@@ -83,26 +101,28 @@ function EventDisplay(events, submittedEvents) {
     this.submittedEvents = submittedEvents["submittedevents"];
     this.teacher = submittedEvents["teacher"];
     this.template = '<div class="avents-box">\n' +
-        '    <div class="event-box application-border">\n' +
-        '        <div>\n' +
-        '            <p class="date"></p>\n' +
-        '        </div>\n' +
-        '        <div>\n' +
-        '            <h2 class="name-event"></h2>\n' +
-        '        </div>\n' +
+        '    <div class="event-box">\n' +
+        '        <div class="ev_col date"></div>\n' +
+        '        <div class="ev_col reg_date"></div>\n' +
+        '        <div class="ev_col descr"></div>\n' +
         '        <div class="block-btn">\n' +
         // '            <button class="btn-info spbutton">Papildus info</button>\n' +
         '            <input type="hidden" id="code" name="code" value="">\n' +
+        '            <button class="btn-info spbutton grey">Papildu info</button>\n' +
         '            <button class="btn-submit spbutton grey">Pieteikties</button>\n' +
-        '            <button class="btn-info spbutton grey">Info</button>\n' +
         '            <button class="btn-applications spbutton grey">Ielūgumi</button>\n' +
+        '            <div class="block-teach">\n' +
+        '            <div class="block-teach-text">Ieradīšos pasākumā:</div>\n' +
+        '               <div class="block-teach-btn "><button class="teach-ev-yes spbutton">Jā</button>\n' +
+        '               <button class="teach-ev-no spbutton">Nē</button></div>\n' +
+        '           </div>\n' +
         '        </div>\n' +
+        '        <div class="event-participants">Apstiprinātie SMU dalībai pasākumā:<br></div>\n' +
         '        <div class="event-description"></div>\n' +
         '    </div>\n' +
         '</div>';
     this.createEvents = function() {
-        $(".application").append("<div id='pagenave'></div>");
-        $(".application").append("<div id='orig_items' style='display:none'></div>");
+        $(".application").append("<div class='events_wrap'><div id='events_header'><div class='ev_col date'>Datums</div><div class='ev_col reg_date'>Pieteikuma termiņš</div><div class='ev_col descr'>Pasākuma nosaukums</div><div class=''></div></div><div id='pagenave'></div><div id='orig_items' style='display:none'></div></div>");
         if (this.events.length) {
             for (let event of this.events) {
                 $('.events-info').hide();
@@ -137,23 +157,43 @@ function EventDisplay(events, submittedEvents) {
           $(document.body).find(".btn-applications").hide();
         }
         if (this.submittedEvents.length) {
+          var self = this;
           if (this.teacher!=""){
             var vEv = {};
+            var vApp = {};
             for (let event of this.submittedEvents) {
               if (!vEv[event.event]){
                  vEv[event.event] = [];
               }
+              if (!vApp[event.event]){
+                 vApp[event.event] = false;
+              }
               vEv[event.event].push(event.name);
+              if (event.teacherPart=="1"){
+                 vApp[event.event] = true;
+              }
             }
             for (let event of this.events) {
               var smu_list = "";
               if (vEv[event.serNr]){
-                smu_list = vEv[event.serNr].join(",");
+                smu_list = vEv[event.serNr].join("<br>");
                 $(event.el).find(".btn-applications").show().append("<div class='event_badge'>" + vEv[event.serNr].length + "</div>");
+                if (vApp[event.serNr]){
+                  $(event.el).find(".teach-ev-no").addClass("grey");
+                } else {
+                  $(event.el).find(".teach-ev-yes").addClass("grey");
+                }
+                $(event.el).find(".teach-ev-yes").click(function(){
+                  self.SetTeacherComing(event.el,event.serNr,1);
+                });
+                $(event.el).find(".teach-ev-no").click(function(){
+                  self.SetTeacherComing(event.el,event.serNr,0);
+                });
               } else {
                 $(event.el).find(".btn-applications").remove();
+                $(event.el).find(".block-teach").remove();
               }
-              $(event.el).find('.event-description').html(smu_list);            
+              $(event.el).find('.event-participants').append(smu_list);            
             }
           } else {
             $(document.body).find(".btn-applications").remove();
@@ -202,14 +242,39 @@ function EventDisplay(events, submittedEvents) {
             $('.technical-info').show();
         }
     };
+    this.SetTeacherComing = function(el,sernr,stat){
+        $.ajax({
+            type: "GET",
+            data: {
+                event: sernr,
+                stat: stat
+            },
+            url: '/WebSetTeacherEventStat.hal',
+            success: function() {
+              if (stat==1){
+                $(el).find(".teach-ev-no").addClass("grey");
+                $(el).find(".teach-ev-yes").removeClass("grey");
+              } else {
+                $(el).find(".teach-ev-yes").addClass("grey");
+                $(el).find(".teach-ev-no").removeClass("grey");
+              }
+            }
+        });
+    }
 
     this.getTemplate = function(temp) {
         return $(temp).clone();
     };
 
     this.setInfo = function (template, event, container) {
-        template.find('.date').text(getMonthDay(event.dataStart) + ' - ' + getMonthDay(event.dataEnd));
-        template.find('.name-event').text(event.nameEvent);
+        template.find('.date').text(GetDateStr(event.dataStart));
+        if (event.regStart!=""){
+          template.find('.reg_date').text(getMonthDay(event.regStart));
+        };
+        if (event.regEnd!=""){
+          template.find('.reg_date').append(" - " + getMonthDay(event.regEnd));
+        }
+        template.find('.descr').text(event.nameEvent);
         template.find('.event-description').html(event.description);
         template.find('#code').val(event.serNr);
         template.appendTo( container );
@@ -232,7 +297,9 @@ function EventDisplay(events, submittedEvents) {
             $(this).parent().parent().find('.event-description').toggle();
         });
         $('.btn-applications').click(function(){
-            $(this).parent().parent().find('.event-description').show();
+            $(this).parent().parent().find('.event-participants').toggle();
+            $(this).parent().parent().find('.block-teach').toggle();
+
         });
         
         $('.btn-submit').click(function () {
@@ -260,12 +327,12 @@ function EventDisplay(events, submittedEvents) {
     }
 
     function getMonthDay(date) {
-        let months = [ "jan.", "feb.", "mar.", "apr.", "may.", "jun.",
-            "jul.", "aug.", "sep.", "oct.", "nov.", "dec." ];
+        let months = [ "jan.", "feb.", "mar.", "apr.", "mai.", "jūn.",
+            "jūl.", "aug.", "sep.", "okt.", "nov.", "dec." ];
         let month = parseInt(date.substr(0,2),10)-1;
         let day = date.substr(3,2);
 
-        return `${day}.${months[month]}`;
+        return `${day}. ${months[month]}`;
 
     }
 }

@@ -7,6 +7,10 @@ function InitSMUProfile(data) {
   }
 }
 
+$(function() {
+    $.datepicker.setDefaults($.datepicker.regional['lv']);
+}); 
+
 function SMUProfileApp(js) {
   this.smu = js;
   this.activecol = false;
@@ -56,12 +60,13 @@ function SMUProfileApp(js) {
     $('.smu_name').attr("disabled","");
     $('.smu_descr').attr("disabled","");
     $('.smu_items').attr("disabled","");
-    $('.smu_period').attr("disabled","");
+    $('.smu_period_start').attr("disabled","");
+    $('.smu_period_end').attr("disabled","");
     $('.smu_education').attr("disabled","");
     $('.smu_targetaud').attr("disabled","");
     $('#add_item_button').css("display","none");
     if (this.smu.ApprovalStatus==='1' || this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
-      $(".table-emps").insertAfter(".table-plan");
+      $(".table-emps").hide();
     } else {
       $(".newEmp_button a").remove();
     }
@@ -73,24 +78,12 @@ function SMUProfileApp(js) {
     $('.smu_name').val(this.smu.SMFName);
     $('.smu_descr').text(this.smu.Text);
     $('.smu_items').val(this.smu.ProdSpec);
-    var sd;
-    var ed;
-    if (this.smu.ActDateStart!=""){
-      sd = this.smu.ActDateStart;
-      ed = this.smu.ActDateEnd;
-      $('.smu_period').val(sd + "-" + ed);
-    }
+    $('.smu_period_start').val(this.smu.ActDateStart);
+    $('.smu_period_end').val(this.smu.ActDateEnd);
     $('.smu_education').val(this.smu.Education);
     $('.smu_targetaud').val(this.smu.TargetAud);
-    $('.smu_period').daterangepicker({
-      startDate:sd,
-      endDate:ed,
-      locale: {
-        format: 'YYYY-MM-DD',
-        applyLabel: jal_str["Apply"],
-        cancelLabel: jal_str["Cancel"]
-      }
-    });  
+    $('.smu_period_start').datepicker({dateFormat: 'yy-mm-dd',firstDay:1});  
+    $('.smu_period_end').datepicker({dateFormat: 'yy-mm-dd',firstDay:1});  
   }
   
   this.SetPositionDropDown = function(emp,el,val){
@@ -303,9 +296,9 @@ function SMUProfileApp(js) {
     if (this.ValidateForm()){
       //$(el).unbind("click").html(jal_str["Wait"]);
       $(el).css("visibility","hidden");
-      let drp = $('.smu_period').data('daterangepicker');
-      let sd = drp.startDate.format('YYYY-MM-DD');
-      let ed = drp.endDate.format('YYYY-MM-DD');
+      //let drp = $('.smu_period').data('daterangepicker');
+      let sd = $(".smu_period_start").val();
+      let ed = $(".smu_period_end").val();
       let name = $('.smu_name').val();
       let text = $('.smu_descr').val();
       let items = $('.smu_items').val();

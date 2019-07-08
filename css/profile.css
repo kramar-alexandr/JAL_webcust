@@ -1023,31 +1023,37 @@ td p {
     font-size: 13px;
 }
 
-.event-box {
-    display: flex;
+.events_wrap {
     justify-content: space-around;
     align-items: center;
-    width: 70%;
+    /*width: 70%;*/
     margin: auto;
-    flex-wrap:wrap;
     margin-bottom: 20px !important;
 }
 
 .event-box h2 {
+/*
     padding-left: 35px;
     border-left: 1px solid grey;
+*/
 }
+.event-box{
+    flex-wrap:wrap;
+    display: flex;
 
+}
 
 
 .application-border {
     margin-bottom: 40px;
+/*
     border: 2px solid #f2f2f2;
     box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
     background-color: #fafafa;
+*/
 }
 
-.event-description {
+.event-description,.event-participants,.block-teach {
     display: none;
     flex-basis: 100%;
     padding:1vw 27px;
@@ -1576,4 +1582,51 @@ width: 43% !important;
 }
 td.first{ 
    font-weight:700;
-{
+}
+
+.ui-datepicker td a {
+  height:auto !important;
+  font-size:auto;
+  line-height:auto;
+}
+
+#emplist-table{
+  margin-bottom:15px;
+  border-collapse:collapse;
+}
+
+.addemp{
+  margin-left:5%;
+  width:74%;
+  float:left;
+  margin-right: 25px;
+}
+#emplist-table select{
+  margin:0px;
+}
+.newEmp_form select{
+  width:16vw;
+}
+.nemp_code{
+  margin-right:20px;
+}
+.emp_rem{
+  cursor:pointer;
+}
+
+.addemp table th,.addemp table td {
+  border: 1px solid #ddd !important;
+  padding: 10px 30px;
+  height: 27px;
+}
+
+.newEmp_form{
+  display:none;
+}
+.clear{
+  clear:both;
+}
+
+#emplist-table select{
+  width:auto;
+}

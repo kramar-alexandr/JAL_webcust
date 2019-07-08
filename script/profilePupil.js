@@ -63,11 +63,15 @@ function PupilVerifiedController(pupil) {
             $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no vecāka/aizbildņa.');
             $('.status-info').text('Skolotājs profilu ir apstiprinājis');
-        } else if (!this.pupil.verified.teacher) {
+        } else if (this.pupil.verified.teacher==0) {
             $('.tabs').hide();
             $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
             $('.status-info').text('Vecāks / aizbildnis profilu ir apstiprinājis');
+        } else if (this.pupil.verified.teacher==2) {
+            $('.tabs').hide();
+            $('.status').show();
+            $('.pupil-smu').hide();
         } else if (!pupil.smu) {
             $('.tabs').show();
             $('.status').show();
@@ -105,10 +109,14 @@ function PupilVerifiedController(pupil) {
             $('.tabs').hide();
             $('.confirmation').css('display', 'flex');
             this.setEventConfirmButton();
-        } else if (!this.pupil.verified.teacher) {
+        } else if (this.pupil.verified.teacher==0) {
             $('.tabs').hide();
             $('.status').show();
             $('.status-header').text('Gaidām Tava profila apstiprinājumu no skolotāja.');
+        } else if (this.pupil.verified.teacher==2) {
+            $('.tabs').hide();
+            $('.status').show();
+            $('.pupil-smu').hide();
         } else if (!pupil.smu) {
             $('.tabs').show();
             $('.status-header').text('Apsveicam!');

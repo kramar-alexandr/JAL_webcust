@@ -197,3 +197,15 @@ tfoot tr td{
   padding:3px;
   margin:0px 30px 30px 30px;
 }
+
+.date_wrap{
+  float:left;
+  width:50%;
+  margin-top:8px;
+}
+
+.ui-datepicker td a {
+  height:auto !important;
+  font-size:unset !important;
+  line-height:unset !important;
+}

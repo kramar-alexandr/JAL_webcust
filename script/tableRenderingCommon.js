@@ -25,6 +25,7 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
       
    this.SumupTable = function(table,ntable,wrap){
      let rows = table.data().toArray();
+     var self = this;
      var emps = 0;
      var mat = 0;
      for (var i=0;i<rows.length;i++){
@@ -39,6 +40,29 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
      $(ntable).find('tfoot td:nth-child(2)').html(emps.toFixed(2));
      $(ntable).find('tfoot td:nth-child(4)').html(mat.toFixed(2));
      $(wrap).find('.costprice input').val((emps+mat).toFixed(2));
+     if (this.obj.tables.plantable.UpdateItemCost){
+       this.obj.tables.plantable.UpdateItemCost($(wrap).find('.itemname input').val(),emps+mat);
+       this.obj.tables.plantable.UpdateItemPrice($(wrap).find('.itemname input').val(),$(wrap).find('.itemprice input').val());
+     } else {
+       setTimeout(function(){
+         self.obj.tables.plantable.UpdateItemCost($(wrap).find('.itemname input').val(),emps+mat);
+         self.obj.tables.plantable.UpdateItemPrice($(wrap).find('.itemname input').val(),$(wrap).find('.itemprice input').val());
+       },1000);
+     }
+   }
+   
+   this.CleanEmpSelect = function(table,ep){
+   
+     let rows = table.data().toArray();
+     for (var j=0;j<ep.length;j++){
+       for (var i=0;i<rows.length;i++){
+         if (rows[i][0]==ep.options[j].value){
+           $(ep.options[j]).remove();
+           j = j - 1;
+         }
+       }
+     }
+     return ep;
    }
    
    this.AddTableEvents = function(table,ntable,wrap){
@@ -69,7 +93,8 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
         if (!self.activecol) {
           self.activecol = true;
           let th = this;
-          let ep = $(self.obj.emplist).clone();
+          let ep = $(self.obj.emplist).clone().get(0);
+          ep = self.CleanEmpSelect(table,ep);
           var currow = table.cell(th).index().row;
           $(ep).val(table.cell({row: currow, column:0}).data());
           /*
@@ -105,9 +130,12 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
           var oldval = $(this).get(0).defaultValue;
           self.items.push($(this).val());
           self.obj.tables.plantable.AddEmptyItems();
+
         });
         
-        $(twrap).find(".itemprice input").val(itemprice);
+        $(twrap).find(".itemprice input").val(itemprice).change(function(){
+          self.obj.tables.plantable.UpdateItemPrice($(twrap).find('.itemname input').val(),$(this).val());
+        });;
         if (this.readonlyf==false) {
           $(twrap).find(".itemprice input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
         } else {
@@ -258,12 +286,16 @@ function FinPlanDataTable(wrap,smu,readonlyf,obj){
    
    this.AddPlanTableEvents = function(table,ntable){
      var self = this;
-      $(ntable).find('tbody td').not("td:nth-child(2),td:nth-child(1)").click(function(){
+      $(ntable).find('tbody td').not("td:nth-child(2),td:nth-child(1),td:nth-child(3),td:nth-child(4)").click(function(){
         var th = this;
         if (self.activecol!==th) {
           self.activecol = th;
           $(th).html("<input class='table_edit' value='" + $(th).html() + "'>");
-          $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
+          if (table.cell(th).index().column==5) {
+            $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:true,digits:0});
+          } else {
+            $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});          
+          }
           $(th).find("input").focus().blur(function(){
             $(th).html();
             var cell = table.cell( th );
@@ -294,6 +326,30 @@ function FinPlanDataTable(wrap,smu,readonlyf,obj){
      for (var i=0;i<allitems.length;i++){
        if (!items[allitems[i]]) {
          self.AddEmptyItemPlan(rows,allitems[i]);
+       }
+     }
+     this.plantable.destroy();
+     this.CreatePlanTable(rows);
+   }
+
+   this.UpdateItemPrice = function(item,price){
+     var self = this;
+     var rows = this.plantable.data().toArray();
+     for (var i=0;i<rows.length;i++){
+       if (rows[i][2]==item){
+         rows[i][4] = price;
+       }
+     }
+     this.plantable.destroy();
+     this.CreatePlanTable(rows);
+   }
+   
+   this.UpdateItemCost = function(item,cost){
+     var self = this;
+     var rows = this.plantable.data().toArray();
+     for (var i=0;i<rows.length;i++){
+       if (rows[i][2]==item){
+         rows[i][3] = cost;
        }
      }
      this.plantable.destroy();
