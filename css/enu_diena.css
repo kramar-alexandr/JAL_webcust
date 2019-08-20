@@ -233,17 +233,17 @@ h6{
         margin: 0;
     }
     #main_info {
-        padding-top: 138px;
-        padding-bottom: 138px;
+        padding-top: 28px;
+        padding-bottom: 28px;
         width: 70%;
     }
     h6 {
-        margin-bottom: 138px;
+        margin-bottom: 28px;
         font-size: 4.5vw;
     }
     .c_2 {
-        width: 48%;
-        height: 30vw;
+        width: 100%;
+        height: 300px;
         box-shadow: none;
     }
     .background {

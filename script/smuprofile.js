@@ -65,7 +65,7 @@ function SMUProfileApp(js) {
     $('.smu_education').attr("disabled","");
     $('.smu_targetaud').attr("disabled","");
     $('#add_item_button').css("display","none");
-    if (this.smu.ApprovalStatus==='1' || this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
+    if (this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
       $(".table-emps").hide();
     } else {
       $(".newEmp_button a").remove();
@@ -129,9 +129,26 @@ function SMUProfileApp(js) {
        $(tline).find("td:nth-child(2)").html(emp.eMail);
        self.SetPositionDropDown(emp,$(tline).find("td:nth-child(3)"),emp.JobDesc);
        if (emp.type=="0") {
-         $(tline).find("td:nth-child(4)").addClass("emp_rem").click(function(){
+         if (emp.Code==self.smu.Owner){
+           $(tline).find("td:nth-child(4)").html("");
+         } else {
+           $(tline).find("td:nth-child(4)").addClass("emp_rem").click(function(){
+             if (confirm(jal_str["ConfirmDelete"])) {
+              $.get("/WebDeleteEmp.hal?emp=" + emp.Code + "&smu=" + self.smu.SMFCode,
+                function(data){
+                  if ($(data).attr("err")!="0") {
+                    alert($(data).attr("errmsg"));
+                  } else {
+                   $(tline).remove();
+                  }
+                });
+              }
+           });
+          }
+        } else {
+          $(tline).find("td:nth-child(4)").html(jal_str["Invited"] + "<br><div class='emp_rem'>" + jal_str["Remove"] + "</div>").click(function(){
            if (confirm(jal_str["ConfirmDelete"])) {
-            $.get("/WebDeleteEmp.hal?emp=" + emp.Code + "&smu=" + self.smu.SMFCode,
+            $.get("/WebDeleteEmpApplication.hal?emp=" + emp.Code + "&smu=" + self.smu.SMFCode,
               function(data){
                 if ($(data).attr("err")!="0") {
                   alert($(data).attr("errmsg"));
@@ -140,9 +157,7 @@ function SMUProfileApp(js) {
                 }
               });
             }
-         });
-        } else {
-          $(tline).find("td:nth-child(4)").html(jal_str["Invited"]);
+          });
         }
        $("#emplist-table tbody").append(tline);
      }
@@ -155,10 +170,14 @@ function SMUProfileApp(js) {
          if ($(".newEmp_form .nemp_code").val()=="" || $(".newEmp_form  .nemp_pos").val()=="") {
            alert(jal_str["FillAllFields"]);
          } else {
-           $.get("WebSaveCompEmp2.hal?nemp=" + $(".newEmp_form .nemp_code").val() + "&nemp_pos=" + $(".newEmp_form  .nemp_pos").val(),function(){
-             $(".newEmp_form .nemp_code option:selected").remove();
-             self.refreshData();
-             alert(jal_str["InvitationSent"]);
+           $.get("WebSaveCompEmp2.hal?nemp=" + $(".newEmp_form .nemp_code").val() + "&nemp_pos=" + $(".newEmp_form  .nemp_pos").val(),function(data){
+             if ($(data).attr("err")=="1"){
+               alert(jal_str["TooManyEmployees"]);
+             } else {
+               $(".newEmp_form .nemp_code option:selected").remove();
+               self.refreshData();
+               alert(jal_str["InvitationSent"]);
+              }
            });
           }
        });
@@ -197,7 +216,6 @@ function SMUProfileApp(js) {
   this.FillEmployees = function(data,rows){
     let tarr = [];
     for (var i=0;i<rows.length;i++) {
-    alert(rows[i][0] + ":" + rows[i][1] + ":" + rows[i][2]);
       obj = {"CustCode":rows[i][0],"Salary":rows[i][2]};
       tarr.push(obj);
     }
@@ -264,6 +282,11 @@ function SMUProfileApp(js) {
         res = false;
         return false;
       }
+      if ($(this).hasClass("sample")){
+        res = false;
+        alert(jal_str["ItemWithSampleData"]);
+        return false;
+      }
     });
     return res;
   }
@@ -281,6 +304,13 @@ function SMUProfileApp(js) {
         case "1":
           alert(jal_str["SMUDate"]);
           $('.smu_period').focus();
+          break;
+        case "4":
+          alert(jal_str["SMUDate2"]);
+          $('.smu_period').focus();
+          break;
+        case "5":
+          alert(jal_str["AllFieldFilled"]);
           break;
         default: 
           location.reload();

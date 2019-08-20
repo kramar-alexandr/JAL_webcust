@@ -59,6 +59,7 @@
 }
 .skolas{
     font-family: "Poppins", sans-serif;
+    margin-top:20px;
 }
 .skolas h1{
     margin: 13px;
@@ -184,13 +185,17 @@
     margin-bottom: 0.2vw;
 }
 .wrapped p, .wrapped1 p{
-    font-size: 9px;
+    font-size: 12px;
     font-family: "Poppins";
     color: black;
-    line-height: 13px;
+    line-height: 21px;
     text-align: justify;
     margin: 0;
     padding-bottom: 0.5vw;
+}
+.wrapped_text a,.one-flex a{
+  color:#24bc4b;
+  font-size:13px;
 }
 .wrapped span, .wrapped1 span{
     font-size: 8px;
@@ -217,14 +222,33 @@
     height: 100%;
 }
 .wrapped_text{
-    width: 70%;
+    width: 90%;
     padding: 17px;
+    margin:0 auto;
+    padding-top:0px;
+    font-size:12px;
+}
+.wrapped_text h2{
+  text-align:center;
+  font-size:15px;
 }
 .logos-{
     width: 30%;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     height: 9vw;
     margin-left:1vw;
+}
+
+.green_header{
+  text-align:center;
+  font-size:17px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+.green_underline{
+  border-bottom:2px solid #2eb950;
+  padding-bottom:5px;
 }
 .logo1{background-image: url(../img/logos/11.png);}
 .logo2{background-image: url(../img/logos/44.png);}
@@ -235,24 +259,32 @@
 #quote {
     background-image: url(../img/bilde2.jpg) !important;
 }
-
-
-.wrapped1{
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
+#quote2{
+    background-image: url(../img/aiva_viksna.png) !important;
+    height: 392px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-image: url(../img/1.jpg);
     display: -webkit-flex;
     display: flex;
-    width: 33.33333%;
-    height: 13vw;
     align-items: center;
 }
+
+.wrapped1{
+  width:27%;
+  margin:0 auto;
+  height: 270px;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 .logos-1{
     width: 30%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     height: 83px;
-    margin-left:1vw;
+    margin:0 auto;
 }
+
 .logo5{background-image: url(../img/logos/10.png);}
 .logo6{background-image: url(../img/logos/13.png);}
 .logo7{background-image: url(../img/logos/12.png);}
@@ -265,30 +297,68 @@
     flex-wrap: wrap;
 }
 .one-flex{
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
     display: -webkit-flex;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 13vw;
-    width: 13vw;
+    height: 45px;
+    width: 100%;
     padding: 13px;
-    margin: 13px;
+    margin-bottom:6px;
+    border-radius:4px;
 }
 .one-flex img{
     width: 3.5vw;
     margin: 0.5vw;
 }
 .one-flex p{
-    font-size: 9px;
+    font-size: 13px;
     font-family: "Poppins";
     color: black;
     line-height: 13px;
-    text-align: center;
+    text-align: left;
     margin: 0;
-    padding-bottom: 0.5vw;
 }
+.quote_table_text{
+  color:white;
+  text-align:center;
+  font-size:12px;
+  margin-bottom:4px;
+}
+.content_3 tr:first-child th{
+  border-bottom:1px solid rgba(255,255,255,0.3);
+}
+.content_3{
+  padding:5px 15px;
+}
+.wrap-dalibskolas{
+  display:flex;
+}
+.wrap-dalibskolas .wrapped1{
+  width:20%;
+  justify-content: center;
+  padding:10px;
+  display:block;
+  height:220px;
+}
+.wrap-dalibskolas .wrapped1 p{
+  text-align:center;
+  margin-top:10px;
+}
+.wrapped1 .logos-2{
+  margin-top:50px;
+}
+.wrap-dalibskolas .wrapped1 img{
+  width:60px;
+  margin:0 auto;
+}
+.wrap.ziedojumi .wrapped{
+  margin:0 auto;
+}
+.logo20.log{
+  margin-right:20px;
+}
+
 .text-akt{
     display: -webkit-flex;
     display: flex;
@@ -546,7 +616,7 @@
     .capture_dalibskolas_mobile p{
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
-        font-size: 3.2vw;
+        font-size: 20px;
         line-height: 1.5;
         text-align: justify;
         margin: 0;
@@ -588,7 +658,7 @@
         display: flex;
         width: 65%;
         margin: auto;
-        font-size: 40px;
+        font-size: 20px;
         flex-direction: column;
         padding-top: 138px;
         padding-bottom: 138px;
@@ -601,7 +671,12 @@
     }
     #quote {
         background-image: url(../img/mob_1.jpg) !important;
+        display:block !important;
     }
+    #quote2{
+    height: auto;
+    }
+
     .wrapped1 {
         height: auto;
         align-items: center;
@@ -611,21 +686,25 @@
         width: 30%;
         box-shadow: none;
         height: 20vw;
-        margin-left: 0;
     }
     .wrapped_text {
-        width: 100%;
         padding: 17px;
     }
+    .wrapped_text h2{
+      font-size:25px;
+    }
+    .wrap-dalibskolas{
+      flex-direction:column;
+    }
     .wrapped h1, .wrapped1 h1 {
-        font-size: 3.5vw;
+        font-size: 25px;
         font-weight: 700;
         text-align: center;
         line-height: 1.6;
         margin-bottom: 27px;
     }
     .wrapped p, .wrapped1 p {
-        font-size: 40px;
+        font-size: 20px;
         line-height: 1.3;
         text-align: justify;
     }
@@ -633,8 +712,9 @@
         flex-direction: column;
     }
     .wrapped1 {
-        width: 100%;
-        height: auto;
+        width: 100% !important;
+        height: auto !important;
+        margin-bottom:20px;
     }
     .dalibskolas_content-1 h3 {
         margin: 7vw;
@@ -646,18 +726,18 @@
         flex-direction: column;
     }
     .one-flex {
-        box-shadow: none;
-        height: 50vw;
-        width: 100%;
+        height: auto;
+        width: auto;
         padding: 13px;
         margin: 13px;
+        flex-direction:column;
     }
     .one-flex img {
         width: 15vw;
         margin: 70px;
     }
     .one-flex p {
-        font-size: 40px;
+        font-size: 20px;
         line-height: 2;
     }
     .text-akt {
@@ -714,7 +794,7 @@
         height: 25vw;
     }
     .skolotaji .text-akt p{
-        font-size: 40px;
+        font-size: 20px;
         line-height: 2;
         margin-bottom: 70px;
     }
@@ -748,5 +828,12 @@
         text-align: justify;
         margin: 0;
         margin-bottom: 70px;
+    }
+    #about-table{
+      position:static;
+      width:100%;
+    }
+    .capture_top_buttons{
+      display:none;
     }
 }

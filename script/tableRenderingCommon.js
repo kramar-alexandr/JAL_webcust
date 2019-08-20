@@ -40,14 +40,16 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
      $(ntable).find('tfoot td:nth-child(2)').html(emps.toFixed(2));
      $(ntable).find('tfoot td:nth-child(4)').html(mat.toFixed(2));
      $(wrap).find('.costprice input').val((emps+mat).toFixed(2));
-     if (this.obj.tables.plantable.UpdateItemCost){
-       this.obj.tables.plantable.UpdateItemCost($(wrap).find('.itemname input').val(),emps+mat);
-       this.obj.tables.plantable.UpdateItemPrice($(wrap).find('.itemname input').val(),$(wrap).find('.itemprice input').val());
-     } else {
-       setTimeout(function(){
-         self.obj.tables.plantable.UpdateItemCost($(wrap).find('.itemname input').val(),emps+mat);
-         self.obj.tables.plantable.UpdateItemPrice($(wrap).find('.itemname input').val(),$(wrap).find('.itemprice input').val());
-       },1000);
+     if (this.obj){
+       if (this.obj.tables.plantable.UpdateItemCost){
+         this.obj.tables.plantable.UpdateItemCost($(wrap).find('.itemname input').val(),emps+mat);
+         this.obj.tables.plantable.UpdateItemPrice($(wrap).find('.itemname input').val(),$(wrap).find('.itemprice input').val());
+       } else {
+         setTimeout(function(){
+           self.obj.tables.plantable.UpdateItemCost($(wrap).find('.itemname input').val(),emps+mat);
+           self.obj.tables.plantable.UpdateItemPrice($(wrap).find('.itemname input').val(),$(wrap).find('.itemprice input').val());
+         },1000);
+       }
      }
    }
    
@@ -58,16 +60,38 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
        for (var i=0;i<rows.length;i++){
          if (rows[i][0]==ep.options[j].value){
            $(ep.options[j]).remove();
-           j = j - 1;
+           i = rows.length;
          }
        }
      }
      return ep;
    }
    
-   this.AddTableEvents = function(table,ntable,wrap){
+   this.AddTableEvents = function(table,ntable,wrap,samplef){
      var self = this;
       //$(ntable).find('tbody td:first-child').addClass("hidden");
+      if (samplef){
+        $(wrap).find(".itemname input").addClass("sample_input");
+        $(wrap).find(".itemprice input").addClass("sample_input");
+        $(wrap).find(".sample_input").click(function(){
+          $(ntable).find('tbody td:nth-child(1)').click();
+        });
+        $(wrap).addClass("sample");
+        $(ntable).find('tbody td').bind("click",function(event){
+          table.row(0).remove();
+          table.row(0).remove();
+          table.row.add(["","","","","","",""]).draw( false );
+          $(wrap).find(".itemname input").val("").removeClass("sample_input");
+          $(wrap).find(".itemprice input").val("").removeClass("sample_input");
+          //$(ntable).find('tbody td').unbind("click",f);
+          self.AddTableEvents(table,ntable,wrap,false);
+          event.stopImmediatePropagation();
+          $(ntable).find('tbody td').unbind(event);
+          $(wrap).removeClass("sample");
+          self.SumupTable(table,ntable,wrap);
+        
+        });
+      }
       $(ntable).find('tbody td').not("td:nth-child(1)").click(function(){
         var th = this;
         if (!self.activecol) {
@@ -82,7 +106,7 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
             cell.data($(this).val()).draw();
             if ($(th).parent().is(':last-child') && $(th).html()!="") {
               table.row.add(["","","","","","",""]).draw( false );
-              self.AddTableEvents(table,ntable,wrap);
+              self.AddTableEvents(table,ntable,wrap,false);
             }
             self.activecol = false;
             self.SumupTable(table,ntable,wrap);
@@ -119,7 +143,7 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
       });      
    }
    
-   this.AddItemTable = function(data,itemname,itemprice){
+   this.AddItemTable = function(data,itemname,itemprice,samplef){
         var self = this;
         var twrap = $('#temp_table_wrap').clone();
         
@@ -162,14 +186,19 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
         $(ntable).data("tabledata",table);
         this.SumupTable(table,ntable,twrap);
         if (this.readonlyf==false){
-          this.AddTableEvents(table,ntable,twrap);   
+          this.AddTableEvents(table,ntable,twrap,samplef);   
         }
    }
    
+   
    this.AddEmptyItem = function(button){
      var data = [];
-     data.push(["","","","","","",""]);
-     this.AddItemTable(data,"","");
+     data.push(["","Jānis Bērziņš","15.00","Alumīnija caurule","10.00"]);
+     data.push(["","","","Plastmasas āķis","3.00"]);
+     let itemname = "Riteņu statīvs";
+     let itemprice = "99.99";
+
+     this.AddItemTable(data,itemname,itemprice,true);
      if ($(this.wrap).find("#cost_table_wrap .table_wrap").length>=3) {
        $(button).remove();
      }
@@ -213,10 +242,19 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
           }
           data.push(a1.concat(a2));
         }
+        let samplef = false;
+
         if (this.readonlyf==false){
+          if (data.length==0) {
+            data.push(["","Jānis Bērziņš","15.00","Alumīnija caurule","10.00"]);
+            data.push(["","","","Plastmasas āķis","3.00"]);
+            itemname = "Riteņu statīvs";
+            itemprice = "99.99";
+            samplef = true;
+          }
           data.push(["","","","",""]);
         }
-        self.AddItemTable(data,itemname,itemprice);
+        self.AddItemTable(data,itemname,itemprice,samplef);
       }
       if (this.readonlyf==false){
         if ($("#cost_table_wrap .table_wrap").length>=3) {

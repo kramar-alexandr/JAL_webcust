@@ -27,17 +27,18 @@
     margin-top: 14vw;
     margin-left: 12vw;
     z-index: 2;
-    width: 38%;
+    width: 80%;
 }
 .capture_top h2{
     margin: 0;
-    font-family: "Poppins", sans-serif;
-    color: rgb(255, 255, 255);
+    font-family: "Poppins Bold", sans-serif;
+    color: rgb(255, 255, 255) !important;
     font-weight: bold;
-    text-align: left;
-    font-size: 27px;
+    text-align: left !important;
+    font-size: 27px !important;
     line-height: 1.1;
     padding-bottom: 13px;
+    margin:0px !important;
 }
 .capture_top p{
     margin: 0;
@@ -47,6 +48,8 @@
     line-height: 17px;
     text-align: left;
     opacity: 0.8;
+    width:38%;
+    margin-bottom:30px;
 }
 .flex{
     display: -webkit-flex;
@@ -57,9 +60,9 @@
 
 
 .separate{
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     padding-top: 4vw;
     padding-bottom: 4vw;
+    background:#ededed;
 }
 .separate .flex{
     width: 70%;
@@ -68,24 +71,30 @@
 .separate .flex div{
     width: 50%;
 }
-.separate h1{
+.separate h2{
     margin: 0;
-    font-size: 1.2vw;
     line-height: 1;
     margin-bottom: 27px;
+    text-align:left !important;
 }
 .separate h5{
     margin: 0;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.5;
+    font-weight:bold;
+    font-family: "Poppins Bold", sans-serif;
+    white-space: nowrap;
 }
 .separate p{
     margin: 0;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.5;
+    font-family: "Poppins Light", sans-serif;
 }
 .separate th{
     text-align: left;
+    padding-right:10px;
+    vertical-align:top;
 }
 
 #main_info{
@@ -98,17 +107,52 @@
     margin: 0;
     margin-bottom: 40px;
     text-align: center;
-    font-size: 15px;
+    font-size: 36px;
 }
 
 .mentori{
-    justify-content: center;
+    /*justify-content: center;*/
+  margin-right:-25px;
 }
 .mentori div{
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    width: 24%;
-    margin: 0.3vw;
-    margin-bottom: 13px;
+    width: 180px;
+    margin-right: 25px;
+    margin-bottom: 25px;
+}
+.mentori.people > div{
+  padding:25px;
+  padding-top:15px;
+  width:180px;
+  box-sizing:border-box;
+}
+.padome > div {
+  padding:25px !important;
+}
+
+.padome p {
+  font-size:12px !important;
+}
+.mentori.people div h5{
+  font-size:11px;
+  text-align:center;
+  text-transform:uppercase;
+  margin:0px 0px 10px 0px;
+  font-weight:lighter;
+}
+.mentori.people div h4{
+  font-family: "Poppins Bold", sans-serif !important;
+  margin:0px;
+  margin-bottom:10px !important;
+  white-space:nowrap;
+  text-align:center;
+}
+.mentori.people div p{
+  margin-bottom:0px !important;
+  text-align:left !important;
+}
+.mentori div:nth-child(5),.mentori div:nth-child(10){
+  margin-right:0px;
 }
 .mentori img{
     width:100%;
@@ -118,19 +162,57 @@
     text-align: center;
     margin: 11px;
 }
-.mentori p{
-    width: 85%;
-    border-top: 1px solid rgba(0,0,0,0.3);
-    font-size: 11px;
-    font-family: "Poppins", sans-serif;
-    color: rgb(0,0,0);
-    line-height: 1.3;
-    text-align: justify;
-    margin: auto;
-    margin-bottom: 13px;
-    margin-top: 0.5vw;
-    padding-top: 13px;
+#parskats_cont .mentori div{
+  padding:25px 25px 10px 25px !important;
+  box-sizing:border-box;
 }
+#parskats_cont .mentori h3{
+  margin-bottom:0px !important;
+}
+.materiali div{
+  padding:25px;
+}
+.materiali div h4{
+  margin:0px;
+  margin-bottom:20px;
+  font-size:16px;
+  font-weight:lighter;
+}
+.mentori.people div .kont p{
+  text-align:center !important;
+}
+.materiali div a{
+  color:#419c4d !important;
+  font-size:12px !important;
+}
+
+h1{
+  text-align:center !important;
+  font-size:36px !important;
+  margin-bottom:15px !important;
+  font-family: "Poppins Semibold", sans-serif !important;
+}
+h2{
+  text-align:center !important;
+  font-size:24px !important;
+  font-family: "Poppins Bold", sans-serif !important;
+  margin-bottom:30px !important;
+}
+h3{
+  text-align:center !important;
+  font-size:22px !important;
+  font-family: "Poppins SemiBold", sans-serif !important;
+}
+#biedri_cont h4{
+    font-size: 13px !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+}
+#biedri_cont .fiziskas_personas.mentori h4{
+  margin-bottom:0px !important;
+  margin:15px 25px !important;
+}
+/*
 .mentori h3{
     text-transform: uppercase;
     color: grey;
@@ -145,23 +227,22 @@
     margin-top: 0.5vw;
     padding-top: 0.5vw;
 }
+*/
 .kont{
-    display: -webkit-flex;
-    display: flex;
     box-shadow: unset !important;
     width: 90% !important;
     margin: auto !important;
     margin-bottom: unset !important;
-    justify-content: space-around;
 }
 .kont p{
-    font-size: 9px;
+    font-size: 12px !important;
     border: none;
     color: black;
-    text-align: center;
+    text-align: center !important;
     width: unset !important;
     padding: 0 !important;
-    margin-top: 0 !important
+    margin-top: 0 !important;
+    margin-bottom:4px !important;
 }
 
 
@@ -219,14 +300,16 @@
 
 .par_mums #main_info p{
     margin: 0;
-    font-size: 12px;
+    font-size: 16px;
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
-    line-height: 17px;
+    line-height: 21px;
     text-align: justify;
     margin-bottom: 40px;
 }
-
+.vesture h3{
+  margin:0px !important;
+}
 .par_mums #main_info h3 {
     margin: 0;
     margin-bottom: 40px;
@@ -238,29 +321,35 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-right:-25px;
+
 }
 .one-flex{
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
     display: -webkit-flex;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 9vw;
-    width: 9vw;
-    padding: 13px;
-    margin: 40px;
-    margin-top: 0;
+    height: 170px;
+    width: 170px;
+    box-sizing:border-box;
+    padding: 5px;
+    margin-bottom: 40px;
+    margin-right:25px;
 }
 .one-flex img{
-    width: 3.5vw;
-    margin: 0.5vw;
+    width: 60px;
+    margin-bottom:21px;
+}
+.one-flex div:first-child{
+  /*height:80px;*/
 }
 .one-flex p{
-    font-size: 9px !important;
+    font-size: 16px !important;
     font-family: "Poppins" !important;
-    color: black !important;
-    line-height: 13px !important;
+    color: #535353 !important;
+    line-height: 19px !important;
     text-align: center !important;
     margin: 0 !important;
     padding-bottom: 0.5vw !important;
@@ -272,7 +361,31 @@
     width: 50%
 }
 .add.one-flex img{
-    width: 6.5vw !important;
+    width: 110px !important;
+    margin-bottom:30px !important;
+    margin-top:30px !important;
+}
+.about_us_head{
+  padding-right:70px;
+  float:left;
+  font-size:20px;
+  font-weight:bold;
+}
+.about_us_content{
+  overflow:hidden;
+}
+.spbutton{
+  font-family: "Poppins", sans-serif;
+  background-color: #16B01A !important;
+  color: white;
+  font-size: 13px !important;
+  padding: 0.5vw 27px;
+  margin: 0 auto;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  text-transform: uppercase;
 }
 @media screen and (max-width: 900px){
     #map {
@@ -299,17 +412,24 @@
         padding-bottom: 40px;
     }
     #main_info {
-        padding-top: 138px;
-        padding-bottom: 138px;
+        padding-top: 28px;
+        padding-bottom: 28px;
         width: 80%;
     }
     .mentori {
         width: 100%;
         flex-direction: column;
+        align-items:center;
     }
     .mentori div {
         width: 100%;
         margin-bottom: 70px;
+    }
+    .materiali div{
+      width:290px !important;
+    }
+    .materiali{
+      margin-top:30px;
     }
     .mentori h2 {
         font-size: 4vw;
@@ -317,23 +437,23 @@
     }
     .mentori p{
         font-size: 3.5vw;
-        margin-top: 70px;
-        margin-bottom: 70px;
-        padding-top: 70px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        padding-top: 10px;
     }
     .mentori h3{
         font-size: 3.5vw;
-        margin-top: 70px;
-        margin-bottom: 70px;
-        padding-top: 70px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        padding-top: 10px;
     }
 
     #main_info h1 {
         margin: auto;
-        margin-top: 138px;
-        margin-bottom: 138px;
+        margin-top: 18px;
+        margin-bottom: 18px;
         text-align: center;
-        font-size: 70px;
+        font-size: 25px;
         text-transform: inherit;
         font-weight: 700;
         width: 70%;
@@ -344,17 +464,15 @@
     .separate .flex div {
         width: 100%;
     }
-    .separate h1 {
-        font-size: 4.5vw;
+    .separate h2 {
         line-height: 1.5;
         margin-bottom: 27px;
     }
     .separate h5{
-        font-size: 40px;
-        width: 500px
+        font-size: 20px;
     }
     .separate p {
-        font-size: 40px;
+        font-size: 20px;
     }
     .separate .flex div{
         margin-bottom: 138px;
@@ -405,7 +523,7 @@
     }
     .par_mums #main_info p {
         margin: 0;
-        font-size: 40px;
+        font-size: 20px !important;
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
         line-height: 1.3;
@@ -421,7 +539,6 @@
         flex-wrap: wrap;
     }
     .one-flex {
-        box-shadow: none;
         height: 40vw;
         width: 40%;
         padding: 13px;
@@ -429,13 +546,12 @@
     }
     .one-flex img {
         width: 15vw;
-        margin: 70px;
     }
     .add.one-flex img{
         width: 25vw !important;
     }
     .one-flex p {
-        font-size: 40px !important;
+        font-size: 20px !important;
         line-height: 2 !important;
     }
     .captures-about{
@@ -443,5 +559,17 @@
     }
     .a {
         width: 100%;
+    }
+    .about_us_head{
+      float:none;
+    }
+    .mentori.people > div{
+      width:290px;
+    }
+    #biedri_cont h3{
+      font-size:25px !important;
+    }
+    .mentori div:nth-child(5), .mentori div:nth-child(10){
+      margin-right:25px;
     }
 }

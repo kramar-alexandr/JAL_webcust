@@ -195,10 +195,10 @@
         width: 100%;
     }
     #main_info p {
-        margin-bottom: 70px;
+        margin-bottom: 10px;
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
-        font-size: 3.2vw;
+        font-size: 20px;
         line-height: 1.5;
         text-align: justify !important;
         margin: 0;
@@ -223,7 +223,7 @@
     }
     #main_info h2 {
         margin: 13px;
-        font-size: 4vw;
+        font-size: 20px;
         margin-bottom: 70px;
         font-weight: bold;
         text-align: center;
@@ -248,7 +248,7 @@
         padding: 13px;
     }
     .col-36 {
-        margin-top: 70px;
+        margin-top: 20px;
         flex-direction: column;
     }
     .col-36 div {
@@ -263,15 +263,18 @@
 
     .col35-1 {
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        height: 30vw;
-        width: 47%;
+        height: 200px;
+        width: 90%;
         margin: 13px;
     }
     .col35-1 div {
-        height: 30vw;
+        height: 140px;
     }
     .col-35 h3 {
-        font-size: 40px;
-        bottom: 83px;
+        font-size: 20px;
+        bottom: 3px;
+    }
+    .col35-1 div{
+      background-size: 33%;
     }
 }

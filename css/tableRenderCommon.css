@@ -22,6 +22,9 @@ table.dataTable  thead tr:first-child th{
 .dataTable thead tr:first-child th:last-child{
   border-top-right-radius:15px;
 }
+#finplan_table td:first-child,#finplan_table th:first-child{
+  /*width:160px !important;*/
+}
 #finplan_table tfoot td:first-child{
   border-left:none !important;
   border-bottom:none !important;
@@ -59,4 +62,7 @@ table.dataTable  thead tr:first-child th{
 .table_field.itemprice input,.table_field.costprice input{
   width:9vw;
   text-align:right;
+}
+.sample td,.sample_input{
+  color:#ddd;
 }

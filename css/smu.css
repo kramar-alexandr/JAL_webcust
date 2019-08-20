@@ -387,4 +387,47 @@ h6{
     font-size: 15px;
 }
 @media screen and (max-width: 900px){
+  p {
+    font-size:20px !important;
+    line-height:1.5 !important;
+  }
+  #smu_content{
+    width:100%;
+    font-size:20px;
+  }
+  .wrapped{
+    width:auto !important;
+    display:block !important;
+  }
+  .wrapped div{
+    margin:0 auto;
+    display:block;
+  }
+  .logos- {
+    box-shadow:none;
+    height:135px;
+  }
+  .wrapped p{
+    font-size:20px;
+    line-height:1.5;
+  }
+  .wrapped h2{
+    font-size:20px;
+    bottom:0px;
+    position:absolute;
+    width:100%;
+    text-align:center;
+  }
+  #content_3{
+    width:90%;
+    margin:0 auto !important;
+  }
+  #list{
+    display:block;
+  }
+  #list li{
+    font-size:20px !important;
+    line-height:1.5 !important;
+    white-space:unset;
+  }
 }

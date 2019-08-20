@@ -1,6 +1,20 @@
 let pupilInfo = JSON.parse(pupil);
 
-$('.document-smu-info').text(`Reģistrācijas apliecība: Reģ. nr.: ${pupilInfo.smuCode}|   Reģ. datums: ${pupilInfo.regDate}   |   Darbības termiņš: ${pupilInfo.expDate || ''}`);
+function downloadURI(uri) {
+  var link = document.createElement("a");
+  link.setAttribute("target","_blank");
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  delete link;
+}
+
+$('.document-smu-info').html(`Reģistrācijas apliecība: Reģ. nr.: ${pupilInfo.smuCode}|   Reģ. datums: ${pupilInfo.regDate}   |   Darbības termiņš: ${pupilInfo.perfrom}&nbsp;&nbsp;-&nbsp;&nbsp;${pupilInfo.perto}`);
+
+$(".bg-doc").click(function(){
+  downloadURI("/WebDownloadSMUDoc.hal");
+});
 
 let emps = getData(`/WebGetEmployers.hal?code=${pupilInfo.smuCode}`);
 let documents = getData(`/WebGetDocuments.hal?code=${pupilInfo.smuCode}`);

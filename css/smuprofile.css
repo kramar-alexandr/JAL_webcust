@@ -12,7 +12,7 @@
 .field_col input,.field_col textarea{
   background:none;
   border:none;
-  font-size:15px;
+  font-size:16px;
   width:100%;
 }
 .field_col textarea:focus,.field_col  input:focus{
@@ -25,11 +25,12 @@
   height:100px;
 }
 .field_label{
-  font-size:10px;
+  font-size:11px;
 }
 .field_descr{
   font-size:11px;
   margin-bottom:10px;
+  overflow:hidden;
 }
 
 #cost_table_wrap{
@@ -63,8 +64,9 @@
 
 .profile_header{
   text-align:center;
-  width:70%;
+  /*width:70%;*/
   font-weight:600;
+  font-size:24px;
 }
 .newEmp_form{
   display:none;
@@ -157,6 +159,7 @@ height:27px;
   text-align:center;
   font-weight: 600;
   margin-bottom:20px;
+  font-size:24px;
 }
 
 .dataTables_wrapper{
@@ -174,6 +177,7 @@ height:27px;
 
 #finplan_table_wrapper{
   margin:0vw 13px;
+  overflow:visible !important;
 }
 
 
@@ -208,4 +212,7 @@ tfoot tr td{
   height:auto !important;
   font-size:unset !important;
   line-height:unset !important;
+}
+.emp_rem:hover{
+  cursor:pointer;
 }

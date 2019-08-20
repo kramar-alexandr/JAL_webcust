@@ -188,27 +188,27 @@
     }
     .wrapped img {
         width: 60%;
-        padding: 70px;
+        padding: 10px;
         margin: auto;
     }
     .wrapped h1 {
-        font-size: 4vw;
+        font-size: 20px;
         font-weight: bold;
         text-align: center;
         line-height: 1.5;
         margin-bottom: 40px;
     }
     .wrapped p {
-        font-size: 40px;
+        font-size: 20px;
         color: black;
         line-height: 1.5;
         text-align: justify;
     }
     .project-bt button {
-        font-size: 4vw;
+        font-size: 20px;
         padding: 27px;
         width: fit-content;
         margin: auto;
-        margin-top: 70px;
+        margin-top: 10px;
     }
 }

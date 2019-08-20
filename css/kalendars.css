@@ -1,9 +1,13 @@
 #banner {
     height: 46vw;
-    background-image: url(../img/background_aktualitates.jpg) !important;
+    background-image: url(../img/profile-bg-pupil.jpg) !important;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
+}
+
+#banner.teacher-bg{
+    background-image: url(../img/profile.png) !important;
 }
 .capture{display:none;}
 #news{
@@ -272,31 +276,31 @@
   width:70%;
 }
 .ev_col{
-  padding:3px;
+  padding:1px;
   text-align:center;
   float:left;
   overflow:hidden;
-  font-size:13px !important;
+  font-size:16px !important;
   color:#aaaaaa;
 }
 .event-box .ev_col{
   line-height:34px;
 }
 .event-box .ev_col{
-  font-size:15px !important;
+  font-size:16px !important;
 }
 
 .ev_col.date{
   width: 80px;
 }
 .ev_col.reg_date{
-  width: 150px;
+  width: 155px;
 }
 .event-box .ev_col.reg_date{
   border-right:1px solid #eee;
 }
 .ev_col.descr{
-  width: 380px;
+  width: 420px;
 }
 
 .block-btn{
@@ -322,7 +326,7 @@
 .event-box .ev_col.date{
   background-color:#c5c5c5;
   color:white;
-  font-size:17px !important;
+  font-size:16px !important;
 }
 .event-box .ev_col.descr{
   font-weight:bold;

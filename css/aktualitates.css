@@ -133,7 +133,7 @@
     margin: 0;
     margin-top: 6px;
     position: absolute;
-    margin-left: -5vw;
+    margin-left: -100px;
 }
 .cont_text {
     font-size: 11px;
@@ -247,19 +247,34 @@
     flex-direction: row;
     justify-content: center;
     margin:0 auto;
+    margin-top:30px;
+}
+.paginationjs-page a,.paginationjs-prev a, .paginationjs-next a,.paginationjs-ellipsis a{
+  border-radius: 0px !important;
+  width: auto !important;
+  margin: 13px !important;
+  background-color: #ccc !important;
+  opacity: 1 !important;
+  padding: 7px 16px !important;
+  color:black;
 }
 
-.paginationjs-prev, .paginationjs-next  {
+.paginationjs-pages li{
+  width:auto;
+  margin:0px !important;
+}
+/*
+  {
     border-radius: 50%;
     width: calc(0.5vw + 0.5vw) !important;
     margin: 0 calc(10px + 0.5vw) !important;
     background-color: #39cf60;
     opacity: 0.5;
 }
-
 .J-paginationjs-next, .J-paginationjs-previous {
     background-color: rgb(234, 234, 234) !important;
 }
+*/
 
 
 @media screen and (max-width: 900px){
@@ -284,7 +299,7 @@
         margin-left:auto;
         margin-right:auto;
         text-align: center;
-        top: 50vw;
+        top: 0px;
     }
     .capture_aktualitates h2{
         text-align: center;

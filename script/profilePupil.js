@@ -77,8 +77,9 @@ function PupilVerifiedController(pupil) {
             $('.status').show();
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
-            $(".main-tab li:nth-child(4)").css("display","block");
-            
+            if (pupil.ApprovalStatus=="3"){
+              $(".main-tab li:nth-child(4)").css("display","block");
+            }          
             $('.sec_section').show();
             if (pupil.employerrequests.length>0) {
               $('.new_smu_section,.teacher_request_section').hide();
@@ -136,7 +137,9 @@ function PupilVerifiedController(pupil) {
               $('.employer_section,.teacher_request_section').hide();
             }
         } else {
-            $(".main-tab li:nth-child(4)").css("display","block");
+            if (pupil.ApprovalStatus=="3"){
+              $(".main-tab li:nth-child(4)").css("display","block");
+            }
         }
     };
 

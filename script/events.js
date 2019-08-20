@@ -28,7 +28,7 @@ function GetDateStr(td)
   res = td;
   
   if (td!=""){
-    res = td.substr(-2) + "." + td.substr(6,2);
+    res = td.substr(0,2) + "." + td.substr(3,2);
   }
 
   return res;
@@ -44,6 +44,14 @@ $(document).ready(function(){
       $(form).find('select').eq(i).val($(this).val())
     })
     $(form).find("input[type='file']").remove();
+    $(form2).find("input[type='file']").each(function(){
+      let f = $(this).get(0);
+      let name = "";
+      if (f.files.length>0){
+        name = f.files[0].name;
+      }
+      $(form).append("<input type='text' name='" + $(this).attr("name") + "' value='" + name + "'>");
+    });
     $.ajax({
       url:"/WebJALEventValidate.hal",
       data: $(form).serialize(),
@@ -63,7 +71,7 @@ $(document).ready(function(){
               if ($(data).attr("err")=="0") {
                 var id = $(data).attr("id");
                 var func = function(){
-                  window.location.href = "/kalendars";           
+                  window.location.href = "/events_success";           
                 }
                 var upl = $(form2).find("input[type='file']");
                 if ($(upl).length>0) {
@@ -76,7 +84,7 @@ $(document).ready(function(){
                   });
                   var uplf = new FileUpload(files,"jal",id,func);
                 } else {
-                  window.location.href = "/kalendars"; 
+                  window.location.href = "/events_success"; 
                 }
               }
             }
@@ -122,7 +130,7 @@ function EventDisplay(events, submittedEvents) {
         '    </div>\n' +
         '</div>';
     this.createEvents = function() {
-        $(".application").append("<div class='events_wrap'><div id='events_header'><div class='ev_col date'>Datums</div><div class='ev_col reg_date'>Pieteikuma termiņš</div><div class='ev_col descr'>Pasākuma nosaukums</div><div class=''></div></div><div id='pagenave'></div><div id='orig_items' style='display:none'></div></div>");
+        $(".application").append("<div class='events_wrap'><div id='events_header'><div class='ev_col date'>Datums</div><div class='ev_col reg_date'>Pieteikuma termiņš</div><div class='ev_col descr'>Pasākuma nosaukums</div><div class=''></div></div><div id='pagenave'></div><div id='orig_items' style='display:none'></div></div>").addClass("simple_page");
         if (this.events.length) {
             for (let event of this.events) {
                 $('.events-info').hide();
@@ -139,9 +147,9 @@ function EventDisplay(events, submittedEvents) {
                   }
                   done(result);
               },
-              prevText: '',
-              nextText: '',
-          showPageNumbers: false,
+              prevText: '<<',
+              nextText: '>>',
+          showPageNumbers: true,
           pageSize: 5,
               callback: function (data, pagination) {
                   // template method of yourself
@@ -329,8 +337,8 @@ function EventDisplay(events, submittedEvents) {
     function getMonthDay(date) {
         let months = [ "jan.", "feb.", "mar.", "apr.", "mai.", "jūn.",
             "jūl.", "aug.", "sep.", "okt.", "nov.", "dec." ];
-        let month = parseInt(date.substr(0,2),10)-1;
-        let day = date.substr(3,2);
+        let month = parseInt(date.substr(3,2),10)-1;
+        let day = date.substr(0,2);
 
         return `${day}. ${months[month]}`;
 

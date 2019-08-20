@@ -23,7 +23,7 @@ function CorrectionSMU (smu,pupil) {
             $('.addEmp').show();
         });
 */
-        if (this.pupil.ApprovalStatus==2 || this.pupil.ApprovalStatus==3) {
+        if (this.pupil.ApprovalStatus==3) {
           $(".addemp").show();
         } 
         $('#confirmMainInfo').click(function(){

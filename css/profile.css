@@ -993,7 +993,7 @@ td p {
 .application h2 {
     font-weight: bold;
     margin-left: 28px;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
 }
 
@@ -1542,6 +1542,14 @@ width: 43% !important;
   opacity: 0.5;
   padding: 8px 0.15vw !important;
 }
+.application.smu-border.simple_page .paginationjs-prev a,.application.smu-border.simple_page .paginationjs-next a{
+  border-radius: 0px !important;
+  width: auto !important;
+  margin: 13px !important;
+  background-color: #ccc  !important;
+  opacity: 1 !important;
+  padding: 0.5vw 27px !important;
+}
 .application.smu-border .J-paginationjs-next a,.application.smu-border  .J-paginationjs-previous a{
     background-color: rgb(234, 234, 234) !important;
 }
@@ -1596,10 +1604,17 @@ td.first{
 }
 
 .addemp{
-  margin-left:5%;
-  width:74%;
+  width:100%;
   float:left;
-  margin-right: 25px;
+}
+.emp_head{
+  text-align:center;
+  font-size:18px;
+  margin-bottom:10px;
+  font-weight:bold;
+}
+.table-emps .emp_head{
+  font-size:16px;
 }
 #emplist-table select{
   margin:0px;
@@ -1629,4 +1644,82 @@ td.first{
 
 #emplist-table select{
   width:auto;
+}
+#frame_wrap,#frame_wrap iframe {
+  width:100%;
+  border:none;
+}
+.profile_back{
+  display:none;
+}
+.main-tab a.active_nav{
+  background-color: #16B01A !important;
+}
+@media screen and (max-width: 900px){
+  body{
+    font-size:20px;
+  }
+  p{
+    font-size:20px;
+  }
+  .smu-border{
+    min-width:unset;
+  }
+  .profile{
+    width:100%;
+  }
+  .main-tab{
+    display:block;
+  }
+  ul.main-tab li a{
+    width:80%;
+    display:block;
+    text-align:center;
+  }
+  .spbutton{
+    font-size:20px !important;
+    line-height:40px !important;
+    height:40px !important;
+  }
+  .profile-pupil-info{
+    font-size:20px !important;
+  }
+  .pupil-info, .pupil-parent, .pupil-smu{
+    margin-left:0px  !important;
+    padding-left:0px  !important;
+  }
+  .profile-pupil-info{
+    width:100%;
+  }
+  .changeprofile{
+    padding-right:10px !important;
+    display:block;
+  }
+  .addinput{
+    text-align:left;
+    margin-bottom:10px;
+  }
+  .addinput span{
+    font-size:20px  !important;
+    width:40%;
+    display:block;
+    float:left;
+  }
+  #pass1 input, #passw2 input, #oldpassword input, .addinput input{
+    width:50%;
+    height:40px;
+    font-size:20px;
+  }
+  .field_row{
+    padding-left:0px !important;
+  }
+  .field_label{
+    font-size:15px !important;
+  }
+  .field_col input, .field_col textarea{
+    font-size:20px !important;
+  }
+  .smu_profile_info{
+    margin-top:30px !important;
+  }
 }

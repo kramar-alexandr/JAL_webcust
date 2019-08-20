@@ -3,9 +3,9 @@ let tableTMP = '<table id="regionsTable" class="display">\n' +
     '    <tr>\n' +
     '        <th>Pedagogs - SMU konsultants</th>\n' +
     '        <th>Izglītības iestāde</th>\n' +
-    '        <th>PSK</th>\n' +
-    '        <th>VSK</th>\n' +
-    '        <th>PROF</th>\n' +
+    //'        <th>PSK</th>\n' +
+    //'        <th>VSK</th>\n' +
+    //'        <th>PROF</th>\n' +
     '        <th>E-pasts saziņai</th>\n' +
     '    </tr>\n' +
     '    </thead>\n' +
@@ -13,17 +13,17 @@ let tableTMP = '<table id="regionsTable" class="display">\n' +
     '    <tr>\n' +
     '        <td></td>\n' +
     '        <td></td>\n' +
-    '        <td></td>\n' +
-    '        <td></td>\n' +
-    '        <td></td>\n' +
+    //'        <td></td>\n' +
+    //'        <td></td>\n' +
+    //'        <td></td>\n' +
     '        <td></td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '        <td></td>\n' +
     '        <td></td>\n' +
-    '        <td></td>\n' +
-    '        <td></td>\n' +
-    '        <td></td>\n' +
+    //'        <td></td>\n' +
+    //'        <td></td>\n' +
+    //'        <td></td>\n' +
     '        <td></td>\n' +
     '    </tr>\n' +
     '    </tbody>\n' +
@@ -38,7 +38,7 @@ let table = $('#regionsTable').DataTable({
     select: false,
     paging: false,
     ordering: false,
-    columns: [{data: 'nameTeacher'}, {data: 'schoolName'}, {data: 'PSK'}, {data: 'VSK'}, {data: 'PROF'}, {data: 'email'}],
+    columns: [{data: 'nameTeacher'}, {data: 'schoolName'}, {data: 'email'}],
     language: {
       zeroRecords: "Nav datu"
     }}
