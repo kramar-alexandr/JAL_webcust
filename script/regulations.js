@@ -6,7 +6,10 @@ xhr.onload = function () {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText);
     } else {
         let confs = JSON.parse(xhr.responseText.replace(/\r?\n/g, ""))[0];
-
+        console.log(confs);
+        if (confs["custtype"]!=1){
+          $(".regions").remove();
+        }
         for (let doc of confs.docs ) {
             if(doc.nameConf === 'Nolikumi') {
                 createConf(doc);

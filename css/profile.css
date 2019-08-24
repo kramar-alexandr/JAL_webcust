@@ -1655,6 +1655,26 @@ td.first{
 .main-tab a.active_nav{
   background-color: #16B01A !important;
 }
+
+#regionsTable{
+  width:80% !important;
+  border-bottom:1px solid #ddd;
+  margin-top:20px;
+}
+#regionsTable tr td:first-child,#regionsTable tr th{
+  font-weight:600 !important;
+  font-family: "Poppins SemiBold", sans-serif;
+}
+#regionsTable tr td:first-child{
+  width:220px !important;
+}
+#regionsTable tr td,#regionsTable tr th{
+  text-align:left !important;
+  padding:8px 10px !important;
+}
+#regionsTable tr:first-child th:nth-child(2){
+  text-align:center !important;
+}
 @media screen and (max-width: 900px){
   body{
     font-size:20px;

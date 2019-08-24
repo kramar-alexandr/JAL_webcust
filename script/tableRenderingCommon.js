@@ -217,10 +217,12 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
           let c = d.costs[j];
           var arr = [];
           if (c.type=="1") {
-            arr[0] = c.code;
-            arr[1] = self.vemplist[c.code].Name;
-            arr[2] = c.salary;
-            emparr.push(arr);
+            if (self.vemplist.hasOwnProperty(c.code)){
+              arr[0] = c.code;
+              arr[1] = self.vemplist[c.code].Name;
+              arr[2] = c.salary;
+              emparr.push(arr);
+            }
           } else {
             arr[0] = c.ProdName;
             arr[1] = c.UCost;
