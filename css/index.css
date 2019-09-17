@@ -157,22 +157,30 @@ p{}
     display: flex;
     flex-wrap: wrap;
 }
-
-.paginationjs {
+.paginationjs{
+  margin-top:20px;
+}
+.paginationjs ul{
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+.paginationjs ul li{
+  width:auto;
+  margin:0px;
+}
 
-.paginationjs-prev, .paginationjs-next  {
+.paginationjs-prev a, .paginationjs-next a{
     border-radius: 50%;
     width: calc(0.5vw + 0.5vw) !important;
+    height: calc(0.5vw + 0.5vw) !important;
     margin: 0 calc(10px + 0.5vw) !important;
     background-color: #39cf60;
     opacity: 0.5;
+    display:block;
 }
 
-.J-paginationjs-next, .J-paginationjs-previous {
+.J-paginationjs-next a, .J-paginationjs-previous a{
     background-color: rgb(234, 234, 234) !important;
 }
 

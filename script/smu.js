@@ -1,8 +1,18 @@
 function ComparatorSMUData(a, b) {
-   if (a["approvalstatus"] ==='0') return 1;
-   if (b["approvalstatus"] ==='0') return -1;
-   if (a["approvalstatus"] < b["approvalstatus"]) return -1;
-   if (a["approvalstatus"] > b["approvalstatus"]) return 1;
+   if (a["approvalstatus"] ==='0') {
+     let ret = 1;
+     if (a["approvalstatus"] == b["approvalstatus"]){
+       if (a["title"].toLowerCase() > b["title"].toLowerCase()) ret = -1;
+     }
+     return ret;
+   }
+   if (b["approvalstatus"] ==='0') {
+     return -1;
+   }
+   if (a["approvalstatus"] < b["approvalstatus"]) return 1;
+   if (a["approvalstatus"] > b["approvalstatus"]) return -1;
+   if (a["title"].toLowerCase() < b["title"].toLowerCase()) return 1;
+   if (a["title"].toLowerCase() > b["title"].toLowerCase()) return -1;
    return 0;
  }
 
@@ -44,6 +54,7 @@ function SetEventStatus(node,val,cls){
 if (SMUData) {
     let smus = JSON.parse(SMUData);
     smus = smus.sort(ComparatorSMUData);
+    smus.reverse();
 
     let count = 0;
     let dataSource = [];
@@ -228,7 +239,8 @@ if (SMUData) {
     if (count==0) {
       $('#smu-wrapper').append("<div class='msg'>" + jal_str['NoSMU'] + "</div>");
     } else {
-
+      $("<div class='smu_search_wrap'><input type='text' placeholder='" + jal_str["search"] + "'></div>").insertBefore("#smu-wrapper");
+      listFilter($(".smu_search_wrap input"));
       $('.smu-profile').pagination({
           dataSource: dataSource,
           prevText: 'IEPRIEKŠĒJĀ',
@@ -255,3 +267,36 @@ function SumupTable(table,el){
      $(el).find("tfoot td:nth-child(5)").html(mat);
      $(el).find("tfoot td:nth-child(6)").html(emps+mat);
 }
+
+
+(function ($) {
+  jQuery.expr[':'].Contains = function(a,i,m){
+      return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+  };
+  
+ 
+}(jQuery));
+ 
+  function listFilter(input) {
+ 
+    $(input)
+      .change( function () {
+        var filter = $(this).val();
+        if(filter) {
+          $(".smu-border:not(:Contains(" + filter + "))").slideUp();
+          $(".smu-border:Contains(" + filter + ")").slideDown();
+        } else {
+          $(".smu-border").each(function(){
+            $(this).slideDown();
+          
+           });
+        }
+        return false;
+      })
+    .on('keypress', function () {
+        $(this).change();
+    }).on('keyup', function() {
+      $(this).change();
+    })
+
+  }

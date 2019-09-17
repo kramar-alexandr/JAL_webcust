@@ -75,6 +75,7 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
         $(wrap).find(".itemprice input").addClass("sample_input");
         $(wrap).find(".sample_input").click(function(){
           $(ntable).find('tbody td:nth-child(1)').click();
+          $(this).focus();
         });
         $(wrap).addClass("sample");
         $(ntable).find('tbody td').bind("click",function(event){
@@ -101,6 +102,12 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
             $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
           }
           $(th).find("input").focus().blur(function(){
+            let curact = null;
+            let nextact = null;
+            if (self.nextcol){
+              curact = $(self.nextcol).closest("td");
+              self.nextcol = null;
+            }
             $(th).html();
             var cell = table.cell( th );
             cell.data($(this).val()).draw();
@@ -108,8 +115,22 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
               table.row.add(["","","","","","",""]).draw( false );
               self.AddTableEvents(table,ntable,wrap,false);
             }
+            if (curact){
+              nextact = $(curact).next();
+              if (nextact.length==0){
+                nextact = $(curact).closest("tr").next().find("td").first();
+              }
+            }
             self.activecol = false;
             self.SumupTable(table,ntable,wrap);
+            if (nextact){
+              $(nextact).click();
+            }
+          });
+          $(th).find("input").on( 'keydown', function( e ) {
+            if( e.which == 9 ) {
+              self.nextcol = this;
+            }
           });
         }
       });
@@ -126,7 +147,14 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
           */
           $(th).html("");
           $(th).append(ep);
+          $(ep).focus();
           $(ep).on('blur change',function(){
+            let curact = null;
+            let nextact = null;
+            if (self.nextcol){
+              curact = $(self.nextcol).closest("td");
+              self.nextcol = null;
+            }
             $(th).prev().html($(ep).val());
             var currow = table.cell(th).index().row;
             table.cell({row: currow, column:0}).data($(ep).val()).draw();
@@ -138,6 +166,20 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
             cell.data($(ep).children("option").filter(":selected").text()).draw();
             */
             self.activecol = false;
+            if (curact){
+              nextact = $(curact).next();
+              if (nextact.length==0){
+                nextact = $(curact).closest("tr").next().find("td").first();
+              }
+            }
+            if (nextact){
+              $(nextact).click();
+            }
+          });
+          $(ep).on( 'keydown', function( e ) {
+            if( e.which == 9 ) {
+              self.nextcol = this;
+            }
           });
         }
       });      
@@ -337,12 +379,33 @@ function FinPlanDataTable(wrap,smu,readonlyf,obj){
             $(th).find("input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});          
           }
           $(th).find("input").focus().blur(function(){
+            let curact = null;
+            let nextact = null;
+            if (self.nextcol){
+              curact = $(self.nextcol).closest("td");
+              self.nextcol = null;
+            }
             $(th).html();
             var cell = table.cell( th );
             cell.data($(this).val()).draw();
             self.activecol = false;
             self.SumupPlanTable(table,ntable);
+            if (curact){
+              nextact = $(curact).next();
+              if (nextact.length==0){
+                nextact = $(curact).closest("tr").next().find("td:nth-child(5)");
+              }
+            }
+            if (nextact){
+              $(nextact).click();
+            }
           });
+          $(th).find("input").on( 'keydown', function( e ) {
+            if( e.which == 9 ) {
+              self.nextcol = this;
+            }
+          });
+          
         }
       });
    }

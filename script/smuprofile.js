@@ -164,7 +164,8 @@ function SMUProfileApp(js) {
      this.setPossibleEmployees();
      $(".newEmp_button a").click(function(){
        $(this).parent().hide();
-       $(".newEmp_form").show()
+       $(".newEmp_form").show();
+       $(".newEmp_form select").chosen();
        
        $(".newEmp_button_submit a").click(function(){
          if ($(".newEmp_form .nemp_code").val()=="" || $(".newEmp_form  .nemp_pos").val()=="") {

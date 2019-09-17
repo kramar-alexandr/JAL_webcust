@@ -54,6 +54,7 @@ if (text) {
 
     let table = $('#table_id').DataTable({
         data: tableData,
+        searching: true,
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
             {
@@ -107,7 +108,8 @@ if (text) {
                 sPrevious: jal_str["prev"],
                 sNext: jal_str["next"],
             },
-            sEmptyTable: jal_str["zeroRecords"]
+            sEmptyTable: jal_str["zeroRecords"],
+            sSearch: jal_str["search"]
         },
         columnDefs: [{
             orderable: false,
@@ -159,6 +161,7 @@ if (text) {
         ]
     });
 
+    //$('<div class="table-search"><input type="text" placeholder="' + jal_str["Search"] + '" /></div>').insertBefore('#table_id');
     let apstiprinatie = [];
 
     for (let i of techerInfo.ApprovedStudents) {
@@ -188,7 +191,7 @@ if (text) {
      // initializate apstiprinatie table
     var tableApstiprinatie = $('#apstiprinatie').DataTable({
         data: apstiprinatie,
-        searching: false,
+        searching: true,
         info: false,
         select: false,
 /*
@@ -225,11 +228,13 @@ if (text) {
                 sPrevious: jal_str["prev"],
                 sNext: jal_str["next"],
             },
-            sEmptyTable: jal_str["zeroRecords"]
+            sEmptyTable: jal_str["zeroRecords"],
+            sSearch: jal_str["search"]
         },
         language: {
           zeroRecords: jal_str["zeroRecords"],
-          emptyTable: jal_str["zeroRecords"]
+          emptyTable: jal_str["zeroRecords"],
+          search: jal_str["search"]
         },
         columns: [
             {data: 'Number'},
@@ -291,10 +296,12 @@ if (text) {
 
         ]
     });
+   // $('<div class="table-search"><input type="text" placeholder="' + jal_str["Search"] + '" /></div>').insertBefore('#tableApstiprinatie');
+
     // initializate pamatskola table
     $('#pamatskola').DataTable({
         data: pamatskola,
-        searching: false,
+        searching: true,
         info: false,
         select: false,
         dom: '<"top"B>t<"bottom"p><"clear">',
@@ -312,7 +319,8 @@ if (text) {
                 sPrevious: jal_str["prev"],
                 sNext: jal_str["next"],
             },
-            sEmptyTable: jal_str["zeroRecords"]
+            sEmptyTable: jal_str["zeroRecords"],
+            sSearch: jal_str["search"]
         },
         language: {
           zeroRecords: jal_str["zeroRecords"],

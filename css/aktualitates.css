@@ -258,6 +258,10 @@
   padding: 7px 16px !important;
   color:black;
 }
+.paginationjs-page.active a{
+  background:#07cd60 !important;
+  color:white;
+}
 
 .paginationjs-pages li{
   width:auto;

@@ -83,6 +83,18 @@
     line-height: 11px;
     font-weight: 400;
 }
+
+.skolas ul{
+  -moz-column-count: 4;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 20px;
+  column-count: 4;
+  column-gap: 20px;
+  width: 60%;
+  margin: 0 auto;
+  font-size: 8px;
+}
 #buttons a{
     font-size: unset;
     font-family: unset;
@@ -98,7 +110,7 @@
     margin-top: 230px;
     margin-left: 12vw;
     z-index: 2;
-    width: 38%;
+    width: 58%;
 }
 .capture_dalibskolas h2{
     margin: 0;
@@ -118,6 +130,7 @@
     line-height: 17px;
     text-align: left;
     opacity: 0.8;
+    width:530px;
 }
 #top-bt{
     display: -webkit-flex;
@@ -270,7 +283,9 @@
     display: flex;
     align-items: center;
 }
-
+#quote2 .quote{
+  padding:27px 0px;
+}
 .wrapped1{
   width:27%;
   margin:0 auto;

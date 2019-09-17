@@ -13,6 +13,7 @@ xhr.onload = function () {
                 createConf(doc);
             }
         }
+        $('.sub-conf').find('h3').click();
     }
 };
 
@@ -94,7 +95,13 @@ function createConfContainer(doc, subDiv) {
     header.textContent = doc.nameConf;
     $(header).appendTo(div);
 
-    let sdiv = document.createElement('div');
+    if (doc.description!=""){
+      let description = document.createElement('h4');
+      description.setAttribute('class', 'conf-descr');
+      description.innerHTML = doc.description;
+      $(description).appendTo(div);
+    }    
+
     sdiv.setAttribute('class','conf-list-wrap');
     $(sdiv).appendTo(div);
 
@@ -106,7 +113,7 @@ function createConfContainer(doc, subDiv) {
     });
 
     $('.sub-conf').find('h3').click(function () {
-        $(this).parent().find('.conf-btn').toggleClass('show-flex');
+       // $(this).parent().find('.conf-btn').toggleClass('show-flex');
     });
 
     if (subDiv) {

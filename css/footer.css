@@ -23,6 +23,7 @@
     background-image: url(../img/image0021.jpg);
     height: 5px;
     background-size: 202px;
+    display:none;/*hiding the border for now*/
 }
 #footer{
     height: auto;
