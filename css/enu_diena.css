@@ -227,7 +227,7 @@ h6{
     .capture_enu_diena_mobile p{
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
-        font-size: 3.2vw;
+        font-size: 20px;
         line-height: 1.5;
         text-align: justify;
         margin: 0;
@@ -243,14 +243,19 @@ h6{
     }
     .c_2 {
         width: 100%;
-        height: 300px;
+        height: auto;
         box-shadow: none;
+        margin-bottom:70px;
+    }
+    .header_content_2{
+      height:auto;
     }
     .background {
-        height: 20vw;
+        height: 100px;
+        margin-bottom:20px;
     }
     .c_2 p {
-        font-size: 40px;
+        font-size: 30px;
         line-height: 1;
     }
     #quote {
@@ -270,11 +275,11 @@ h6{
         padding-left: 70px;
     }
     #content_3 h1 {
-        font-size: 3.5vw;
+        font-size: 17px;
         line-height: 1;
     }
     #content_3 p {
-        font-size: 40px;
+        font-size: 17px;
     }
 
 

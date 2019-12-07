@@ -434,17 +434,17 @@ b{
     }
     .capture_programma {
         position: absolute;
-        width: 77%;
+        width: 90%;
         left: 0;
         right: 0;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
-        top: 70vw;
+        top: 130px;
     }
     .capture_programma h2 {
         text-align: center;
-        font-size: 70px;
+        font-size: 27px;
         line-height: 1.3;
         padding-bottom: 40px;
     }
@@ -466,7 +466,7 @@ b{
         margin: 0;
     }
     #main_programma {
-        margin-top: 138px;
+        margin-top: 0px;
         margin-bottom: 138px;
     }
     .flex-prog {
@@ -476,6 +476,7 @@ b{
     .one-flex {
         height: auto;
         width: 100%;
+        margin-left:0px;
         margin-bottom:20px;
     }
     .one-flex img {
@@ -486,7 +487,7 @@ b{
         font-size: 20px;
         line-height: 1;
         padding-bottom: 0.5vw;
-        width: 40vw;
+        /*width: 40vw;*/
         margin: auto;
     }
     .one-flex h1 {
@@ -504,10 +505,12 @@ b{
         margin-bottom: 138px;
     }
     #main_info p {
-        font-size: 3.5vw;
+        font-size: 20px;
         line-height: 1.5;
     }
-
+    h3{
+      font-size:25px;
+    }
 
     #partners{display:none !important}
     .shadow-box{
@@ -516,5 +519,12 @@ b{
     }
     .flex-prog h3{
       font-size:25px;
+    }
+    .green_underline{
+      font-size:25px;
+    }
+    
+    #dalibnieki_cont h5,#dalibnieki_cont p{
+      font-size:16px !important;
     }
 }

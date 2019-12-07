@@ -1578,7 +1578,7 @@ width: 43% !important;
   border-radius:50%;
   width:calc(8px + 8px) !important;
   height:calc(8px + 8px) !important;
-  line-height:14px;
+  line-height:16px;
   text-align:center;
   font-size:10px;
 }
@@ -1704,6 +1704,72 @@ td.first{
   height: 27px;
   margin-bottom:30px;
 }
+.reg-succes{
+  background:url("/img/no.png") no-repeat;
+  background-position: right 15px center;
+  padding-right: 60px;
+  position:relative;
+}
+
+.reg-succes.done{
+  background-image:url("/img/yes.png");
+}
+.reg_icon{
+  background:url(/img/information.png) no-repeat;
+  width:17px;
+  height:17px;
+}
+.reg_message{
+  position:absolute;
+  right:-23px;
+  top: 11px;
+}
+.reg_message .reg_text{
+  display:none;
+  color:rgba(51,51,51);
+  border:1px solid #ddd;
+  border-radius:4px;
+  padding:10px 10px;
+  background:white;
+  width:170px;
+  position:absolute;
+  left:-90px;
+  top:30px;
+  font-size:12px;
+  text-transform:none;
+}
+.reg_message:hover .reg_text{
+  display:inline-block;
+}
+
+.doc_event{
+  clear:both;
+  width:80%;
+  margin:0 auto;
+  background:#fafafa;
+  line-height:37px;
+}
+.doc_event_date{
+  background:#cdcdcd;
+  color:white;
+  width:60px;
+  float:left;
+  text-align:center;
+}
+
+.doc_event_name{
+  float:left;
+  width:50%;
+  font-size:13px;
+  padding-left:15px;
+}
+.event_doc_title{
+}
+.doc_event .btn-confirm,.doc_event .btn-confirm2{
+  margin:0px;
+  width:180px;
+}
+
 
 @media screen and (max-width: 900px){
   body{
@@ -1717,6 +1783,8 @@ td.first{
   }
   .profile{
     width:100%;
+    padding:0px 20px;
+    box-sizing:border-box;
   }
   .main-tab{
     display:block;
@@ -1725,11 +1793,13 @@ td.first{
     width:80%;
     display:block;
     text-align:center;
+    margin-left:0px;
   }
   .spbutton{
     font-size:20px !important;
     line-height:40px !important;
     height:40px !important;
+    white-space:nowrap;
   }
   .profile-pupil-info{
     font-size:20px !important;
@@ -1740,6 +1810,8 @@ td.first{
   }
   .profile-pupil-info{
     width:100%;
+    padding: 0px 20px;
+    box-sizing: border-box;
   }
   .changeprofile{
     padding-right:10px !important;
@@ -1756,20 +1828,167 @@ td.first{
     float:left;
   }
   #pass1 input, #passw2 input, #oldpassword input, .addinput input{
-    width:50%;
-    height:40px;
-    font-size:20px;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    margin: 0px;
+  }
+  #pass1,#passw2,.cont{
+    position:relative;
+  }
+  .info-sign{
+    top:0px;
+  
   }
   .field_row{
     padding-left:0px !important;
   }
   .field_label{
-    font-size:15px !important;
+    font-size:17px !important;
   }
-  .field_col input, .field_col textarea{
+  .field_col input, .field_col textarea,.field_col select{
     font-size:20px !important;
   }
   .smu_profile_info{
     margin-top:30px !important;
+  }
+  #regmenubox{
+    margin-top:20px;
+  }
+  #regmenubox ul{
+    display:block;
+  }
+  #regmenubox li{
+    margin-bottom:20px;
+  }
+  #regmenubox a{
+    font-size:20px;
+    display:block;
+  }
+  .events_wrap{
+    width:100%;
+  }
+  .conf-border{
+    min-width:unset;
+    padding:0px;
+  }
+  .conf-btn{
+    width:100% !Important;
+    margin:10px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  .sub-conf{
+    width:90% !important;
+    box-sizing:border-box;
+  }
+  .conf-descr{
+    font-size:16px;
+  }
+  .conference-box{
+    box-sizing:border-box;
+  }
+  .programm-study{
+    display:block;
+  }
+  #profiletable{
+    font-size:20px;
+  }
+  .tableBox{
+    min-width:unset;
+  }
+  #table_id, #apstiprinatie, #pamatskola{
+    width:95% !important;
+  }
+  .control-btn-one{
+    font-size:20px !important;
+    margin-bottom:15px !important;
+  }
+  .regions-btns{
+    display:block;
+  }
+  .regions-btns .spbutton{
+    width:100%;
+    display:block;
+    box-sizing:border-box;
+  }
+  .calendar, .conference-box, .regions, .regions-teacher-table, .program-study-box, .conference-one-box{
+    width:100%;
+  }
+  #regionsTable{
+    width:100% !important;
+  }
+  #regionsTable tr{
+    display:block;
+    margin-bottom:15px;
+  }
+  #regionsTable td,#regionsTable tr td:first-child{
+    display:block;
+    width:90% !important;
+  }
+  #regionsTable thead{
+    display:none;
+  }
+  #pamatskola,#apstiprinatie,#table_id{
+    width:100%;
+    box-sizing:border-box;
+  }
+  
+  #pamatskola thead,#apstiprinatie thead,#table_id thead{
+    display:none;
+  }
+  #pamatskola tr,#apstiprinatie tr,#table_id tr{
+    margin-bottom:30px;
+    display:block;
+  }
+  #pamatskola td,#apstiprinatie td,#table_id td{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    padding:8px 10px;
+    min-height:46px;
+    height:auto;
+    text-align:left !important;
+    border:1px solid #ddd !important;
+    padding-left:175px;
+    position:relative;
+  }
+  #pamatskola td::before,#apstiprinatie td::before,#table_id td::before{
+    content:attr(cname);
+    position:absolute;
+    left:4px;
+    width:190px;
+    font-size:12px;
+  }
+  .control-btn{
+    text-align:center;
+  }
+  .submitTab .spbutton{
+    white-space:unset;
+    width:100%;
+    padding:0px;
+  }
+  .info-smu{
+    display:block;
+    padding:10px;
+  }
+  .smu-name{
+    width:100%;
+  }
+  .documents{
+    width:100%;
+    padding:0px;
+    margin:0px;
+  }
+  .activitate{
+    width:100%;
+  }
+  .company-detail{
+    padding-left:10px;
+    padding-right:10px;
+  }
+  #company-table{
+    margin-top:30px;
   }
 }

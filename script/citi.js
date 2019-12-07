@@ -101,7 +101,7 @@ function createConfContainer(doc, subDiv) {
       description.innerHTML = doc.description;
       $(description).appendTo(div);
     }    
-
+    let sdiv = document.createElement('div');
     sdiv.setAttribute('class','conf-list-wrap');
     $(sdiv).appendTo(div);
 

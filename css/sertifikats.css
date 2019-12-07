@@ -235,9 +235,11 @@
         height: 30vw;
     }
     .col-21 img {
-        height: 15vw;
-        margin-top: 70px;
-        margin-bottom: 70px;
+        height: auto;
+        width:80%;
+        margin:0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
     .col-33 {
         width: 100%;
@@ -253,7 +255,7 @@
     }
     .col-36 div {
         width: 100%;
-        padding: 13px;
+        padding: 13px 0px;
         padding-bottom: 70px;
         text-align: center !important;
     }
@@ -265,7 +267,7 @@
         box-shadow: 0 0 10px rgba(0,0,0,0.2);
         height: 200px;
         width: 90%;
-        margin: 13px;
+        margin: 13px 0px;
     }
     .col35-1 div {
         height: 140px;

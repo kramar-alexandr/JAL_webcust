@@ -323,6 +323,9 @@
   height:40px !important;
 }
 
+.btn-submit2{
+  display:none;
+}
 .event-box .ev_col.date{
   background-color:#c5c5c5;
   color:white;
@@ -410,4 +413,24 @@
     .date_window h2 {
         font-size: 4vw;
     }
+    #events_header{
+      display:none;
+    }
+    .event-box .ev_col.descr{
+      text-align:left;
+    }
+    .avents-box{
+      margin-top:20px;
+    }
+    .block-btn{
+      margin-left: -95px;
+      width:auto;
+    }
+    .block-btn .spbutton{
+      font-size: 14px !important;
+      line-height: 14px !important;
+      padding: 7px 4px;
+      width:auto;
+    }
+
 }

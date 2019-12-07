@@ -318,17 +318,19 @@
         display: none !important;
     }
     #main_info {
-        padding-top: 138px;
+        padding-top: 0px;
         padding-bottom: 138px;
-        width: 80%;
+        width: 100%;
+        padding:0px 25px;
+        box-sizing:border-box;
     }
     .wrapped {
         width: 100%;
         flex-direction: column;
     }
     .wrapped p {
-        font-size: 3.5vw;
-        line-height: 1.5;
+        font-size: 20px;
+        line-height: 1.2;
     }
     .logos- {
         width: 100%;
@@ -348,9 +350,11 @@
     }
 
     #main_info_piesakies {
-        padding-top: 138px;
+        padding-top: 40px;
         padding-bottom: 138px;
-        width: 80%;
+        width: 100%;
+        padding:0px 25px;
+        box-sizing:border-box;
     }
     .two-columns {
         flex-direction: column;
@@ -359,35 +363,35 @@
         width: 100% !important;
     }
     .two-columns li {
-        font-size: 3.5vw;
+        font-size: 20px;
         line-height: 1.5;
     }
     .two-columns p {
-        font-size: 3.5vw !important;
+        font-size: 20px !important;
         margin-bottom: 70px;
     }
     .two-columns p a {
-        font-size: 3.5vw;
+        font-size: 20px;
     }
     .two-columns h3 {
         margin: 0;
-        line-height: 3;
-        font-size: 3.5vw;
+        line-height: 1;
+        font-size: 20px;
         margin-bottom: 70px;
     }
     .two-columns h3 a {
-        font-size: 3.5vw;
+        font-size: 20px;
         margin-bottom: 70px;
     }
     .two-columns table {
-        padding: 27px;
-        margin-bottom: 70px;
+        padding: 0px;
+        margin-bottom: 30px;
     }
     .two-columns h2 {
-        font-size: 34px;
+        font-size: 20px;
     }
     .two-columns h5 {
-        font-size: 34px;
+        font-size: 13px;
         text-align: left;
     }
 }

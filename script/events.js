@@ -54,6 +54,7 @@ $(document).ready(function(){
     });
     $.ajax({
       url:"/WebJALEventValidate.hal",
+      method: "POST",
       data: $(form).serialize(),
       async: false,
       success: function(data){
@@ -61,6 +62,9 @@ $(document).ready(function(){
           res = false;
           alert($(data).attr("err_msg"));
           form2[$(data).attr("errfield")].focus();
+          if ($(data).attr("err")=="4"){
+            window.location.href = "/reg_login";
+          }
         } else {
           $.ajax({
             url: "/WebJALEventReg.hal",
@@ -106,7 +110,12 @@ applicationForm.createEvents();
 
 function EventDisplay(events, submittedEvents) {
     this.events = events;
+    this.eventsV = {};
+    for (let event of this.events) {
+      this.eventsV[event.serNr] = event;
+    }
     this.submittedEvents = submittedEvents["submittedevents"];
+    this.eventrequests = submittedEvents["eventrequests"];
     this.teacher = submittedEvents["teacher"];
     this.template = '<div class="avents-box">\n' +
         '    <div class="event-box">\n' +
@@ -116,8 +125,10 @@ function EventDisplay(events, submittedEvents) {
         '        <div class="block-btn">\n' +
         // '            <button class="btn-info spbutton">Papildus info</button>\n' +
         '            <input type="hidden" id="code" name="code" value="">\n' +
+        '            <input type="hidden" id="code2" name="code2" value="">\n' +
         '            <button class="btn-info spbutton grey">Papildu info</button>\n' +
         '            <button class="btn-submit spbutton grey">Pieteikties</button>\n' +
+        '            <button class="btn-submit2 spbutton grey">Otrā kārta</button>\n' +
         '            <button class="btn-applications spbutton grey">Ielūgumi</button>\n' +
         '            <div class="block-teach">\n' +
         '            <div class="block-teach-text">Ieradīšos pasākumā:</div>\n' +
@@ -139,24 +150,6 @@ function EventDisplay(events, submittedEvents) {
                 this.setInfo(eventBox, event, '#orig_items');
             }
 
-          $('.application.smu-border').pagination({
-              dataSource: function(done){
-                  var result = [];
-                  for (let li of $('.smu-border .avents-box')) {
-                      result.push(li);
-                  }
-                  done(result);
-              },
-              prevText: '<<',
-              nextText: '>>',
-          showPageNumbers: true,
-          pageSize: 5,
-              callback: function (data, pagination) {
-                  // template method of yourself
-                  // var html = template(data);
-                  $('#pagenave').html(data);
-              }
-          });
 
         }
 
@@ -164,6 +157,8 @@ function EventDisplay(events, submittedEvents) {
         if (this.teacher!=""){
           $(document.body).find(".btn-applications").hide();
         }
+        var vShow = {};
+        
         if (this.submittedEvents.length) {
           var self = this;
           if (this.teacher!=""){
@@ -205,9 +200,9 @@ function EventDisplay(events, submittedEvents) {
             }
           } else {
             $(document.body).find(".btn-applications").remove();
-            
             for (let event of this.submittedEvents) {
                 let foundf = false;
+                /*
                 for (let ev of this.events) {
                     if (ev.serNr === event.event) {
                       foundf = true;
@@ -215,12 +210,21 @@ function EventDisplay(events, submittedEvents) {
                       $(ev.el).find(".btn-submit").unbind("click").text("Esmu pieteicies")
                     }
                 }
+                */
+                if (this.eventsV[event.event]){
+                  var ev = this.eventsV[event.event];
+                  event.nameEvent = ev.nameEvent;
+                  $(ev.el).find(".btn-submit").show().unbind("click").text("Esmu pieteicies");
+                  foundf = true;
+                  vShow[event.event] = true;
+                };
+                
                 if (!foundf){
                   continue;
                 }
                 let eventBox = this.getTemplate(this.template);
                 $(eventBox).find(".btn-info").remove();
-                
+                /*
                 if (+event.filled) {
                   continue;
                 } else {
@@ -241,13 +245,52 @@ function EventDisplay(events, submittedEvents) {
                   }
                   this.setInfo(eventBox, event, '.technical');
                 }
+                */
             }
+           
           }
         } else {
            if (this.teacher==""){
              $(document.body).find(".btn-applications").remove();
            }
             $('.technical-info').show();
+        }
+        for (let req of this.eventrequests){
+            if (this.eventsV[req.mainevent]){
+              var ev = this.eventsV[req.mainevent];
+              vShow[req.mainevent] = true;
+              if (req.filled=="0"){
+                $(ev.el).find(".btn-submit2").show();
+                $(ev.el).find(".btn-submit").hide();
+              }
+            }
+        }
+        if (calf==0){
+          for (let event of this.events) {
+            if (vShow[event.serNr]!=true){
+              $(event.el).remove();
+            }
+          }
+        }
+        if (this.events.length){
+          $('.application.smu-border').pagination({
+              dataSource: function(done){
+                  var result = [];
+                  for (let li of $('.smu-border .avents-box')) {
+                      result.push(li);
+                  }
+                  done(result);
+              },
+              prevText: '<<',
+              nextText: '>>',
+          showPageNumbers: true,
+          pageSize: 5,
+              callback: function (data, pagination) {
+                  // template method of yourself
+                  // var html = template(data);
+                  $('#pagenave').html(data);
+              }
+          });
         }
     };
     this.SetTeacherComing = function(el,sernr,stat){
@@ -285,6 +328,7 @@ function EventDisplay(events, submittedEvents) {
         template.find('.descr').text(event.nameEvent);
         template.find('.event-description').html(event.description);
         template.find('#code').val(event.serNr);
+        template.find('#code2').val(event.serNr2);
         template.appendTo( container );
         if (event.allowApply=="0" || !student.smuCode){
           template.find('.btn-submit').hide();
@@ -313,6 +357,10 @@ function EventDisplay(events, submittedEvents) {
         $('.btn-submit').click(function () {
             //createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
             window.location.href = "/kalendars/pasakumi/" + $(this).parent().find('#code').val() + "/pieteikties";
+        });
+        $('.btn-submit2').click(function () {
+            //createQuestionnaire($(this).parent().find('#code').val(), student.smuCode);
+            window.location.href = "/kalendars/pasakumi/" + $(this).parent().find('#code2').val() + "/pieteikties";
         });
     };
 

@@ -157,15 +157,21 @@
     }
     .capture_mobile {
         display: block;
-        padding-top: 138px;
-        padding-bottom: 138px;
-        width: 70%;
+        width: 100%;
         margin: auto;
+        padding:38px 25px;
+        box-sizing:border-box;
+    }
+    .wrap{
+        width: 100%;
+        margin: auto;
+        padding:38px 25px;
+        box-sizing:border-box;
     }
     .capture_mobile p {
         font-family: "Poppins", sans-serif;
         color: rgb(0,0,0);
-        font-size: 3.2vw !important;
+        font-size: 20px !important;
         line-height: 1.5;
         text-align: justify;
         margin: 0;
@@ -182,6 +188,7 @@
     }
     .wrapped {
         flex-direction: column;
+        box-sizing: border-box;
     }
     .wrapped div{
         width: 100% !important;
@@ -210,5 +217,8 @@
         width: fit-content;
         margin: auto;
         margin-top: 10px;
+    }
+    .project-bt{
+      margin-left:0px;
     }
 }

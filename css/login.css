@@ -266,13 +266,14 @@ label {
 @media screen and (max-width: 900px) {
 
     #mainbox {
-        width: auto;
-        flex-direction: column;
-        margin: auto;
-        font-size: 70px !important;
-        padding-left: 50px;
-        margin-bottom: 50px;
-        margin-top: 50px;
+      width: 100%;
+      box-sizing: border-box;
+      flex-direction: column;
+      margin: auto;
+      font-size: 70px !important;
+      padding: 0px 20px 0px 40px;
+      margin-bottom: 50px;
+      margin-top: 50px;
     }
 
     #mainbox .content {
@@ -289,10 +290,15 @@ label {
         width: auto;
     }
 
-    #regform input, select {
-        width: 85%;
+    #regform input,#regform  select {
+      width: 100%;
+      font-size: 20px;
+      height: 30px;
+      height:60px;
     }
-
+    #regform input::placeholder {
+        font-size: 20px !important;
+    }
     #recovery input::placeholder{
         font-size: 20px !important;
     }
@@ -307,11 +313,25 @@ label {
     }
 
     .informacion {
-        font-size: 3.2vw;
-        text-align: justify !important
+        font-size: 20px;
+        text-align: left !important
     }
 
     .reg_label_head {
-        font-size: 3.2vw !important;
+        font-size: 20px !important;
+    }
+    #loginbox, #recovery{
+      width:auto;
+    }
+    .info-sign:hover::after{
+      font-size:18px;
+    }
+    .age{
+      font-size:20px;
+    }
+    .radio{
+      height:20px !important;
+      width:20px !important;
+      margin-top:2px;
     }
 }

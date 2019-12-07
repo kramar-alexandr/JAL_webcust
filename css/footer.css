@@ -128,11 +128,11 @@
         flex-direction: column;
         margin: auto;
         text-align: center;
-        padding-top: 138px;
-        padding-bottom: 138px;
+        padding:0px;
     }
     .footer_block{
-        width: 100% !important
+        width: 100% !important;
+        padding:0px;
     }
     .footer_block img{
         width: 30% !important
@@ -145,10 +145,11 @@
         display:none;
     }
     .footer_block h1 {
-        font-size: 20px;
+        font-size: 20px !important;
         margin: 0;
-        padding-bottom: 40px;
-        padding-top: 70px;
+        padding-bottom: 20px;
+        padding-top: 0px;
+        text-align: center !important;
     }
     .footer_block p {
         font-size: 20px !important;
@@ -161,7 +162,7 @@
         margin-top:5vw
     }
     #copiright p {
-        font-size: 40px;
+        font-size: 20px;
         padding-bottom: 138px;
         width: 80%;
         margin: auto;
@@ -171,5 +172,8 @@
         padding: 40px;
         padding-top: 10px !important;
         padding-bottom: 10px;
+    }
+    #footer_image{
+      padding:20px 0px !important;
     }
 }

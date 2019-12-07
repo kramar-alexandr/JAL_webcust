@@ -66,3 +66,113 @@ table.dataTable  thead tr:first-child th{
 .sample td,.sample_input{
   color:#ddd;
 }
+.itemdelete{
+  cursor:pointer;
+  margin-top:10px;
+  font-weight:bold;
+  font-family: "Poppins SemiBold", sans-serif !important;
+}
+@media screen and (max-width: 900px){
+
+  .table_field_wrap{
+    width:100%;
+    float:none;
+    margin:0px;
+  }
+  .table_field input {
+    width: 100%;
+    font-size: 17px;
+    height: 27px;
+    border: 1px solid #ddd;
+    padding: 5px 20px;
+    height: 40px;
+    box-sizing: border-box;
+  }  
+  .table_field.itemprice input, .table_field.costprice input{
+    width:50%;
+  }
+  #finplan_table{
+    width:100% !important;
+  }
+  #finplan_table thead{
+    display:none;
+  }
+  #finplan_table tr{
+    margin-bottom:30px;
+    display:block;
+  }
+  #finplan_table td{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    padding:8px 10px;
+    min-height:46px;
+    height:auto;
+    text-align:left !important;
+    border:1px solid #ddd !important;
+  }
+  #finplan_table td input{
+     font-size:20px;
+  }
+  #finplan_table td::before{
+    content:attr(cname);
+    position:absolute;
+    left:4px;
+    width:190px;
+    font-size:12px;
+  }
+  #finplan_table td:nth-child(2)::before{
+    display:none;
+  }
+  #finplan_table td:not(:nth-child(1)){
+    padding-left:200px;
+  }
+  #finplan_table td:nth-child(2){
+    padding-left:0px !important;
+  }
+  #findata_table,#company-table{
+    width: 100% !important;
+    margin-right: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+  }
+  #findata_table thead,#company-table thead{
+    display:none;
+  }
+  #findata_table tr,#company-table tr{
+    margin-bottom:30px;
+    display:block;
+  }
+  #findata_table td,#company-table td{
+    display:block;
+    width:100%;
+    box-sizing:border-box;
+    padding:8px 10px;
+    min-height:46px;
+    height:auto;
+    text-align:left !important;
+    border:1px solid #ddd !important;
+    padding-left:100px;
+    position:relative;
+  }
+  #findata_table td input{
+     font-size:20px;
+  }
+  #findata_table tfoot td,#company-table tfoot td{
+    width:50%;
+    float:left;
+  }
+  #findata_table td::before,#company-table td::before{
+    content:attr(cname);
+    position:absolute;
+    left:4px;
+    width:190px;
+    font-size:12px;
+  }
+  #company-table tr, #company-table th{
+    padding:0px;
+  }
+}
+  
+  

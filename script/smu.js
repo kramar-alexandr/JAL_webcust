@@ -78,6 +78,16 @@ if (SMUData) {
                 $(this).toggleClass('active-btn');
 
             });
+            if (smu.printCert=="1"){
+              smuNode.find(".reg-succes").addClass("done");
+            }
+            smuNode.find(".reg-succes").click(function(){
+              $(this).toggleClass("done");
+              $.get("/WebSetPrintCertStat.hal?smu=" + smu.regNr,function(){
+                
+              });
+            
+            });
             smuNode.find('.show-info-btn').click(function () {
                 if ($(this).html()==jal_str["CloseApplication"]){
                   $(this).html(jal_str["OpenApplication"]);                

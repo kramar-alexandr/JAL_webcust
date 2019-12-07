@@ -1,3 +1,14 @@
+
+function sortPieteikumi( a, b ) {
+  if ( a.Skolens < b.Skolens ){
+    return -1;
+  }
+  if ( a.Skolens > b.Skolens ){
+    return 1;
+  }
+  return 0;
+}
+
 if (text) {
     $('.main-table-container').show();
     let techerInfo = JSON.parse(text);
@@ -51,7 +62,8 @@ if (text) {
         console.log('tableData[i].Nr` ', tableData[i]);
         tableData[i].Number = +count + i;
     }
-
+    var num = 1;
+    //tableData.sort(sortPieteikumi);
     let table = $('#table_id').DataTable({
         data: tableData,
         searching: true,
@@ -114,9 +126,21 @@ if (text) {
         columnDefs: [{
             orderable: false,
             targets: "no-sort"
-        }],
+        },
+        {
+        		'targets': [0,1,2,3,4],
+        		'createdCell':  function (td, cellData, rowData, row, col) {
+           			$(td).attr('cname', $('#table_id').find("thead th:nth-child(" + (col+1) + ")").html()); 
+           	  }
+        }        
+        ],
         columns: [
-            {data: 'Number'},
+            {data: 'Number',
+             render: (data) => {
+                return num++;
+              
+              }
+            },
             {data: 'rectypename'},
             {data: 'Skolens2', width: '60%',},
             {
@@ -165,12 +189,12 @@ if (text) {
     let apstiprinatie = [];
 
     for (let i of techerInfo.ApprovedStudents) {
-        let klase = i.Klase.replace(/\D+/g, '');
-        if (klase > 9 && i.Statuss === '1') {
+        if (i.Izglitiba!="1" && i.Statuss === '1') {
             apstiprinatie.push(i);
         }
      }
 
+    apstiprinatie.sort(sortPieteikumi);
     for (let i = 0; i < apstiprinatie.length; i++) {
         let count = 1;
         apstiprinatie[i].Number = count + i;
@@ -178,12 +202,12 @@ if (text) {
     let pamatskola = [];
 
     for (let i of techerInfo.ApprovedStudents) {
-        let klase = i.Klase.replace(/\D+/g, '');
-        if (klase <= 9) {
+        if (i.Izglitiba=="1") {
             pamatskola.push(i);
         }
     }
 
+    pamatskola.sort(sortPieteikumi);
     for (let i = 0; i < pamatskola.length; i++) {
         let count = 1;
         pamatskola[i].Number = count + i;
@@ -222,7 +246,29 @@ if (text) {
         columnDefs: [{
             orderable: false,
             targets: "no-sort"
-        }],
+        },
+        {
+        		'targets': [0,1,2,3,4,5,6,7,8],
+        		'createdCell':  function (td, cellData, rowData, row, col) {
+        		   switch (col){
+        		     case 0:
+        		     case 1:
+        		     case 2:
+        		     case 3:
+        		     case 4:
+           		 	  $(td).attr('cname', $('#apstiprinatie').find("thead tr:nth-child(1) th:nth-child(" + (col+1) + ")").html()); 
+        		       break;
+        		     case 5:
+        		     case 6:
+           		 	$(td).attr('cname', $('#apstiprinatie').find("thead tr:nth-child(2) th:nth-child(" + (col-4) + ")").html()); 
+           		 	   break;
+        		     case 7:
+        		     case 8:
+           		 	  $(td).attr('cname', $('#apstiprinatie').find("thead tr:nth-child(1) th:nth-child(" + (col) + ")").html()); 
+           		 }
+           	 }
+        }        
+        ],
         oLanguage: {
             oPaginate: {
                 sPrevious: jal_str["prev"],
@@ -313,7 +359,14 @@ if (text) {
         columnDefs: [{
             orderable: false,
             targets: "no-sort"
-        }],
+        },
+        {
+        		'targets': "_all",
+        		'createdCell':  function (td, cellData, rowData, row, col) {
+           			$(td).attr('cname', $('#pamatskola').find("thead th:nth-child(" + (col) + ")").html()); 
+           	  }
+        }        
+        ],
         oLanguage: {
             oPaginate: {
                 sPrevious: jal_str["prev"],
@@ -378,7 +431,7 @@ if (text) {
             if (data.rectype==2) {
               data.Statuss = '4';
             }            
-            table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+            table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw(false);
             if (data.rectype==2) {
               getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
             } else {
@@ -392,7 +445,7 @@ if (text) {
         if (confirm(jal_str["Msg_DeclineStudent"])) {
           let data = table.row(this.parentNode.parentNode.rowIndex - 1).data();
           data.Statuss = '2';
-          table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw();
+          table.row(this.parentNode.parentNode.rowIndex - 1).data(data).draw(false);
 
           if (data.rectype==2) {
             getData(`/WebJALChangeEventEntryStat.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
@@ -407,7 +460,7 @@ if (text) {
         let data = table.row(this.parentNode.rowIndex - 1).data();
 
         data.Statuss = '1';
-        table.row(this.parentNode.rowIndex - 1).data(data).draw();
+        table.row(this.parentNode.rowIndex - 1).data(data).draw(false);
 
         getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
     });
@@ -450,6 +503,8 @@ if (text) {
     
     function UpdateChecks(event){
       let index = event.target.parentNode.parentNode.rowIndex - 2;
+      var info = tableApstiprinatie.page.info();
+      index = info.page*info.length+index;
       let data = tableApstiprinatie.row(index).data();
       let cell = event.target.parentNode.cellIndex;
       let f = "Enudiena";
@@ -469,7 +524,7 @@ if (text) {
         //$(event.target.parentNode).addClass('checked');
       }
       data[f] = stat.toString();
-      tableApstiprinatie.row(index).data(data).draw();
+      tableApstiprinatie.row(index).data(data).draw(false);
       
       let link = "/WebChangeTitanStatus.hal?cu=" + data.Kods + "&stat=" + stat + "&type=" + type;
       $.get(link,function(){

@@ -615,32 +615,38 @@ p{}
         height: 150vw;
         background-position-x: 10%;
     }
+    #news{
+      padding:10px 0px;
+    }
     #news h5 {
         margin-left: 0;
         text-align: center;
-        margin-bottom: 70px;
-        font-size: 70px
+        margin-bottom: 30px;
+        font-size: 50px
+    }
+    .wrap{
+      width:auto;
+      margin:0px 25px;
     }
     .wrap li {
         width: 100%;
         margin: auto;
-        margin-left: 15%;
     }
     .wrap .cont_head {
-        font-size: 3.5vw;
-        line-height: 1.5;
+        font-size: 25px;
+        line-height: 1.3;
         margin-top: 0;
         height: unset;
-        margin-bottom: 27px;
+        margin-bottom: 15px;
     }
     .wrap #content-date a {
       position:static;
       margin-left:0px !important;
     }
     .wrap .cont_text {
-        font-size: 34px;
-        line-height: 1.5;
-        margin-bottom: 70px;
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 40px;
     }
 
 
@@ -696,13 +702,14 @@ p{}
         display:none
     }
     .text_inside_block h1, .text_inside_block_ h1 {
-        font-size: 7vw;
-        margin-bottom: 40px;
+        font-size: 35px;
+        margin-bottom: 20px;
         line-height: 1.5;
-
+        margin-top: 20px;
     }
     .text_inside_block p, .text_inside_block_ p {
-        font-size: 34px;
+        font-size: 20px;
+        margin-bottom:15px;
     }
     #junior {
         background-image: url(../img/lv.png);
@@ -725,6 +732,7 @@ p{}
         right: 0;
         margin-left: auto;
         margin-right: auto;
+        display:none;
     }
     .junior-gr-block {
         background-color: rgba(7,205,96, 0.8);
@@ -734,13 +742,13 @@ p{}
     }
     #junior p {
         margin: 0;
-        font-size: 40px;
+        font-size: 25px;
         font-family: "Poppins", sans-serif;
         text-align: center;
         line-height: 1.3;
     }
     #junior h1 {
-        font-size: 70px;
+        font-size: 35px;
     }
     #junior span {
         font-size: 4vw;
@@ -761,7 +769,7 @@ p{}
         top: 120vw;
     }
     #date {
-        width: 50%;
+        width: 90%;
         position: absolute;
         top: 113vw;
         height: 30vw;
@@ -796,7 +804,7 @@ p{}
         padding-left: 15px;
     }
     .date p {
-        font-size: 20px;
+        font-size: 15px;
     }
     .gr-2, .gr-3, .gr-4, .gr-5{
         display:none
@@ -839,5 +847,16 @@ p{}
     #left1, #right1{
         display:block;
     }
-
+    .all-bottom{
+      height:auto;
+    }
+    .first_button,.second_button{
+      display:none !Important;
+    }
+    #facebook_info p{
+      font-size:30px;
+    }
+    #sliderControlls{
+      bottom:150px;
+    }
 }

@@ -18,6 +18,7 @@ $(".bg-doc").click(function(){
 
 let emps = getData(`/WebGetEmployers.hal?code=${pupilInfo.smuCode}`);
 let documents = getData(`/WebGetDocuments.hal?code=${pupilInfo.smuCode}`);
+let events = getData(`/WebGetEventsPieteikum.hal?all=1`);
 
 function getData(url) {
     let xhr = new XMLHttpRequest();
@@ -96,6 +97,10 @@ function DocumentsDisplay(documents) {
         '</table>\n' +
         '<button class="addRow spbutton grey">pievienot produktu</button>\n' +
         '<button class="btn-confirm spbutton grey">iesniegt</button>\n';
+    this.eventTemplate = '<div class="doc_event"><div class="doc_event_date"></div>\n' +
+        '<div class="doc_event_name"></div>\n' +
+        '<button class="btn-confirm spbutton grey">Iesniegt atskaiti</button>\n' + 
+        '<button class="btn-confirm2 spbutton grey">Apliecinājums</button></div>\n';
     this.createDocuments = function () {
         for (let document of this.documents) {
             let documentBox = this.getTemplate(this.template);
@@ -106,8 +111,52 @@ function DocumentsDisplay(documents) {
 
         this.setReportBox(reportBox, '.document');
         this.setEvents();
-        this.createTable();
+        //this.createTable();
+        this.createEventsTable();
     };
+    
+    this.createEventsTable = function(){
+      var firstf = true;
+      var vEv = {};
+      for (var event of events["submittedevents"]) {
+        if (event.satus=="3"){
+          let eventBox = this.getTemplate(this.eventTemplate);
+          $(eventBox).find(".doc_event_name").html(event.eventName);
+          $(eventBox).find(".doc_event_date").html(event.dataStart);
+          $(eventBox).find(".btn-confirm").hide();
+          (function(tev,teventbox){
+            $(teventbox).find(".btn-confirm2").click(function(){
+              downloadURI("/WebDownloadEventCert.hal?app=" + event.serNr);
+            });
+          })(event,eventBox);
+          if (firstf) {
+//            $("#programms_wrapper").append("<h2 class='event_doc_title'>Pasākumu atskaites</h2>");
+            firstf = false;
+          }
+          $(".document").append(eventBox);
+          event.el = eventBox;
+          vEv[event.event] = event;
+
+        }
+      }
+      for (var req of events["eventrequests"]){
+        if (vEv[req.mainevent]){
+          var ev = vEv[req.mainevent];
+          (function(tev,teventbox,treq){
+            if (treq.filled=="0"){
+              $(teventbox).find(".btn-confirm").show().click(function(){
+                
+
+              });
+            } else {
+              $(teventbox).find(".btn-confirm").show().html("Atskaite iesniegta");
+            }
+          })(ev,ev.el,req);
+        }
+      }
+      
+    
+    }
 
     this.createTable = function () {
         let data = null;

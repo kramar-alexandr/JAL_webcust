@@ -1,9 +1,16 @@
-$.get("/WebGetSMUDataForEditing.hal",function(data){InitSMUProfile(data)});
 
-function InitSMUProfile(data) {
+let searchParams = new URLSearchParams(window.location.search);
+let sess = "";
+if (searchParams.get('s')) {
+  sess = searchParams.get('s');
+}
+
+$.get("/WebGetSMUDataForEditing.hal?s=" + sess,function(data){InitSMUProfile(data,sess!="")});
+
+function InitSMUProfile(data,viewonlyf) {
   var js = JSON.parse(data);
   if (js){
-    let SMUProfile = new SMUProfileApp(js);
+    let SMUProfile = new SMUProfileApp(js,viewonlyf);
   }
 }
 
@@ -11,19 +18,20 @@ $(function() {
     $.datepicker.setDefaults($.datepicker.regional['lv']);
 }); 
 
-function SMUProfileApp(js) {
+function SMUProfileApp(js,viewonlyf) {
   this.smu = js;
   this.activecol = false;
   this.table = null;
   this.items = [];
   this.plantable = null;
   this.tables = {fintable:{},plantable:{}}
+  this.viewonlyf = viewonlyf;
 
   this.SetProfile = function () {
     this.setMainInfo();
     if (this.smu.SMFCode!==undefined){
       this.setEmployees();
-      if (this.smu.ApprovalStatus==0){
+      if (this.smu.ApprovalStatus==0 && !this.viewonlyf){
         this.tables.fintable = new FinDataTable($("#temp_table_wrap").parent().parent(),this.smu,false,this);
         this.tables.plantable = new FinPlanDataTable($(".table-plan"),this.smu,false,this);
       } else {
@@ -36,7 +44,7 @@ function SMUProfileApp(js) {
       $(".save_submit").hide();
       $(".table-plan").hide();
     }
-    if (this.smu.ApprovalStatus==='0' || this.smu.ApprovalStatus===undefined) {
+    if ((this.smu.ApprovalStatus==='0' || this.smu.ApprovalStatus===undefined) && !this.viewonlyf) {
       this.showSubmitButtons();
     } else {
       this.RestrictProfileApp();
@@ -65,7 +73,7 @@ function SMUProfileApp(js) {
     $('.smu_education').attr("disabled","");
     $('.smu_targetaud').attr("disabled","");
     $('#add_item_button').css("display","none");
-    if (this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3'){
+    if ((this.smu.ApprovalStatus==='2' || this.smu.ApprovalStatus==='3') && !this.viewonlyf){
       $(".table-emps").hide();
     } else {
       $(".newEmp_button a").remove();

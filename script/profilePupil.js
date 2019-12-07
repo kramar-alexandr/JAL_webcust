@@ -36,8 +36,8 @@ function PupilVerifiedController(pupil) {
 
         if (this.pupil.parent) {
             $('.pupil-parent').show();
-            $('.parent-full-name-val').text(`Vārds, Uzvārds: ${this.pupil.parent.fullName}`);
-            $('.parent-email-val').text(`E-pasts: ${this.pupil.parent.email}`);
+            $('.parent-full-name-val').text(this.pupil.parent.fullName);
+            $('.parent-email-val').text(this.pupil.parent.email);
         }
 
         if (pupil.smu) {
@@ -97,6 +97,9 @@ function PupilVerifiedController(pupil) {
             $('.status-header').text('');
             $('.status-info').text('');
             $('.status').hide();
+            if (pupil.ApprovalStatus=="3"){
+              $(".main-tab li:nth-child(4)").css("display","block");
+            }          
             
             if (pupil.sentforapproval=="1"){
               

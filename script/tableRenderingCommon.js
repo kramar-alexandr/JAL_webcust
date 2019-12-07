@@ -192,16 +192,25 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
         $(twrap).attr("id","").addClass("table_wrap").css("display","block");
         var ntable = $(twrap).find("table");
         $(this.wrap).find("#cost_table_wrap").append(twrap);
-        $(twrap).find(".itemname input").val(itemname).change(function(){
-          var oldval = $(this).get(0).defaultValue;
-          self.items.push($(this).val());
-          self.obj.tables.plantable.AddEmptyItems();
-
-        });
         
         $(twrap).find(".itemprice input").val(itemprice).change(function(){
           self.obj.tables.plantable.UpdateItemPrice($(twrap).find('.itemname input').val(),$(this).val());
         });;
+        if (this.readonlyf){
+          $(twrap).find(".itemdelete").remove();
+        } else {
+          $(twrap).find(".itemdelete").click(function(){
+            var item = $(twrap).find(".itemname input").val();
+            for (var i=0;i<self.items.length;i++){
+              if (self.items[i]==item){
+                self.items.splice(i,1);
+                $(twrap).remove();
+                break;
+              }
+            }
+            self.obj.tables.plantable.AddEmptyItems();
+          });;
+        }
         if (this.readonlyf==false) {
           $(twrap).find(".itemprice input").inputmask("decimal", {allowMinus: false,digitsOptional:false,digits:2});
         } else {
@@ -223,7 +232,35 @@ function FinDataTable(wrap,smu,readonlyf,obj) {
                 "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
-            }]
+            },
+            {
+        		'targets': "_all",
+        		'createdCell':  function (td, cellData, rowData, row, col) {
+           			$(td).attr('cname', $(ntable).find("thead tr:nth-child(2) th:nth-child(" + (col+1) + ")").html()); 
+           	  }
+        	  }]
+        });
+        $(twrap).find(".itemname input").val(itemname).attr("oldval",itemname).change(function(){
+          var foundf = false;
+          var oldval = $(this).attr("oldval");
+          var newval = $(this).val();
+          $(this).attr("oldval",$(this).val());
+          for (var i=0;i<self.items.length;i++){
+            if (self.items[i]==oldval){
+              self.items[i] = $(this).val();
+              foundf = true;
+              break;
+            }
+          }
+          if (!foundf) {
+            self.items.push($(this).val());
+          }
+          if (oldval=="" || oldval=="Riteņu statīvs"){
+            oldval=null;
+          }
+          self.obj.tables.plantable.AddEmptyItems(oldval,newval);
+          self.SumupTable(table,ntable,twrap);
+
         });
         $(ntable).data("tabledata",table);
         this.SumupTable(table,ntable,twrap);
@@ -418,18 +455,33 @@ function FinPlanDataTable(wrap,smu,readonlyf,obj){
      });    
    }
    
-   this.AddEmptyItems = function(){
+   this.AddEmptyItems = function(oldval,newval){
      var self = this;
      var rows = this.plantable.data().toArray();
      items = {};
      for (var i=0;i<rows.length;i++){
        items[rows[i][2]] = true;
      }
+     var vitems = {};
      var allitems = this.obj.tables.fintable.items;
      for (var i=0;i<allitems.length;i++){
-       if (!items[allitems[i]]) {
+       if (!items[allitems[i]] && !oldval) {
          self.AddEmptyItemPlan(rows,allitems[i]);
        }
+       vitems[allitems[i]] = true;
+     }
+     for (var i=0;i<rows.length;i++){
+       if (!vitems[rows[i][2]]){
+         if (!oldval){
+           rows.splice(i,1);
+           i--;
+         } else {
+           if (oldval==rows[i][2]){
+             rows[i][2] = newval;
+             //i = rows.length;
+           }
+         }
+       }  
      }
      this.plantable.destroy();
      this.CreatePlanTable(rows);
@@ -452,7 +504,7 @@ function FinPlanDataTable(wrap,smu,readonlyf,obj){
      var rows = this.plantable.data().toArray();
      for (var i=0;i<rows.length;i++){
        if (rows[i][2]==item){
-         rows[i][3] = cost;
+         rows[i][3] = cost.toFixed(2);
        }
      }
      this.plantable.destroy();
@@ -475,7 +527,13 @@ function FinPlanDataTable(wrap,smu,readonlyf,obj){
               "targets": [ 0 ],
               "visible": false,
               "searchable": false
-          }],
+          },
+          {
+        		'targets': "_all",
+        		'createdCell':  function (td, cellData, rowData, row, col) {
+           			$(td).attr('cname', $(ntable).find("thead th:nth-child(" + (col+1) + ")").html()); 
+        	  }
+       		}],
           language: {
             zeroRecords: jal_str["zeroRecords"]
           }

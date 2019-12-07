@@ -57,6 +57,7 @@ _:-ms-lang(x), #link-top { width: 93% }
     background-repeat: no-repeat;
     position: relative;
     z-index: 1;
+    background-position: center;
 }
 #logo{
     display: -webkit-flex;
@@ -200,13 +201,17 @@ _:-ms-lang(x), #link-top { width: 93% }
 }
 @media screen and (max-width: 900px){
     #menu-content {
-        padding: 20vw;
-        padding-top: 20vw;
+        padding: 20px;
+        padding-top: 120px;
         width: 100%;
         font-size: 25px;
     }
     .login{
-        display:none
+        /*display:none*/
+        width:65%;
+    }
+    #link-top .login a{
+      font-size:18px;
     }
     .menu {
         width: 13vw;
@@ -251,5 +256,11 @@ _:-ms-lang(x), #link-top { width: 93% }
         font-size: 40px;
         line-height: 1.5;
         text-align: center;
+    }
+    #menu-content a{
+      font-size:25px;
+    }
+    #topmenu ul{
+      margin-top: 10px;
     }
 }
