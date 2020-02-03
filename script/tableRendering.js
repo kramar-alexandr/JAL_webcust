@@ -1,3 +1,18 @@
+function openInNewTab2(url) {
+    var a = document.createElement("a");
+    a.target = "blank";
+    a.href = url;
+    //a.src = url;
+    $(a).css("display","none");
+    document.body.appendChild(a);
+    //a.click();
+    //document.body.removeChild(a);
+    a.dispatchEvent((function(e){
+      e.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0,
+                    false, false, false, false, 0, null);
+      return e;
+    }(document.createEvent('MouseEvents'))));
+}
 
 function sortPieteikumi( a, b ) {
   if ( a.Skolens < b.Skolens ){
@@ -59,7 +74,6 @@ if (text) {
 
     for (let i = 0; i < tableData.length; i++) {
         let count = 1;
-        console.log('tableData[i].Nr` ', tableData[i]);
         tableData[i].Number = +count + i;
     }
     var num = 1;
@@ -198,6 +212,14 @@ if (text) {
     for (let i = 0; i < apstiprinatie.length; i++) {
         let count = 1;
         apstiprinatie[i].Number = count + i;
+        let certstat = 0;
+        if (apstiprinatie[i].Klase2=="12" && apstiprinatie[i].Titan=="1" && apstiprinatie[i].Enudiena=="1") {
+          certstat = 2;
+        }
+        if (apstiprinatie[i].CertFlag=="1"){
+          certstat = 1;
+        }
+        apstiprinatie[i].CertStatus = certstat;
     }
     let pamatskola = [];
 
@@ -218,6 +240,7 @@ if (text) {
         searching: true,
         info: false,
         select: false,
+        order: [[ 10, "desc" ],[ 3, "asc" ]],/**/
 /*
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
@@ -290,12 +313,12 @@ if (text) {
             {data: 'MacibuGads'},
             {data: 'Nosaukums'},
             {
-                data: 'Likvidets',
+                data: 'ApprovalStatus',
                 render: (data, type, full) => {
-                    if (data !== "3") {
-                        return '<p class="noradit-no"></p>';
+                    if (data !== "5") {
+                        return '<p class="noradit-no info-marker" title="' + jal_str["RemoveSMUInfo"] + '"></p>';
                     } else {
-                        return '<p class="astiprinat-yes"></p>';
+                        return '<p class="astiprinat-yes info-marker" title="' + jal_str["RemoveSMUInfo"] + '"></p>';
                     }
                 }
             },
@@ -303,19 +326,19 @@ if (text) {
                 data: 'Titan',
                 render: (data, type, full) => {
                   if (data !== "1") {
-                      return '<p class="noradit-no" onclick="UpdateChecks(event)"></p>';
+                      return '<p class="noradit-no" onclick="UpdateChecks(event,\'' + full.Kods + '\',this.parentNode)"></p>';
                   } else {
-                      return '<p class="astiprinat-yes" onclick="UpdateChecks(event)"></p>';
+                      return '<p class="astiprinat-yes" onclick="UpdateChecks(event,\'' + full.Kods + '\',this.parentNode)"></p>';
                   }
                 }
             },
             {
                 data: 'Enudiena',
-                render: (data) => {
+                render: (data,type,full) => {
                   if (data !== "1") {
-                      return '<p class="noradit-no" onclick="UpdateChecks(event)"></p>';
+                      return '<p class="noradit-no" onclick="UpdateChecks(event,\'' + full.Kods + '\',this.parentNode)"></p>';
                   } else {
-                      return '<p class="astiprinat-yes" onclick="UpdateChecks(event)"></p>';
+                      return '<p class="astiprinat-yes" onclick="UpdateChecks(event,\'' + full.Kods + '\',this.parentNode)"></p>';
                   }
                 }
             },
@@ -331,12 +354,20 @@ if (text) {
             },
 */
             {
-                data: 'Pievienot sertifikātu sarakstam',
-                render: () => {
-                    return "<a class='labot-btn'>" + jal_str["Add"] + "</a>";
+                data: 'CertStatus',
+                render: (data,type,full) => {
+                  switch (data){
+                    case 0: return "<a class='labot-btn'>" + jal_str["Add"] + "</a>";                      
+                    case 2: return "<a class='labot-btn active docreatecert' onclick='CreateCert(this.parentNode)'>" + jal_str["Add"] + "</a>";
+                    case 1: return "<a class='labot-btn active doprintcert' onclick='PrintCert(this.parentNode)'>" + jal_str["Print"] + "</a>";
+                  }
 
                 },
                 className: "column-btn pievienotBtn"
+            },
+            {
+                data: 'CertStatus',
+                visible: false,
             }
 
 
@@ -387,9 +418,9 @@ if (text) {
             {data: 'MacibuGads'},
             {data: 'Nosaukums'},
             {
-                data: 'Likvidets',
+                data: 'ApprovalStatus',
                 render: (data, type, full) => {
-                    if (full.Likvidets !== "3") {
+                    if (data !== "5") {
                         return '<p class="noradit-no"></p>';
                     } else {
                         return '<p class="astiprinat-yes"></p>';
@@ -399,6 +430,19 @@ if (text) {
 
         ]
     });
+    
+    $(".pievienotBtn a").hover(function(){
+      var tt = $("<div id='docTooltip'></div>");
+      $(this).data("tooltip",tt);
+      $(document.body).append(tt);
+      $(tt).css({ top : $(this).offset().top + 50 + 'px' , left : $(this).offset().left + 'px' });
+      $(tt).html(jal_str["CertificateToolTip"]).fadeIn();
+    },function(){
+      $($(this).data("tooltip")).fadeOut(function(){
+        $(this).remove();
+      });
+    });
+    
     // $( ".dt-buttons" ).prepend( "<p>Eksportēt sarakstu: </p>" );
 
     vidusskolaBtn.style.background = '#24bc4b';
@@ -417,9 +461,7 @@ if (text) {
     function chancheTab(showWrapper, activeBtn, disActiveBtn, hideWrapper) {
         showWrapper.style.display = 'block';
         activeBtn.style.background = '#24bc4b';
-        activeBtn.style.color = 'white';
-        disActiveBtn.style.color = '#d0d0d0';
-        disActiveBtn.style.background = 'inherit';
+        disActiveBtn.style.background = '#757575';
         hideWrapper.style.display = 'none';
     }
 
@@ -455,7 +497,7 @@ if (text) {
           }
         }
     });
-
+/*
     $('.dataTable').on('click', '.labotBtn', function () {
         let data = table.row(this.parentNode.rowIndex - 1).data();
 
@@ -464,21 +506,70 @@ if (text) {
 
         getData(`/WEBJALTeacherAccChangeStatus.hal?sernr=${data.SerNr}&status=${data.Statuss}`);
     });
-
+*/
+/*
     $('.dataTable').on('click', '.pievienotBtn', function () {
         let data = tableApstiprinatie.row(this.parentNode.rowIndex - 2).data();
 
-        getData(`/WEBJALCreateNewTaskOne.hal?sernr=${data.SerNr}`);
+        getData(`/WEBJALCreateNewTaskOne.hal?sernr=${data.SerNr}`);    
     });
+*/
 
+  
     let taskControl = new CountInConfirmBtn();
 
     $('.submitBtnAll').on('click', function () {
-        let data = {};
-        data.root = taskControl.getArray();
-
-        getData(`/WEBJALCreateNewTaskMass.hal`, data);
+        openInNewTab2("/WebPrintLiqCertificate.hal?all=1");
     });
+    
+    function PersonIDMatch(id){
+      var res = false;
+      
+      var match1 = id.match(/^[0-9]{6}-[0-9]{5}$/);
+      var match2 = id.match(/^32[0-9]{9}$/);
+      
+      res = (match1 || match2);
+    
+      return res;
+    }
+    
+    function CreateCert(td){
+      cell = tableApstiprinatie.cell( td ).index().column;
+      row = tableApstiprinatie.cell( td ).index().row;
+      let data = tableApstiprinatie.row(row).data();
+    
+      //open popup;
+      
+      var wrap = $("<div class='popup_wrap'></div>");
+      var content = $("<div class='popup_cont'></div>");
+      $(content).append("<div class='content_line'>" + data.Skolens + "</div>");
+      $(content).append("<div class='content_line'>" + jal_str["PersonID"] + "<input type='text' class='personid'></div>");
+      $(content).append("<div class='content_line submitline'><input type='button' class='spbutton submit' value='" + jal_str["Add"] + "'><input type='button' class='spbutton cancel' value='" + jal_str["Cancel"] + "'></div>");
+      
+      $(wrap).append(content);
+      $(document.body).append(wrap);
+      $(content).find(".submit").click(function(){
+        if (PersonIDMatch($(wrap).find(".personid").val())){
+          $.get("/WebCreateLiqCertificate.hal?student=" + data.Kods + "&personid=" + $(wrap).find(".personid").val(),function(){
+            location.reload();
+          });
+        } else {
+          alert(jal_str["PersonIDError"]);
+        }
+      });
+      $(content).find(".cancel").click(function(){
+        $(wrap).remove();
+      });
+      
+    }
+    function PrintCert(td){
+      cell = tableApstiprinatie.cell( td ).index().column;
+      row = tableApstiprinatie.cell( td ).index().row;
+      let data = tableApstiprinatie.row(row).data();
+
+      openInNewTab2("/WebPrintLiqCertificate.hal?student=" + data.Kods);
+    
+    }
 
 
     // function http get
@@ -501,12 +592,17 @@ if (text) {
 
     }
     
-    function UpdateChecks(event){
+    function UpdateChecks(event,code,td){
+    /*
       let index = event.target.parentNode.parentNode.rowIndex - 2;
       var info = tableApstiprinatie.page.info();
       index = info.page*info.length+index;
       let data = tableApstiprinatie.row(index).data();
       let cell = event.target.parentNode.cellIndex;
+    */
+      cell = tableApstiprinatie.cell( td ).index().column;
+      row = tableApstiprinatie.cell( td ).index().row;
+      let data = tableApstiprinatie.row(row).data();
       let f = "Enudiena";
       let type = 1;
       if (cell==7) {//titan
@@ -524,7 +620,7 @@ if (text) {
         //$(event.target.parentNode).addClass('checked');
       }
       data[f] = stat.toString();
-      tableApstiprinatie.row(index).data(data).draw(false);
+      tableApstiprinatie.row(row).data(data).draw(false);
       
       let link = "/WebChangeTitanStatus.hal?cu=" + data.Kods + "&stat=" + stat + "&type=" + type;
       $.get(link,function(){
@@ -568,10 +664,6 @@ if (text) {
             } else {
                 event.path[2].cells[8].innerHTML = "";
             }
-
-            console.log('macibuStatus ', macibuStatus);
-            console.log('titanStatus ', titanStatus);
-            console.log('enudienaStatus ', enudienaStatus);
 
             $(event.target).text(jal_str["Edit"]);
             event.target.parentElement.style.background = 'white';

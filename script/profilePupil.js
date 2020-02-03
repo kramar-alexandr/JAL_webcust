@@ -77,7 +77,7 @@ function PupilVerifiedController(pupil) {
             $('.status').show();
             $('.status-header').text('Apsveicam!');
             $('.status-info').text('Tavs skolēna profils ir reģistrēts!');
-            if (pupil.ApprovalStatus=="3"){
+            if (pupil.ApprovalStatus=="3" || pupil.ApprovalStatus=="5"){
               $(".main-tab li:nth-child(4)").css("display","block");
             }          
             $('.sec_section').show();
@@ -97,7 +97,7 @@ function PupilVerifiedController(pupil) {
             $('.status-header').text('');
             $('.status-info').text('');
             $('.status').hide();
-            if (pupil.ApprovalStatus=="3"){
+            if (pupil.ApprovalStatus=="3" || pupil.ApprovalStatus=="5"){
               $(".main-tab li:nth-child(4)").css("display","block");
             }          
             
@@ -140,7 +140,7 @@ function PupilVerifiedController(pupil) {
               $('.employer_section,.teacher_request_section').hide();
             }
         } else {
-            if (pupil.ApprovalStatus=="3"){
+            if (pupil.ApprovalStatus=="3" || pupil.ApprovalStatus=="5"){
               $(".main-tab li:nth-child(4)").css("display","block");
             }
         }

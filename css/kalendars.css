@@ -277,17 +277,19 @@
 }
 .ev_col{
   padding:1px;
-  text-align:center;
+  text-align:left;
   float:left;
   overflow:hidden;
-  font-size:16px !important;
+  font-size:15px !important;
   color:#aaaaaa;
+  padding-left:7px;
+  box-sizing:border-box;
 }
 .event-box .ev_col{
   line-height:34px;
 }
 .event-box .ev_col{
-  font-size:16px !important;
+  font-size:13px !important;
 }
 
 .ev_col.date{
@@ -332,7 +334,7 @@
   font-size:16px !important;
 }
 .event-box .ev_col.descr{
-  font-weight:bold;
+  font-size: 13px !important;
   color:black;
 }
 .block-teach{

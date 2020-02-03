@@ -287,6 +287,10 @@
     cursor: pointer;
     text-align: center;
     /*background: url("../img/no.png") no-repeat;*/
+    transition:all 0.3s;
+}
+.status-btn.apstiprinatBtn:hover,.status-btn.noraditBtn:hover{
+    color: #16B01A;
 }
 
 .labot-btn {
@@ -301,6 +305,13 @@
     background: #24bc4b;
 }
 
+.docreatecert,.doprintcert{
+  color: #24bc4b;
+  text-transform:uppercase;
+}
+table.dataTable.display#apstiprinatie tbody tr.odd>.sorting_2{
+  background:none;
+}
 .column-btn {
     padding: 0 !important;
     text-align: center;
@@ -331,13 +342,19 @@
 .control-btn-one {
     width: 100%;
     font-family: "Poppins", sans-serif;
-    color: #d0d0d0;
+    color: white;
     font-size: 13px !important;
     padding: 0.5vw 27px;
     cursor: pointer;
     text-align: center;
+    background: #757575;
+    white-space:nowrap;
+    transition:all 0.3s;
 }
 
+.control-btn-one:hover {
+    background-color: #2cc654 !important;
+}
 .paginate_button  {
     background: #cccccc !important;
     text-align: center;
@@ -359,6 +376,9 @@
 .dataTable .odd {
     background-color: white !important;
 }
+.dataTable tr:hover{
+  background-color:#f6f6f6 !important;
+}
 
 .sorting_1 {
     background-color: white !important;
@@ -373,6 +393,17 @@
     background: url("../img/no.png") no-repeat;
     background-position: center;
     cursor: pointer;
+    transition:all 0.3s;
+}
+/*
+.noradit-no:hover {
+    background: url("/img/no3.png") no-repeat;
+    background-position: center;
+
+}
+*/
+.info-marker{
+  cursor: unset !important;
 }
 
 .astiprinat-yes {
@@ -460,7 +491,7 @@ td p {
 }
 
 #apstiprinatie .sorting,  #apstiprinatie .sorting_asc, #apstiprinatie .sorting_desc {
-    background : none;
+    padding-right:20px !Important;
 }
 
 
@@ -678,6 +709,18 @@ td p {
 .docs-card p {
     font-size: 9px;
     margin-left: 0.7rem
+}
+
+#docTooltip{
+  position:absolute;
+  color:rgba(51,51,51);
+  border:1px solid #ddd;
+  border-radius:4px;
+  padding:10px 10px;
+  background:white;
+  font-size:12px;
+  text-transform:none;
+  display:none;
 }
 
 .open-info-smu {
@@ -993,7 +1036,7 @@ td p {
 .application h2 {
     font-weight: bold;
     margin-left: 28px;
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -1571,7 +1614,7 @@ width: 43% !important;
 }
 .teacher_badge{
   position:absolute;
-  top:-18px;
+  top:-10px;
   right:6px;
   background-color:#da4d3e;
   color:white;
@@ -1744,7 +1787,7 @@ td.first{
 
 .doc_event{
   clear:both;
-  width:80%;
+  width:90%;
   margin:0 auto;
   background:#fafafa;
   line-height:37px;
@@ -1752,9 +1795,13 @@ td.first{
 .doc_event_date{
   background:#cdcdcd;
   color:white;
-  width:60px;
+  width:90px;
   float:left;
   text-align:center;
+}
+.doc_event_date.empty{
+  min-height:1px;
+  background:none;
 }
 
 .doc_event_name{
@@ -1768,8 +1815,62 @@ td.first{
 .doc_event .btn-confirm,.doc_event .btn-confirm2{
   margin:0px;
   width:180px;
+  display: inline-block;
+  white-space: nowrap;
+}
+.smu_update{
+  display:inline-block;
+}
+.smu_text{
+  background: #f1f1f1;
+  border:none;
+  width:100%;
+  height:300px;
+  padding: 10px 18px;
+  font-size:13px;
+}
+.profile-pupil-info .smu_descr{
+  margin-top:40px;
+  display:none;
+}
+.profile-pupil-info .addemp{
+  float:none;
 }
 
+.popup_wrap{
+  background:rgba(255,255,255,0.3);
+  position:fixed;
+  left:0px;
+  right:0px;
+  top:0px;
+  bottom:0px;
+}
+.popup_cont{
+  width: 350px;
+  height: 100px;
+  padding: 20px;
+  top: 50%;
+  position: absolute;
+  text-align: center;
+  margin-top: -50px;
+  font-size: 15px;
+  left: 50%;
+  margin-left: -175px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.popup_cont .personid{
+  margin-left:10px;
+  font-size:15px;
+  padding:3px 6px;
+  width:180px;
+}
+#findata_table td,#finplan_table td{
+  font-size:13px;
+}
+#findata_table th,#finplan_table th{
+  font-size:15px;
+}
 
 @media screen and (max-width: 900px){
   body{

@@ -141,6 +141,7 @@ function EventDisplay(events, submittedEvents) {
         '    </div>\n' +
         '</div>';
     this.createEvents = function() {
+        var vShow = {};
         $(".application").append("<div class='events_wrap'><div id='events_header'><div class='ev_col date'>Datums</div><div class='ev_col reg_date'>Pieteikuma termiņš</div><div class='ev_col descr'>Pasākuma nosaukums</div><div class=''></div></div><div id='pagenave'></div><div id='orig_items' style='display:none'></div></div>").addClass("simple_page");
         if (this.events.length) {
             for (let event of this.events) {
@@ -148,6 +149,9 @@ function EventDisplay(events, submittedEvents) {
                 let eventBox = this.getTemplate(this.template);
                 event.el = eventBox;
                 this.setInfo(eventBox, event, '#orig_items');
+                if (event.allowApply=="1" && student.smuCode){
+                  vShow[event.serNr] = true;
+                }
             }
 
 
@@ -157,7 +161,6 @@ function EventDisplay(events, submittedEvents) {
         if (this.teacher!=""){
           $(document.body).find(".btn-applications").hide();
         }
-        var vShow = {};
         
         if (this.submittedEvents.length) {
           var self = this;
@@ -260,7 +263,12 @@ function EventDisplay(events, submittedEvents) {
               var ev = this.eventsV[req.mainevent];
               vShow[req.mainevent] = true;
               if (req.filled=="0"){
-                $(ev.el).find(".btn-submit2").show();
+                if (req.reqtype=="1"){
+                  $(ev.el).find(".btn-submit2").show();
+                } else {
+                  //$(ev.el).find(".btn-submit2").html("Iesniegt atskaiti").show();  
+                  //$(ev.el).find('#code2').val(req.event);                
+                }
                 $(ev.el).find(".btn-submit").hide();
               }
             }
@@ -284,7 +292,7 @@ function EventDisplay(events, submittedEvents) {
               prevText: '<<',
               nextText: '>>',
           showPageNumbers: true,
-          pageSize: 5,
+          pageSize: 15,
               callback: function (data, pagination) {
                   // template method of yourself
                   // var html = template(data);

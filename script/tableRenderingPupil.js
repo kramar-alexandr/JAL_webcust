@@ -6,7 +6,8 @@ if (pupil) {
     pupilTableData.Skolens = pupilInfo.fullName;
     pupilTableData.Klase = pupilInfo.class;
     pupilTableData.Nosaukums = pupilInfo.school;
-    pupilTableData.Likvidets = pupilInfo.liquidated;
+    pupilTableData.Likvidets = pupilInfo.ApprovalStatus;
+    pupilTableData.MacibuGads = pupilInfo.Semester;
 
     $('#programms').DataTable({
         data: [pupilTableData],
@@ -44,29 +45,19 @@ if (pupil) {
             {data: 'Nr'},
             {data: 'Skolens'},
             {data: 'Klase'},
-            {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
-                }
-            },
+            {data: 'MacibuGads'},
             {data: 'Nosaukums'},
             {
-                data: 'Likvidēts',
+                data: 'Likvidets',
                 render: (data) => {
-                    if (data !== "3") {
+                    if (data !== "5") {
                         return '<p class="noradit-no"></p>';
                     } else {
                         return '<p class="astiprinat-yes"></p>';
                     }
                 }
             },
-            {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
-                }
-            },
+            {data: 'MacibuGads'},
             {
                 data: 'Piedalījās',
                 render: (data) => {
@@ -75,12 +66,7 @@ if (pupil) {
                     }
                 }
             },
-            {
-                data: 'Mācību gads',
-                render: () => {
-                    return "2018/2019";
-                }
-            },
+            {data: 'MacibuGads'},
             {
                 data: 'Piedalījās',
                 render: (data) => {

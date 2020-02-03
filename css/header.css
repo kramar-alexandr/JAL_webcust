@@ -187,7 +187,40 @@ _:-ms-lang(x), #link-top { width: 93% }
     margin-left: 27px;
     display: none;
 }
+div#blog-head-item {
+  width: 350px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+input.blog-head-item {
+    float: right;
+    width: 250px;
+}
+.blog-head-item2{
+  width: 350px;
+  height: 100px;
+  box-sizing: border-box;
+}
+input#sl {
+  font-family: "Poppins", sans-serif;
+  background-color: #16B01A !important;
+  color: white;
+  font-size: 13px !important;
+  padding: 0.5vw 27px;
+  margin: 0 auto;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  text-transform: uppercase;
+}
 
+input#sl:hover{
+  border: 1px solid #7eb079;
+  background-color: #2cc654 !important;
+}
 /*.collapsed span:before{*/
     /*content: "\25BC";*/
 /*}*/

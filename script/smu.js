@@ -260,6 +260,17 @@ if (SMUData) {
           }
       });
     }
+    $(".docs-card").hover(function(){
+      var tt = $("<div id='docTooltip'></div>");
+      $(this).data("tooltip",tt);
+      $(document.body).append(tt);
+      $(tt).css({ top : $(this).offset().top + 50 + 'px' , left : $(this).offset().left + 'px' });
+      $(tt).html($(this).attr("title")).fadeIn();
+    },function(){
+      $($(this).data("tooltip")).fadeOut(function(){
+        $(this).remove();
+      });
+    });
 }
 function SumupTable(table,el){
      let rows = table.data().toArray();

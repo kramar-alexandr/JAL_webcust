@@ -5,6 +5,7 @@ function init(pupil) {
     correctionSMU.setEvent();
     correctionSMU.showSmuInfo(pupil.director);
     correctionSMU.setEmployees();
+    correctionSMU.setSMUDescription();
 }
 
 function CorrectionSMU (smu,pupil) {
@@ -25,6 +26,7 @@ function CorrectionSMU (smu,pupil) {
 */
         if (this.pupil.ApprovalStatus==3) {
           $(".addemp").show();
+          $(".smu_descr").show();
         } 
         $('#confirmMainInfo').click(function(){
             postData("/WebChangeCompEmp.hal", $('#forma').serialize());
@@ -160,4 +162,24 @@ function CorrectionSMU (smu,pupil) {
      });
    }
     
+  this.setSMUDescription = function(){
+    if (this.pupil.ApprovalStatus==3) {
+      $(".smu_text").val(this.pupil.Text);
+      $(".smu_update").click(function(){
+        let d = {};
+        d.text = $(".smu_text").val();
+        $.ajax({
+          type: "POST",
+          url: "/WebSetSMUDescription.hal",
+          data: JSON.stringify(d),
+          success: function() {
+              alert("Pieņemtas izmaiņas!");
+              if (pupil.hasSMU=="0"){
+               // location.reload();
+              }
+          }
+        });
+      });
+    }      
+  }
 }

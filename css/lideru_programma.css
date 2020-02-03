@@ -109,6 +109,9 @@ h2{
     color: rgb(0, 0, 0);
     line-height: 1.5;
 }
+#dalibnieki_cont img{
+  width:100%;
+}
 .wrap{
     color: rgb(107, 107, 107);
     font-family: 'Poppins', sans-serif;

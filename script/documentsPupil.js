@@ -100,7 +100,7 @@ function DocumentsDisplay(documents) {
     this.eventTemplate = '<div class="doc_event"><div class="doc_event_date"></div>\n' +
         '<div class="doc_event_name"></div>\n' +
         '<button class="btn-confirm spbutton grey">Iesniegt atskaiti</button>\n' + 
-        '<button class="btn-confirm2 spbutton grey">Apliecinājums</button></div>\n';
+        '<button class="btn-confirm2 spbutton grey">Apliecinājums</button><div class="clear"></div></div>\n';
     this.createDocuments = function () {
         for (let document of this.documents) {
             let documentBox = this.getTemplate(this.template);
@@ -124,6 +124,7 @@ function DocumentsDisplay(documents) {
           $(eventBox).find(".doc_event_name").html(event.eventName);
           $(eventBox).find(".doc_event_date").html(event.dataStart);
           $(eventBox).find(".btn-confirm").hide();
+          $(eventBox).find(".btn-confirm2").hide();
           (function(tev,teventbox){
             $(teventbox).find(".btn-confirm2").click(function(){
               downloadURI("/WebDownloadEventCert.hal?app=" + event.serNr);
@@ -138,17 +139,44 @@ function DocumentsDisplay(documents) {
           vEv[event.event] = event;
 
         }
+        if (event.type=="3"){
+          let eventBox = this.getTemplate(this.eventTemplate);
+          $(eventBox).find(".doc_event_name").html(event.eventName);
+          $(eventBox).find(".doc_event_date").addClass("empty");          
+          $(eventBox).find(".btn-confirm").hide();
+          $(eventBox).find(".btn-confirm2").hide();
+          (function(tev,teventbox){
+            if (tev.filled=="0"){
+              $(teventbox).find(".btn-confirm").show().click(function(){
+                window.location.href = "/kalendars/pasakumi/" + tev.event + "/pieteikties";
+
+              });
+            } else {
+              if (pupilInfo.certificateprint=="1") {
+                $(teventbox).find(".btn-confirm2").show().html("Drukāt sertifikātu").click(function(){
+                  downloadURI("/WebDownloadLiqCertificate.hal");
+                });
+              }
+              $(teventbox).find(".btn-confirm").show().html("Atskaite iesniegta");
+            }
+          })(event,eventBox);
+          $(".document").append(eventBox);
+          event.el = eventBox;
+          vEv[event.event] = event;
+
+        }
       }
       for (var req of events["eventrequests"]){
-        if (vEv[req.mainevent]){
+        if (vEv[req.mainevent] && req.reqtype=="2"){
           var ev = vEv[req.mainevent];
           (function(tev,teventbox,treq){
             if (treq.filled=="0"){
               $(teventbox).find(".btn-confirm").show().click(function(){
-                
+                window.location.href = "/kalendars/pasakumi/" + treq.event + "/pieteikties";
 
               });
             } else {
+              $(teventbox).find(".btn-confirm2").show();
               $(teventbox).find(".btn-confirm").show().html("Atskaite iesniegta");
             }
           })(ev,ev.el,req);
