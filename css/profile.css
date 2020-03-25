@@ -136,13 +136,13 @@
 }
 
 .profile-head h2 {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
 }
 
 .profile-pupil-info h2 {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
     text-align: center;
@@ -289,10 +289,34 @@
     /*background: url("../img/no.png") no-repeat;*/
     transition:all 0.3s;
 }
-.status-btn.apstiprinatBtn:hover,.status-btn.noraditBtn:hover{
+.status-btn.apstiprinatBtn:hover{
     color: #16B01A;
 }
-
+.status-btn.noraditBtn:hover{
+  color: red;
+}
+body table.dataTable thead .sorting_asc {
+    background-image: url(/images/sort_asc2.png);
+}
+body table.dataTable thead .sorting_desc {
+    background-image: url(/images/sort_desc2.png);
+}
+body .dataTables_wrapper .dataTables_filter {
+  text-align:left;
+  float:none;
+}
+body .dataTables_wrapper .dataTables_filter input{
+  -moz-appearance: none;/* older firefox */
+  -webkit-appearance: none; /* safari, chrome, edge and ie mobile */
+  appearance: none; /* rest */
+  width: 200px;
+  font-size: 17px;
+  height: 33px;
+  margin-left:0px;
+  border: 1px solid #ddd;
+  padding: 0px 3px;
+  margin-bottom: 20px;  
+}
 .labot-btn {
     font-family: "Poppins", sans-serif;
     color: #d0d0d0;
@@ -472,7 +496,7 @@ td p {
 }
 
 .tableBox h2 {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
     text-align: center;
@@ -641,7 +665,7 @@ td p {
 .document-box h2 {
     padding-left: 35px;
     border-left: 1px solid grey;
-    font-weight: bold;
+    font-weight: 600;
     /*margin-left: 28px;*/
     font-size: 18px;
     text-align: center;
@@ -675,7 +699,7 @@ td p {
 }
 
 .smu-name h2 {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 18px;
 }
 
@@ -806,7 +830,7 @@ td p {
 }
 
 .header-apliciebas {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
     text-align: center;
@@ -870,7 +894,7 @@ td p {
 }
 
 .status h2 {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
 }
@@ -1034,7 +1058,7 @@ td p {
 }
 
 .application h2 {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
     text-align: center;
@@ -1055,7 +1079,7 @@ td p {
 }
 
 .technical h2{
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
     text-align: center;
@@ -1255,13 +1279,13 @@ td p {
 }
 
 .addit-main-box p {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 13px;
 }
 
 
 .addit-main-box h2 {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 18px;
 }
 
@@ -1305,13 +1329,13 @@ td p {
 }
 
 .document p{
-    font-weight: 800;
+    font-weight: 600;
     font-size: 13px;
     text-align: center;
 }
 
 .programms h2 {
-    font-weight: bold;
+    font-weight: 600;
     margin-left: 28px;
     font-size: 18px;
     text-align: center;
@@ -1347,6 +1371,7 @@ td p {
     text-align: center;
     font-size: 18px;
     cursor: pointer;
+    font-weight: 500;
 }
 
 .btn-confirm {
@@ -1485,7 +1510,7 @@ td p {
 }
 
 .conference-box p {
-    font-weight: 800;
+    /*font-weight: 800;*/
     font-size: 13px;
     text-align: center;
 }
@@ -1637,10 +1662,10 @@ width: 43% !important;
 }
 
 #profiletable td#first{
-  font-weight:700;
+  font-weight:600;
 }
 td.first{ 
-   font-weight:700;
+   font-weight:600;
 }
 
 .ui-datepicker td a {
@@ -1662,7 +1687,7 @@ td.first{
   text-align:center;
   font-size:18px;
   margin-bottom:10px;
-  font-weight:bold;
+  font-weight:600;
 }
 .table-emps .emp_head{
   font-size:16px;

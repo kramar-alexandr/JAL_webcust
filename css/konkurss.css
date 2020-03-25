@@ -35,7 +35,7 @@
 .capture_konkurss span {
     color: #2cc654;
     line-height: 27px;
-    font-weight: bold;
+    font-weight: 600;
 }
 .foto{
     position: absolute;
@@ -115,7 +115,7 @@
     color: rgb(0,0,0);
     line-height: 17px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 600;
 }
 #content_1 h3{
     margin: 0;
@@ -169,13 +169,13 @@
     font-family: "Poppins", sans-serif;
     color: rgb(0,0,0);
     line-height: 17px;
-    font-weight: bold;
+    font-weight: 600;
     text-transform: uppercase;
     margin-right: 40px;
 }
 #content_3 span{
     color: black;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
 }
 #content_3 span:hover{
@@ -221,7 +221,7 @@
     color: rgb(0,0,0);
     line-height: 17px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 600;
 }
 #content_4 h2{
     margin: 0;
@@ -336,7 +336,7 @@
         color: rgb(0,0,0);
         line-height: 2;
         text-align: center;
-        font-weight: bold;
+        font-weight: 600;
     }
     #content_1 h3 {
         margin: 0;

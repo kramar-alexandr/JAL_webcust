@@ -22,7 +22,7 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 27px;
     line-height: 1.1;
@@ -349,7 +349,7 @@
         text-align: center;
         font-size: 70px;
         text-transform: inherit;
-        font-weight: 700;
+        font-weight: 600;
         width: 70%;
     }
     .two-columns {

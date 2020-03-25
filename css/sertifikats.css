@@ -18,7 +18,7 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 27px;
     line-height: 1.1;
@@ -225,7 +225,7 @@
         margin: 13px;
         font-size: 20px;
         margin-bottom: 70px;
-        font-weight: bold;
+        font-weight: 600;
         text-align: center;
     }
     .col-22{

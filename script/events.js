@@ -78,14 +78,16 @@ $(document).ready(function(){
                   window.location.href = "/events_success";           
                 }
                 var upl = $(form2).find("input[type='file']");
+                let files = [];
                 if ($(upl).length>0) {
-                  let files = [];
                   $(upl).each(function(){
                     let f = $(this).get(0);
                     if (f.files.length>0) {
                       files.push(f.files[0]);
                     }
                   });
+                }
+                if (files.length>0) {
                   var uplf = new FileUpload(files,"jal",id,func);
                 } else {
                   window.location.href = "/events_success"; 

@@ -213,10 +213,10 @@ if (text) {
         let count = 1;
         apstiprinatie[i].Number = count + i;
         let certstat = 0;
-        if (apstiprinatie[i].Klase2=="12" && apstiprinatie[i].Titan=="1" && apstiprinatie[i].Enudiena=="1") {
+        if (apstiprinatie[i].Klase2=="12" && apstiprinatie[i].Titan=="1" && apstiprinatie[i].Enudiena=="1" && apstiprinatie[i].ApprovalStatus=="5") {
           certstat = 2;
         }
-        if (apstiprinatie[i].CertFlag=="1"){
+        if (apstiprinatie[i].CertFlag=="1" && apstiprinatie[i].ApprovalStatus=="5"){
           certstat = 1;
         }
         apstiprinatie[i].CertStatus = certstat;
@@ -298,12 +298,15 @@ if (text) {
                 sNext: jal_str["next"],
             },
             sEmptyTable: jal_str["zeroRecords"],
-            sSearch: jal_str["search"]
+            sSearchPlaceholder: jal_str["search"],
+            sSearch:  ""
         },
         language: {
           zeroRecords: jal_str["zeroRecords"],
           emptyTable: jal_str["zeroRecords"],
-          search: jal_str["search"]
+          /*search: jal_str["search"]*/
+          SearchPlaceholder: jal_str["search"],
+          Search:  ""
         },
         columns: [
             {data: 'Number'},
@@ -381,11 +384,14 @@ if (text) {
         searching: true,
         info: false,
         select: false,
+        order: [ 0, "asc" ],
+/*
         dom: '<"top"B>t<"bottom"p><"clear">',
         buttons: [
             {extend: 'excel', text: 'Exel'},
             {extend: 'pdf', text: '.PDF'}
         ],
+*/
         bLengthChange: false,
         columnDefs: [{
             orderable: false,
@@ -404,11 +410,14 @@ if (text) {
                 sNext: jal_str["next"],
             },
             sEmptyTable: jal_str["zeroRecords"],
-            sSearch: jal_str["search"]
+            sSearchPlaceholder: jal_str["search"],
+            sSearch:  ""
         },
         language: {
           zeroRecords: jal_str["zeroRecords"],
-          emptyTable: jal_str["zeroRecords"]
+          emptyTable: jal_str["zeroRecords"],
+          SearchPlaceholder:  jal_str["search"],
+          Search:  ""
         },
         columns: [
             {data: 'Number'},

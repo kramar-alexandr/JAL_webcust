@@ -36,7 +36,7 @@ h2{
     margin: 0;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 27px;
     line-height: 1.1;
@@ -245,7 +245,7 @@ h2{
 }
 .green_header{
   text-align:center;
-  font-weight:bold;
+  font-weight:600;
   margin-bottom:20px;
 }
 
@@ -273,7 +273,7 @@ h2{
 .lideru_video_teksts h5{
   margin-top:0px;
   font-size:21px;
-  font-weight:bold;
+  font-weight:600;
   margin-bottom:15px;
 }
 .table_wrap{

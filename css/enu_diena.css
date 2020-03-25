@@ -17,7 +17,7 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 27px;
     line-height: 1.1;
@@ -27,7 +27,7 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 11px;
     padding-bottom: 0.5vw;
@@ -45,7 +45,7 @@
 }
 .capture_enu_diena span {
     color: #2cc654;
-    font-weight: bold;
+    font-weight: 600;
 }
 #main_info{
     padding-top: 40px;
@@ -83,7 +83,7 @@
     color: rgb(0,0,0);
     line-height: 17px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 600;
 }
 #content_1 h2{
     margin: 0;
@@ -180,7 +180,7 @@ h6{
     font-family: "Poppins", sans-serif;
     color: white;
     line-height: 17px;
-    font-weight: bold;
+    font-weight: 600;
 }
 #content_3 span{
     color: white;

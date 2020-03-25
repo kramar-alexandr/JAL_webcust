@@ -17,7 +17,7 @@
     color: white;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 34px;
     line-height: 34px;
@@ -45,7 +45,7 @@
 .capture_foto span {
     color: #2cc654;
     line-height: 27px;
-    font-weight: bold;
+    font-weight: 600;
 }
 .view_gal{
     position: absolute;

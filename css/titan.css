@@ -17,7 +17,7 @@
     color: #2cc654;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 3.5vw;
     line-height: 40px;
@@ -27,7 +27,7 @@
     margin: 0;
     font-family: "Poppins", sans-serif;
     color: rgb(255, 255, 255);
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     font-size: 27px;
     line-height: 1.1;
@@ -45,7 +45,7 @@
 .capture_titan span {
     color: #2cc654;
     line-height: 27px;
-    font-weight: bold;
+    font-weight: 600;
 }
 .piesakies{
     position: absolute;
@@ -116,7 +116,7 @@
     color: rgb(0,0,0);
     line-height: 17px;
     text-align: left;
-    font-weight: bold;
+    font-weight: 600;
 }
 #content_2 h2{
     margin: 0;
@@ -170,7 +170,7 @@
     font-size: 13px;
     font-family: "Poppins", sans-serif;
     color: black;
-    font-weight: bold;
+    font-weight: 600;
     text-align: left;
     margin: 0;
     line-height: 1.6vw;
@@ -180,7 +180,7 @@
     font-size: 11px;
     font-family: "Poppins", sans-serif;
     color: black;
-    font-weight: bold;
+    font-weight: 600;
     margin: 0;
     position: relative;
     bottom: -1.5vw;

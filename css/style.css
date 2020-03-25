@@ -20,6 +20,9 @@ a{
 button:focus{
     outline: none;
 }
+h1,h2,h3{
+  font-weight:600;
+}
 input:focus{
     outline: none;
 }
