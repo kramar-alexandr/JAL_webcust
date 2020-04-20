@@ -152,7 +152,7 @@ function DocumentsDisplay(documents) {
 
               });
             } else {
-              if (pupilInfo.certificateprint=="1") {
+              if (pupilInfo.CertificateFlag=="1") {
                 $(teventbox).find(".btn-confirm2").show().html("Drukāt sertifikātu").click(function(){
                   downloadURI("/WebDownloadLiqCertificate.hal");
                 });
