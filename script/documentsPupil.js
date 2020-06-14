@@ -20,6 +20,15 @@ let emps = getData(`/WebGetEmployers.hal?code=${pupilInfo.smuCode}`);
 let documents = getData(`/WebGetDocuments.hal?code=${pupilInfo.smuCode}`);
 let events = getData(`/WebGetEventsPieteikum.hal?all=1`);
 
+function isJson(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
+
 function getData(url) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
@@ -28,7 +37,11 @@ function getData(url) {
     if (xhr.status != 200) {
         console.log('[GET] STATUS ' + xhr.status + ': ' + xhr.statusText );
     } else {
-        return JSON.parse(xhr.responseText);
+        if (isJson(xhr.responseText)){
+          return JSON.parse(xhr.responseText);
+        } else{
+          return [];
+        }
     }
 }
 if (documents) {
@@ -153,11 +166,21 @@ function DocumentsDisplay(documents) {
               });
             } else {
               if (pupilInfo.CertificateFlag=="1") {
-                $(teventbox).find(".btn-confirm2").show().html("Drukāt sertifikātu").click(function(){
+                $(teventbox).find(".btn-confirm2").show().addClass("cert_button").html("Drukāt sertifikātu").click(function(){
                   downloadURI("/WebDownloadLiqCertificate.hal");
                 });
+                if (pupilInfo.cert_link.length>0){
+                  for (var j=0;j<pupilInfo.cert_link.length;j++){
+                    var cert_link = pupilInfo.cert_link[j];
+                    var nb = $(teventbox).find(".btn-confirm2").first().clone();
+                    $(nb).insertAfter($(teventbox).find(".btn-confirm2").last());
+                    $(nb).show().html(cert_link.name).click(function(){
+                      downloadURI(cert_link.link);
+                    });
+                  };
+                }
               }
-              $(teventbox).find(".btn-confirm").show().html("Atskaite iesniegta");
+              $(teventbox).find(".btn-confirm").show().html("Atskaite iesniegta").addClass("cert_button");
             }
           })(event,eventBox);
           $(".document").append(eventBox);
@@ -165,6 +188,29 @@ function DocumentsDisplay(documents) {
           vEv[event.event] = event;
 
         }
+      }
+      if (pupilInfo.CertificateFlag=="1" && pupilInfo.ForceCertificate=="1") {
+        let eventBox = this.getTemplate(this.eventTemplate);
+        $(eventBox).find(".doc_event_name").html("SMU likvidācija");
+        $(eventBox).find(".doc_event_date").addClass("empty");          
+        $(eventBox).find(".btn-confirm").hide();
+        $(eventBox).find(".btn-confirm2").hide();
+        (function(tev,teventbox){
+          $(teventbox).find(".btn-confirm2").show().addClass("cert_button").html("Drukāt sertifikātu").click(function(){
+            downloadURI("/WebDownloadLiqCertificate.hal");
+          });
+          if (pupilInfo.cert_link.length>0){
+            for (var j=0;j<pupilInfo.cert_link.length;j++){
+              var cert_link = pupilInfo.cert_link[j];
+              var nb = $(teventbox).find(".btn-confirm2").first().clone();
+              $(nb).insertAfter($(teventbox).find(".btn-confirm2").last());
+              $(nb).show().html(cert_link.name).click(function(){
+                downloadURI(cert_link.link);
+              });
+            };
+          }
+        })(event,eventBox);
+        $(".document").append(eventBox);
       }
       for (var req of events["eventrequests"]){
         if (vEv[req.mainevent] && req.reqtype=="2"){

@@ -530,6 +530,18 @@ if (text) {
     $('.submitBtnAll').on('click', function () {
         openInNewTab2("/WebPrintLiqCertificate.hal?all=1");
     });
+
+    if (techerInfo.cert_link.length>0){
+      for (var j=0;j<techerInfo.cert_link.length;j++){
+        var cert_link = techerInfo.cert_link[j];
+        var nb = $('.submitBtnAll').first().clone();
+        $(nb).insertAfter($('.submitBtnAll').last());
+        $(nb).show().html(cert_link.name).click(function(){
+          openInNewTab2(cert_link.link);
+        });
+      }
+    }
+
     
     function PersonIDMatch(id){
       var res = false;

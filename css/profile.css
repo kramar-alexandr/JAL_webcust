@@ -1834,6 +1834,7 @@ td.first{
   width:50%;
   font-size:13px;
   padding-left:15px;
+  height: 50px;
 }
 .event_doc_title{
 }
@@ -1895,6 +1896,12 @@ td.first{
 }
 #findata_table th,#finplan_table th{
   font-size:15px;
+}
+
+.cert_button{
+  float:right;
+  margin-left:10px !important;
+  margin-bottom:10px !important;
 }
 
 @media screen and (max-width: 900px){
