@@ -49,6 +49,9 @@ function PupilVerifiedController(pupil) {
 
     this.checkVerified = function() {
         $(".main-tab li:nth-child(4)").css("display","none");
+        if (this.pupil.forceupdate=="1"){
+          window.location.href = "/atjauno-informaciju";
+        }
         if (!this.pupil.verified.personal) {
             $('.tabs').hide();
             $('.confirmation').find('.confirmation-info-pupil').text(`Turpinot reģistrāciju, es, ${this.pupil.fullName}, ${this.pupil.school} skolēns, apliecinu:`);
@@ -109,6 +112,9 @@ function PupilVerifiedController(pupil) {
 
     this.checkVerifiedHighSchool = function() {
         $(".main-tab li:nth-child(4)").css("display","none");
+        if (this.pupil.forceupdate=="1"){
+          window.location.href = "/atjauno-informaciju";
+        }
         if (!this.pupil.verified.personal) {
             $('.tabs').hide();
             $('.confirmation').css('display', 'flex');

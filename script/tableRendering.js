@@ -14,6 +14,17 @@ function openInNewTab2(url) {
     }(document.createEvent('MouseEvents'))));
 }
 
+function GetCertStat(student){
+  let certstat = 0;
+  if (student.Klase2=="12" && student.Titan=="1" && student.Enudiena=="1" && student.ApprovalStatus=="5") {
+    certstat = 2;
+  }
+  if (student.CertFlag=="1" && student.ApprovalStatus=="5"){
+    certstat = 1;
+  }
+  return certstat;
+}
+
 function sortPieteikumi( a, b ) {
   if ( a.Skolens < b.Skolens ){
     return -1;
@@ -212,13 +223,7 @@ if (text) {
     for (let i = 0; i < apstiprinatie.length; i++) {
         let count = 1;
         apstiprinatie[i].Number = count + i;
-        let certstat = 0;
-        if (apstiprinatie[i].Klase2=="12" && apstiprinatie[i].Titan=="1" && apstiprinatie[i].Enudiena=="1" && apstiprinatie[i].ApprovalStatus=="5") {
-          certstat = 2;
-        }
-        if (apstiprinatie[i].CertFlag=="1" && apstiprinatie[i].ApprovalStatus=="5"){
-          certstat = 1;
-        }
+        let certstat = GetCertStat(apstiprinatie[i]);
         apstiprinatie[i].CertStatus = certstat;
     }
     let pamatskola = [];
@@ -624,6 +629,10 @@ if (text) {
       cell = tableApstiprinatie.cell( td ).index().column;
       row = tableApstiprinatie.cell( td ).index().row;
       let data = tableApstiprinatie.row(row).data();
+      console.log(data);
+      if (data.CertStatus==1){
+        return;
+      }
       let f = "Enudiena";
       let type = 1;
       if (cell==7) {//titan
@@ -641,6 +650,7 @@ if (text) {
         //$(event.target.parentNode).addClass('checked');
       }
       data[f] = stat.toString();
+      data.CertStatus = GetCertStat(data);
       tableApstiprinatie.row(row).data(data).draw(false);
       
       let link = "/WebChangeTitanStatus.hal?cu=" + data.Kods + "&stat=" + stat + "&type=" + type;

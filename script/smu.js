@@ -41,6 +41,7 @@ function SetEventStatus(node,val,cls){
       hstr = jal_str["event_approved"];
       break;
     case "4":
+    case "3":
       tval = "/img/yes.png";
       hstr = jal_str["event_approved"];
       break;
