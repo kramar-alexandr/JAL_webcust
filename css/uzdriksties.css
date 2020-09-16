@@ -1,0 +1,228 @@
+body #banner{
+  background-image:url(/img/uzdriksties/01_Hero_banner/Uzdriksties_uzvaret@2x.png) !important;
+}
+b.large{
+  font-size:24px;
+}
+
+.main-flex .one-flex img{
+  height:50px;
+  margin-top:20px;
+  margin-bottom:15px;
+}
+
+.one-flex{
+  justify-content:start;
+}
+
+.register_wrap{
+  background:#e6e7e6;
+  
+}
+
+.register_wrap .register{
+  width:70%;
+  margin:0 auto;
+  padding:40px 0px 60px 0px;
+  text-align:center;
+}
+.register_wrap .register .title{
+  font-size:24px;
+  font-weight:bold
+}
+
+.register_wrap .register .spbutton{
+  display:inline-block;
+}
+.benefits{
+  text-align:center;
+}
+.benefits .one-flex{
+width: 175px;
+}
+.sponsors_wrap{
+  background:#faf8f8;
+}
+.sponsors{
+  text-align:center;
+  width:70%;
+  margin:0 auto;
+  padding:40px 0px 60px 0px;
+}
+
+.sponsors img{
+  height:65px;
+}
+
+.sponsor-table{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+
+.schedule_wrap{
+  background:#1a1a1a;
+  color:white;
+}
+
+.schedule_wrap .schedule{
+  width:70%;
+  max-width: 975px;
+  min-width: 975px;
+  margin:0 auto;
+  padding:40px 0px 60px 0px;
+  text-align:center;
+  position:relative;
+}
+.schedule_wrap .schedule img{
+  width:100%;
+}
+
+.sched_content{
+  display:flex;
+  flex-direction:row;
+  padding-left:126px;
+  text-align:left;
+  margin-top:30px;
+  flex-wrap: wrap;
+  font-size:14px;
+}
+.sched_time{
+  position:absolute;
+  top:110px;
+  font-size:14px;
+}
+.sched_time_cell{
+  position:absolute;
+}
+.sched_time_cell:first-child{
+  left:54px;
+}
+.sched_time_cell:nth-child(2){
+  left:223px;
+}
+
+.sched_time_cell:nth-child(3){
+  left:395px;
+}
+
+.sched_time_cell:nth-child(4){
+  left:561px;
+}
+
+.sched_time_cell:nth-child(5){
+  left:730px;
+}
+.sched_time_cell:nth-child(6){
+  left:900px;
+}
+
+.sched_cell{
+  width:190px;
+  margin-right:10px;
+}
+.sched_cell:last-child{
+  width:200px;
+}
+.sched_cell.first{
+  width:105px;
+}
+.sched_cell.second{
+  width:164px;
+}
+
+.video_link_wrap{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  flex-wrap: wrap;
+}
+.single_video a img{
+  width:235px;
+  height:215px;
+  display:block;
+  
+}
+.single_video{
+  text-align:center;
+  position:relative;
+}
+.single_video a:hover{
+  font-style:underline;
+  color:#24bc4b;
+}
+.single_video a{
+  transition:all 0.3s;
+}
+.single_video:hover a:before{
+  opacity:1;
+  transition:all 0.3s;
+}
+
+.single_video a:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  left:0px;
+  top:0px;
+  background:url("/img/uzdriksties/05_atskats_pics/play-button-01.svg") no-repeat;
+  background-size: 30px;
+  background-position:center 100px;
+  opacity:0;
+  transition:all 0.3s;
+
+}
+
+.attendants_list{
+  display:flex;
+  flex-direction:row;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin-right:-40px;
+}
+
+.attendant{
+  width:165px;
+  margin-right:5px;
+  margin-bottom:40px;
+}
+
+.attendant img{
+  height:135px;
+  width:135px;
+}
+.attendant .name{
+  font-size:14px;
+  font-weight:bold;
+}
+
+.attendant .title{
+  font-size:12px;
+}
+
+@media screen and (max-width: 900px){
+  .one-flex {
+    height: auto;
+  }
+  .flex-prog{
+    margin:0 !important;
+  }
+  .sched_content {
+    display: inline;
+    padding-left: 0px;
+    text-align: left;
+    margin-top: 0px;
+  }  
+  .sched_cell {
+    width: auto !important;
+    margin:0px !important;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .video_link_wrap{
+    justify-content:center;
+  }
+}
