@@ -1,5 +1,7 @@
 body #banner{
-  background-image:url(/img/uzdriksties/01_Hero_banner/Uzdriksties_uzvaret@2x.png) !important;
+  /*background-image:url(/img/uzdriksties/01_Hero_banner/Uzdriksties_uzvaret@2x.png) !important;*/
+  background-image:url(/img/uzdriksties/01_Hero_banner/uzdriksties_banner_2020.png) !important;
+  filter:brightness(20%);
 }
 b.large{
   font-size:24px;
@@ -62,14 +64,16 @@ width: 175px;
 }
 
 .schedule_wrap{
-  background:#1a1a1a;
+  /*background:#1a1a1a;*/
   color:white;
 }
 
 .schedule_wrap .schedule{
+/*
   width:70%;
   max-width: 975px;
   min-width: 975px;
+*/
   margin:0 auto;
   padding:40px 0px 60px 0px;
   text-align:center;

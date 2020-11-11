@@ -88,6 +88,7 @@ if (text) {
         tableData[i].Number = +count + i;
     }
     var num = 1;
+  
     //tableData.sort(sortPieteikumi);
     let table = $('#table_id').DataTable({
         data: tableData,
@@ -233,45 +234,27 @@ if (text) {
             pamatskola.push(i);
         }
     }
-
-    pamatskola.sort(sortPieteikumi);
     for (let i = 0; i < pamatskola.length; i++) {
         let count = 1;
         pamatskola[i].Number = count + i;
     }
+    
      // initializate apstiprinatie table
     var tableApstiprinatie = $('#apstiprinatie').DataTable({
         data: apstiprinatie,
         searching: true,
         info: false,
         select: false,
-        order: [[ 10, "desc" ],[ 3, "asc" ]],/**/
-/*
-        dom: '<"top"B>t<"bottom"p><"clear">',
-        buttons: [
-            {
-                text: 'KLASSE',
-                attr: {
-                    id: 'klasseSrt'
-                },
-                action: function () {
-                    $('#apstiprinatie #klasse').click();
-
-                    if ($('#apstiprinatie_wrapper #klasseSrt').hasClass('sorting-asc')) {
-                        $('#apstiprinatie_wrapper #klasseSrt').toggleClass('sorting-asc sorting-desc');
-                    } else if ($('#apstiprinatie_wrapper #klasseSrt').hasClass('sorting-desc')) {
-                        $('#apstiprinatie_wrapper #klasseSrt').toggleClass('sorting-asc sorting-desc');
-                    } else {
-                        $('#apstiprinatie_wrapper #klasseSrt').toggleClass('sorting-asc');
-                    }
-                }
-            },
-            {extend: 'excel', text: 'Exel'},
-            {extend: 'pdf', text: '.PDF'}
-        ],
-*/
+        order: [[ 10, "desc" ],[ 1, "asc" ],[ 3, "desc" ]],
         bLengthChange: false,
-        columnDefs: [{
+        rowsGroup: [11,1],
+        columnDefs: [
+         {
+            "targets": [ 11 ],
+            "visible": false,
+            "searchable": false
+        },
+        {
             orderable: false,
             targets: "no-sort"
         },
@@ -376,7 +359,9 @@ if (text) {
             {
                 data: 'CertStatus',
                 visible: false,
-            }
+            },
+
+            {data: 'Kods'}
 
 
         ]
@@ -389,25 +374,21 @@ if (text) {
         searching: true,
         info: false,
         select: false,
-        order: [ 0, "asc" ],
-/*
-        dom: '<"top"B>t<"bottom"p><"clear">',
-        buttons: [
-            {extend: 'excel', text: 'Exel'},
-            {extend: 'pdf', text: '.PDF'}
-        ],
-*/
+        order: [ [7, "asc"], [0, "asc"] ],
         bLengthChange: false,
-        columnDefs: [{
+        rowsGroup2: [7,1],
+        columnDefs: [
+        {
             orderable: false,
             targets: "no-sort"
         },
+        
         {
-        		'targets': "_all",
+        		'targets': [0,1,2,3,4,5,6],
         		'createdCell':  function (td, cellData, rowData, row, col) {
            			$(td).attr('cname', $('#pamatskola').find("thead th:nth-child(" + (col) + ")").html()); 
            	  }
-        }        
+        }  
         ],
         oLanguage: {
             oPaginate: {
@@ -440,6 +421,12 @@ if (text) {
                         return '<p class="astiprinat-yes"></p>';
                     }
                 }
+            },/*,
+            { data: 'Kods'
+              visible: false,
+            },*/
+            { data: 'Kods',
+              visible: false
             }
 
         ]

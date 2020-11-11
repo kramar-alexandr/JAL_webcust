@@ -1,3 +1,21 @@
+/*
+$(document).ready(function(){
+  if ($("#recaptcha_form").length>0){
+    AddRecaptchaField();
+  }
+})
+*/
+
+function AddRecaptchaField(){
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LdCi9oZAAAAAEgKHYwpPm-6EVPXHhSVcv-_3N9O', {action: 'create_comment'}).then(function(token) {
+      $("#recaptcha_form").prepend("<input type='hidden' name='g-recaptcha-response' value='" + token  + "'>");
+      $("#recaptcha_form").submit();
+    });
+   });  
+}
+
+
 function CheckSameEmailString(num,mail){
   var res = false;
 
@@ -92,6 +110,7 @@ function TestFieldsForSMU(forma,err1,err2,err3,err4,err5,err6,err7,err8,err9,err
   var email;
   var name;
   var surname;
+  forma = $("#recaptcha_form").get(0);
   
   document.getElementById("ename").innerHTML = "";
   document.getElementById("esurname").innerHTML = "";
@@ -256,9 +275,9 @@ function TestFieldsForSMU(forma,err1,err2,err3,err4,err5,err6,err7,err8,err9,err
   }
    document.getElementById("mainbox").style.height="";     
 
-   return TrHs;
-
-
+   if (TrHs) {
+    AddRecaptchaField();
+   }
 }
 
 function TestFieldsForSMU2(forma,err1,err2,err3,err4,err5,err6,err7,err8,err9,err10){  
@@ -409,6 +428,8 @@ function TestFieldsForTeacher(forma,err1,err2,err3,err4,err5,err6,err7,err8,err9
   var email;
   var name;
   var surname;
+
+  forma = $("#recaptcha_form").get(0);
   
   document.getElementById("ename").innerHTML = "";
   document.getElementById("epk").innerHTML = "";
@@ -496,7 +517,9 @@ function TestFieldsForTeacher(forma,err1,err2,err3,err4,err5,err6,err7,err8,err9
 
   document.getElementById("mainbox").style.height="";
 
-   return TrHs;
+  if (TrHs) {
+    AddRecaptchaField();
+  }
  
 
 }

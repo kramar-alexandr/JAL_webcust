@@ -1903,7 +1903,66 @@ td.first{
   margin-left:10px !important;
   margin-bottom:10px !important;
 }
+/*
+.smu-profile.archive .documents p:first-child{
+  display:none;
+}
 
+.smu-profile.archive .documents .docs{
+  display:none;
+}
+*/
+.smu-profile.archive .smu-button .spbutton.reg-succes{
+  display:none;
+}
+.smu-profile.archive .company-header{
+  display:none;
+}
+
+#smu_archive_list{
+  padding:40px;
+  font-size: 13px;
+}
+#smu_archive_list .smu_label{
+  font-weight:bold;
+}
+#smu_archive_list .smu_details{
+  display:none;
+}
+#smu_archive_list .smu_item{
+  border-bottom:1px solid #eeeeee;
+  padding-bottom:10px;
+  margin-bottom:20px;
+}
+#smu_archive_list .smu_title{
+  display:flex;
+  cursor:pointer;
+}
+#smu_archive_list .smu_title .smu_code{
+  width:100px
+
+}
+#smu_archive_list .smu_title .smu_name{
+  width:200px
+
+}
+#smu_archive_list .smu_title .smu_startdate{
+  width:120px
+
+}
+#smu_archive_list .smu_title .smu_enddate{
+  width:100px
+
+}
+#smu_archive_list .smu_title > div {
+  margin-right:30px;
+}
+.smu-head h2{
+  margin-left:210px;
+}
+.smu-head a.spbutton{
+  margin-left:22px;
+}
 @media screen and (max-width: 900px){
   body{
     font-size:20px;

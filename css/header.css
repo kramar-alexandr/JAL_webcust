@@ -33,7 +33,7 @@ a{
     padding: 0vw 4vw 0vw 4vw;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 999999;
     height: 70px;
     top: 0px;
     left:0px;

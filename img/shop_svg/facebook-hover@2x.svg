@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>facebook-hover@2x</title>
+    <defs>
+        <polygon id="path-1" points="0 -3.55271368e-15 14.257 -3.55271368e-15 14.257 30.548 0 30.548"></polygon>
+    </defs>
+    <g id="facebook-hover@2x" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(11.000000, 3.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-2"></g>
+            <path d="M3.081,5.9166 L3.081,10.1206 L0,10.1206 L0,15.2646 L3.081,15.2646 L3.081,30.5486 L9.411,30.5486 L9.411,15.2656 L13.658,15.2656 C13.658,15.2656 14.056,12.7996 14.25,10.1036 L9.435,10.1036 L9.435,6.5866 C9.435,6.0616 10.124,5.3546 10.808,5.3546 L14.257,5.3546 L14.257,-0.0004 L9.566,-0.0004 C2.925,-0.0004 3.081,5.1476 3.081,5.9166" id="Fill-1" fill="#24BC4B" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>
