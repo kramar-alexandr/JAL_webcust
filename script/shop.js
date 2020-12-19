@@ -14,17 +14,164 @@ function SetPagination(){
       prevText: 'IEPRIEKŠĒJĀ',
       nextText: 'NĀKAMĀ',
       showPageNumbers: true,
-      pageSize: 4,
+      pageSize: 28,
       callback: function (data, pagination) {
           $('.smu_shoplist').html(data);
       }
     });
   }
 }
+function matchall(str,search){
+  var regEx = new RegExp(search, "ig");
+  return str.match(regEx);
+}
+
+function UpdateBasket(){
+  $.get("/WebGetBasketQty.hal",function(data){
+    let js = JSON.parse(data);
+    $(".catalog_basket").html("<div class='basket_cnt'>" + js.basket + "</div>").click(function(){
+      location.href = "/katalogs/grozs";
+    });
+    $(".catalog_fav").html("<div class='basket_cnt'>" + js.fav + "</div>").click(function(){
+      location.href = "/katalogs/favoriti";
+    });
+  });
+
+}
+function UpdateBasketQty(el,diff,e){
+  let item = $(el).closest(".smu_shop_single_item");
+  let inp = $(item).find("input");
+  let v = parseInt($(inp).val());
+  v = v + diff;
+  $(inp).val(v);
+  $.get("/WebUpdateSMUBasketQty.hal?uuid=" + $(item).attr("uuid") + "&diff=" + diff,function(){
+  });
+  if (v<=0) {
+    $(item).remove();
+  }
+  e.stopPropagation();
+  UpdateBasket();
+
+}
+
+function SubmitBasket(el){
+  this.fdata;
+  this.button = el;
+
+  this.Validate = function(){
+    var self = this;
+    var res = true;
+    $(".field_row .field_wrap input").each(function(){
+      if ($(this).val()==""){
+        res = false;
+        $(this).parent().parent().addClass("err");
+      }
+    })
+    $(".field_row .field_wrap *").each(function(){
+      self.fdata[$(this).attr("name")] = $(this).val();
+    })
+
+    return res;    
+  }
+
+  this.Submit = function(){
+    this.fdata = {};
+    if (this.Validate()){
+      $.ajax({
+        type: "POST",
+        url: "/WebSubmitSMUBasket.hal",
+        data: this.fdata,
+        success: function(data){
+          window.location.href="pabeigts";
+        }
+      });
+    }
+  }
+
+  this.Init = function(){
+    var self = this;
+    $(".field_row .field_col").click(function(){
+      $(this).removeClass("err");
+    })
+    $(this.button).click(function(){
+      self.Submit();
+    });
+  }
+  this.Init();
+}
 
 $(document).ready(function(){
 
   listFilter($(".smu_shop_searchbox input"));
+  $("#industry_select").on('selectmenuchange',function(){
+    $(".smu_shop_searchbox input").change();
+  });
+  $("#region_select").on('selectmenuchange',function(){
+    $(".smu_shop_searchbox input").change();
+  });
+  $( "#industry_select" ).selectmenu();
+  $( "#region_select" ).selectmenu();
+  let ms = new MainSearch($(".smu_shop_mainsearch input"));
+
+  if ($(".smu_shop_item_frame.favourites").length>0) {
+    $(".smu_shop_item_displayelement div").click(function(){
+      $.get("/WebSetBasketView.hal?view=" + $(this).attr("list"),function(){
+        window.location.reload();
+      });
+    });
+    $(".smu_shop_item_frame .smu_shop_single_item").click(function(){
+      window.open($(this).attr("url"),"_blank");
+    });
+  }
+  if ($(".smu_shop_item_frame.basket").length>0) {
+    $(".smu_shop_item_frame .smu_shop_single_item").click(function(){
+      window.open($(this).attr("url"),"_blank");
+    });
+  }
+  $(".smu_shop_item_image").each(function(){
+    let img = $(this).find("img");
+    $(this).html("<a href='" + $(img).attr("src") + "'>" + $(this).html() + "</a>");
+  });
+  $(".smu_shop_item_image a").magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		image: {
+			verticalFit: true
+		}
+		
+	});
+  $(".smu_shop_item_liked").click(function(e){
+    uuid = $(this).attr("uuid");
+    e.stopPropagation();
+    $.get("/WebUpdateSMUProductLike.hal?uuid=" + uuid,function(){
+      window.location.reload();
+    });
+  }) 
+  $(".smu_shop_item_basket").click(function(e){
+    uuid = $(this).attr("uuid");
+    e.stopPropagation();
+    $.get("/WebUpdateSMUProductLike.hal?type=basket&uuid=" + uuid,function(){
+      window.location.reload();
+    });
+  });
+  $(".basket_back").click(function(){
+    window.location.href="/katalogs/grozs";
+  })
+  $(".step1 .smu_shop_basket_order_button").click(function(){
+    window.location.href="grozs/pasutit";
+  });
+  SubmitBasket($(".step2 .smu_shop_basket_order_button"));
+  $(".qty_entry .add").click(function(e){
+    UpdateBasketQty(this,1,e);
+  });
+  $(".qty_entry .remove").click(function(e){
+    UpdateBasketQty(this,-1,e);
+  });
+  $(".basket_finish_button").click(function(){
+    window.location.href="/katalogs";
+  })
+  UpdateBasket();
+
   SetPagination();
   InitShopEdit();
 
@@ -35,15 +182,34 @@ function listFilter(input) {
   $(input)
     .change( function () {
       var filter = $(this).val();
-      if(filter) {
-        $(".smu_shoplist_hidden .smu_shoplist_smu:not(:Contains(" + filter + "))").slideUp();
-        $(".smu_shoplist_hidden .smu_shoplist_smu:Contains(" + filter + ")").slideDown();
-      } else {
-        $(".smu_shoplist_hidden .smu_shoplist_smu").each(function(){
-          $(this).slideDown();
-        
-         });
+      var industry = $("#industry_select").val();
+      var region = $("#region_select").val();
+      var flist = ".smu_shoplist_hidden .smu_shoplist_smu";
+      var flist2 = ".smu_shoplist_hidden .smu_shoplist_smu";
+      testf = false;
+      if (filter){
+        flist+= ":not(:Contains(" + filter + "))";
+        flist2+= ":Contains(" + filter + ")";
+        testf = true;
       }
+      console.log(flist + ":" + flist2);
+      $(".smu_shoplist_hidden .smu_shoplist_smu").hide();
+      $(flist2).each(function(){//valid searches
+        let showf = true;
+        if (industry!=""){
+          if ($(this).attr("industry")!=industry){
+            showf = false;
+          }
+        }
+        if (region!=""){
+          if ($(this).attr("region")!=region){
+            showf = false;
+          }
+        }
+        if (showf){
+          $(this).show();
+        }
+      });
       SetPagination();
       return false;
     })
@@ -61,6 +227,14 @@ function InitShopEdit(){
   }
 }
 
+function GetURLParamater(par){
+  let searchParams = new URLSearchParams(window.location.search);
+  let res = "";
+  if (searchParams.get(par)) {
+    res = searchParams.get(par);
+  }
+  return res;
+}
 
 function ShopEditPage(){
   this.name = $(".smu_name");
@@ -72,6 +246,8 @@ function ShopEditPage(){
   this.extpage = $(".externalpage input");
   this.twitter = $(".twitterpage input");
   this.instagram = $(".instagrampage input");
+  this.shopurl = $(".smu_url");
+  this.shipping = $(".smu_shipping");
   this.fb = $(".fbpage input");
   this.contactemail = $(".contactemail input");
   this.logo = $(".shop_logo");
@@ -82,16 +258,22 @@ function ShopEditPage(){
 
   this.Init = function(){
     var self = this;
-    $.get("/WebGetSMUDataForShopEditing.hal",function(data){
+    $.get("/WebGetSMUDataForShopEditing.hal" + GetURLParamater("s"),function(data){
       var js = JSON.parse(data);
       self.name.val(js.SMFName);
       self.school.val(js.School);
       self.spec.val(js.ProdSpec);
       self.descr.text(js.Text);
       self.code = js.SMFCode;
+      self.status = js.Status;
+      if (self.status==1){
+        $("<div class='shop_message'>" + jal_str["KatalogsNosutits"] + "</div>").insertAfter(".smu_top");
+      }
 
       self.extpage.val(js.ExtWebPage);
       self.twitter.val(js.TwitterPage);
+      self.shopurl.val(js.ShopUrl);
+      self.shipping.val(js.Shipping);
       self.instagram.val(js.InstagramPage);
       self.fb.val(js.FacebookPage);
       self.contactemail.val(js.ContactEmail);
@@ -101,7 +283,9 @@ function ShopEditPage(){
       self.InitCompanyImage(self.origBackground,self.background,"newBackground",jal_str['Fons']);
       self.InitCompanyImage(self.origLogo,self.logo,"newLogo",jal_str['Logo']);
       self.InitItems(js.items);
-
+      if (self.status==2) {
+        $(".smu_submit .save_submit").hide();
+      }
     })
     $(".smu_submit .save_only").click(function(){
       self.SubmitForm(false);
@@ -136,12 +320,17 @@ function ShopEditPage(){
   }
 
   this.AddSingleItem = function(item){
+    var self = this;
     var n = $($(".item_template").html());
     if (item.hasOwnProperty("Logo") && item.Logo!=""){
       $(n).find(".logo_frame").html("<img src='" + item.Logo + "'><div class='edit_image'>" + jal_str['Labot'] + "</div><input style='display:none' type='file' class='fileupload'>");
     } else {
       $(n).find(".logo_frame").html("<div class='empty_img'><div class='text'>" + jal_str["PievienotFoto"] + "</div></div><div class='edit_image'>" + jal_str['Pievienot'] + "</div><input style='display:none' type='file' class='fileupload'>");
     }
+    $(n).find(".remove").click(function(){
+      self.RemoveItems.push(item.UUID);
+      $(n).remove();
+    })
     $(n).data("uuid",item.UUID);
     this.AddItemData(item.Name,n,".name_frame",jal_str["PievienotAprakstu"]);
     this.AddItemData(item.Price,n,".price_frame",jal_str["PievienotCenu"]);
@@ -151,10 +340,14 @@ function ShopEditPage(){
 }
 
   this.InitItems = function(items){
+    var self = this;
     for (item of items) {
       this.AddSingleItem(item);
     }
-    this.AddSingleItem({Name:"",Price:""});
+    $("<div class='add_item spbutton'>Pievienot Produktu</div>").insertAfter(".item_list");
+    $(".add_item").click(function(){
+      self.AddSingleItem({Name:"",Price:""});
+    });
   }
 
   this.InitCompanyImage = function(link,el,newvalid,label){
@@ -222,7 +415,7 @@ function ShopEditPage(){
     return items;
   }
 
-  this.LoadData = function(){
+  this.LoadData = function(submitf){
     let data = {};
     data.Text = this.descr.val();
     data.Twitter = this.twitter.val();
@@ -230,6 +423,8 @@ function ShopEditPage(){
     data.Instagram = this.instagram.val();
     data.ExtWebPage = this.extpage.val();
     data.ContactEmail = this.contactemail.val();
+    data.ShopUrl = this.shopurl.val();
+    data.Shipping = this.shipping.val();
     if ($(".shop_background").find(".fileupload").get(0).files.length>0) {
       data.RemoveBackground = 1;
     } else {
@@ -239,6 +434,11 @@ function ShopEditPage(){
       data.RemoveLogo = 1;
     } else {
       data.RemoveLogo = 0;
+    }
+    if (submitf) {
+      data.SendForApproval = 1;
+    } else {
+      data.SendForApproval = 0;
     }
     data.RemoveItems = this.RemoveItems.join(",");
     data.items = this.GetItemData();
@@ -290,9 +490,13 @@ function ShopEditPage(){
 
   this.SubmitForm = function(submitf){
     var self = this;
+    if (this.status!=0 && this.status!=2) {
+      alert(jal_str["NevarLabot"]);
+      return;
+    }
     if (this.insubmit==false && this.ValidateForm()) {
       this.insubmit = true;
-      fdata = this.LoadData();
+      fdata = this.LoadData(submitf);
       url = "/WebStoreSMUDataForShop.hal";
       //submit form
       $.ajax({
@@ -309,4 +513,37 @@ function ShopEditPage(){
 
   this.Init();
 
+}
+
+function MainSearch(el){
+  this.el = el;
+
+  this.DoSearch = function(){
+    var self = this;
+    let filter = $(this.el).val();
+    if (filter!="") {
+      //filter exiting filter list
+      $(".smu_shop_single_item").each(function(){
+        if (matchall($(this).html(),filter)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      })
+    } else {
+      $(".smu_shop_single_item").slideDown();
+    }
+
+  }
+  this.CloseSearch = function(){
+    $(this.el).parent().find(".close_search").remove();
+  }
+
+  this.Init = function(){
+    var self = this;
+    $(this.el).keyup(function(){
+      self.DoSearch();
+    });
+  }
+  this.Init();
 }

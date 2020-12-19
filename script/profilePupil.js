@@ -48,8 +48,9 @@ function PupilVerifiedController(pupil) {
     };
 
     this.checkVerified = function() {
-        $(".main-tab li:nth-child(4)").css("display","none");
-        if (this.pupil.forceupdate=="1"){
+      $(".main-tab li:nth-child(4)").css("display","none");
+      $(".main-tab li:nth-child(5)").css("display","none");
+      if (this.pupil.forceupdate=="1"){
           window.location.href = "/atjauno-informaciju";
         }
         if (!this.pupil.verified.personal) {
@@ -103,6 +104,9 @@ function PupilVerifiedController(pupil) {
             if (pupil.ApprovalStatus=="3" || pupil.ApprovalStatus=="5"){
               $(".main-tab li:nth-child(4)").css("display","block");
             }          
+            if (pupil.ApprovalStatus=="3"){
+              $(".main-tab li:nth-child(5)").css("display","block");
+            }          
             
             if (pupil.sentforapproval=="1"){
               
@@ -111,8 +115,9 @@ function PupilVerifiedController(pupil) {
     };
 
     this.checkVerifiedHighSchool = function() {
-        $(".main-tab li:nth-child(4)").css("display","none");
-        if (this.pupil.forceupdate=="1"){
+      $(".main-tab li:nth-child(4)").css("display","none");
+      $(".main-tab li:nth-child(5)").css("display","none");
+      if (this.pupil.forceupdate=="1"){
           window.location.href = "/atjauno-informaciju";
         }
         if (!this.pupil.verified.personal) {
@@ -146,10 +151,13 @@ function PupilVerifiedController(pupil) {
               $('.employer_section,.teacher_request_section').hide();
             }
         } else {
-            if (pupil.ApprovalStatus=="3" || pupil.ApprovalStatus=="5"){
-              $(".main-tab li:nth-child(4)").css("display","block");
-            }
-        }
+          if (pupil.ApprovalStatus=="3" || pupil.ApprovalStatus=="5"){
+            $(".main-tab li:nth-child(4)").css("display","block");
+          }
+          if (pupil.ApprovalStatus=="3"){
+            $(".main-tab li:nth-child(5)").css("display","block");
+          }
+    }
     };
 
     this.setEventConfirmButton = function() {
