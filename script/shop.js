@@ -1,3 +1,74 @@
+var imgcnt = 0;
+
+function UploadSingleThumb(el,link,smf,name,uuid){
+  var thumb_image = new Image();
+  thumb_image.onload = function (imageEvent) {
+
+      // Resize the image
+      var canvas = document.createElement('canvas'),
+          max_size = 500,// TODO : pull max size from a site config
+          width = thumb_image.width,
+          height = thumb_image.height;
+      if (width > height) {
+          if (width > max_size) {
+              height *= max_size / width;
+              width = max_size;
+          }
+      } else {
+          if (height > max_size) {
+              width *= max_size / height;
+              height = max_size;
+          }
+      }
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext('2d').drawImage(thumb_image, 0, 0, width, height);
+      if (name.substr(-3)=="png") {
+        var dataUrl = canvas.toDataURL('image/png', 1);
+      } else {
+        var dataUrl = canvas.toDataURL('image/jpeg');
+      }
+      var resizedImage = dataURLToBlob(dataUrl);
+      resizedImage.name = "thumb_" + name;
+      var upl = new FileUpload(el,null,"smuitem",uuid,function(){imgcnt++;$(".test_data").html(imgcnt + "/" + $(".test_item_wrap").length)},null,resizedImage);      
+  }
+  thumb_image.src = link;
+}
+
+function InitImageFix(){
+  $(".test_item_wrap").each(function(){
+    let l = $(this).attr("link");
+    if (l!=""){
+      UploadSingleThumb($(this),l,$(this).attr("smf"),$(this).attr("name"),$(this).attr("uuid"));
+    }
+  });
+
+}
+
+function dataURLToBlob(dataURL) {
+  var BASE64_MARKER = ';base64,';
+  if (dataURL.indexOf(BASE64_MARKER) == -1) {
+      var parts = dataURL.split(',');
+      var contentType = parts[0].split(':')[1];
+      var raw = parts[1];
+
+      return new Blob([raw], {type: contentType});
+  }
+
+  var parts = dataURL.split(BASE64_MARKER);
+  var contentType = parts[0].split(':')[1];
+  var raw = window.atob(parts[1]);
+  var rawLength = raw.length;
+
+  var uInt8Array = new Uint8Array(rawLength);
+
+  for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+  }
+
+  return new Blob([uInt8Array], {type: contentType});
+}
+
 function SetPagination(){
 
   if ($('#pagenave').length>0) {
@@ -130,7 +201,7 @@ $(document).ready(function(){
   }
   $(".smu_shop_item_image").each(function(){
     let img = $(this).find("img");
-    $(this).html("<a href='" + $(img).attr("src") + "'>" + $(this).html() + "</a>");
+    $(this).html("<a href='" + $(img).attr("link2") + "'>" + $(this).html() + "</a>");
   });
   $(".smu_shop_item_image a").magnificPopup({
 		type: 'image',
@@ -174,6 +245,8 @@ $(document).ready(function(){
 
   SetPagination();
   InitShopEdit();
+
+  InitImageFix();
 
 });
 
@@ -255,6 +328,7 @@ function ShopEditPage(){
   this.items = [];
   this.errorf = false;
   this.RemoveItems = [];
+  this.ClearImages = [];
 
   this.Init = function(){
     var self = this;
@@ -361,21 +435,65 @@ function ShopEditPage(){
   }
 
   this.InitFileUpload = function(el){
+    var self = this;
     el.find(".edit_image").click(function(){
       el.find(".fileupload").click();
     })
     el.find(".fileupload").change(function(){
+      let fileupload = this;
       if (this.files.length>0) {
         let file = this.files[0];
         let newf = false;
+        if ($(el).closest(".shop_item").length>0) {
+          let uuid = $(el).closest(".shop_item").data("uuid");
+          if (uuid!="" && uuid!==undefined){
+            self.ClearImages.push(uuid);
+          }
+        }
+
         let img = el.find("img").get(0);
         if (!img){
           img = document.createElement("img");
           newf = true;
         }
         let reader = new FileReader();
-        reader.onloadend = function() {
+        reader.onloadend = function(readerEvent) {
           img.src = reader.result;
+
+
+          var thumb_image = new Image();
+          thumb_image.onload = function (imageEvent) {
+
+              // Resize the image
+              var canvas = document.createElement('canvas'),
+                  max_size = 500,// TODO : pull max size from a site config
+                  width = thumb_image.width,
+                  height = thumb_image.height;
+              if (width > height) {
+                  if (width > max_size) {
+                      height *= max_size / width;
+                      width = max_size;
+                  }
+              } else {
+                  if (height > max_size) {
+                      width *= max_size / height;
+                      height = max_size;
+                  }
+              }
+              canvas.width = width;
+              canvas.height = height;
+              canvas.getContext('2d').drawImage(thumb_image, 0, 0, width, height);
+              if (file.name.substr(-3)=="png") {
+                var dataUrl = canvas.toDataURL('image/png', 1);
+              } else {
+                var dataUrl = canvas.toDataURL('image/jpeg');
+              }
+              var resizedImage = dataURLToBlob(dataUrl);
+              resizedImage.name = "thumb_" + file.name;
+              $(fileupload).data("thumb",resizedImage);
+
+          }
+          thumb_image.src = readerEvent.target.result;
         }
         reader.readAsDataURL(file);   
         if (newf) {
@@ -441,6 +559,7 @@ function ShopEditPage(){
       data.SendForApproval = 0;
     }
     data.RemoveItems = this.RemoveItems.join(",");
+    data.ClearImages = this.ClearImages.join(",");
     data.items = this.GetItemData();
     return data;
   }
@@ -463,8 +582,9 @@ function ShopEditPage(){
     }
     if ($(".shop_logo").find(".fileupload").get(0).files.length>0) {
       totfiles++;
+      totfiles++;
       var inp = $(".shop_logo").find(".fileupload").get(0);
-      var upl = new FileUpload($(".shop_logo"),inp,"logo",this.code,func,null);      
+      var upl = new FileUpload($(".shop_logo"),inp,"logo",this.code,func,null,$(".shop_logo").find(".fileupload").data("thumb"));      
     }
     var i = 0;
     var list = js.imglist.split(",");
@@ -478,7 +598,9 @@ function ShopEditPage(){
         }
         var inp = $(this).find(".fileupload").get(0);
         totfiles++;
+        totfiles++;
         var upl = new FileUpload($(this),inp,"smuitem",nuuid,func,null);      
+        var upl = new FileUpload($(this),inp,"smuitem",nuuid,func,null,$(this).find(".fileupload").data("thumb"));      
       }
       i++;
     });

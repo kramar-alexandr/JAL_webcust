@@ -1,5 +1,5 @@
  
-function FileUpload(wrap,filesinp,tag,id,callback,ow_list)
+function FileUpload(wrap,filesinp,tag,id,callback,ow_list,ow_blob)
 {
   this.started = false;
   this.totfiles = 0;
@@ -115,19 +115,24 @@ function FileUpload(wrap,filesinp,tag,id,callback,ow_list)
     return res;
   }
 
-  this.DoUploadFile = function(wrap,filesinp,tag,id,callback,ow_list){//overwrite list
+  this.DoUploadFile = function(wrap,filesinp,tag,id,callback,ow_list,ow_blob){//overwrite list
     this.started = true;
-    this.totfiles = filesinp.files.length;
-    if (ow_list){
-      this.totfiles = ow_list.length;
-    }
-    var self = this;
-    for (var i = 0; i < filesinp.files.length;i++){
-      if (!ow_list || this.FileInList(filesinp.files[i],ow_list)){
-        var file = filesinp.files[i];
-        this.UploadSingleFile(i,wrap,file,tag,id,callback);
+    if (ow_blob){
+      this.totfiles = 1;
+      this.UploadSingleFile(0,wrap,ow_blob,tag,id,callback);
+    } else {
+      this.totfiles = filesinp.files.length;
+      if (ow_list){
+        this.totfiles = ow_list.length;
+      }
+      var self = this;
+      for (var i = 0; i < filesinp.files.length;i++){
+        if (!ow_list || this.FileInList(filesinp.files[i],ow_list)){
+          var file = filesinp.files[i];
+          this.UploadSingleFile(i,wrap,file,tag,id,callback);
+        }
       }
     }
   }
-  this.DoUploadFile(wrap,filesinp,tag,id,callback,ow_list);//put the arguments in the object...
+  this.DoUploadFile(wrap,filesinp,tag,id,callback,ow_list,ow_blob);//put the arguments in the object...
 }
