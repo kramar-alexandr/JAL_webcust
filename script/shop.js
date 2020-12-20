@@ -1,49 +1,3 @@
-var imgcnt = 0;
-
-function UploadSingleThumb(el,link,smf,name,uuid){
-  var thumb_image = new Image();
-  thumb_image.onload = function (imageEvent) {
-
-      // Resize the image
-      var canvas = document.createElement('canvas'),
-          max_size = 500,// TODO : pull max size from a site config
-          width = thumb_image.width,
-          height = thumb_image.height;
-      if (width > height) {
-          if (width > max_size) {
-              height *= max_size / width;
-              width = max_size;
-          }
-      } else {
-          if (height > max_size) {
-              width *= max_size / height;
-              height = max_size;
-          }
-      }
-      canvas.width = width;
-      canvas.height = height;
-      canvas.getContext('2d').drawImage(thumb_image, 0, 0, width, height);
-      if (name.substr(-3)=="png") {
-        var dataUrl = canvas.toDataURL('image/png', 1);
-      } else {
-        var dataUrl = canvas.toDataURL('image/jpeg');
-      }
-      var resizedImage = dataURLToBlob(dataUrl);
-      resizedImage.name = "thumb_" + name;
-      var upl = new FileUpload(el,null,"smuitem",uuid,function(){imgcnt++;$(".test_data").html(imgcnt + "/" + $(".test_item_wrap").length)},null,resizedImage);      
-  }
-  thumb_image.src = link;
-}
-
-function InitImageFix(){
-  $(".test_item_wrap").each(function(){
-    let l = $(this).attr("link");
-    if (l!=""){
-      UploadSingleThumb($(this),l,$(this).attr("smf"),$(this).attr("name"),$(this).attr("uuid"));
-    }
-  });
-
-}
 
 function dataURLToBlob(dataURL) {
   var BASE64_MARKER = ';base64,';
@@ -245,8 +199,6 @@ $(document).ready(function(){
 
   SetPagination();
   InitShopEdit();
-
-  InitImageFix();
 
 });
 
