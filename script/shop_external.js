@@ -167,6 +167,7 @@ function MainSearch(el,app){
           path = "/WebLoadSMUList.hal";
         }
         let searchstr = "?mainsearch=" + filter;
+        searchstr += "&eventnr=" + $(".filter_data").attr("filter");
         searchstr +="&perpage=10";
         this.wait = true;
 
@@ -286,13 +287,15 @@ function ShopApp(){
       $(this).addClass("active");
       let tag = $(this).attr("tag");
       let ntile = kTileProducts;
+      let search = $(".smu_shop_mainsearch input");
       switch (tag){
         case "products":
           ntile = kTileProducts;
+          search.attr("placeholder",search.attr("p1"));
           break;
         default:
           ntile = kTileSMUs;
-
+          search.attr("placeholder",search.attr("p2"));
       }
       if (ntile!=self.activetile) {
         self.activetile = ntile;
@@ -395,6 +398,7 @@ function ShopApp(){
     searchstr += "&industry=" + this.selectedindustries.join("|");
     searchstr += "&district=" + this.selecteddistricts.join("|");
     searchstr += "&mainsearch=" + this.mainsearch.val();
+    searchstr += "&eventnr=" + $(".filter_data").attr("filter");
     
     $.get(path + searchstr,function(data){
       let list = JSON.parse(data);
@@ -409,8 +413,17 @@ function ShopApp(){
     });
 
   }
+  this.trimItemName = function(tstr) {
+    let res = tstr;
+    if (tstr.length>47) {
+      res = tstr.substr(0,47) + "...";
+    }
+
+    return res;
+  }
 
   this.ShowCatalog = function(list){
+    var self = this;
     $(this.container).html("");
     for (let item of list) {
       let cont = {};
@@ -418,10 +431,13 @@ function ShopApp(){
         case kTileProducts:
           cont = $(producttemplate);
           $(cont).find(".item_smu").html(item.smfname);
-          $(cont).find(".item_name").html(item.itemname).attr("title",item.itemname);
+          $(cont).find(".item_name").html(self.trimItemName(item.itemname) + "<div class='item_name_hover'>" + item.itemname + "</div>");
           $(cont).find(".item_price").html(item.price + " EUR");
           $(cont).find(".item_district").html(item.district);
           $(cont).find(".item_image img").attr("src",item.logo);
+          if (item.tag!=""){
+            $(cont).append("<div class='item_tag " + item.tagcolor + "'>" + item.tag + "</div>");
+          }
           $(cont).click(function(){
             window.open(item.shopurl, '_blank'); 
           });

@@ -209,7 +209,7 @@ if (text) {
             }
 
         ]
-    });
+    });    
 
     //$('<div class="table-search"><input type="text" placeholder="' + jal_str["Search"] + '" /></div>').insertBefore('#table_id');
     let apstiprinatie = [];

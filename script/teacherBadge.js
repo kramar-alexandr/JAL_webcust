@@ -13,4 +13,8 @@ $.get("/WebgetTeacherInfo.hal",function(data){
   if (application_cnt>0) {
     $(".main-tab li:nth-child(3)").append("<div class='teacher_badge'>" + application_cnt + "</div>");
   }
+  if (teacherInfo.regional_appl_show>0) {
+    $(".main-tab li:nth-child(6)").show().append("<div class='teacher_badge'>" + teacherInfo.regional_appl_cnt + "</div>");
+  }
+  
 });
